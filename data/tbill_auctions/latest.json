@@ -1,0 +1,26 @@
+{
+  "dataset": "tbill_auctions",
+  "generated_at": "2026-08-06T20:28:31.156407+00:00",
+  "doc_id": "20260805-e68a6894",
+  "date": "2026-08-05",
+  "data": {
+    "date": "2026-08-05",
+    "title": "Press Release E T Bill phase  2  05.08.2026",
+    "results": [
+      {
+        "tenor_days": 182,
+        "way_pct": 9.99
+      },
+      {
+        "tenor_days": 364,
+        "way_pct": 10.19
+      }
+    ],
+    "amounts_rs_mn": [
+      14000,
+      58572,
+      154000
+    ],
+    "text_excerpt": " +94 11 2484604 Info.pdmo@gmail.com https://www.treasury.gov.lk/web/public-debt-management-office [Limited Sharing] PRESS RELEASE TREASURY BILL AUCTION HELD ON 05 AUGUST 2026 Further to the T-bill auction held on 05 August 2026, Rs. 14,000 million was raised at phase II, from the Treasury bills bearing the International Securities Identification Number s LKA18227B054 and LKA36427H063 at the Weight"
+  }
+}
