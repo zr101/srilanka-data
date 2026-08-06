@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-30",
+  "total_registrations": 6588,
+  "top_countries": [
+    {
+      "country": "INDIA",
+      "count": 3295
+    },
+    {
+      "country": "SRI LANKA",
+      "count": 1078
+    },
+    {
+      "country": "BANGLADESH",
+      "count": 631
+    },
+    {
+      "country": "PAKISTAN",
+      "count": 619
+    },
+    {
+      "country": "MALAYSIA",
+      "count": 106
+    },
+    {
+      "country": "SWITZERLAND",
+      "count": 86
+    },
+    {
+      "country": "GERMANY",
+      "count": 80
+    },
+    {
+      "country": "INDONESIA",
+      "count": 66
+    },
+    {
+      "country": "CHINA",
+      "count": 66
+    },
+    {
+      "country": "FRANCE",
+      "count": 57
+    }
+  ]
+}
