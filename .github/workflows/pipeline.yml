@@ -42,7 +42,7 @@ jobs:
 
       - name: Scrape
         run: PYTHONPATH=src:. DATA_ROOT="$GITHUB_WORKSPACE/data_checkout" python -m datasets.${{ matrix.dataset }}.scraper
-        timeout-minutes: 20
+        timeout-minutes: 10
 
       - name: Push data
         working-directory: data_checkout

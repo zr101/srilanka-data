@@ -5,8 +5,9 @@ import requests
 USER_AGENT = "srilanka-data (open-source dataset; github.com/zr101/srilanka-data)"
 
 
-def get(url: str, retries: int = 3, timeout: int = 30) -> requests.Response:
-    """GET with an honest UA and exponential backoff."""
+def get(url: str, retries: int = 2, timeout: tuple[int, int] | int = (10, 45)) -> requests.Response:
+    """GET with an honest UA, (connect, read) timeouts, and exponential backoff.
+    Kept tight so a hanging upstream can't eat a CI run's whole budget."""
     last_err: Exception | None = None
     for attempt in range(retries):
         try:
