@@ -1,0 +1,82 @@
+name: pipeline
+
+on:
+  schedule:
+    - cron: "30 5,11 * * *" # 11:00 & 17:00 Colombo — dailies publish ~5pm local
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dataset:
+          - cbsl_daily
+          - tbill_auctions
+          - pucsl_generation
+          - nmra_registrations
+          - wer
+          - sltda_arrivals
+    concurrency:
+      group: pipeline-${{ matrix.dataset }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          ref: data_${{ matrix.dataset }}
+          path: data_checkout
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Scrape
+        run: PYTHONPATH=src:. DATA_ROOT="$GITHUB_WORKSPACE/data_checkout" python -m datasets.${{ matrix.dataset }}.scraper
+        timeout-minutes: 20
+
+      - name: Push data
+        working-directory: data_checkout
+        run: |
+          git config user.name "pipeline-bot"
+          git config user.email "actions@github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "🤖 ${{ matrix.dataset }} $(date -u +%Y-%m-%d-%H%M)"
+          BRANCH=data_${{ matrix.dataset }}
+          for i in 1 2 3 4 5 6 7 8; do
+            git fetch origin "$BRANCH"
+            git rebase "origin/$BRANCH" || git rebase --abort
+            if git push origin "HEAD:$BRANCH" --force-with-lease; then
+              exit 0
+            fi
+            sleep $((RANDOM % 10 + 5))
+          done
+          echo "push failed after 8 attempts" >&2
+          exit 1
+
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Pipeline failure: ${{ matrix.dataset }}"
+          EXISTING=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$TITLE in:title" --json number --jq '.[0].number')
+          BODY="Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$GITHUB_REPOSITORY" --body "Still failing. $BODY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body "$BODY"
+          fi
