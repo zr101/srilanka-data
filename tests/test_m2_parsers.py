@@ -63,3 +63,17 @@ def test_edb_indicators_totals():
     assert result["total_usd_mn"][-1] == 16344
     assert result["merchandise_usd_mn"][0] > 0
     assert len(result["services_usd_mn"]) == 6
+
+
+def test_cbsl_weekly_prose():
+    import re
+    from datasets.cbsl_weekly.parser import parse_pdf  # noqa: F401  (parse_pdf needs PDF)
+    from datasets.cbsl_weekly import parser as wp
+
+    text = (FIXTURES / "wei_text.txt").read_text()
+    # exercise the regex layer directly on the recorded prose
+    out = {}
+    m = re.search(rf"gross official reserves[^.]*?US dollars? {wp.MN}[^.]*?as at end (\w+ \d{{4}})", text, re.I)
+    assert m and wp._num(m.group(1)) == 6458
+    m2 = re.search(rf"Export earnings (increased|decreased) by ([\d.]+) per cent[^.]*?US dollars? {wp.MN}", text, re.I)
+    assert m2 and wp._num(m2.group(3)) == 6903
