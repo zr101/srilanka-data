@@ -1,0 +1,18 @@
+{
+  "dataset": "cbsl_weekly",
+  "generated_at": "2026-08-06T23:25:18.507131+00:00",
+  "doc_id": "20260731",
+  "date": "2026-07-31",
+  "data": {
+    "week_ending": "2026-07-31",
+    "reserves_usd_mn": 6458.0,
+    "reserves_as_of": "June 2026",
+    "rupee_ytd_pct": -7.8,
+    "rupee_as_of": "31 July 2026",
+    "trade_deficit_usd_mn": 5489.0,
+    "exports_usd_mn": 6903.0,
+    "exports_yoy_pct": 6.3,
+    "imports_usd_mn": 12392.0,
+    "imports_yoy_pct": 26.9
+  }
+}
