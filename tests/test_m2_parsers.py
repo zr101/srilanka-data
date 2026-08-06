@@ -52,3 +52,14 @@ def test_nmra_summarize_and_cleanup():
     summary = summarize(header, rows)
     assert summary["total_registrations"] == 3
     assert summary["top_countries"][0] == {"country": "INDIA", "count": 2}
+
+
+def test_edb_indicators_totals():
+    from datasets.edb_indicators.parser import parse_text
+
+    text = (FIXTURES / "edb_text.txt").read_text()
+    result = parse_text(text)
+    assert result["years"] == [2019, 2020, 2021, 2022, 2023, 2024]
+    assert result["total_usd_mn"][-1] == 16344
+    assert result["merchandise_usd_mn"][0] > 0
+    assert len(result["services_usd_mn"]) == 6

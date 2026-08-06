@@ -22,6 +22,7 @@ jobs:
           - nmra_registrations
           - wer
           - sltda_arrivals
+          - edb_indicators
     concurrency:
       group: pipeline-${{ matrix.dataset }}
       cancel-in-progress: false
