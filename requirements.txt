@@ -1,0 +1,5 @@
+requests
+pdfplumber
+pypdf
+xlrd
+pytest
