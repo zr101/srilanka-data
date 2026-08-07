@@ -74,6 +74,11 @@ ANCHOR_SCAN_PAGES = 50  # Table 1 has always been seen well within the first ~15
 
 
 def parse_toc(payload: bytes) -> dict[str, int]:
+    """table-number string (verbatim as printed in the TOC, e.g. "21.01" not "21.1")
+    -> 0-indexed pypdf page position. Expensive (~0.5s: an up-to-20-page TOC scan plus
+    an up-to-50-page anchor scan) — callers that also need Table 13/17 etc. should
+    compute this once and pass it in (see parse_table13/parse_table17's `toc` param)
+    rather than each re-deriving it from raw bytes."""
     pages = PdfReader(io.BytesIO(payload)).pages
 
     raw_map: dict[str, int] = {}
@@ -89,7 +94,7 @@ def parse_toc(payload: bytes) -> dict[str, int]:
                 continue
             if not re.match(r"^\d{1,3}$", tokens[-1]):
                 continue
-            raw_map[tokens[0]] = int(tokens[-1])
+            raw_map[tokens[0]] = int(tokens[-1])  # last occurrence wins if a table-no repeats (not seen in practice)
     if "1" not in raw_map:
         raise ValueError("EDB TOC: table 1 entry not found")
 
@@ -224,8 +229,9 @@ def _parse_table13_rows(lines: list[str], years: list[int]) -> tuple[list[dict],
     return rows, total
 
 
-def parse_table13(payload: bytes) -> dict:
-    toc = parse_toc(payload)
+def parse_table13(payload: bytes, toc: dict[str, int] | None = None) -> dict:
+    if toc is None:  # callers that already have a toc (e.g. parse_pdf) should pass it in — see parse_toc's docstring
+        toc = parse_toc(payload)
     start = toc.get("13")
     if start is None:
         raise ValueError("EDB TOC: table 13 page not found")
@@ -280,10 +286,15 @@ def _table17_value(raw: str) -> int:
 def _validate_table17(result: dict) -> None:
     for group in ("goods", "services"):
         items = {k: v for k, v in result[group].items() if k != "total"}
+        items_sum = sum(items.values())
         total = result[group]["total"]
-        diff_pct = abs(sum(items.values()) - total) / total * 100
+        if total == 0:  # guard: a literal zero total would otherwise divide-by-zero below
+            if items_sum != 0:
+                raise ValueError(f"EDB Table 17 {group} checksum failed: sum={items_sum} vs total=0")
+            continue
+        diff_pct = abs(items_sum - total) / total * 100
         if diff_pct > TABLE17_CHECKSUM_TOLERANCE_PCT:
-            raise ValueError(f"EDB Table 17 {group} checksum failed: sum={sum(items.values())} vs total={total}")
+            raise ValueError(f"EDB Table 17 {group} checksum failed: sum={items_sum} vs total={total}")
     combined = result["goods"]["total"] + result["services"]["total"]
     if abs(combined - result["grand_total"]) > 1:
         raise ValueError(
@@ -292,8 +303,9 @@ def _validate_table17(result: dict) -> None:
         )
 
 
-def parse_table17(payload: bytes) -> dict:
-    toc = parse_toc(payload)
+def parse_table17(payload: bytes, toc: dict[str, int] | None = None) -> dict:
+    if toc is None:  # callers that already have a toc (e.g. parse_pdf) should pass it in — see parse_toc's docstring
+        toc = parse_toc(payload)
     page_idx = toc.get("17")
     if page_idx is None:
         raise ValueError("EDB TOC: table 17 page not found")
@@ -343,12 +355,20 @@ def parse_table17(payload: bytes) -> dict:
 
 def parse_pdf(payload: bytes) -> dict:
     clean = parse_text(find_table_text(payload))  # core contract; must keep raising on failure
+    # Computed once and threaded into both table parsers below — parse_toc is the
+    # expensive part of each (~0.5s: an up-to-20-page TOC scan + up-to-50-page anchor
+    # scan), and re-deriving it independently per table would scale linearly as more
+    # EDB tables (15, 21.*, 24.*, 25.*) are added on top of this same pattern.
     try:
-        clean["table13"] = parse_table13(payload)
+        toc = parse_toc(payload)
+    except ValueError:
+        toc = None  # each table parser below falls back to deriving it independently
+    try:
+        clean["table13"] = parse_table13(payload, toc=toc)
     except ValueError as err:
         clean["_table13_error"] = str(err)
     try:
-        clean["table17"] = parse_table17(payload)
+        clean["table17"] = parse_table17(payload, toc=toc)
     except ValueError as err:
         clean["_table17_error"] = str(err)
     return clean

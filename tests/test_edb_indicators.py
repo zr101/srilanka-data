@@ -11,6 +11,20 @@ from datasets.edb_indicators.parser import (
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
+# edb_2024.pdf / edb_2023.pdf are trimmed from the real ~340-page, ~3-22MB EDB ebooks
+# down to ~70 pages, ~200-600KB. Trimming is BLANK-IN-PLACE, not truncation: every
+# page from index 0 up to the last one we need (70) is kept in the writer, with only
+# the pages our parsers don't touch (front matter, graphs, tables outside 1/13/17/
+# the TOC-map generalization check) replaced by a same-size blank page rather than
+# removed. This preserves the pypdf page index of every kept page exactly as it is
+# in the original document — which matters because parse_toc() derives its
+# TOC-number -> pypdf-index offset from an anchor page's ACTUAL position (see its
+# docstring). Naively dropping/reordering pages would shift that position and
+# silently produce a wrong offset that still "works" (resolves to SOME page) but
+# points at the wrong content. See datasets/edb_indicators/parser.py's TOC section
+# comment for the offset derivation itself. If you add a 3rd/4th edition fixture,
+# rebuild it the same way (pypdf.PdfWriter, add_blank_page for anything before your
+# last needed page index, add_page for the rest) rather than slicing pages out.
 EDB_2024 = "edb_2024.pdf"  # 6 year columns (2019-2024) — the previously-working case
 EDB_2023 = "edb_2023.pdf"  # 5 year columns (2019-2023) — the edition that used to be silently skipped
 
