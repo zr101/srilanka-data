@@ -1,0 +1,34 @@
+{
+  "title": "CBSL Weekly Economic Indicators",
+  "source_url": "https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/wei/WEI_YYYYMMDD_e.pdf",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "weekly (Friday)",
+  "method": {
+    "library": "pypdf + regex",
+    "technique": "prose-highlights extraction; full-table extraction in progress (title-anchored pdfplumber crops)",
+    "preprocessing": "whitespace normalization, ligature map"
+  },
+  "fields": [
+    {
+      "name": "reserves_usd_mn",
+      "unit": "USD mn"
+    },
+    {
+      "name": "exports/imports_usd_mn",
+      "unit": "USD mn"
+    },
+    {
+      "name": "rupee_ytd_pct",
+      "unit": "%"
+    }
+  ],
+  "limitations": [
+    "mid-month editions lack reserves/trade prose (tables cover them — upgrade pending)",
+    "provisional figures revised ±1%"
+  ],
+  "fallback": {
+    "plan_b": "reserves from WEI table 4.3; customs wp-json for trade",
+    "trigger": "prose patterns absent"
+  },
+  "parser_version": "2"
+}
