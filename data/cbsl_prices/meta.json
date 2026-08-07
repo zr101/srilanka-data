@@ -1,0 +1,34 @@
+{
+  "title": "CBSL Prices — CCPI/NCPI and Wage Rate Indices",
+  "source_url": "https://www.cbsl.gov.lk/en/statistics/statistical-tables/real-sector/prices-wages-employment",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "monthly",
+  "method": {
+    "library": "openpyxl",
+    "technique": "listing-page discovery + header-text-anchored xlsx parse",
+    "preprocessing": "PK zip-magic validation (CBSL serves HTTP 200 HTML for missing files); NFKC + whitespace normalisation"
+  },
+  "fields": [
+    {
+      "name": "ccpi.index",
+      "unit": "index (2021=100)"
+    },
+    {
+      "name": "ccpi.yoy_pct",
+      "unit": "%"
+    },
+    {
+      "name": "wages.public_real",
+      "unit": "index (2016=100)"
+    }
+  ],
+  "limitations": [
+    "CPI workbooks carry a rolling ~14-month window only; long Y-o-Y history comes from CBSL's inflation widget",
+    "NCPI publishes about a month behind CCPI"
+  ],
+  "fallback": {
+    "plan_b": "cbsl_daily/cbsl_weekly PDF pipelines carry headline equivalents",
+    "trigger": "listing page restructured or workbook link renamed"
+  },
+  "parser_version": "1"
+}
