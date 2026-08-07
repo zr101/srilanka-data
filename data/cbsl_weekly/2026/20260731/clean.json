@@ -251,6 +251,100 @@
         "latest": 93.3
       }
     },
+    "price_indices": {
+      "ncpi": {
+        "months": {
+          "year_ago": "June 2025",
+          "month_ago": "May 2026",
+          "latest": "June 2026"
+        },
+        "headline": {
+          "index": {
+            "year_ago": 208.7,
+            "month_ago": 218.8,
+            "latest": 222.3
+          },
+          "monthly_change_pct": {
+            "year_ago": 0.6,
+            "month_ago": 1.2,
+            "latest": 1.6
+          },
+          "annual_avg_change_pct": {
+            "year_ago": -0.9,
+            "month_ago": 2.4,
+            "latest": 2.9
+          },
+          "yoy_change_pct": {
+            "year_ago": 0.3,
+            "month_ago": 5.4,
+            "latest": 6.5
+          }
+        },
+        "core": {
+          "index": {
+            "year_ago": 194.8,
+            "month_ago": 203.0,
+            "latest": 204.6
+          },
+          "annual_avg_change_pct": {
+            "year_ago": 0.9,
+            "month_ago": 2.3,
+            "latest": 2.7
+          },
+          "yoy_change_pct": {
+            "year_ago": 0.6,
+            "month_ago": 4.5,
+            "latest": 5.0
+          }
+        }
+      },
+      "ccpi": {
+        "months": {
+          "year_ago": "July 2025",
+          "month_ago": "June 2026",
+          "latest": "July 2026"
+        },
+        "headline": {
+          "index": {
+            "year_ago": 194.1,
+            "month_ago": 207.7,
+            "latest": 208.2
+          },
+          "monthly_change_pct": {
+            "year_ago": -0.2,
+            "month_ago": 2.1,
+            "latest": 0.2
+          },
+          "annual_avg_change_pct": {
+            "year_ago": -1.6,
+            "month_ago": 2.7,
+            "latest": 3.3
+          },
+          "yoy_change_pct": {
+            "year_ago": -0.3,
+            "month_ago": 6.8,
+            "latest": 7.3
+          }
+        },
+        "core": {
+          "index": {
+            "year_ago": 180.8,
+            "month_ago": 187.3,
+            "latest": 188.8
+          },
+          "annual_avg_change_pct": {
+            "year_ago": 1.9,
+            "month_ago": 2.6,
+            "latest": 2.9
+          },
+          "yoy_change_pct": {
+            "year_ago": 1.6,
+            "month_ago": 4.0,
+            "latest": 4.4
+          }
+        }
+      }
+    },
     "commodity_prices": {
       "tea_per_kg": {
         "usd_2025": 3.71,
