@@ -604,10 +604,14 @@ def _parse_entity_page(pages, page_idx: int, row_label: str, table_id: str | Non
     else:
         raise ValueError(f"EDB entity page {page_idx}: unrecognized unit {unit_line!r}")
     for record in rows + ([other] if other else []) + [total]:
-        record["values_usd"] = {y: v * multiplier for y, v in record["values_usd"].items()}
+        # round(): Millions->Thousands multiplication otherwise leaves float noise (257.73*1000
+        # == 257730.00000000003), which Thousands-native pages never have — 2dp matches the
+        # source's own precision either way.
+        record["values_usd"] = {y: round(v * multiplier, 2) for y, v in record["values_usd"].items()}
 
     return {
         "entity": entity,
+        "table_id": table_id,
         "years": years,
         "unit": "USD Thousands",
         "rows": rows,
@@ -619,6 +623,30 @@ def _parse_entity_page(pages, page_idx: int, row_label: str, table_id: str | Non
 
 _TOC_COUNTRY_RE = re.compile(r"^24\.\d+$")
 _TOC_PRODUCT_RE = re.compile(r"^25\.\d+$")
+
+# Rows + the Other-bucket should sum back to the page's own Total row, per year. Benign
+# rounding noise across the 4 fixture pages tops out ~0.35% (Green Tea); a genuinely
+# dropped/malformed row (see Albania's row-12 "Petroleum Oils" gap, documented above)
+# shows up as several % off — 1% cleanly separates the two, with margin either side.
+ENTITY_RECONCILIATION_TOLERANCE_PCT = 1.0
+
+
+def _validate_entity_reconciliation(page: dict) -> None:
+    contributors = page["rows"] + ([page["other"]] if page["other"] else [])
+    for y in page["years"]:
+        key = str(y)
+        summed = sum(r["values_usd"][key] for r in contributors)
+        total = page["total"]["values_usd"][key]
+        if total == 0:
+            if abs(summed) > 0.01:
+                raise ValueError(f"EDB entity {page['entity']!r}: {key} rows+other sum={summed} vs Total=0")
+            continue
+        diff_pct = abs(summed - total) / abs(total) * 100
+        if diff_pct > ENTITY_RECONCILIATION_TOLERANCE_PCT:
+            raise ValueError(
+                f"EDB entity {page['entity']!r}: {key} rows+other sum={summed} vs Total={total} "
+                f"({diff_pct:.2f}% off, tolerance {ENTITY_RECONCILIATION_TOLERANCE_PCT}%) — a row may be missing/malformed"
+            )
 
 
 def _parse_entity_batch(payload: bytes, toc: dict[str, int] | None, toc_pattern: re.Pattern, row_label: str) -> dict:
@@ -632,11 +660,20 @@ def _parse_entity_batch(payload: bytes, toc: dict[str, int] | None, toc_pattern:
             continue
         try:
             page = _parse_entity_page(pages, page_idx, row_label, table_id=table_id)
-        except Exception as err:  # noqa: BLE001 — a single bad/blank page (this fixture has ~260 still-blank
-            # ones; production editions can have genuine one-off layout quirks) must never cost the other
-            # ~99/~164 good entities in the same batch, so this is deliberately broader than the ValueError
+            _validate_entity_reconciliation(page)  # catches e.g. a silently-dropped row (see Albania's row 12)
+            if page["entity"] in result:
+                # Two TOC ids resolving to the same entity caption would otherwise silently overwrite
+                # the first one's data with no trace — surface it instead of losing an entity untraceably.
+                raise ValueError(
+                    f"duplicate entity {page['entity']!r}: table {table_id!r} collides with "
+                    f"already-parsed table {result[page['entity']]['table_id']!r}"
+                )
+        except Exception as err:  # noqa: BLE001 — a single bad/blank/inconsistent page (this fixture has ~260
+            # still-blank ones; production editions can have genuine one-off layout quirks) must never cost the
+            # other ~99/~164 good entities in the same batch, so this is deliberately broader than the ValueError
             # this module's other parsers raise-and-catch — anything short of a KeyboardInterrupt is contained here.
-            errors[table_id] = str(err)
+            errors[table_id] = f"{type(err).__name__}: {err}"  # type name preserves "expected data issue" (ValueError)
+            # vs. "real code bug" (anything else this broad except also catches) for whoever debugs this later
             continue
         result[page["entity"]] = page
     if errors:

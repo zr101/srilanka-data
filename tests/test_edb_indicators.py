@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader
 
+from datasets.edb_indicators import parser as edb_parser
 from datasets.edb_indicators.parser import (
     _parse_entity_page,
     find_table_text,
@@ -348,11 +349,25 @@ def test_entity_page_rejects_row_label_mismatch():
         _parse_entity_page(_pages(), ALBANIA_PAGE, "Market")
 
 
-def test_parse_countries_finds_albania_and_china():
+def test_parse_countries_finds_china():
     toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
     result = parse_countries((FIXTURES / EDB_2024).read_bytes(), toc=toc)
-    assert result["ALBANIA"]["total"]["values_usd"]["2024"] == 9235.89
     assert result["CHINA"]["total"]["values_usd"]["2024"] == 251910.0
+    assert result["CHINA"]["table_id"] == "24.16"
+
+
+def test_parse_countries_reconciliation_catches_albania_dropped_row():
+    # Albania's row 12 ("Petroleum Oils") is missing one of its 7 expected value tokens
+    # in the source itself (a genuine artifact — see test_entity_page_albania_...), which
+    # makes rows+other undercount the page's own 2022 Total by ~5.5%, well past the
+    # reconciliation tolerance. Must be caught and recorded into _errors — NOT silently
+    # returned under "ALBANIA" looking like complete, trustworthy data.
+    toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
+    result = parse_countries((FIXTURES / EDB_2024).read_bytes(), toc=toc)
+    assert "ALBANIA" not in result
+    assert "24.01" in result["_errors"]
+    assert "2022" in result["_errors"]["24.01"]
+    assert "ValueError" in result["_errors"]["24.01"]
 
 
 def test_parse_countries_blank_pages_do_not_crash_the_batch():
@@ -360,10 +375,38 @@ def test_parse_countries_blank_pages_do_not_crash_the_batch():
     # China are un-blanked) — one bad/blank page must never lose the other good ones.
     toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
     result = parse_countries((FIXTURES / EDB_2024).read_bytes(), toc=toc)
-    assert "ALBANIA" in result and "CHINA" in result
+    assert "CHINA" in result
     assert "_errors" in result
     assert len(result["_errors"]) > 50  # the still-blank pages, contained rather than fatal
     assert "24.02" in result["_errors"]  # a specific known-blank page
+
+
+def test_parse_entity_batch_duplicate_entity_name_recorded_not_overwritten(monkeypatch):
+    # Synthetic: two TOC ids resolving to the same entity caption isn't expected in a
+    # real edition, but if it ever happened, silently overwriting result[entity] would
+    # lose an entity's data with zero trace. Force the collision by pointing two
+    # different table_ids at the same underlying page (both naturally parse to "CHINA")
+    # — the caption-vs-table_id sanity check is bypassed here (table_id=None) since
+    # that's already covered by test_entity_page_rejects_row_label_mismatch and isn't
+    # what this test is exercising — and confirm the SECOND one is recorded into
+    # _errors instead, naming both table_ids, with the first parse kept intact.
+    real_parse_entity_page = edb_parser._parse_entity_page
+
+    def fake_parse_entity_page(pages, page_idx, row_label, table_id=None):
+        page = real_parse_entity_page(pages, page_idx, row_label, table_id=None)
+        page["table_id"] = table_id
+        return page
+
+    monkeypatch.setattr(edb_parser, "_parse_entity_page", fake_parse_entity_page)
+
+    payload = (FIXTURES / EDB_2024).read_bytes()
+    fake_toc = {"24.16": CHINA_PAGE, "24.99": CHINA_PAGE}
+    result = parse_countries(payload, toc=fake_toc)
+    assert result["CHINA"]["table_id"] == "24.16"  # first parse wins, not overwritten
+    assert "_errors" in result
+    assert "24.99" in result["_errors"]
+    assert "duplicate" in result["_errors"]["24.99"].lower()
+    assert "24.16" in result["_errors"]["24.99"]  # both colliding table_ids visible for debugging
 
 
 def test_parse_products_finds_tea_and_green_tea():
@@ -386,5 +429,24 @@ def test_parse_pdf_merges_countries_and_products_additively():
     assert "_countries_error" not in result, result.get("_countries_error")
     assert "_products_error" not in result, result.get("_products_error")
     assert result["total_usd_mn"] == [15828, 12335, 14429, 14995, 15106, 16344]  # core contract still intact
-    assert result["countries"]["ALBANIA"]["total"]["values_usd"]["2024"] == 9235.89
+    assert result["countries"]["CHINA"]["total"]["values_usd"]["2024"] == 251910.0
     assert result["products"]["GREEN TEA"]["total"]["values_usd"]["2024"] == 5690.0
+
+
+def test_entity_pages_values_and_share_are_never_negative():
+    # % Avg. Growth legitimately goes negative (a shrinking market/product); values_usd
+    # and share_pct never should — a column-misalignment bug on some unseen production
+    # page would likely show up here even though exact-value pinning on 4 fixed pages
+    # can't catch it.
+    cases = [
+        (ALBANIA_PAGE, "Product", "24.01"),
+        (CHINA_PAGE, "Product", "24.16"),
+        (TEA_PAGE, "Market", "25.01"),
+        (GREEN_TEA_PAGE, "Market", "25.05"),
+    ]
+    for page_idx, row_label, table_id in cases:
+        page = _parse_entity_page(_pages(), page_idx, row_label, table_id=table_id)
+        for record in page["rows"] + ([page["other"]] if page["other"] else []) + [page["total"]]:
+            assert record["share_pct"] >= 0, record
+            assert all(v >= 0 for v in record["values_usd"].values()), record
+        assert all(v >= 0 for v in page["merchandise_share_pct"].values())
