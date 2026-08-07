@@ -175,3 +175,27 @@ def test_wer_side_table_unknown_caption_skips_gracefully():
 
     text = "blah blah\nPage 2.                      To be Continued….\nTable 1 : Some Future Topic\nFoo 1 2 3\n"
     assert parse_side_table(text) is None
+
+
+def test_wer_side_table_marker_tolerates_space_before_period():
+    # regression: the extracted text elsewhere in this same document has a
+    # stray space before a period ("Vol. 53 No . 26"), a real pypdf
+    # extraction artifact — the marker must tolerate the same on "Page 2 ."
+    # rather than silently falling back to "table absent".
+    from datasets.wer.parser import parse_side_table
+
+    text = (
+        "blah blah\n"
+        "Page 2 .                      To be Continued….\n"
+        "Table 1 : Water Quality Surveillance\n"
+        "Number of microbiological water samples  May 2026\n"
+        "District MOH areas No: Expected\n"
+        "*\n"
+        "No: Received\n"
+        "Colombo 18 108 02\n"
+        "Figure 1: Notified Cases up to 30.05.2026\n"
+    )
+    side = parse_side_table(text)
+    assert side is not None
+    assert side["caption"] == "Water Quality Surveillance"
+    assert side["rows"] == [{"area": "Colombo", "moh_areas": 18, "no_expected": 108, "no_received": 2}]

@@ -228,7 +228,7 @@ def parse_table2(page_text: str) -> tuple[list[dict], int | None]:
 # caption text to a per-topic row parser. Unknown captions are skipped, not
 # fatal — this field is purely additive, same philosophy as Table 2 above.
 
-_SIDE_TABLE_MARKER_RE = re.compile(r"Page\s*2\.\s*To be Continued", re.I)
+_SIDE_TABLE_MARKER_RE = re.compile(r"Page\s*2\s*\.\s*To be Continued", re.I)
 _SIDE_TABLE_CAPTION_RE = re.compile(r"Table\s*1\s*:\s*(.+)")
 _WATER_QUALITY_ROW_RE = re.compile(r"^([A-Za-z][A-Za-z ]*?)\s+(\d+)\s+(\d+)\s+(\d+|NR)$")
 
