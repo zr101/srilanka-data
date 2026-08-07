@@ -101,3 +101,13 @@ def test_forbes_tea_table():
     assert len(rows) > 15
     m = tp.ROW_RE.match("01-JUL-2027 1,013 1,025 3,190 5,228 1071.14 957.22 1292.66 1183.94")
     assert m and m.group(3) == "2027"  # typo row matches; parser repairs the year
+
+
+def test_treasury_phase1():
+    from datasets.tbill_auctions.parser import parse_phase1
+
+    result = parse_phase1((FIXTURES / "treasury_phase1.pdf").read_bytes())
+    by_tenor = {r["tenor_days"]: r for r in result["results"]}
+    assert by_tenor[91]["way_pct"] == 9.77 and by_tenor[91]["accepted_rs_mn"] == 72807
+    assert by_tenor[364]["isin"] == "LKA36427H063"
+    assert result["totals"]["accepted_rs_mn"] == 140000

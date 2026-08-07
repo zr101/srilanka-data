@@ -29,7 +29,7 @@ def run(budget_seconds: float = 300) -> int:
         if budget.expired:
             break
         title = link.get("title", "")
-        if link.get("urlType") != "file" or not re.search(r"press release\s+E\b", title, re.I):
+        if link.get("urlType") != "file" or not re.search(r"(press release\s+E\b|\bE\s+T\s*Bill|English)", title, re.I):
             continue
         date_m = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title)
         if not date_m:
