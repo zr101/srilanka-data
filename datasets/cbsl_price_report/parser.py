@@ -151,6 +151,52 @@ HIGHLIGHT = re.compile(
     r"(?=\s+(?:increased|declined|remained)\b|\s+Rs\./|\s*$)"
 )
 DIRECTION = re.compile(r"\b(increased|declined|remained)\b", re.I)
+
+# Chart axis labels are rendered right-to-left, so month abbreviations arrive
+# reversed ("luJ-7" is 7-Jul, "guA" is Aug). They always trail the commentary,
+# so the first one marks where the prose ends.
+REVERSED_MONTHS = ("naJ", "beF", "raM", "rpA", "yaM", "nuJ", "luJ", "guA", "peS", "tcO", "voN", "ceD")
+PRICE_ROW = re.compile(r"[qp]?\s*[A-Za-z]+\s*:\s*[\d,]+\.\d{2}\s+[\d,]+\.\d{2}")
+
+
+def _clean_commentary(text: str) -> str:
+    """Strip the chart furniture that flows into the commentary.
+
+    The chart sits behind the prose, so its tick values and reversed axis
+    labels are interleaved *between* the sentence's lines rather than trailing
+    them — truncating at the first axis label would cut the sentence in half
+    ("...supply from Nuwara" instead of "...Nuwara Eliya and Bandarawela
+    areas"). They are therefore removed token by token and the prose rejoined.
+    """
+    text = PRICE_ROW.sub(" ", text)
+    kept = []
+    for word in text.split():
+        if word[:3] in REVERSED_MONTHS:
+            continue  # reversed axis label: "luJ-7", "guA"
+        if re.fullmatch(r"-?[\d,]+(?:\.\d+)?", word):
+            continue  # axis tick value
+        if word in ("q", "p", "-"):
+            continue  # arrow glyphs and orphaned axis dashes
+        kept.append(word)
+    return re.sub(r"\s+", " ", " ".join(kept)).strip()
+
+
+def _reason(commentary: str) -> str | None:
+    """The clause after 'due to' — CBSL's stated cause for the move."""
+    # Stop at the sentence end: chart legends and the next section's heading
+    # ("Pettah Dambulla Rs./kg", "Fish") flow on directly after it.
+    found = re.search(r"due to (.+?)\.(?:\s|$)", commentary, re.I)
+    if not found:
+        found = re.search(r"due to (.+)", commentary, re.I)
+    if not found:
+        return None
+    reason = found.group(1).strip().rstrip(".")
+    # Interleaved editions leave a tail of loose characters ("W e n n a u w Pe
+    # li ya g o da"); cut at the first run of them rather than print noise.
+    scrambled = re.search(r"(?:(?:\s|^)\S{1,2}){4,}\s*$", reason)
+    if scrambled and scrambled.start() > 10:
+        reason = reason[: scrambled.start()].strip().rstrip(",")
+    return reason or None
 MOVE = re.compile(r"([A-Za-z][A-Za-z' ]*?)\s*:\s*([\d,]+\.\d{2})\s+([\d,]+\.\d{2})")
 CATEGORIES = ("Vegetables", "Fish", "Other", "Coconut", "Rice", "Fruits", "Meat", "Egg")
 
@@ -194,10 +240,10 @@ def parse_highlights(page) -> list[dict]:
             continue
         if not highlights or heading_top is None:
             continue
-        if line["top"] - heading_top > MAX_BLOCK_GAP:
+        too_far = line["top"] - heading_top > MAX_BLOCK_GAP
+        if too_far:
             orphans += len(MOVE.findall(text))
-            continue
-        for market, yesterday, today in MOVE.findall(text):
+        for market, yesterday, today in [] if too_far else MOVE.findall(text):
             # Commentary runs into the same line, so keep only the trailing
             # word before the colon — the market name.
             name = market.strip().split()[-1] if market.strip() else ""
@@ -211,9 +257,10 @@ def parse_highlights(page) -> list[dict]:
                 )
         highlights[-1]["commentary"].append(text)
     for h in highlights:
-        h["commentary"] = " ".join(h["commentary"])
+        h["commentary"] = _clean_commentary(" ".join(h["commentary"]))
         verb = DIRECTION.search(h["commentary"])
         h["direction"] = verb.group(1).lower() if verb else None
+        h["reason"] = _reason(h["commentary"])
     return [h for h in highlights if h["moves"]], orphans
 
 
