@@ -228,3 +228,40 @@ def _cbsl_financial(clean: dict) -> list[str]:
     if not clean.get("soundness"):
         errors.append("no soundness sheets parsed")
     return errors
+
+
+@register("cbsl_price_report")
+def _cbsl_price_report(clean: dict) -> list[str]:
+    """The report states its movers twice — as page-1 highlights and inside the
+    page-2 retail columns — so the two must agree. That cross-check is what
+    proves the split-digit reassembly ("1" + "28.00" -> 128.00) landed
+    correctly, since a misjoin would show up as an order-of-magnitude gap."""
+    errors = []
+    items = clean.get("items") or []
+    if len(items) < 10:
+        errors.append(f"only {len(items)} commodity rows parsed")
+
+    for item in items:
+        for column, pair in (item.get("prices") or {}).items():
+            for when, value in pair.items():
+                if value is not None and not 0 < value < 100_000:
+                    errors.append(f"{item['item']} {column} {when}={value} implausible")
+
+    by_item = {i["item"].lower(): i for i in items}
+    for highlight in clean.get("highlights") or []:
+        row = by_item.get(highlight["item"].lower())
+        if row is None:
+            continue  # fish and some staples are highlighted but not tabulated
+        for move in highlight["moves"]:
+            key = f"retail_{move['market'].lower()}"
+            tabulated = (row.get("prices") or {}).get(key)
+            if not tabulated:
+                continue
+            for when in ("previous", "today"):
+                stated, listed = move.get(when), tabulated.get(when)
+                if None not in (stated, listed) and abs(stated - listed) > 0.01:
+                    errors.append(
+                        f"{highlight['item']} {move['market']} {when}: "
+                        f"highlight {stated} != table {listed}"
+                    )
+    return errors

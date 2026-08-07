@@ -31,6 +31,7 @@ jobs:
           - cbsl_fiscal
           - cbsl_external
           - cbsl_financial
+          - cbsl_price_report
     concurrency:
       group: pipeline-${{ matrix.dataset }}
       cancel-in-progress: false
