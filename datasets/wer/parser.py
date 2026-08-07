@@ -118,6 +118,12 @@ def parse_pdf(payload: bytes) -> dict:
     if len(districts) < 20:
         raise ValueError(f"WER parse found only {len(districts)} district rows")
     # checksum: column sums must reconcile with the SRI LANKA total row (proven exact)
+    # vol053-no24 diagnosed 2026-08-07: correctly rejected, not a parser bug — 13/14
+    # diseases reconcile exactly on that same row (rules out column/token shift), the
+    # raw "11" token is clean with no fusion artifact, and 3 of the 4 surrounding
+    # editions reconcile on every disease. The source PDF's own printed total row
+    # undercounts leishmaniasis (115 districts vs 11 total) — a one-off compilation
+    # error upstream. Leave quarantined; do not special-case this edition.
     if total_row:
         for disease in DISEASES:
             col_sum = sum(d["diseases"][disease]["week"] or 0 for d in districts)
