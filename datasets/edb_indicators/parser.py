@@ -372,3 +372,9 @@ def parse_pdf(payload: bytes) -> dict:
     except ValueError as err:
         clean["_table17_error"] = str(err)
     return clean
+
+
+def rebuild(payload: bytes, _existing: dict) -> dict:
+    clean = dict(_existing)
+    clean.update(parse_pdf(payload))
+    return clean

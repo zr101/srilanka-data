@@ -361,3 +361,9 @@ def parse_tables(payload: bytes) -> dict:
     if not out:
         raise ValueError("cbsl_weekly parse_tables: no tables recognized — caption layout may have changed")
     return out
+
+
+def rebuild(payload: bytes, _existing: dict) -> dict:
+    clean = dict(_existing)
+    clean.update(parse_pdf(payload))
+    return clean
