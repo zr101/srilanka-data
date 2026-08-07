@@ -1,0 +1,1947 @@
+{
+  "volume": 53,
+  "issue": 23,
+  "districts": [
+    {
+      "district": "Colombo",
+      "rdhs": "Colombo",
+      "district_id": "LK-11",
+      "diseases": {
+        "dengue": {
+          "week": 398,
+          "cumulative": 7692
+        },
+        "dysentery": {
+          "week": 3,
+          "cumulative": 10
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "leptospirosis": {
+          "week": 4,
+          "cumulative": 166
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 9
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 10,
+          "cumulative": 290
+        },
+        "meningitis": {
+          "week": 2,
+          "cumulative": 25
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "tuberculosis": {
+          "week": 42,
+          "cumulative": 775
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 71
+        }
+      },
+      "timeliness_pct": 88,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Gampaha",
+      "rdhs": "Gampaha",
+      "district_id": "LK-12",
+      "diseases": {
+        "dengue": {
+          "week": 462,
+          "cumulative": 4988
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 18
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 18
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 3,
+          "cumulative": 18
+        },
+        "leptospirosis": {
+          "week": 4,
+          "cumulative": 251
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 6
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 10,
+          "cumulative": 423
+        },
+        "meningitis": {
+          "week": 5,
+          "cumulative": 112
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 18
+        },
+        "tuberculosis": {
+          "week": 14,
+          "cumulative": 424
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 36
+        }
+      },
+      "timeliness_pct": 82,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Kalutara",
+      "rdhs": "Kalutara",
+      "district_id": "LK-13",
+      "diseases": {
+        "dengue": {
+          "week": 243,
+          "cumulative": 2395
+        },
+        "dysentery": {
+          "week": 4,
+          "cumulative": 24
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 16
+        },
+        "leptospirosis": {
+          "week": 2,
+          "cumulative": 207
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 45,
+          "cumulative": 421
+        },
+        "meningitis": {
+          "week": 5,
+          "cumulative": 34
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 225
+        },
+        "leprosy": {
+          "week": 2,
+          "cumulative": 40
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Kandy",
+      "rdhs": "Kandy",
+      "district_id": "LK-21",
+      "diseases": {
+        "dengue": {
+          "week": 168,
+          "cumulative": 1688
+        },
+        "dysentery": {
+          "week": 2,
+          "cumulative": 35
+        },
+        "encephalitis": {
+          "week": 2,
+          "cumulative": 4
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 34
+        },
+        "leptospirosis": {
+          "week": 6,
+          "cumulative": 109
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 23
+        },
+        "viral_hepatitis": {
+          "week": 1,
+          "cumulative": 15
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 10,
+          "cumulative": 349
+        },
+        "meningitis": {
+          "week": 14,
+          "cumulative": 41
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 36
+        },
+        "tuberculosis": {
+          "week": 2,
+          "cumulative": 226
+        },
+        "leprosy": {
+          "week": 2,
+          "cumulative": 12
+        }
+      },
+      "timeliness_pct": 98,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Matale",
+      "rdhs": "Matale",
+      "district_id": "LK-22",
+      "diseases": {
+        "dengue": {
+          "week": 23,
+          "cumulative": 713
+        },
+        "dysentery": {
+          "week": 1,
+          "cumulative": 12
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 1,
+          "cumulative": 2
+        },
+        "leptospirosis": {
+          "week": 5,
+          "cumulative": 103
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 3,
+          "cumulative": 107
+        },
+        "meningitis": {
+          "week": 1,
+          "cumulative": 22
+        },
+        "leishmaniasis": {
+          "week": 8,
+          "cumulative": 250
+        },
+        "tuberculosis": {
+          "week": 2,
+          "cumulative": 78
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 20
+        }
+      },
+      "timeliness_pct": 93,
+      "completeness_pct": 92
+    },
+    {
+      "district": "Nuwara Eliya",
+      "rdhs": "Nuwara Eliya",
+      "district_id": "LK-23",
+      "diseases": {
+        "dengue": {
+          "week": 5,
+          "cumulative": 292
+        },
+        "dysentery": {
+          "week": 1,
+          "cumulative": 28
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "leptospirosis": {
+          "week": 12,
+          "cumulative": 144
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 24
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 10,
+          "cumulative": 273
+        },
+        "meningitis": {
+          "week": 15,
+          "cumulative": 89
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "tuberculosis": {
+          "week": 4,
+          "cumulative": 113
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 3
+        }
+      },
+      "timeliness_pct": 91,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Galle",
+      "rdhs": "Galle",
+      "district_id": "LK-31",
+      "diseases": {
+        "dengue": {
+          "week": 140,
+          "cumulative": 2397
+        },
+        "dysentery": {
+          "week": 2,
+          "cumulative": 13
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 43
+        },
+        "leptospirosis": {
+          "week": 2,
+          "cumulative": 268
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 22
+        },
+        "viral_hepatitis": {
+          "week": 1,
+          "cumulative": 12
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 16,
+          "cumulative": 536
+        },
+        "meningitis": {
+          "week": 7,
+          "cumulative": 71
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "tuberculosis": {
+          "week": 7,
+          "cumulative": 177
+        },
+        "leprosy": {
+          "week": 2,
+          "cumulative": 21
+        }
+      },
+      "timeliness_pct": 98,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Hambantota",
+      "rdhs": "Hambantota",
+      "district_id": "LK-33",
+      "diseases": {
+        "dengue": {
+          "week": 31,
+          "cumulative": 992
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 30
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 31
+        },
+        "leptospirosis": {
+          "week": 0,
+          "cumulative": 98
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 133
+        },
+        "meningitis": {
+          "week": 0,
+          "cumulative": 20
+        },
+        "leishmaniasis": {
+          "week": 10,
+          "cumulative": 242
+        },
+        "tuberculosis": {
+          "week": 4,
+          "cumulative": 57
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 11
+        }
+      },
+      "timeliness_pct": 98,
+      "completeness_pct": 98
+    },
+    {
+      "district": "Matara",
+      "rdhs": "Matara",
+      "district_id": "LK-32",
+      "diseases": {
+        "dengue": {
+          "week": 156,
+          "cumulative": 2437
+        },
+        "dysentery": {
+          "week": 5,
+          "cumulative": 10
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "leptospirosis": {
+          "week": 1,
+          "cumulative": 182
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 13
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 15
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 5,
+          "cumulative": 329
+        },
+        "meningitis": {
+          "week": 9,
+          "cumulative": 97
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 77
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 69
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 12
+        }
+      },
+      "timeliness_pct": 74,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Jaffna",
+      "rdhs": "Jaffna",
+      "district_id": "LK-41",
+      "diseases": {
+        "dengue": {
+          "week": 15,
+          "cumulative": 655
+        },
+        "dysentery": {
+          "week": 3,
+          "cumulative": 32
+        },
+        "encephalitis": {
+          "week": 1,
+          "cumulative": 5
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 19
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 74
+        },
+        "leptospirosis": {
+          "week": 2,
+          "cumulative": 46
+        },
+        "typhus": {
+          "week": 2,
+          "cumulative": 210
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 229
+        },
+        "meningitis": {
+          "week": 4,
+          "cumulative": 24
+        },
+        "leishmaniasis": {
+          "week": 1,
+          "cumulative": 1
+        },
+        "tuberculosis": {
+          "week": 4,
+          "cumulative": 85
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 7
+        }
+      },
+      "timeliness_pct": 99,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Kilinochchi",
+      "rdhs": "Kilinochchi",
+      "district_id": "LK-42",
+      "diseases": {
+        "dengue": {
+          "week": 1,
+          "cumulative": 169
+        },
+        "dysentery": {
+          "week": 1,
+          "cumulative": 5
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "leptospirosis": {
+          "week": 15,
+          "cumulative": 54
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 10
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "chickenpox": {
+          "week": 1,
+          "cumulative": 69
+        },
+        "meningitis": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 17
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 1
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Mannar",
+      "rdhs": "Mannar",
+      "district_id": "LK-43",
+      "diseases": {
+        "dengue": {
+          "week": 1,
+          "cumulative": 91
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "leptospirosis": {
+          "week": 6,
+          "cumulative": 27
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 2,
+          "cumulative": 44
+        },
+        "meningitis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "tuberculosis": {
+          "week": 0,
+          "cumulative": 19
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 1
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Vavuniya",
+      "rdhs": "Vavuniya",
+      "district_id": "LK-44",
+      "diseases": {
+        "dengue": {
+          "week": 5,
+          "cumulative": 107
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "encephalitis": {
+          "week": 3,
+          "cumulative": 4
+        },
+        "enteric_fever": {
+          "week": 1,
+          "cumulative": 2
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "leptospirosis": {
+          "week": 25,
+          "cumulative": 55
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 0,
+          "cumulative": 85
+        },
+        "meningitis": {
+          "week": 2,
+          "cumulative": 13
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 18
+        },
+        "tuberculosis": {
+          "week": 2,
+          "cumulative": 36
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 3
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Mullaitivu",
+      "rdhs": "Mullaitivu",
+      "district_id": "LK-45",
+      "diseases": {
+        "dengue": {
+          "week": 3,
+          "cumulative": 51
+        },
+        "dysentery": {
+          "week": 2,
+          "cumulative": 5
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "leptospirosis": {
+          "week": 1,
+          "cumulative": 27
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "meningitis": {
+          "week": 1,
+          "cumulative": 6
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 16
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 4
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Batticaloa",
+      "rdhs": "Batticaloa",
+      "district_id": "LK-51",
+      "diseases": {
+        "dengue": {
+          "week": 37,
+          "cumulative": 923
+        },
+        "dysentery": {
+          "week": 2,
+          "cumulative": 43
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 16
+        },
+        "leptospirosis": {
+          "week": 9,
+          "cumulative": 93
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "viral_hepatitis": {
+          "week": 3,
+          "cumulative": 14
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 153
+        },
+        "meningitis": {
+          "week": 2,
+          "cumulative": 22
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 10
+        },
+        "tuberculosis": {
+          "week": 2,
+          "cumulative": 68
+        },
+        "leprosy": {
+          "week": 4,
+          "cumulative": 50
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Ampara",
+      "rdhs": "Ampara",
+      "district_id": "LK-52",
+      "diseases": {
+        "dengue": {
+          "week": 5,
+          "cumulative": 233
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 43
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "leptospirosis": {
+          "week": 0,
+          "cumulative": 94
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 202
+        },
+        "meningitis": {
+          "week": 5,
+          "cumulative": 34
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 9
+        },
+        "tuberculosis": {
+          "week": 0,
+          "cumulative": 21
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 15
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Trincomalee",
+      "rdhs": "Trincomalee",
+      "district_id": "LK-53",
+      "diseases": {
+        "dengue": {
+          "week": 21,
+          "cumulative": 447
+        },
+        "dysentery": {
+          "week": 1,
+          "cumulative": 15
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "leptospirosis": {
+          "week": 4,
+          "cumulative": 50
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 0,
+          "cumulative": 119
+        },
+        "meningitis": {
+          "week": 1,
+          "cumulative": 20
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 12
+        },
+        "tuberculosis": {
+          "week": 3,
+          "cumulative": 76
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 6
+        }
+      },
+      "timeliness_pct": 98,
+      "completeness_pct": 95
+    },
+    {
+      "district": "Kurunegala",
+      "rdhs": "Kurunegala",
+      "district_id": "LK-61",
+      "diseases": {
+        "dengue": {
+          "week": 51,
+          "cumulative": 926
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 62
+        },
+        "leptospirosis": {
+          "week": 8,
+          "cumulative": 181
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 20
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 6
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 18,
+          "cumulative": 455
+        },
+        "meningitis": {
+          "week": 15,
+          "cumulative": 139
+        },
+        "leishmaniasis": {
+          "week": 5,
+          "cumulative": 189
+        },
+        "tuberculosis": {
+          "week": 2,
+          "cumulative": 144
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 35
+        }
+      },
+      "timeliness_pct": 89,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Puttalam",
+      "rdhs": "Puttalam",
+      "district_id": "LK-62",
+      "diseases": {
+        "dengue": {
+          "week": 16,
+          "cumulative": 493
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "leptospirosis": {
+          "week": 8,
+          "cumulative": 141
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 17
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "human_rabies": {
+          "week": 2,
+          "cumulative": 4
+        },
+        "chickenpox": {
+          "week": 0,
+          "cumulative": 87
+        },
+        "meningitis": {
+          "week": 6,
+          "cumulative": 73
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 10
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 87
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 15
+        }
+      },
+      "timeliness_pct": 77,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Anuradhapura",
+      "rdhs": "Anuradhapura",
+      "district_id": "LK-71",
+      "diseases": {
+        "dengue": {
+          "week": 8,
+          "cumulative": 333
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 11
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 6
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 41
+        },
+        "leptospirosis": {
+          "week": 0,
+          "cumulative": 164
+        },
+        "typhus": {
+          "week": 1,
+          "cumulative": 19
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 8
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 17,
+          "cumulative": 278
+        },
+        "meningitis": {
+          "week": 5,
+          "cumulative": 55
+        },
+        "leishmaniasis": {
+          "week": 12,
+          "cumulative": 355
+        },
+        "tuberculosis": {
+          "week": 6,
+          "cumulative": 124
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 30
+        }
+      },
+      "timeliness_pct": 99,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Polonnaruwa",
+      "rdhs": "Polonnaruwa",
+      "district_id": "LK-72",
+      "diseases": {
+        "dengue": {
+          "week": 8,
+          "cumulative": 263
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 14
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 2
+        },
+        "food_poisoning": {
+          "week": 33,
+          "cumulative": 57
+        },
+        "leptospirosis": {
+          "week": 3,
+          "cumulative": 165
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 19
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 235
+        },
+        "meningitis": {
+          "week": 4,
+          "cumulative": 22
+        },
+        "leishmaniasis": {
+          "week": 2,
+          "cumulative": 261
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 37
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 46
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Badulla",
+      "rdhs": "Badulla",
+      "district_id": "LK-81",
+      "diseases": {
+        "dengue": {
+          "week": 23,
+          "cumulative": 466
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 27
+        },
+        "encephalitis": {
+          "week": 1,
+          "cumulative": 7
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "leptospirosis": {
+          "week": 17,
+          "cumulative": 138
+        },
+        "typhus": {
+          "week": 1,
+          "cumulative": 21
+        },
+        "viral_hepatitis": {
+          "week": 7,
+          "cumulative": 78
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 23,
+          "cumulative": 224
+        },
+        "meningitis": {
+          "week": 46,
+          "cumulative": 122
+        },
+        "leishmaniasis": {
+          "week": 4,
+          "cumulative": 59
+        },
+        "tuberculosis": {
+          "week": 6,
+          "cumulative": 114
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 11
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Monaragala",
+      "rdhs": "Monaragala",
+      "district_id": "LK-82",
+      "diseases": {
+        "dengue": {
+          "week": 17,
+          "cumulative": 444
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 12
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 5
+        },
+        "leptospirosis": {
+          "week": 4,
+          "cumulative": 172
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 25
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 33
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "chickenpox": {
+          "week": 4,
+          "cumulative": 146
+        },
+        "meningitis": {
+          "week": 0,
+          "cumulative": 40
+        },
+        "leishmaniasis": {
+          "week": 4,
+          "cumulative": 111
+        },
+        "tuberculosis": {
+          "week": 0,
+          "cumulative": 47
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 10
+        }
+      },
+      "timeliness_pct": 98,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Ratnapura",
+      "rdhs": "Ratnapura",
+      "district_id": "LK-91",
+      "diseases": {
+        "dengue": {
+          "week": 173,
+          "cumulative": 2466
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 22
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 6
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 15
+        },
+        "leptospirosis": {
+          "week": 18,
+          "cumulative": 499
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 21
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 12,
+          "cumulative": 231
+        },
+        "meningitis": {
+          "week": 2,
+          "cumulative": 34
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 100
+        },
+        "tuberculosis": {
+          "week": 5,
+          "cumulative": 180
+        },
+        "leprosy": {
+          "week": 0,
+          "cumulative": 19
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Kegalle",
+      "rdhs": "Kegalle",
+      "district_id": "LK-92",
+      "diseases": {
+        "dengue": {
+          "week": 60,
+          "cumulative": 1003
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 28
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 3
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 4
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 19
+        },
+        "leptospirosis": {
+          "week": 3,
+          "cumulative": 193
+        },
+        "typhus": {
+          "week": 1,
+          "cumulative": 10
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 7
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 10,
+          "cumulative": 366
+        },
+        "meningitis": {
+          "week": 5,
+          "cumulative": 38
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 10
+        },
+        "tuberculosis": {
+          "week": 5,
+          "cumulative": 141
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 5
+        }
+      },
+      "timeliness_pct": 99,
+      "completeness_pct": 100
+    },
+    {
+      "district": "Kalmunai",
+      "rdhs": "Kalmunai",
+      "district_id": "LK-52",
+      "diseases": {
+        "dengue": {
+          "week": 18,
+          "cumulative": 582
+        },
+        "dysentery": {
+          "week": 0,
+          "cumulative": 26
+        },
+        "encephalitis": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "enteric_fever": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "food_poisoning": {
+          "week": 0,
+          "cumulative": 15
+        },
+        "leptospirosis": {
+          "week": 0,
+          "cumulative": 44
+        },
+        "typhus": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "viral_hepatitis": {
+          "week": 0,
+          "cumulative": 1
+        },
+        "human_rabies": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "chickenpox": {
+          "week": 12,
+          "cumulative": 312
+        },
+        "meningitis": {
+          "week": 0,
+          "cumulative": 19
+        },
+        "leishmaniasis": {
+          "week": 0,
+          "cumulative": 0
+        },
+        "tuberculosis": {
+          "week": 1,
+          "cumulative": 56
+        },
+        "leprosy": {
+          "week": 1,
+          "cumulative": 22
+        }
+      },
+      "timeliness_pct": 100,
+      "completeness_pct": 100
+    }
+  ],
+  "total": {
+    "dengue": {
+      "week": 2088,
+      "cumulative": 33246
+    },
+    "dysentery": {
+      "week": 27,
+      "cumulative": 502
+    },
+    "encephalitis": {
+      "week": 7,
+      "cumulative": 114
+    },
+    "enteric_fever": {
+      "week": 1,
+      "cumulative": 76
+    },
+    "food_poisoning": {
+      "week": 37,
+      "cumulative": 540
+    },
+    "leptospirosis": {
+      "week": 159,
+      "cumulative": 3671
+    },
+    "typhus": {
+      "week": 5,
+      "cumulative": 484
+    },
+    "viral_hepatitis": {
+      "week": 12,
+      "cumulative": 286
+    },
+    "human_rabies": {
+      "week": 2,
+      "cumulative": 6
+    },
+    "chickenpox": {
+      "week": 228,
+      "cumulative": 6104
+    },
+    "meningitis": {
+      "week": 156,
+      "cumulative": 1179
+    },
+    "leishmaniasis": {
+      "week": 46,
+      "cumulative": 1787
+    },
+    "tuberculosis": {
+      "week": 117,
+      "cumulative": 3412
+    },
+    "leprosy": {
+      "week": 17,
+      "cumulative": 506
+    }
+  },
+  "vaccine_preventable": [
+    {
+      "disease": "AFP",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 1,
+        "N": 0,
+        "E": 0,
+        "NW": 1,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 2,
+      "same_week_last_year": 1,
+      "to_date": 35,
+      "to_date_last_year": 28,
+      "pct_difference": 25.0
+    },
+    {
+      "disease": "Diphtheria",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 0,
+      "to_date": 0,
+      "to_date_last_year": 0,
+      "pct_difference": 0.0
+    },
+    {
+      "disease": "Mumps",
+      "provinces": {
+        "W": 0,
+        "C": 2,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 2,
+      "same_week_last_year": 3,
+      "to_date": 65,
+      "to_date_last_year": 68,
+      "pct_difference": -4.4
+    },
+    {
+      "disease": "Measles",
+      "provinces": {
+        "W": 2,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 2,
+      "same_week_last_year": 0,
+      "to_date": 9,
+      "to_date_last_year": 2,
+      "pct_difference": 350.0
+    },
+    {
+      "disease": "Rubella",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 0,
+      "to_date": 0,
+      "to_date_last_year": 0,
+      "pct_difference": 0.0
+    },
+    {
+      "disease": "CRS",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 0,
+      "to_date": 0,
+      "to_date_last_year": 0,
+      "pct_difference": 0.0
+    },
+    {
+      "disease": "Tetanus",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 0,
+      "to_date": 2,
+      "to_date_last_year": 3,
+      "pct_difference": -33.3
+    },
+    {
+      "disease": "Neonatal Tetanus",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 0,
+      "to_date": 0,
+      "to_date_last_year": 0,
+      "pct_difference": 0.0
+    },
+    {
+      "disease": "Japanese Encephalitis",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 1,
+      "to_date": 0,
+      "to_date_last_year": 4,
+      "pct_difference": -100.0
+    },
+    {
+      "disease": "Whooping Cough",
+      "provinces": {
+        "W": 0,
+        "C": 0,
+        "S": 0,
+        "N": 0,
+        "E": 0,
+        "NW": 0,
+        "NC": 0,
+        "U": 0,
+        "Sab": 0
+      },
+      "total_week": 0,
+      "same_week_last_year": 1,
+      "to_date": 13,
+      "to_date_last_year": 11,
+      "pct_difference": 18.8
+    }
+  ],
+  "malaria_cases_month": null
+}
