@@ -53,6 +53,16 @@ def _cbsl_daily(clean: dict) -> list[str]:
     awpr = clean.get("awpr")
     if awpr is not None and opr is not None and not opr - 1 <= awpr <= opr + 10:
         errors.append(f"AWPR {awpr} vs OPR {opr} out of band")
+    fx = clean.get("fx_tt", {})
+    for cur, pair in fx.items():
+        if pair["tt_sell"] <= pair["tt_buy"]:
+            errors.append(f"{cur}: TT sell <= buy")
+    usd = fx.get("usd", {}).get("tt_sell")
+    if usd is not None and not 250 <= usd <= 450:
+        errors.append(f"USD TT {usd} outside [250,450]")
+    mix = clean.get("electricity", {}).get("generation_mix_pct")
+    if mix and abs(sum(mix.values()) - 100) > 0.6:
+        errors.append(f"generation mix sums to {sum(mix.values())}")
     return errors
 
 
