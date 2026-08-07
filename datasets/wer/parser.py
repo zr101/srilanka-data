@@ -136,7 +136,23 @@ def parse_pdf(payload: bytes) -> dict:
                 break
     except Exception:
         pass  # Table 2 is additive; the district table remains the core contract
-    return {"districts": districts, "total": total_row, "vaccine_preventable": vpd, "malaria_cases_month": malaria}
+    # p2 rotating side table (caption-driven; not every edition carries one)
+    side_table = None
+    try:
+        from pypdf import PdfReader as _PR2
+        for page in _PR2(io.BytesIO(payload)).pages:
+            side_table = parse_side_table(page.extract_text() or "")
+            if side_table:
+                break
+    except Exception:
+        pass  # additive, same as Table 2 above
+    return {
+        "districts": districts,
+        "total": total_row,
+        "vaccine_preventable": vpd,
+        "malaria_cases_month": malaria,
+        "side_table": side_table,
+    }
 
 
 # --- p4 Table 2: Selected Vaccine Preventable Diseases & AFP ---
@@ -202,6 +218,62 @@ def parse_table2(page_text: str) -> tuple[list[dict], int | None]:
         if sum(r["provinces"].values()) != r["total_week"]:
             raise ValueError(f"Table2 {r['disease']}: province sum != total_week")
     return rows, malaria
+
+
+# --- p2 rotating side table: a small surveillance table appears on the
+# document's own "Page 2" (right after the lead article's footer), directly
+# below a "Page 2. ... To be Continued…." marker. Its TOPIC rotates across
+# editions (only "Water Quality Surveillance" confirmed so far); detect it by
+# the structural marker + "Table 1 : <caption>" line, then dispatch on the
+# caption text to a per-topic row parser. Unknown captions are skipped, not
+# fatal — this field is purely additive, same philosophy as Table 2 above.
+
+_SIDE_TABLE_MARKER_RE = re.compile(r"Page\s*2\.\s*To be Continued", re.I)
+_SIDE_TABLE_CAPTION_RE = re.compile(r"Table\s*1\s*:\s*(.+)")
+_WATER_QUALITY_ROW_RE = re.compile(r"^([A-Za-z][A-Za-z ]*?)\s+(\d+)\s+(\d+)\s+(\d+|NR)$")
+
+
+def _parse_water_quality_rows(lines: list[str]) -> list[dict]:
+    rows = []
+    for line in lines:
+        if line.lower().startswith("figure"):
+            break  # block ends where the chart annotations begin
+        m = _WATER_QUALITY_ROW_RE.match(line)
+        if not m:
+            continue
+        rows.append(
+            {
+                "area": re.sub(r"\s+", " ", m.group(1)).strip(),  # e.g. "Kalutara NIHS" stays distinct from "Kalutara"
+                "moh_areas": int(m.group(2)),
+                "no_expected": int(m.group(3)),
+                "no_received": None if m.group(4) == "NR" else int(m.group(4)),
+            }
+        )
+    return rows
+
+
+SIDE_TABLE_HANDLERS = {
+    "Water Quality Surveillance": _parse_water_quality_rows,
+}
+
+
+def parse_side_table(page_text: str) -> dict | None:
+    marker = _SIDE_TABLE_MARKER_RE.search(page_text)
+    if not marker:
+        return None
+    rest = page_text[marker.end():]
+    cap = _SIDE_TABLE_CAPTION_RE.search(rest)
+    if not cap:
+        return None
+    caption = cap.group(1).strip()
+    handler = SIDE_TABLE_HANDLERS.get(caption)
+    if handler is None:
+        return None  # rotating topic we don't have a handler for yet — skip gracefully
+    lines = [l.strip() for l in rest[cap.end():].split("\n") if l.strip()]
+    rows = handler(lines)
+    if not rows:
+        return None
+    return {"caption": caption, "rows": rows}
 
 
 def rebuild(payload: bytes, _existing: dict) -> dict:

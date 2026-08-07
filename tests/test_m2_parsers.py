@@ -123,3 +123,55 @@ def test_wer_table2():
     assert "Neonatal Tetanus" in vpd and "Japanese Encephalitis" in vpd
     assert clean["malaria_cases_month"] == 9
     assert clean["total"]["dengue"]["week"] == 5828
+
+
+def test_wer_side_table_water_quality():
+    # positive case: vol53_no26 carries the p2 rotating side table this edition
+    # (topic: Water Quality Surveillance)
+    clean = parse_wer((FIXTURES / "wer_53_26.pdf").read_bytes())
+    side = clean["side_table"]
+    assert side["caption"] == "Water Quality Surveillance"
+    by_area = {r["area"]: r for r in side["rows"]}
+    assert len(side["rows"]) == 27
+    assert by_area["Colombo"] == {
+        "area": "Colombo", "moh_areas": 18, "no_expected": 108, "no_received": 2,
+    }
+    # "NR" (return not received) is a null sentinel, not an error
+    assert by_area["Gampaha"]["no_received"] is None
+    # a lab, not a district — must stay a distinct row from "Kalutara"
+    assert by_area["Kalutara"]["no_received"] == 70
+    assert by_area["Kalutara NIHS"] == {
+        "area": "Kalutara NIHS", "moh_areas": 2, "no_expected": 12, "no_received": 27,
+    }
+    # received legitimately exceeding expected is valid data, not an error
+    assert by_area["Matara"]["no_expected"] == 102 and by_area["Matara"]["no_received"] == 213
+
+
+def test_wer_side_table_absent():
+    # negative case: vol53_no24 has no p2 side table at all (no "Page 2. ...
+    # To be Continued…." marker anywhere in the doc) — the field must be None
+    # and the rest of parse_pdf's output must be unaffected by its absence.
+    #
+    # Note: we exercise parse_side_table() directly per-page rather than
+    # through parse_pdf() on this fixture, because vol53_no24 trips a
+    # pre-existing, unrelated district-table checksum bug (already tracked as
+    # the reason this doc is rejected on the data_wer branch) that raises
+    # before the side-table code would even run. That bug is out of scope
+    # here; parse_side_table is what this task adds and is what must be
+    # proven absent-safe.
+    import io
+
+    from pypdf import PdfReader
+
+    from datasets.wer.parser import parse_side_table
+
+    reader = PdfReader(io.BytesIO((FIXTURES / "wer_53_24.pdf").read_bytes()))
+    for page in reader.pages:
+        assert parse_side_table(page.extract_text() or "") is None
+
+
+def test_wer_side_table_unknown_caption_skips_gracefully():
+    from datasets.wer.parser import parse_side_table
+
+    text = "blah blah\nPage 2.                      To be Continued….\nTable 1 : Some Future Topic\nFoo 1 2 3\n"
+    assert parse_side_table(text) is None
