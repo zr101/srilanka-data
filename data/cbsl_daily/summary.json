@@ -1,0 +1,7 @@
+{
+  "dataset": "cbsl_daily",
+  "n_docs": 3,
+  "date_min": "2026-08-03",
+  "date_max": "2026-08-05",
+  "generated_at": "2026-08-07T01:02:19.825488+00:00"
+}
