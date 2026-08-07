@@ -1943,5 +1943,6 @@
       "pct_difference": 18.8
     }
   ],
-  "malaria_cases_month": null
+  "malaria_cases_month": null,
+  "side_table": null
 }

@@ -1943,5 +1943,172 @@
       "pct_difference": 25.0
     }
   ],
-  "malaria_cases_month": 9
+  "malaria_cases_month": 9,
+  "side_table": {
+    "caption": "Water Quality Surveillance",
+    "rows": [
+      {
+        "area": "Colombo",
+        "moh_areas": 18,
+        "no_expected": 108,
+        "no_received": 2
+      },
+      {
+        "area": "Gampaha",
+        "moh_areas": 15,
+        "no_expected": 90,
+        "no_received": null
+      },
+      {
+        "area": "Kalutara",
+        "moh_areas": 13,
+        "no_expected": 78,
+        "no_received": 70
+      },
+      {
+        "area": "Kalutara NIHS",
+        "moh_areas": 2,
+        "no_expected": 12,
+        "no_received": 27
+      },
+      {
+        "area": "Kandy",
+        "moh_areas": 23,
+        "no_expected": 138,
+        "no_received": null
+      },
+      {
+        "area": "Matale",
+        "moh_areas": 13,
+        "no_expected": 78,
+        "no_received": 76
+      },
+      {
+        "area": "Nuwara Eliya",
+        "moh_areas": 13,
+        "no_expected": 78,
+        "no_received": 42
+      },
+      {
+        "area": "Galle",
+        "moh_areas": 20,
+        "no_expected": 120,
+        "no_received": null
+      },
+      {
+        "area": "Matara",
+        "moh_areas": 17,
+        "no_expected": 102,
+        "no_received": 213
+      },
+      {
+        "area": "Hambantota",
+        "moh_areas": 12,
+        "no_expected": 72,
+        "no_received": 73
+      },
+      {
+        "area": "Jaffna",
+        "moh_areas": 14,
+        "no_expected": 84,
+        "no_received": null
+      },
+      {
+        "area": "Kilinochchi",
+        "moh_areas": 4,
+        "no_expected": 24,
+        "no_received": 17
+      },
+      {
+        "area": "Mannar",
+        "moh_areas": 5,
+        "no_expected": 30,
+        "no_received": 15
+      },
+      {
+        "area": "Vavuniya",
+        "moh_areas": 4,
+        "no_expected": 24,
+        "no_received": null
+      },
+      {
+        "area": "Mullatvu",
+        "moh_areas": 6,
+        "no_expected": 36,
+        "no_received": 33
+      },
+      {
+        "area": "Batticaloa",
+        "moh_areas": 14,
+        "no_expected": 84,
+        "no_received": 0
+      },
+      {
+        "area": "Ampara",
+        "moh_areas": 7,
+        "no_expected": 42,
+        "no_received": 39
+      },
+      {
+        "area": "Trincomalee",
+        "moh_areas": 12,
+        "no_expected": 72,
+        "no_received": 0
+      },
+      {
+        "area": "Kurunegala",
+        "moh_areas": 29,
+        "no_expected": 174,
+        "no_received": 50
+      },
+      {
+        "area": "Puttlam",
+        "moh_areas": 13,
+        "no_expected": 78,
+        "no_received": null
+      },
+      {
+        "area": "Anuradhapura",
+        "moh_areas": 23,
+        "no_expected": 138,
+        "no_received": 41
+      },
+      {
+        "area": "Polonnaruwa",
+        "moh_areas": 9,
+        "no_expected": 54,
+        "no_received": 48
+      },
+      {
+        "area": "Badulla",
+        "moh_areas": 16,
+        "no_expected": 96,
+        "no_received": 124
+      },
+      {
+        "area": "Moneragala",
+        "moh_areas": 11,
+        "no_expected": 66,
+        "no_received": null
+      },
+      {
+        "area": "Rathnapura",
+        "moh_areas": 20,
+        "no_expected": 120,
+        "no_received": null
+      },
+      {
+        "area": "Kegalle",
+        "moh_areas": 11,
+        "no_expected": 66,
+        "no_received": null
+      },
+      {
+        "area": "Kalmunai",
+        "moh_areas": 13,
+        "no_expected": 78,
+        "no_received": 0
+      }
+    ]
+  }
 }
