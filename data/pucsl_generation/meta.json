@@ -1,0 +1,34 @@
+{
+  "title": "PUCSL daily generation & reservoirs",
+  "source_url": "https://gendata.pucsl.gov.lk",
+  "provider": "PUCSL (regulator) Gen Data platform",
+  "cadence": "daily, ~1 day lag",
+  "method": {
+    "library": "requests (JSON API)",
+    "technique": "plant->complex->energyType join for fuel attribution; single reportDate pinning",
+    "preprocessing": "HTML-stripping of metadata names"
+  },
+  "fields": [
+    {
+      "name": "generation_by_fuel_mwh",
+      "unit": "MWh"
+    },
+    {
+      "name": "renewable_share_pct",
+      "unit": "%"
+    },
+    {
+      "name": "reservoirs[]",
+      "unit": "GWh, mm, m"
+    }
+  ],
+  "limitations": [
+    "dispatch covers 38/40 plants (~1.7% delta)",
+    "metadata contains duplicate ids and one XSS-probe name (sanitized)"
+  ],
+  "fallback": {
+    "plan_b": "retry with backoff; no PDF fallback exists post-2025-03",
+    "trigger": "API 5xx or empty day"
+  },
+  "parser_version": "2"
+}
