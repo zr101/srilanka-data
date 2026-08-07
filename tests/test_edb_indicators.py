@@ -160,6 +160,29 @@ def test_table15_multiline_sector_labels_joined_2024():
     assert "Chemical & Plasitc Products" in by_sector
 
 
+def test_table15_five_year_edition():
+    # Ground truth: the 2023 edition's Table 15 page — same 11-row/6-band shape as
+    # 2024, and the band label line's layout differs (split across two reversed
+    # lines rather than one), which is exactly what the parser's hardcoded band
+    # order (see parser.py's Table 15 banner comment) is there to be robust against.
+    result = parse_table15((FIXTURES / EDB_2023).read_bytes())
+    assert len(result["sectors"]) == 11  # exercises TABLE15_EXPECTED_ROWS on real data
+    total = next(s for s in result["sectors"] if s["sector"] == "Total Exports")
+    assert total["by_band"]["total"] == {"exporters": 4426, "turnover_usd_mn": 11631.05}
+    assert total["by_band"]["35_to_1"] == {"exporters": 769, "turnover_usd_mn": 4921.41}
+    by_sector = {s["sector"]: s for s in result["sectors"]}
+    # Sector label not wrapped in this edition's layout (unlike 2024) — must still parse.
+    assert by_sector["Rubber & Rubber Based Products"]["by_band"]["total"] == {
+        "exporters": 265,
+        "turnover_usd_mn": 930.23,
+    }
+    # "-" sentinel still resolves to 0 in this edition too.
+    assert by_sector["Coconut & Coconut Based Products"]["by_band"]["over_100"] == {
+        "exporters": 0,
+        "turnover_usd_mn": 0.0,
+    }
+
+
 def test_table17_exact_line_items_and_totals_2024():
     result = parse_table17((FIXTURES / EDB_2024).read_bytes())
     assert result["goods"]["Apparel & Textiles"] == 5282

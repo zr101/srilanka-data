@@ -272,8 +272,11 @@ def parse_table13(payload: bytes, toc: dict[str, int] | None = None) -> dict:
 # >0"), while the 2023 ed. splits it across two lines in reversed order, interleaved
 # with the "Table - 15.1" caption. What IS stable is the underlying column order itself
 # — verified by checking the "Total Exports" row's figures land in the same band order
-# in both editions. So the band order is hardcoded here rather than parsed from that
-# unstable label line.
+# in both editions (see test_table15_five_year_edition for the pinned 2023 regression
+# check). So the band order is hardcoded here rather than parsed from that unstable
+# label line. No Σsectors==Total checksum on exporter counts either — the table's own
+# footnote says a single exporter can count toward multiple sector rows AND the Total
+# row by design (see _table15_pair below for the exact wording).
 TABLE15_BANDS = ["total", "over_100", "100_to_50", "50_to_35", "35_to_1", "1_to_0"]
 TABLE15_EXPECTED_ROWS = 11  # 10 sector rows + 1 "Total Exports" grand-total row
 
