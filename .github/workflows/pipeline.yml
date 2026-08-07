@@ -25,6 +25,11 @@ jobs:
           - edb_indicators
           - cbsl_weekly
           - forbes_tea
+          - cbsl_prices
+          - cbsl_activity
+          - cbsl_monetary
+          - cbsl_fiscal
+          - cbsl_external
     concurrency:
       group: pipeline-${{ matrix.dataset }}
       cancel-in-progress: false

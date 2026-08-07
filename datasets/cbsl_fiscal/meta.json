@@ -1,0 +1,30 @@
+{
+  "title": "CBSL Fiscal \u2014 Government Operations and Outstanding Debt",
+  "source_url": "https://www.cbsl.gov.lk/en/statistics/statistical-tables/fiscal-sector",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "annual",
+  "method": {
+    "library": "openpyxl",
+    "technique": "listing-page discovery + header-text-anchored xlsx parse",
+    "preprocessing": "PK zip-magic validation (CBSL serves HTTP 200 HTML for missing files); NFKC + whitespace normalisation"
+  },
+  "fields": [
+    {
+      "name": "operations.*",
+      "unit": "Rs mn"
+    },
+    {
+      "name": "debt.asaofgdpg_total",
+      "unit": "% of GDP"
+    }
+  ],
+  "limitations": [
+    "annual only; in-year fiscal detail lives in the Ministry of Finance releases",
+    "columns are emitted wholesale because the revenue block gains lines between vintages"
+  ],
+  "fallback": {
+    "plan_b": "cbsl_daily/cbsl_weekly PDF pipelines carry headline equivalents",
+    "trigger": "listing page restructured or workbook link renamed"
+  },
+  "parser_version": "1"
+}

@@ -119,3 +119,94 @@ def _forbes_tea(clean: dict) -> list[str]:
     if clean.get("repaired_year_rows", 0) > 3:
         errors.append("too many repaired year rows — layout suspect")
     return errors
+
+
+# --- CBSL statistical-table families -------------------------------------
+# These parse many columns at once, so the checks target the handful of
+# figures a silent layout shift would corrupt first.
+
+
+def _latest(clean: dict) -> dict:
+    return clean.get("latest") or {}
+
+
+@register("cbsl_prices")
+def _cbsl_prices(clean: dict) -> list[str]:
+    errors = []
+    latest = _latest(clean)
+    index = latest.get("ccpi_index")
+    if index is not None and not 100 <= index <= 500:
+        errors.append(f"CCPI index {index} outside [100, 500] for a 2021=100 base")
+    for name in ("ccpi_yoy_pct", "ncpi_yoy_pct"):
+        value = latest.get(name)
+        if value is not None and not -30 <= value <= 100:
+            errors.append(f"{name}={value} outside [-30, 100]")
+    if not clean.get("ccpi", {}).get("index"):
+        errors.append("no CCPI index series")
+    return errors
+
+
+@register("cbsl_activity")
+def _cbsl_activity(clean: dict) -> list[str]:
+    errors = []
+    latest = _latest(clean)
+    for name in ("pmi_manufacturing", "pmi_services", "pmi_construction"):
+        value = latest.get(name)
+        if value is not None and not 0 <= value <= 100:
+            errors.append(f"{name}={value} is not a diffusion index")
+    iip = latest.get("iip")
+    if iip is not None and not 20 <= iip <= 400:
+        errors.append(f"IIP {iip} outside [20, 400]")
+    if not clean.get("iip", {}).get("total"):
+        errors.append("no IIP total series")
+    return errors
+
+
+@register("cbsl_monetary")
+def _cbsl_monetary(clean: dict) -> list[str]:
+    errors = []
+    latest = _latest(clean)
+    for name in ("opr_pct", "sdfr_pct", "slfr_pct", "bank_rate_pct"):
+        value = latest.get(name)
+        if value is not None and not 0 < value < 50:
+            errors.append(f"{name}={value} implausible")
+    sdfr, slfr = latest.get("sdfr_pct"), latest.get("slfr_pct")
+    if sdfr is not None and slfr is not None and slfr < sdfr:
+        errors.append(f"SLFR {slfr} below SDFR {sdfr} — corridor inverted")
+    reserve = latest.get("reserve_money_rs_mn")
+    if reserve is not None and reserve <= 0:
+        errors.append(f"reserve money {reserve} not positive")
+    return errors
+
+
+@register("cbsl_fiscal")
+def _cbsl_fiscal(clean: dict) -> list[str]:
+    errors = []
+    latest = _latest(clean)
+    debt_pct = latest.get("debt_pct_gdp")
+    if debt_pct is not None and not 10 <= debt_pct <= 300:
+        errors.append(f"debt {debt_pct}% of GDP outside [10, 300]")
+    # Total financing closes the overall deficit by construction; a mismatch
+    # means the two columns have drifted apart in the header map.
+    deficit = latest.get("overall_deficit_rs_mn")
+    financing = (clean.get("operations", {}).get("financing_totalfinancing") or [{}])[-1].get("v")
+    if deficit is not None and financing is not None and abs(financing + deficit) > max(1.0, abs(deficit) * 0.01):
+        errors.append(f"financing {financing} does not offset deficit {deficit}")
+    return errors
+
+
+@register("cbsl_external")
+def _cbsl_external(clean: dict) -> list[str]:
+    errors = []
+    latest = _latest(clean)
+    reserves = latest.get("official_reserve_assets_usd_mn")
+    if reserves is not None and not 0 < reserves < 100_000:
+        errors.append(f"official reserve assets {reserves} USD mn implausible")
+    exports, imports = latest.get("exports_usd_mn"), latest.get("imports_usd_mn")
+    for name, value in (("exports", exports), ("imports", imports)):
+        if value is not None and not 0 < value < 20_000:
+            errors.append(f"monthly {name} {value} USD mn implausible")
+    balance = latest.get("trade_balance_usd_mn")
+    if None not in (exports, imports, balance) and abs((exports - imports) - balance) > 1:
+        errors.append("trade balance does not equal exports - imports")
+    return errors

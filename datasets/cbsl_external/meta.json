@@ -1,0 +1,35 @@
+{
+  "title": "CBSL External \u2014 Reserves, BOP, Monthly Trade",
+  "source_url": "https://www.cbsl.gov.lk/en/statistics/statistical-tables/external-sector",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "monthly + quarterly",
+  "method": {
+    "library": "openpyxl",
+    "technique": "listing-page discovery + header-text-anchored xlsx parse",
+    "preprocessing": "PK zip-magic validation (CBSL serves HTTP 200 HTML for missing files); NFKC + whitespace normalisation"
+  },
+  "fields": [
+    {
+      "name": "reserves.official_reserve_assets_usd_mn",
+      "unit": "USD mn"
+    },
+    {
+      "name": "exports/imports.categories",
+      "unit": "USD mn"
+    },
+    {
+      "name": "bop.lines[].net",
+      "unit": "USD mn"
+    }
+  ],
+  "limitations": [
+    "trade history capped at 72 months and BOP at 24 quarters to bound latest.json",
+    "trade period headers mix real date cells with text ('Jan-26 (b)') \u2014 both are parsed",
+    "the reserve template sheet is renamed monthly ('RDT (June 2026)'), so as_of comes from the sheet name"
+  ],
+  "fallback": {
+    "plan_b": "cbsl_daily/cbsl_weekly PDF pipelines carry headline equivalents",
+    "trigger": "listing page restructured or workbook link renamed"
+  },
+  "parser_version": "1"
+}

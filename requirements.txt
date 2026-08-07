@@ -2,4 +2,5 @@ requests
 pdfplumber
 pypdf
 xlrd
+openpyxl
 pytest
