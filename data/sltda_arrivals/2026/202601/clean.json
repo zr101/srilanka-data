@@ -1,0 +1,19 @@
+{
+  "months": [
+    {
+      "month": "January",
+      "arrivals_prior_ref": 238924,
+      "arrivals_last_year": 252761,
+      "arrivals_this_year": 277327,
+      "pct_change_yoy": 9.7
+    }
+  ],
+  "ytd_total": 277327,
+  "month_headline": null,
+  "daily": [],
+  "daily_complete": false,
+  "daily_sum": 0,
+  "top_markets_month": [],
+  "top_markets_ytd": [],
+  "period": "2026-01"
+}

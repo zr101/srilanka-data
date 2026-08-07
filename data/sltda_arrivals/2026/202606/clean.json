@@ -1,0 +1,216 @@
+{
+  "months": [
+    {
+      "month": "January",
+      "arrivals_prior_ref": 238924,
+      "arrivals_last_year": 252761,
+      "arrivals_this_year": 277327,
+      "pct_change_yoy": 9.7
+    },
+    {
+      "month": "February",
+      "arrivals_prior_ref": 235618,
+      "arrivals_last_year": 240217,
+      "arrivals_this_year": 279328,
+      "pct_change_yoy": 16.2
+    },
+    {
+      "month": "March",
+      "arrivals_prior_ref": 233382,
+      "arrivals_last_year": 229298,
+      "arrivals_this_year": 183979,
+      "pct_change_yoy": -19.7
+    },
+    {
+      "month": "April",
+      "arrivals_prior_ref": 180429,
+      "arrivals_last_year": 174608,
+      "arrivals_this_year": 135643,
+      "pct_change_yoy": -22.3
+    },
+    {
+      "month": "May",
+      "arrivals_prior_ref": 129466,
+      "arrivals_last_year": 132919,
+      "arrivals_this_year": 145745,
+      "pct_change_yoy": 9.65
+    },
+    {
+      "month": "June",
+      "arrivals_prior_ref": 146828,
+      "arrivals_last_year": 138241,
+      "arrivals_this_year": 124551,
+      "pct_change_yoy": -9.9
+    }
+  ],
+  "ytd_total": 1146573,
+  "month_headline": 124551,
+  "daily": [],
+  "daily_complete": false,
+  "daily_sum": 0,
+  "top_markets_month": [
+    {
+      "rank": 1,
+      "country": "India",
+      "arrivals": 43423,
+      "share_pct": 35.0
+    },
+    {
+      "rank": 2,
+      "country": "United Kingdom",
+      "arrivals": 10474,
+      "share_pct": 8.0
+    },
+    {
+      "rank": 3,
+      "country": "Australia",
+      "arrivals": 8710,
+      "share_pct": 7.0
+    },
+    {
+      "rank": 4,
+      "country": "China",
+      "arrivals": 8224,
+      "share_pct": 7.0
+    },
+    {
+      "rank": 5,
+      "country": "United States",
+      "arrivals": 3806,
+      "share_pct": 3.0
+    },
+    {
+      "rank": 6,
+      "country": "France",
+      "arrivals": 3762,
+      "share_pct": 3.0
+    },
+    {
+      "rank": 7,
+      "country": "Germany",
+      "arrivals": 3735,
+      "share_pct": 3.0
+    },
+    {
+      "rank": 8,
+      "country": "Bangladesh",
+      "arrivals": 3438,
+      "share_pct": 3.0
+    },
+    {
+      "rank": 9,
+      "country": "Canada",
+      "arrivals": 3393,
+      "share_pct": 3.0
+    },
+    {
+      "rank": 10,
+      "country": "Maldives",
+      "arrivals": 2561,
+      "share_pct": 2.0
+    }
+  ],
+  "top_markets_ytd": [
+    {
+      "rank": 1,
+      "country": "India",
+      "arrivals": 293683
+    },
+    {
+      "rank": 2,
+      "country": "United Kingdom",
+      "arrivals": 108567
+    },
+    {
+      "rank": 3,
+      "country": "Russian Federation",
+      "arrivals": 77349
+    },
+    {
+      "rank": 4,
+      "country": "China",
+      "arrivals": 76171
+    },
+    {
+      "rank": 5,
+      "country": "Germany",
+      "arrivals": 69758
+    },
+    {
+      "rank": 6,
+      "country": "Australia",
+      "arrivals": 57436
+    },
+    {
+      "rank": 7,
+      "country": "France",
+      "arrivals": 52997
+    },
+    {
+      "rank": 8,
+      "country": "United States",
+      "arrivals": 32967
+    },
+    {
+      "rank": 9,
+      "country": "Poland",
+      "arrivals": 23456
+    },
+    {
+      "rank": 10,
+      "country": "Canada",
+      "arrivals": 22313
+    },
+    {
+      "rank": 11,
+      "country": "Bangladesh",
+      "arrivals": 22308
+    },
+    {
+      "rank": 12,
+      "country": "Netherlands",
+      "arrivals": 21599
+    },
+    {
+      "rank": 13,
+      "country": "Japan",
+      "arrivals": 19041
+    },
+    {
+      "rank": 14,
+      "country": "Maldives",
+      "arrivals": 17666
+    },
+    {
+      "rank": 15,
+      "country": "Italy",
+      "arrivals": 16914
+    },
+    {
+      "rank": 16,
+      "country": "Switzerland",
+      "arrivals": 15659
+    },
+    {
+      "rank": 17,
+      "country": "Spain",
+      "arrivals": 11768
+    },
+    {
+      "rank": 18,
+      "country": "Malaysia",
+      "arrivals": 11575
+    },
+    {
+      "rank": 19,
+      "country": "Israel",
+      "arrivals": 11124
+    },
+    {
+      "rank": 20,
+      "country": "Pakistan",
+      "arrivals": 10046
+    }
+  ],
+  "period": "2026-06"
+}

@@ -1,0 +1,30 @@
+{
+  "title": "SLTDA tourist arrivals",
+  "source_url": "https://www.sltda.gov.lk/en/weekly-tourist-arrivals-reports-YYYY",
+  "provider": "Sri Lanka Tourism Development Authority",
+  "cadence": "weekly reports, posted monthly-bundled",
+  "method": {
+    "library": "pdfplumber",
+    "technique": "line regex (monthly + market tables); page-indexed disambiguation; daily series de-rotation pending",
+    "preprocessing": "parenthesized negatives"
+  },
+  "fields": [
+    {
+      "name": "months[]",
+      "unit": "arrivals"
+    },
+    {
+      "name": "top_markets_month/ytd",
+      "unit": "arrivals, share %"
+    }
+  ],
+  "limitations": [
+    "monthly bundling lags up to 5 weeks",
+    "2018 used as pre-pandemic reference column"
+  ],
+  "fallback": {
+    "plan_b": "SLTDA monthly statistical bulletins (richer splits)",
+    "trigger": "listing empty"
+  },
+  "parser_version": "2"
+}

@@ -1,0 +1,141 @@
+{
+  "months": [
+    {
+      "month": "January",
+      "arrivals_prior_ref": 238924,
+      "arrivals_last_year": 252761,
+      "arrivals_this_year": 277327,
+      "pct_change_yoy": 9.7
+    },
+    {
+      "month": "February",
+      "arrivals_prior_ref": 235618,
+      "arrivals_last_year": 240217,
+      "arrivals_this_year": 279328,
+      "pct_change_yoy": 16.2
+    },
+    {
+      "month": "March",
+      "arrivals_prior_ref": 233382,
+      "arrivals_last_year": 229298,
+      "arrivals_this_year": 183979,
+      "pct_change_yoy": -19.7
+    },
+    {
+      "month": "April",
+      "arrivals_prior_ref": 180429,
+      "arrivals_last_year": 174608,
+      "arrivals_this_year": 135643,
+      "pct_change_yoy": -22.3
+    }
+  ],
+  "ytd_total": 876277,
+  "month_headline": null,
+  "daily": [],
+  "daily_complete": false,
+  "daily_sum": 0,
+  "top_markets_month": [],
+  "top_markets_ytd": [
+    {
+      "rank": 1,
+      "country": "India",
+      "arrivals": 189918
+    },
+    {
+      "rank": 2,
+      "country": "United Kingdom",
+      "arrivals": 88845
+    },
+    {
+      "rank": 3,
+      "country": "Russian Federation",
+      "arrivals": 72816
+    },
+    {
+      "rank": 4,
+      "country": "Germany",
+      "arrivals": 59289
+    },
+    {
+      "rank": 5,
+      "country": "China",
+      "arrivals": 58791
+    },
+    {
+      "rank": 6,
+      "country": "France",
+      "arrivals": 44946
+    },
+    {
+      "rank": 7,
+      "country": "Australia",
+      "arrivals": 42312
+    },
+    {
+      "rank": 8,
+      "country": "United States",
+      "arrivals": 24836
+    },
+    {
+      "rank": 9,
+      "country": "Poland",
+      "arrivals": 22489
+    },
+    {
+      "rank": 10,
+      "country": "Netherlands",
+      "arrivals": 18440
+    },
+    {
+      "rank": 11,
+      "country": "Canada",
+      "arrivals": 16241
+    },
+    {
+      "rank": 12,
+      "country": "Bangladesh",
+      "arrivals": 14876
+    },
+    {
+      "rank": 13,
+      "country": "Japan",
+      "arrivals": 14359
+    },
+    {
+      "rank": 14,
+      "country": "Italy",
+      "arrivals": 14076
+    },
+    {
+      "rank": 15,
+      "country": "Switzerland",
+      "arrivals": 12853
+    },
+    {
+      "rank": 16,
+      "country": "Maldives",
+      "arrivals": 10775
+    },
+    {
+      "rank": 17,
+      "country": "Denmark",
+      "arrivals": 8734
+    },
+    {
+      "rank": 18,
+      "country": "Spain",
+      "arrivals": 8588
+    },
+    {
+      "rank": 19,
+      "country": "Czech Republic",
+      "arrivals": 8555
+    },
+    {
+      "rank": 20,
+      "country": "Israel",
+      "arrivals": 8247
+    }
+  ],
+  "period": "2026-04"
+}
