@@ -3945,5 +3945,336 @@
       "total": 4191
     },
     "grand_total": 18289
+  },
+  "table15": {
+    "bands": [
+      "total",
+      "over_100",
+      "100_to_50",
+      "50_to_35",
+      "35_to_1",
+      "1_to_0"
+    ],
+    "sectors": [
+      {
+        "sector": "Total Exports",
+        "by_band": {
+          "total": {
+            "exporters": 4335,
+            "turnover_usd_mn": 12023.93
+          },
+          "over_100": {
+            "exporters": 17,
+            "turnover_usd_mn": 3704.43
+          },
+          "100_to_50": {
+            "exporters": 26,
+            "turnover_usd_mn": 1608.38
+          },
+          "50_to_35": {
+            "exporters": 35,
+            "turnover_usd_mn": 1472.37
+          },
+          "35_to_1": {
+            "exporters": 749,
+            "turnover_usd_mn": 4757.85
+          },
+          "1_to_0": {
+            "exporters": 3508,
+            "turnover_usd_mn": 480.89
+          }
+        }
+      },
+      {
+        "sector": "Apparel",
+        "by_band": {
+          "total": {
+            "exporters": 698,
+            "turnover_usd_mn": 5050.99
+          },
+          "over_100": {
+            "exporters": 10,
+            "turnover_usd_mn": 2567.93
+          },
+          "100_to_50": {
+            "exporters": 13,
+            "turnover_usd_mn": 812.56
+          },
+          "50_to_35": {
+            "exporters": 12,
+            "turnover_usd_mn": 496.64
+          },
+          "35_to_1": {
+            "exporters": 136,
+            "turnover_usd_mn": 1134.71
+          },
+          "1_to_0": {
+            "exporters": 527,
+            "turnover_usd_mn": 39.15
+          }
+        }
+      },
+      {
+        "sector": "Tea",
+        "by_band": {
+          "total": {
+            "exporters": 340,
+            "turnover_usd_mn": 1435.86
+          },
+          "over_100": {
+            "exporters": 1,
+            "turnover_usd_mn": 157.96
+          },
+          "100_to_50": {
+            "exporters": 3,
+            "turnover_usd_mn": 176.74
+          },
+          "50_to_35": {
+            "exporters": 11,
+            "turnover_usd_mn": 453.05
+          },
+          "35_to_1": {
+            "exporters": 89,
+            "turnover_usd_mn": 609.91
+          },
+          "1_to_0": {
+            "exporters": 236,
+            "turnover_usd_mn": 38.21
+          }
+        }
+      },
+      {
+        "sector": "Rubber & Rubber Based Products",
+        "by_band": {
+          "total": {
+            "exporters": 280,
+            "turnover_usd_mn": 1001.54
+          },
+          "over_100": {
+            "exporters": 2,
+            "turnover_usd_mn": 304.75
+          },
+          "100_to_50": {
+            "exporters": 3,
+            "turnover_usd_mn": 191.98
+          },
+          "50_to_35": {
+            "exporters": 3,
+            "turnover_usd_mn": 128.09
+          },
+          "35_to_1": {
+            "exporters": 41,
+            "turnover_usd_mn": 359.09
+          },
+          "1_to_0": {
+            "exporters": 231,
+            "turnover_usd_mn": 17.64
+          }
+        }
+      },
+      {
+        "sector": "Coconut & Coconut Based Products",
+        "by_band": {
+          "total": {
+            "exporters": 749,
+            "turnover_usd_mn": 864.3
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 2,
+            "turnover_usd_mn": 123.2
+          },
+          "50_to_35": {
+            "exporters": 2,
+            "turnover_usd_mn": 82.02
+          },
+          "35_to_1": {
+            "exporters": 105,
+            "turnover_usd_mn": 560.31
+          },
+          "1_to_0": {
+            "exporters": 640,
+            "turnover_usd_mn": 98.77
+          }
+        }
+      },
+      {
+        "sector": "Spices & Concentrates",
+        "by_band": {
+          "total": {
+            "exporters": 542,
+            "turnover_usd_mn": 461.84
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "50_to_35": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "35_to_1": {
+            "exporters": 65,
+            "turnover_usd_mn": 421.26
+          },
+          "1_to_0": {
+            "exporters": 477,
+            "turnover_usd_mn": 40.57
+          }
+        }
+      },
+      {
+        "sector": "Electrical & Electronic Components",
+        "by_band": {
+          "total": {
+            "exporters": 496,
+            "turnover_usd_mn": 421.99
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 2,
+            "turnover_usd_mn": 113.34
+          },
+          "50_to_35": {
+            "exporters": 1,
+            "turnover_usd_mn": 35.9
+          },
+          "35_to_1": {
+            "exporters": 40,
+            "turnover_usd_mn": 244.97
+          },
+          "1_to_0": {
+            "exporters": 453,
+            "turnover_usd_mn": 27.78
+          }
+        }
+      },
+      {
+        "sector": "Food & Beverages",
+        "by_band": {
+          "total": {
+            "exporters": 735,
+            "turnover_usd_mn": 478.04
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "50_to_35": {
+            "exporters": 4,
+            "turnover_usd_mn": 160.23
+          },
+          "35_to_1": {
+            "exporters": 58,
+            "turnover_usd_mn": 265.62
+          },
+          "1_to_0": {
+            "exporters": 673,
+            "turnover_usd_mn": 52.19
+          }
+        }
+      },
+      {
+        "sector": "Chemical & Plasitc Products",
+        "by_band": {
+          "total": {
+            "exporters": 907,
+            "turnover_usd_mn": 136.1
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "50_to_35": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "35_to_1": {
+            "exporters": 32,
+            "turnover_usd_mn": 97.41
+          },
+          "1_to_0": {
+            "exporters": 875,
+            "turnover_usd_mn": 38.69
+          }
+        }
+      },
+      {
+        "sector": "Diamonds, Gems & Jewellery",
+        "by_band": {
+          "total": {
+            "exporters": 571,
+            "turnover_usd_mn": 282.06
+          },
+          "over_100": {
+            "exporters": 1,
+            "turnover_usd_mn": 131.05
+          },
+          "100_to_50": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "50_to_35": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "35_to_1": {
+            "exporters": 28,
+            "turnover_usd_mn": 110.32
+          },
+          "1_to_0": {
+            "exporters": 542,
+            "turnover_usd_mn": 40.69
+          }
+        }
+      },
+      {
+        "sector": "Fisheries",
+        "by_band": {
+          "total": {
+            "exporters": 376,
+            "turnover_usd_mn": 257.44
+          },
+          "over_100": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "100_to_50": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "50_to_35": {
+            "exporters": 0,
+            "turnover_usd_mn": 0.0
+          },
+          "35_to_1": {
+            "exporters": 54,
+            "turnover_usd_mn": 213.23
+          },
+          "1_to_0": {
+            "exporters": 322,
+            "turnover_usd_mn": 44.2
+          }
+        }
+      }
+    ]
   }
 }
