@@ -319,6 +319,118 @@ def _parse_commodities(text: str) -> dict | None:
     return out or None
 
 
+# --- 1.1 Price Indices (NCPI / CCPI headline & core inflation) ---
+#
+# NCPI and CCPI each report three points in time (year-ago, month-ago, latest)
+# but on independently different reporting lags edition to edition — e.g. the
+# 2026-07-31 edition has NCPI trailing one month behind CCPI ("June May June"
+# vs "July June July"). Each block's own month-header line (and its own nearby
+# "YYYY YYYY" year line) is read directly, never assumed to match its sibling.
+# Core rows omit "Monthly Change %" entirely (asymmetric with Headline) — this
+# is discovered structurally (whichever metric labels are actually present
+# after the index line), not assumed from a fixed row count.
+#
+# Bounded by caption TEXT on both ends: starts at "1.1 Price Indices", stops at
+# "1.2 Prices" (the next table cluster, explicitly out of scope here) — never a
+# leading section number, per this module's convention (see docstring above).
+
+PRICE_INDICES_CAPTION_RE = re.compile(r"^(?:\d+\.\d+\s+)?Price Indices\s*$")
+PRICES_STOP_RE = re.compile(r"^(?:\d+\.\d+\s+)?Prices\s*$")
+PRICE_INDICES_WINDOW = 40  # caption to "Source:" line is ~22 lines; generous margin
+
+NCPI_CAPTION_RE = re.compile(r"^NCPI \(2021=100\)\s*$")
+CCPI_CAPTION_RE = re.compile(r"^CCPI \(2021=100\)\s*$")
+YEARS_LINE_RE = re.compile(r"^(\d{4})\s+(\d{4})\s*$")
+
+# (output key, line-prefix). Matched in the order encountered, not assumed present.
+_PRICE_METRIC_LABELS = [
+    ("monthly_change_pct", "Monthly Change %"),
+    ("annual_avg_change_pct", "Annual Average Change %"),
+    ("yoy_change_pct", "Year-on-Year Change %"),
+]
+
+
+def _price_triplet(nums: list[str]) -> dict[str, float] | None:
+    if len(nums) != 3:
+        return None
+    year_ago, month_ago, latest = (_signed_num(n) for n in nums)
+    return {"year_ago": year_ago, "month_ago": month_ago, "latest": latest}
+
+
+def _parse_price_currency(window: list[str], caption_re: re.Pattern) -> dict | None:
+    cap_idx = next((i for i, l in enumerate(window) if caption_re.match(l.strip())), None)
+    if cap_idx is None or cap_idx + 1 >= len(window):
+        return None
+
+    # The "YYYY YYYY" year line isn't always immediately above the caption (CCPI's
+    # own mini chart caption "CCPI - Year-on-Year %" sits in between) — search a
+    # short lookback instead of assuming adjacency.
+    years = None
+    for i in range(cap_idx - 1, max(-1, cap_idx - 5), -1):
+        m = YEARS_LINE_RE.match(window[i].strip())
+        if m:
+            years = m.groups()
+            break
+    months = window[cap_idx + 1].split()
+    if not years or len(months) != 3:
+        return None
+    # year_ago is always in the first (prior) year; month_ago/latest both fall in
+    # the second (current) year in every observed edition. This is only wrong in
+    # the rare edition where "latest" is January and "month_ago" is the prior
+    # December — not handled, not seen in any inspected edition.
+    month_labels = {
+        "year_ago": f"{months[0]} {years[0]}",
+        "month_ago": f"{months[1]} {years[1]}",
+        "latest": f"{months[2]} {years[1]}",
+    }
+
+    entities: dict[str, dict] = {}
+    current_key = None
+    for line in window[cap_idx + 2 :]:
+        stripped = line.strip()
+        if "- Headline" in stripped or "- Core" in stripped:
+            triplet = _price_triplet(NUM_TOKEN.findall(stripped))
+            if not triplet:
+                break
+            current_key = "headline" if "- Headline" in stripped else "core"
+            entities[current_key] = {"index": triplet}
+            continue
+        if current_key is None:
+            continue
+        label_key = next((key for key, label in _PRICE_METRIC_LABELS if stripped.startswith(label)), None)
+        if label_key is None:
+            if "headline" in entities and "core" in entities:
+                break  # ran into the next block/caption — done with this currency
+            continue
+        triplet = _price_triplet(NUM_TOKEN.findall(stripped))
+        if triplet:
+            entities[current_key][label_key] = triplet
+
+    if "headline" not in entities or "core" not in entities:
+        return None
+    return {"months": month_labels, **entities}
+
+
+def _parse_price_indices(lines: list[str]) -> dict | None:
+    start_idx = next((i for i, l in enumerate(lines) if PRICE_INDICES_CAPTION_RE.match(l.strip())), None)
+    if start_idx is None:
+        return None
+    stop_idx = next(
+        (i for i in range(start_idx + 1, len(lines)) if PRICES_STOP_RE.match(lines[i].strip())),
+        len(lines),
+    )
+    window = lines[start_idx : min(stop_idx, start_idx + PRICE_INDICES_WINDOW)]
+
+    out: dict = {}
+    ncpi = _parse_price_currency(window, NCPI_CAPTION_RE)
+    if ncpi:
+        out["ncpi"] = ncpi
+    ccpi = _parse_price_currency(window, CCPI_CAPTION_RE)
+    if ccpi:
+        out["ccpi"] = ccpi
+    return out or None
+
+
 def parse_tables(payload: bytes) -> dict:
     with pdfplumber.open(io.BytesIO(payload)) as pdf:
         text = "\n".join(_clean_ligatures(p.extract_text(layout=False) or "") for p in pdf.pages)
@@ -349,6 +461,10 @@ def parse_tables(payload: bytes) -> dict:
     trade_indices = _parse_trade_indices(lines)
     if trade_indices:
         out["trade_indices"] = trade_indices
+
+    price_indices = _parse_price_indices(lines)
+    if price_indices:
+        out["price_indices"] = price_indices
 
     # Unlike its siblings, _parse_commodities takes the raw `text` rather than
     # `lines` — its rows can appear before the caption in the extracted stream, so

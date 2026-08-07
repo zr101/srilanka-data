@@ -185,6 +185,72 @@ def test_parse_pdf_merges_tables_additively():
     assert result["tables"]["trade"]["trade_balance"]
 
 
+def test_price_indices_ncpi_headline_and_core():
+    # 2026-07-31 edition: NCPI lags one month behind the bulletin date ("June May
+    # June" — year-ago June-2025, month-ago May-2026, latest June-2026).
+    result = parse_tables((FIXTURES / SINGLE_TABLE_EDITION).read_bytes())
+    ncpi = result["price_indices"]["ncpi"]
+    assert ncpi["months"] == {"year_ago": "June 2025", "month_ago": "May 2026", "latest": "June 2026"}
+    assert ncpi["headline"]["index"] == {"year_ago": 208.7, "month_ago": 218.8, "latest": 222.3}
+    assert ncpi["headline"]["monthly_change_pct"] == {"year_ago": 0.6, "month_ago": 1.2, "latest": 1.6}
+    # Parenthesized negative must parse as a real negative number.
+    assert ncpi["headline"]["annual_avg_change_pct"] == {"year_ago": -0.9, "month_ago": 2.4, "latest": 2.9}
+    assert ncpi["headline"]["yoy_change_pct"] == {"year_ago": 0.3, "month_ago": 5.4, "latest": 6.5}
+    # Core has no "Monthly Change %" row at all — asymmetric with Headline, not a
+    # missing/zero value.
+    assert ncpi["core"]["index"] == {"year_ago": 194.8, "month_ago": 203.0, "latest": 204.6}
+    assert "monthly_change_pct" not in ncpi["core"]
+    assert ncpi["core"]["annual_avg_change_pct"] == {"year_ago": 0.9, "month_ago": 2.3, "latest": 2.7}
+    assert ncpi["core"]["yoy_change_pct"] == {"year_ago": 0.6, "month_ago": 4.5, "latest": 5.0}
+
+
+def test_price_indices_ccpi_headline_and_core():
+    # Same edition, CCPI block: current-month reporting ("July June July"), one
+    # month ahead of NCPI's own lag — confirms the two blocks' month labels are
+    # read independently rather than assumed to match.
+    result = parse_tables((FIXTURES / SINGLE_TABLE_EDITION).read_bytes())
+    ccpi = result["price_indices"]["ccpi"]
+    assert ccpi["months"] == {"year_ago": "July 2025", "month_ago": "June 2026", "latest": "July 2026"}
+    assert ccpi["headline"]["index"] == {"year_ago": 194.1, "month_ago": 207.7, "latest": 208.2}
+    assert ccpi["headline"]["monthly_change_pct"] == {"year_ago": -0.2, "month_ago": 2.1, "latest": 0.2}
+    assert ccpi["headline"]["annual_avg_change_pct"] == {"year_ago": -1.6, "month_ago": 2.7, "latest": 3.3}
+    assert ccpi["headline"]["yoy_change_pct"] == {"year_ago": -0.3, "month_ago": 6.8, "latest": 7.3}
+    assert ccpi["core"]["index"] == {"year_ago": 180.8, "month_ago": 187.3, "latest": 188.8}
+    assert "monthly_change_pct" not in ccpi["core"]
+    assert ccpi["core"]["annual_avg_change_pct"] == {"year_ago": 1.9, "month_ago": 2.6, "latest": 2.9}
+    assert ccpi["core"]["yoy_change_pct"] == {"year_ago": 1.6, "month_ago": 4.0, "latest": 4.4}
+
+
+def test_price_indices_ccpi_headline_yoy_matches_prose_anchor():
+    # Ground truth: this edition's own "Highlights of the Week" prose says CCPI
+    # headline inflation "increased to 7.3 per cent in July 2026 from 6.8 per cent
+    # in June 2026" — the parsed month-ago/latest YoY figures must match exactly.
+    result = parse_tables((FIXTURES / SINGLE_TABLE_EDITION).read_bytes())
+    yoy = result["price_indices"]["ccpi"]["headline"]["yoy_change_pct"]
+    assert yoy["month_ago"] == 6.8
+    assert yoy["latest"] == 7.3
+
+
+def test_price_indices_different_edition_shifted_months():
+    # 2026-07-24 edition (TWO_TABLE_EDITION fixture): CCPI here reports "June May
+    # June" rather than "July June July" — confirms month labels shift edition to
+    # edition and are read fresh each time, not hardcoded/cached from another parse.
+    result = parse_tables((FIXTURES / TWO_TABLE_EDITION).read_bytes())
+    ccpi = result["price_indices"]["ccpi"]
+    assert ccpi["months"] == {"year_ago": "June 2025", "month_ago": "May 2026", "latest": "June 2026"}
+    assert ccpi["headline"]["yoy_change_pct"] == {"year_ago": -0.6, "month_ago": 5.5, "latest": 6.8}
+    assert ccpi["core"]["yoy_change_pct"] == {"year_ago": 1.5, "month_ago": 3.9, "latest": 4.0}
+
+
+def test_price_indices_does_not_bleed_into_1_2_prices():
+    # "1.2 Prices" (Pettah/Marandagahamula/... market tables) is explicitly out of
+    # scope for this table — confirm it isn't accidentally captured as extra data.
+    result = parse_tables((FIXTURES / SINGLE_TABLE_EDITION).read_bytes())
+    price_indices = result["price_indices"]
+    assert set(price_indices) == {"ncpi", "ccpi"}
+    assert set(price_indices["ncpi"]) == {"months", "headline", "core"}
+
+
 def test_parse_pdf_falls_back_to_tables_on_mid_month_edition():
     # Ground truth: wei_20260724.pdf is a mid-month edition that lacks the
     # reserves/exports prose paragraphs entirely (root cause the plan called out —
