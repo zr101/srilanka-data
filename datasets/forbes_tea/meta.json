@@ -1,0 +1,11 @@
+{
+  "title": "Colombo tea auction quantities & averages (Forbes & Walker)",
+  "source_url": "https://www.forbestea.com/statistics-weekly-tea-auction-quantities-&-averages",
+  "provider": "Forbes & Walker Tea Brokers",
+  "cadence": "weekly (auction Tue/Wed)",
+  "method": {"library": "pdfplumber", "technique": "line regex over the year table (sale date x elevation qty/avg)", "preprocessing": "year-typo repair with in-year month proof"},
+  "fields": [{"name": "sales[].qty_000kg.high/medium/low/total", "unit": "'000 kg"}, {"name": "sales[].avg_rs.*", "unit": "Rs/kg"}],
+  "limitations": ["broker publication (authoritative in practice; Tea Board site lacks machine-readable stats)", "known upstream year typo repaired and counted"],
+  "fallback": {"plan_b": "John Keells tea market reports; Forbes 22-page weekly report tables", "trigger": "listing or PDF missing 2 consecutive weeks"},
+  "parser_version": "1"
+}

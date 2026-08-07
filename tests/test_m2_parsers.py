@@ -89,3 +89,15 @@ def test_cbsl_weekly_prose():
     assert m and wp._num(m.group(1)) == 6458
     m2 = re.search(rf"Export earnings (increased|decreased) by ([\d.]+) per cent[^.]*?US dollars? {wp.MN}", text, re.I)
     assert m2 and wp._num(m2.group(3)) == 6903
+
+
+def test_forbes_tea_table():
+    from datasets.forbes_tea.parser import parse_pdf  # noqa: F401
+    import re
+    from datasets.forbes_tea import parser as tp
+
+    text = (FIXTURES / "tea_qa.txt").read_text()
+    rows = [l for l in text.split("\n") if tp.ROW_RE.match(l.strip())]
+    assert len(rows) > 15
+    m = tp.ROW_RE.match("01-JUL-2027 1,013 1,025 3,190 5,228 1071.14 957.22 1292.66 1183.94")
+    assert m and m.group(3) == "2027"  # typo row matches; parser repairs the year

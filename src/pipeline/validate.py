@@ -87,3 +87,16 @@ def _cbsl_weekly(clean: dict) -> list[str]:
     if res is not None and not 1_000 <= res <= 20_000:
         errors.append(f"reserves {res} outside [1k, 20k] USD mn")
     return errors
+
+
+@register("forbes_tea")
+def _forbes_tea(clean: dict) -> list[str]:
+    errors = []
+    for s in clean.get("sales", []):
+        if not s["sale_date"].startswith(str(clean.get("year"))):
+            errors.append(f"sale {s['sale_date']} outside year")
+        if not 300 <= s["avg_rs"]["total"] <= 3000:
+            errors.append(f"avg {s['avg_rs']['total']} outside [300,3000]")
+    if clean.get("repaired_year_rows", 0) > 3:
+        errors.append("too many repaired year rows — layout suspect")
+    return errors
