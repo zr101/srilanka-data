@@ -1040,7 +1040,8 @@
           "today": 450.0
         }
       ],
-      "commentary": "Price of Beans increased further in 480 Pettah market compared to yesterday due to limited supply 380 p Pettah : 350.00 450.00 280 from Welimada and Nuwara Eliya 180"
+      "commentary": "Price of Beans increased further in Pettah market compared to yesterday due to limited supply from Welimada and Nuwara Eliya areas. Rs./kg",
+      "reason": "limited supply from Welimada and Nuwara Eliya areas"
     },
     {
       "item": "Carrot",
@@ -1053,7 +1054,8 @@
           "today": 350.0
         }
       ],
-      "commentary": "Price of Carrot increased in Pettah 320 m to a l r im ke i t t e co d m su p p ar p e l d y t f o ro y m es N te u rd w a a y r a d ue 270 p Pettah : 250.00 350.00 Eliya and Puttalam areas. 220 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA"
+      "commentary": "Price of Carrot increased in Pettah m to a l r im ke i t t e co d m su ar e l d y t f o ro y m es N te u rd w a a y r a d ue Eliya and Puttalam areas. Rs./kg",
+      "reason": null
     },
     {
       "item": "Tomato",
@@ -1071,7 +1073,8 @@
           "today": 220.0
         }
       ],
-      "commentary": "Price of Tomato declined in both 600 Pettah and Dambulla markets 475 compared to yesterday due to 350 q Pettah : 350.00 300.00 225 Dambulla : 235.00 220.00 favourable supply from Kalpitiya 100 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA"
+      "commentary": "Price of Tomato declined in both Pettah and Dambulla markets compared to yesterday due to favourable supply from Kalpitiya and Sigiriya areas. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Kalpitiya and Sigiriya areas"
     },
     {
       "item": "Salaya",
@@ -1084,7 +1087,8 @@
           "today": 960.0
         }
       ],
-      "commentary": "Price of Salaya increased in 1040 Negombo fish market compared to 860 p Negombo : 860.00 960.00 yesterday due to limited supply 680 from Nothern coastal area. 500 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA"
+      "commentary": "Price of Salaya increased in Negombo fish market compared to yesterday due to limited supply from Nothern coastal area. Rs./kg",
+      "reason": "limited supply from Nothern coastal area"
     },
     {
       "item": "Linna",
@@ -1102,7 +1106,8 @@
           "today": 1000.0
         }
       ],
-      "commentary": "Wholesale price of Linna increased 1060 in both Peliyagoda and Negombo fish markets compared to yesterday 890 p Peliyagoda : 850.00 1,100.00 720 Negombo : 880.00 1,000.00 due to limited supply from 550 Southern coastal area. luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA"
+      "commentary": "Wholesale price of Linna increased in both Peliyagoda and Negombo fish markets compared to yesterday due to limited supply from Southern coastal area. Negombo Peliyagoda Other Rs./kg",
+      "reason": "limited supply from Southern coastal area"
     },
     {
       "item": "Imported Red Onion",
@@ -1120,7 +1125,8 @@
           "today": 275.0
         }
       ],
-      "commentary": "Price of Imported Red Onion 420 increased in both Pettah and Dambulla markets compared to 340 p Pettah : 375.00 395.00 260 Dambulla : 225.00 275.00 yesterday due to limited 180 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA"
+      "commentary": "Price of Imported Red Onion increased in both Pettah and Dambulla markets compared to yesterday due to limited availability of Indian varieties. Pettah Dambulla The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "limited availability of Indian varieties"
     }
   ],
   "notes": []

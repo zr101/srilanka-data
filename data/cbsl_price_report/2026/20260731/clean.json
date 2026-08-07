@@ -1046,7 +1046,8 @@
           "today": 335.0
         }
       ],
-      "commentary": "Price of Beans declined in both 650 Pettah and Dambulla markets 525 compared to yesterday due to 400 q Pettah : 300.00 250.00 favourable supply from Welimada/ 275 Dambulla : 355.00 335.00"
+      "commentary": "Price of Beans declined in both Pettah and Dambulla markets compared to yesterday due to favourable supply from Welimada/ Balangoda and Nuwara Eliya/ Bandarawela areas, respectively. Pettah Dambulla",
+      "reason": "favourable supply from Welimada/ Balangoda and Nuwara Eliya/ Bandarawela areas, respectively"
     },
     {
       "item": "Tomato",
@@ -1064,7 +1065,8 @@
           "today": 245.0
         }
       ],
-      "commentary": "Price of Tomato declined in both Rs./kg Pettah and Dambulla markets 575 475 compared to yesterday due to favourable supply from 375 q Pettah : 400.00 350.00 275 Dambulla : 285.00 245.00"
+      "commentary": "Price of Tomato declined in both Rs./kg Pettah and Dambulla markets compared to yesterday due to favourable supply from Sooriyawewa/ Embilipitiya and Elahera/ Kalpitiya areas, respectively. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Sooriyawewa/ Embilipitiya and Elahera/ Kalpitiya areas, respectively"
     },
     {
       "item": "Pumpkin",
@@ -1077,7 +1079,8 @@
           "today": 175.0
         }
       ],
-      "commentary": "Price of Pumpkin increased further 175 in Dambulla market compared to 150 p Dambulla : 135.00 175.00 yesterday due to limited supply 125 from Sigiriya and Galewela areas. 100 luJ-1 luJ-2 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13"
+      "commentary": "Price of Pumpkin increased further in Dambulla market compared to yesterday due to limited supply from Sigiriya and Galewela areas.",
+      "reason": "limited supply from Sigiriya and Galewela areas"
     },
     {
       "item": "Green Chilli",
@@ -1095,7 +1098,8 @@
           "today": 1080.0
         }
       ],
-      "commentary": "Price of Green Chilli declined in 1 R 6 s 0 ./ 0 kg both Pettah and Dambulla markets 1325 compared to yesterday due to 1050 q Pettah : 1,300.00 1,100.00 favourable supply from Jaffna/ 775 Dambulla : 1,180.00 1,080.00 500"
+      "commentary": "Price of Green Chilli declined in R s ./ kg both Pettah and Dambulla markets compared to yesterday due to favourable supply from Jaffna/ P u t ta la m S i g i r i y a / a n d A n u ra d ha u r a a r e a s r e spectively. P e tt ah D am b u ll a Fish Rs./kg",
+      "reason": "favourable supply from Jaffna/ P u t ta la m S i g i r i y a / a n d A n u ra d ha u r a a r e a s r e spectively"
     },
     {
       "item": "Balaya",
@@ -1108,7 +1112,8 @@
           "today": 1200.0
         }
       ],
-      "commentary": "Wholesale price of Balaya increased 1250 in Peliyagoda fish market compared 1150 p Peliyagoda : 1,100.00 1,200.00 to yesterday due to limited supply 1050 from Southern coastal area. 950 luJ-1 luJ-2 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13"
+      "commentary": "Wholesale price of Balaya increased in Peliyagoda fish market compared to yesterday due to limited supply from Southern coastal area. Rs./kg",
+      "reason": "limited supply from Southern coastal area"
     },
     {
       "item": "Hurulla",
@@ -1121,7 +1126,8 @@
           "today": 1200.0
         }
       ],
-      "commentary": "Wholesale price of Hurulla 1310 increased in Peliyagoda fish market compared to yesterday due to 1190 p Peliyagoda : 1,100.00 1,200.00 1070 limited supply from Chilaw and 950"
+      "commentary": "Wholesale price of Hurulla increased in Peliyagoda fish market compared to yesterday due to limited supply from Chilaw and Kalpitiya areas. Other Rs./kg Price of Imported Big Onion increased in Dambulla market compared to yesterday due to limited availability of Indian varieties. The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "limited supply from Chilaw and Kalpitiya areas"
     }
   ],
   "notes": [

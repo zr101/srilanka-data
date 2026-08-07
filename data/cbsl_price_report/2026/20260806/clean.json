@@ -1047,7 +1047,8 @@
           "today": 355.0
         }
       ],
-      "commentary": "Vegetables Price of Beans declined in both Rs./kg 550 Pettah and Dambulla markets 450 compared to yesterday due to favourable supply from Nuwara 350 q Pettah : 450.00 350.00 250 Dambulla : 395.00 355.00"
+      "commentary": "Vegetables Price of Beans declined in both Rs./kg Pettah and Dambulla markets compared to yesterday due to favourable supply from Nuwara Eliya/ Bandarawela and Balangoda/ Welimada areas, respectively. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Nuwara Eliya/ Bandarawela and Balangoda/ Welimada areas, respectively"
     },
     {
       "item": "Cabbage",
@@ -1065,7 +1066,8 @@
           "today": 120.0
         }
       ],
-      "commentary": "Price of Cabbage declined in both 250 210 Pettah and Dambulla markets 170 compared to yesterday due to 130 q Pettah : 230.00 200.00 90 Dambulla : 135.00 120.00 favourable supply from Nuwara 50"
+      "commentary": "Price of Cabbage declined in both Pettah and Dambulla markets compared to yesterday due to favourable supply from Nuwara Eliya and Bandarawela areas. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Nuwara Eliya and Bandarawela areas"
     },
     {
       "item": "Brinjal",
@@ -1078,7 +1080,8 @@
           "today": 230.0
         }
       ],
-      "commentary": "Price of Brinjal declined in 330 Dambulla market compared to 280 q Dambulla : 280.00 230.00 yesterday due to favourable supply 230 from Puttalam and Sigiriya areas. 180 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA"
+      "commentary": "Price of Brinjal declined in Dambulla market compared to yesterday due to favourable supply from Puttalam and Sigiriya areas. Rs./kg",
+      "reason": "favourable supply from Puttalam and Sigiriya areas"
     },
     {
       "item": "Green Chilli",
@@ -1091,7 +1094,8 @@
           "today": 680.0
         }
       ],
-      "commentary": "Price of Green Chilli declined in 1075 Dambulla market compared to yesterday due to favourable supply 850 q Dambulla : 780.00 680.00 625 from Trincomalee, Kalpitiya and 400"
+      "commentary": "Price of Green Chilli declined in Dambulla market compared to yesterday due to favourable supply from Trincomalee, Kalpitiya and Anuradhapura areas. Fish Rs./kg",
+      "reason": "favourable supply from Trincomalee, Kalpitiya and Anuradhapura areas"
     },
     {
       "item": "Kelawalla",
@@ -1104,7 +1108,8 @@
           "today": 1500.0
         }
       ],
-      "commentary": "Wholesale price of Kelawalla 1550 declined in Negombo fish market 1450 compared to yesterday due to q Negombo : 1,600.00 1,500.00 1350 favourable supply from Negombo 1250 coastal area. luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA"
+      "commentary": "Wholesale price of Kelawalla declined in Negombo fish market compared to yesterday due to favourable supply from Negombo coastal area.",
+      "reason": "favourable supply from Negombo coastal area"
     },
     {
       "item": "Hurulla",
@@ -1122,7 +1127,8 @@
           "today": 900.0
         }
       ],
-      "commentary": "Wholesale price of Hurulla Rs./kg 1450 declined in both Peliyagoda and 1300 Negombo fish markets compared to yesterday due to favourable supply 1150 q Peliyagoda : 1,300.00 1,100.00 1000 Negombo : 1,200.00 900.00"
+      "commentary": "Wholesale price of Hurulla Rs./kg declined in both Peliyagoda and Negombo fish markets compared to yesterday due to favourable supply from Chilaw/ Kalpitiya and a coastal areas, W e n n a u w Pe li ya g o da N e g om bo res e c ti v e ly . Other Rs./kg",
+      "reason": "favourable supply from Chilaw/ Kalpitiya and a coastal areas, W e n n a u w Pe li ya g o da N e g om bo res"
     },
     {
       "item": "Local Potato",
@@ -1135,7 +1141,8 @@
           "today": 293.0
         }
       ],
-      "commentary": "Price of Local Potato increased in 340 320 Dambulla market compared to 300 yesterday due to limited supply 280 p Dambulla : 275.00 293.00 from Nuwara Eliya and Welimada 260 240"
+      "commentary": "Price of Local Potato increased in Dambulla market compared to yesterday due to limited supply from Nuwara Eliya and Welimada areas. The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "limited supply from Nuwara Eliya and Welimada areas"
     }
   ],
   "notes": []

@@ -1046,7 +1046,8 @@
           "today": 185.0
         }
       ],
-      "commentary": "Price of Carrot declined in both 350 Pettah and Dambulla markets 300 compared to yesterday due to 250 q Pettah : 300.00 250.00 200 Dambulla : 280.00 185.00 favourable supply from Nuwara 150 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA guA"
+      "commentary": "Price of Carrot declined in both Pettah and Dambulla markets compared to yesterday due to favourable supply from Nuwara Eliya and Bandarawela areas. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Nuwara Eliya and Bandarawela areas"
     },
     {
       "item": "Tomato",
@@ -1059,7 +1060,8 @@
           "today": 195.0
         }
       ],
-      "commentary": "Price of Tomato declined in 390 Dambulla market compared to 330 yesterday due to favourable supply 270 q Dambulla : 220.00 195.00 from Sigiriya, Galewela and 210"
+      "commentary": "Price of Tomato declined in Dambulla market compared to yesterday due to favourable supply from Sigiriya, Galewela and Elahera areas. Rs./kg",
+      "reason": "favourable supply from Sigiriya, Galewela and Elahera areas"
     },
     {
       "item": "Brinjal",
@@ -1072,7 +1074,8 @@
           "today": 290.0
         }
       ],
-      "commentary": "Price of Brinjal increased in 380 Dambulla market compared to 330 yesterday due to limited supply 280 p Dambulla : 230.00 290.00 from Puttalam, Kalpitiya and 230"
+      "commentary": "Price of Brinjal increased in Dambulla market compared to yesterday due to limited supply from Puttalam, Kalpitiya and Sigiriya areas. Rs./kg",
+      "reason": "limited supply from Puttalam, Kalpitiya and Sigiriya areas"
     },
     {
       "item": "Lime",
@@ -1085,7 +1088,8 @@
           "today": 275.0
         }
       ],
-      "commentary": "Price of Lime increased in 330 Dambulla market compared to 270 p Dambulla : 255.00 275.00 yesterday due to limited supply 210 from Anuradhapura area. 150 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA guA"
+      "commentary": "Price of Lime increased in Dambulla market compared to yesterday due to limited supply from Anuradhapura area. Fish Rs./kg",
+      "reason": "limited supply from Anuradhapura area"
     },
     {
       "item": "Balaya",
@@ -1098,7 +1102,8 @@
           "today": 1300.0
         }
       ],
-      "commentary": "Wholesale price of Balaya declined 1400 in Peliyagoda fish market compared 1250 q Peliyagoda : 1,400.00 1,300.00 to yesterday due to favourable 1100 supply from Southern coastal area. 950 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA guA"
+      "commentary": "Wholesale price of Balaya declined in Peliyagoda fish market compared to yesterday due to favourable supply from Southern coastal area. Rs./kg",
+      "reason": "favourable supply from Southern coastal area"
     },
     {
       "item": "Salaya",
@@ -1111,7 +1116,8 @@
           "today": 980.0
         }
       ],
-      "commentary": "Price of Salaya increased in 1000 Negombo fish market compared to 850 p Negombo : 780.00 980.00 yesterday due to limited supply 700 from Wennappuwa area. 550 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA guA"
+      "commentary": "Price of Salaya increased in Negombo fish market compared to yesterday due to limited supply from Wennappuwa area. Other Rs./kg",
+      "reason": "limited supply from Wennappuwa area"
     },
     {
       "item": "Imported Sprat",
@@ -1124,7 +1130,8 @@
           "today": 1700.0
         }
       ],
-      "commentary": "Price of Imported Sprat increased 1600 in Pettah market compared to 1500 p Pettah : 1,617.00 1,700.00 yesterday due to limited 1400 availability of Iranian varieties. 1300 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA guA guA guA guA"
+      "commentary": "Price of Imported Sprat increased in Pettah market compared to yesterday due to limited availability of Iranian varieties. The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "limited availability of Iranian varieties"
     }
   ],
   "notes": []

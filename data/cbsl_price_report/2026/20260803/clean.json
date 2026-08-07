@@ -1046,7 +1046,8 @@
           "today": 395.0
         }
       ],
-      "commentary": "Price of Beans increased in both 525 Pettah and Dambulla markets compared to last Friday due to 400 p Pettah : 250.00 350.00 275 Dambulla : 335.00 395.00 limited supply from Welimada and 150 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-82 luJ-03 luJ-13 guA Nuwara Eliya areas, respectively. luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-42 luJ-72"
+      "commentary": "Price of Beans increased in both Pettah and Dambulla markets compared to last Friday due to limited supply from Welimada and Nuwara Eliya areas, respectively. P et ta h D am b u lla Rs./kg",
+      "reason": "limited supply from Welimada and Nuwara Eliya areas, respectively"
     },
     {
       "item": "Cabbage",
@@ -1064,7 +1065,8 @@
           "today": 175.0
         }
       ],
-      "commentary": "Price of Cabbage increased in both 200 Pettah and Dambulla markets 175 compared to last Friday due to 150 p Pettah : 170.00 200.00 125 Dambulla : 165.00 175.00 limited supply from Nuwara Eliya 100 and Puttalam areas. luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-72 luJ-82 luJ-03 luJ-13 guA luJ-01 luJ-31 luJ-32 luJ-42"
+      "commentary": "Price of Cabbage increased in both Pettah and Dambulla markets compared to last Friday due to limited supply from Nuwara Eliya and Puttalam areas. P et ta h D am b u lla Rs./kg",
+      "reason": "limited supply from Nuwara Eliya and Puttalam areas"
     },
     {
       "item": "Green Chilli",
@@ -1077,7 +1079,8 @@
           "today": 780.0
         }
       ],
-      "commentary": "Price of Green Chilli declined in 1200 Dambulla market compared to last 10 85 2 0 5 q Dambulla : 1,080.00 780.00 Friday due to favourable supply 675 from Puttalam and Sigiriya areas. 500 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA"
+      "commentary": "Price of Green Chilli declined in Dambulla market compared to last Friday due to favourable supply from Puttalam and Sigiriya areas. Rs./kg Price of lime declined in Dambulla m to a f r a k v e o t u c r o a m bl e a s re u d to ly la f s r t o F m r i E d l a a y h d ar u a e area. Fish Rs./kg",
+      "reason": "favourable supply from Puttalam and Sigiriya areas"
     },
     {
       "item": "Balaya",
@@ -1090,7 +1093,8 @@
           "today": 1300.0
         }
       ],
-      "commentary": "Wholesale price of Balaya increased 1250 further in Peliyagoda fish market compared to last Friday due to 1150 p Peliyagoda : 1,200.00 1,300.00 1050 limited supply from Southern 950"
+      "commentary": "Wholesale price of Balaya increased further in Peliyagoda fish market compared to last Friday due to limited supply from Southern coastal area. Rs./kg",
+      "reason": "limited supply from Southern coastal area"
     },
     {
       "item": "Linna",
@@ -1108,7 +1112,8 @@
           "today": 880.0
         }
       ],
-      "commentary": "Wholesale price of Linna increased 1200 in both Peliyagoda and Negombo 1050 fish markets compared to last 900 p Peliyagoda : 750.00 850.00 750 Negombo : 750.00 880.00 Friday due to limited supply from 600 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03 luJ-13 guA"
+      "commentary": "Wholesale price of Linna increased in both Peliyagoda and Negombo fish markets compared to last Friday due to limited supply from Southern coastal area. Negombo Peliyagoda Other Rs./kg Price of Imported Big Onion declined in both Pettah and Dambulla markets compared to last Friday due to high availability of Indian varieties. Pettah Dambulla The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "limited supply from Southern coastal area"
     }
   ],
   "notes": [

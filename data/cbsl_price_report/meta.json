@@ -1,0 +1,32 @@
+{
+  "title": "CBSL Daily Price Report",
+  "source_url": "https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/pricerpt/price_report_YYYYMMDD_e.pdf",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "daily (working days)",
+  "method": {
+    "library": "pdfplumber",
+    "technique": "page 2 table by data-driven column clustering; page 1 highlights by bounded heading association",
+    "preprocessing": "adjacent word fragments rejoined on a <1.5pt gap — pdfplumber emits '128.00' as '1' + '28.00'"
+  },
+  "fields": [
+    {
+      "name": "items[].prices",
+      "unit": "Rs (wholesale/retail x Pettah/Dambulla/Narahenpita x previous/today)"
+    },
+    {
+      "name": "highlights[]",
+      "unit": "movers with the stated cause"
+    }
+  ],
+  "limitations": [
+    "period label is 'Yesterday' most days and 'Last Friday' on Mondays; compares_to records which, and the value columns are found from the data so the wording cannot break the parse",
+    "some editions interleave two columns' characters into one unreadable line, destroying a commodity heading; orphaned highlight rows are dropped rather than misattributed and the count is reported in notes",
+    "page-2 table is unaffected by that scrambling and parses in full every day",
+    "fish and some staples appear in highlights but not in the page-2 table"
+  ],
+  "fallback": {
+    "plan_b": "HARTI daily prices via nuuuwan/lk_food",
+    "trigger": "PDF layout change"
+  },
+  "parser_version": "1"
+}

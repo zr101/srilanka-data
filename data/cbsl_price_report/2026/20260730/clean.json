@@ -1023,7 +1023,8 @@
           "today": 355.0
         }
       ],
-      "commentary": "Price of Beans increased in 440 Dambulla market compared to last 360 Tuesday due to limited supply 280 p Dambulla : 280.00 355.00 from Nuwara Eliya and 200"
+      "commentary": "Price of Beans increased in Dambulla market compared to last Tuesday due to limited supply from Nuwara Eliya and Bandarawela areas. Rs./kg",
+      "reason": "limited supply from Nuwara Eliya and Bandarawela areas"
     },
     {
       "item": "Carrot",
@@ -1036,7 +1037,8 @@
           "today": 320.0
         }
       ],
-      "commentary": "Price of Carrot increased in Pettah 325 market compared to last Tuesday 275 p Pettah : 300.00 320.00 due to limited supply from Ragala 225 and Nuwara Eliya areas. 175 nuJ-03 luJ-1 luJ-2 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03"
+      "commentary": "Price of Carrot increased in Pettah market compared to last Tuesday due to limited supply from Ragala and Nuwara Eliya areas. Rs./kg",
+      "reason": "limited supply from Ragala and Nuwara Eliya areas"
     },
     {
       "item": "Cabbage",
@@ -1049,7 +1051,8 @@
           "today": 160.0
         }
       ],
-      "commentary": "Price of Cabbage increased in 172 154 Dambulla market compared to last Tuesday due to limited supply 136 p Dambulla : 130.00 160.00 118 from Nuwara Eliya and Puttalam 100"
+      "commentary": "Price of Cabbage increased in Dambulla market compared to last Tuesday due to limited supply from Nuwara Eliya and Puttalam areas. Rs./kg",
+      "reason": "limited supply from Nuwara Eliya and Puttalam areas"
     },
     {
       "item": "Green Chilli",
@@ -1062,7 +1065,8 @@
           "today": 1300.0
         }
       ],
-      "commentary": "Price of Green Chilli declined in 1300 Pettah market compared to last Tuesday due to favourable supply 1100 q Pettah : 1,550.00 1300.00 900 from Nochchiyagama and Puttalam 700 areas. nuJ-03 luJ-1 luJ-2 luJ-3 luJ-6 luJ-7 luJ-8 luJ-9 luJ-01 luJ-31 luJ-41 luJ-51 luJ-61 luJ-71 luJ-02 luJ-12 luJ-22 luJ-32 luJ-42 luJ-72 luJ-82 luJ-03"
+      "commentary": "Price of Green Chilli declined in Pettah market compared to last Tuesday due to favourable supply from Nochchiyagama and Puttalam areas. Other Rs./kg Price of Imported Potato further declined in Dambulla market compared to last Tuesday due to availability of different varieties. Fish Rs./kg",
+      "reason": "favourable supply from Nochchiyagama and Puttalam areas"
     },
     {
       "item": "Salaya",
@@ -1080,7 +1084,8 @@
           "today": 700.0
         }
       ],
-      "commentary": "Wholesale price of Salaya declined 960 i m n a N rk e e g t o s m co b m o p a a n r d e d P e to li l y a a s g t o T d u a e s fi d s a h y 6 7 2 9 0 0 q Negombo : 750.00 600.00 Peliyagoda : 750.00 700.00 due to favourable supply from 450 nuJ-03 luJ-1 luJ-2 luJ-3 luJ-7 luJ-9 luJ-6 luJ-8 luJ-01da luJ-31 luJ-41 luJ-51 luJ-61 luJ-71N luJ-02eg luJ-12o luJ-22m luJ-32bo luJ-42 luJ-72 luJ-82 luJ-03"
+      "commentary": "Wholesale price of Salaya declined i m n a N rk e e g t o s m co b m o a a n r d e d P e to li l y a a s g t o T d u a e s fi d s a h y due to favourable supply from Nothern coastal area. P el iy ag o The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "favourable supply from Nothern coastal area"
     }
   ],
   "notes": [
