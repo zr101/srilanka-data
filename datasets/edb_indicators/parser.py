@@ -433,6 +433,227 @@ def parse_table17(payload: bytes, toc: dict[str, int] | None = None) -> dict:
     return result
 
 
+# --- Table 24.*/25.*: Exports by Market x Product ----------------------------------
+#
+# Both table families share literally the same page template: 24.<nn> is one page per
+# destination MARKET (country), rows broken down by PRODUCT; 25.<nn> is one page per
+# exported PRODUCT, rows broken down by MARKET. The only structural difference is
+# which word ("Product"/"Market") labels the rows on a given page — everything else
+# (layout, column shape, Total/Other-bucket handling, unit line) is identical, so one
+# generic per-page parser (_parse_entity_page) serves both, parameterised by which
+# label to expect in the row header (row_label) vs. which caption line names the page's
+# own entity (the inverse label — a 24.* country page is captioned "Market :  ALBANIA",
+# a 25.* product page "Product :  TEA (...)").
+#
+# Row shape: "<no> <name...> <year1..year5> <2024 % Share> <% Avg. Growth>" — 5 year
+# values + share + growth = len(years)+2 trailing value tokens, always the LAST tokens
+# on the (possibly multi-line-wrapped) row. A leading row number (1..40) is optional in
+# the token stream (long names push it onto its own wrapped line, e.g. Albania's row 6
+# "Coco Peat..." or China's row 35 "Made-up Textile Articles..."), so rows are scanned
+# by matching the value-token tail from the END of the accumulated line buffer, not by
+# splitting at the first numeric token (which would collide with the row number itself).
+# The unnumbered "Other Products"/"Other Markets" catch-all bucket and the "Total :"
+# row (sometimes numbered, sometimes not, per source) fall out of the exact same scan —
+# classified afterwards by name, not parsed via separate logic.
+#
+# "-" sentinel: 0 in a value/share column (no export that year — a real figure), but
+# None in the % Avg. Growth column (source's own footnote: growth is "insignificant"/
+# not computable from a near-zero base, not a literal 0% rate).
+#
+# Occasionally a row is missing one of its value tokens outright (e.g. Albania's row 12
+# "Petroleum Oils" has only 6 trailing value tokens where every other row has 7 — a
+# genuine source artifact, not a line-wrap: verified directly against the live PDF, not
+# just the task's transcription). Such rows are unrecoverable and skipped individually
+# (mirrors Table 13's `_collapse_value_tokens` returning None) rather than corrupting
+# the scan for every row after them.
+
+_ENTITY_HEADER_RE = re.compile(r"^No\s+(Product|Market)\b")
+_ENTITY_VALUE_TOK_RE = re.compile(r"^-$|^-?\d[\d,]*(?:\.\d+)?$")  # a number (with optional thousands-commas/decimals) or the "-" sentinel
+_ENTITY_ROWNUM_RE = re.compile(r"^\d{1,2}$")  # observed row numbers only ever run 1..40
+_TABLE_CAPTION_RE = re.compile(r"^Table\s*:\s*(\S+)")
+_MERCH_SHARE_PREFIX = "% Share to Total Merchandise Exports"
+
+
+def _entity_value(tok: str) -> float:
+    return 0.0 if tok == "-" else float(tok.replace(",", ""))
+
+
+def _entity_growth(tok: str) -> float | None:
+    return None if tok == "-" else float(tok.replace(",", ""))
+
+
+def _scan_entity_records(lines: list[str], expected: int) -> list[tuple[str | None, list[str], list[str]]]:
+    """Yields (row_num_or_None, name_tokens, value_tokens) for every numbered row, the
+    optional Other-bucket line, and the Total line found in `lines`. `expected` is
+    len(years)+2 — the fixed trailing value-token count every one of those rows has."""
+    records: list[tuple[str | None, list[str], list[str]]] = []
+    buffer: list[str] = []
+    for line in lines:
+        tokens = line.split()
+        if not tokens:
+            continue
+        combined = buffer + tokens
+        row_num = combined[0] if _ENTITY_ROWNUM_RE.match(combined[0]) else None
+        rest = combined[1:] if row_num is not None else combined
+        if len(rest) >= expected and all(_ENTITY_VALUE_TOK_RE.match(t) for t in rest[-expected:]):
+            records.append((row_num, rest[: -expected], rest[-expected:]))
+            buffer = []
+            continue
+        # Not (yet) a complete row — distinguish "name still wrapping onto more lines"
+        # (no values seen at all yet) from "a malformed row with only SOME of its
+        # expected values present" (the Petroleum Oils case above): the latter can
+        # never complete by buffering further, so drop it and resync on the next line
+        # rather than let it swallow every row after it.
+        tail_run = 0
+        for t in reversed(rest):
+            if _ENTITY_VALUE_TOK_RE.match(t):
+                tail_run += 1
+            else:
+                break
+        buffer = combined if tail_run == 0 else []
+    return records
+
+
+def _classify_entity_records(
+    records: list[tuple[str | None, list[str], list[str]]], years: list[int], row_label: str
+) -> tuple[list[dict], dict | None, dict | None]:
+    rows: list[dict] = []
+    other: dict | None = None
+    total: dict | None = None
+    other_name = f"Other {row_label}s"
+    for row_num, name_tokens, value_tokens in records:
+        name = " ".join(name_tokens).strip().rstrip(":").strip()
+        if not name:
+            continue
+        record = {
+            "no": int(row_num) if row_num is not None else None,
+            "name": name,
+            "values_usd": {str(y): _entity_value(t) for y, t in zip(years, value_tokens)},
+            "share_pct": _entity_value(value_tokens[len(years)]),
+            "avg_growth_pct": _entity_growth(value_tokens[len(years) + 1]),
+        }
+        if name.lower() == "total":
+            total = record
+        elif name == other_name:
+            other = record
+        else:
+            rows.append(record)
+    return rows, other, total
+
+
+def _parse_entity_page(pages, page_idx: int, row_label: str, table_id: str | None = None) -> dict:
+    """Parses one 24.*/25.* page. `row_label` is "Product" for a 24.* (country) page or
+    "Market" for a 25.* (product) page — i.e. what the row header itself says, the
+    OPPOSITE of the page's own entity caption (see banner comment above)."""
+    if not (0 <= page_idx < len(pages)):
+        raise ValueError(f"EDB entity page index {page_idx} out of range")
+    text = pages[page_idx].extract_text() or ""
+    lines = [l.strip() for l in text.split("\n") if l.strip()]
+
+    if table_id is not None:
+        caption = next((m.group(1) for l in lines if (m := _TABLE_CAPTION_RE.match(l))), None)
+        if caption != table_id:
+            raise ValueError(f"EDB entity page {page_idx}: caption {caption!r} != expected table id {table_id!r}")
+
+    header_idx = next((i for i, l in enumerate(lines) if _ENTITY_HEADER_RE.match(l)), None)
+    if header_idx is None:
+        raise ValueError(f"EDB entity page {page_idx}: header row not found")
+    header_label = _ENTITY_HEADER_RE.match(lines[header_idx]).group(1)
+    if header_label != row_label:
+        raise ValueError(f"EDB entity page {page_idx}: expected row label {row_label!r}, found {header_label!r}")
+
+    years = [int(y) for y in re.findall(r"20\d{2}", lines[header_idx])][:-1]  # header repeats the latest year for "2024 % Share" — drop that dup
+    if not (3 <= len(years) <= 10):
+        raise ValueError(f"EDB entity page {page_idx}: implausible year header: {years}")
+
+    sources_idx = next((i for i in range(header_idx + 1, len(lines)) if lines[i].startswith("Sources")), None)
+    if sources_idx is None:
+        raise ValueError(f"EDB entity page {page_idx}: 'Sources' terminator not found")
+    body = [l for l in lines[header_idx + 1 : sources_idx] if l not in ("Share", "% Avg.", "Growth")]  # header-wrap fragments
+
+    merch_idx = next((i for i, l in enumerate(body) if l.startswith(_MERCH_SHARE_PREFIX)), None)
+    if merch_idx is None:
+        raise ValueError(f"EDB entity page {page_idx}: merchandise-share row not found")
+    merch_tokens = body[merch_idx].split()[-len(years) :]
+    if len(merch_tokens) != len(years) or not all(_ENTITY_VALUE_TOK_RE.match(t) for t in merch_tokens):
+        raise ValueError(f"EDB entity page {page_idx}: merchandise-share row malformed: {body[merch_idx]!r}")
+    merchandise_share_pct = {str(y): _entity_value(t) for y, t in zip(years, merch_tokens)}
+
+    row_lines = body[:merch_idx] + body[merch_idx + 1 :]
+    expected = len(years) + 2
+    records = _scan_entity_records(row_lines, expected)
+    rows, other, total = _classify_entity_records(records, years, row_label)
+    if total is None:
+        raise ValueError(f"EDB entity page {page_idx}: Total row not found")
+
+    entity_label = "Market" if row_label == "Product" else "Product"  # this page's own entity caption uses the OTHER label
+    entity_idx = next((i for i, l in enumerate(lines) if l.startswith(f"{entity_label} :")), None)
+    if entity_idx is None:
+        raise ValueError(f"EDB entity page {page_idx}: {entity_label} caption not found")
+    entity = re.sub(r"\s+", " ", lines[entity_idx].split(":", 1)[1]).strip()
+    if not entity:
+        raise ValueError(f"EDB entity page {page_idx}: empty {entity_label} caption")
+
+    unit_line = next((l for l in lines if l.startswith("Value in US$")), None)
+    if unit_line is None:
+        raise ValueError(f"EDB entity page {page_idx}: unit line not found")
+    if "Thousand" in unit_line:
+        multiplier = 1
+    elif "Million" in unit_line:
+        multiplier = 1000  # normalize everything to USD Thousands, this page's own smaller-magnitude unit
+    else:
+        raise ValueError(f"EDB entity page {page_idx}: unrecognized unit {unit_line!r}")
+    for record in rows + ([other] if other else []) + [total]:
+        record["values_usd"] = {y: v * multiplier for y, v in record["values_usd"].items()}
+
+    return {
+        "entity": entity,
+        "years": years,
+        "unit": "USD Thousands",
+        "rows": rows,
+        "other": other,
+        "total": total,
+        "merchandise_share_pct": merchandise_share_pct,
+    }
+
+
+_TOC_COUNTRY_RE = re.compile(r"^24\.\d+$")
+_TOC_PRODUCT_RE = re.compile(r"^25\.\d+$")
+
+
+def _parse_entity_batch(payload: bytes, toc: dict[str, int] | None, toc_pattern: re.Pattern, row_label: str) -> dict:
+    if toc is None:  # callers that already have a toc (e.g. parse_pdf) should pass it in — see parse_toc's docstring
+        toc = parse_toc(payload)
+    pages = PdfReader(io.BytesIO(payload)).pages
+    result: dict[str, dict] = {}
+    errors: dict[str, str] = {}
+    for table_id, page_idx in toc.items():
+        if not toc_pattern.match(table_id):
+            continue
+        try:
+            page = _parse_entity_page(pages, page_idx, row_label, table_id=table_id)
+        except Exception as err:  # noqa: BLE001 — a single bad/blank page (this fixture has ~260 still-blank
+            # ones; production editions can have genuine one-off layout quirks) must never cost the other
+            # ~99/~164 good entities in the same batch, so this is deliberately broader than the ValueError
+            # this module's other parsers raise-and-catch — anything short of a KeyboardInterrupt is contained here.
+            errors[table_id] = str(err)
+            continue
+        result[page["entity"]] = page
+    if errors:
+        result["_errors"] = errors
+    return result
+
+
+def parse_countries(payload: bytes, toc: dict[str, int] | None = None) -> dict[str, dict]:
+    """Table 24.*: one page per destination market/country, rows broken down by product."""
+    return _parse_entity_batch(payload, toc, _TOC_COUNTRY_RE, "Product")
+
+
+def parse_products(payload: bytes, toc: dict[str, int] | None = None) -> dict[str, dict]:
+    """Table 25.*: one page per exported product, rows broken down by destination market."""
+    return _parse_entity_batch(payload, toc, _TOC_PRODUCT_RE, "Market")
+
+
 def parse_pdf(payload: bytes) -> dict:
     clean = parse_text(find_table_text(payload))  # core contract; must keep raising on failure
     # Computed once and threaded into both table parsers below — parse_toc is the
@@ -455,6 +676,14 @@ def parse_pdf(payload: bytes) -> dict:
         clean["table17"] = parse_table17(payload, toc=toc)
     except ValueError as err:
         clean["_table17_error"] = str(err)
+    try:
+        clean["countries"] = parse_countries(payload, toc=toc)
+    except ValueError as err:
+        clean["_countries_error"] = str(err)
+    try:
+        clean["products"] = parse_products(payload, toc=toc)
+    except ValueError as err:
+        clean["_products_error"] = str(err)
     return clean
 
 

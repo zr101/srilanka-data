@@ -1,8 +1,15 @@
+import io
 from pathlib import Path
 
+import pytest
+from pypdf import PdfReader
+
 from datasets.edb_indicators.parser import (
+    _parse_entity_page,
     find_table_text,
+    parse_countries,
     parse_pdf,
+    parse_products,
     parse_table13,
     parse_table15,
     parse_table17,
@@ -13,21 +20,32 @@ from datasets.edb_indicators.parser import (
 FIXTURES = Path(__file__).parent / "fixtures"
 
 # edb_2024.pdf / edb_2023.pdf are trimmed from the real ~340-page, ~3-22MB EDB ebooks
-# down to ~70 pages, ~200-680KB. Trimming is BLANK-IN-PLACE, not truncation: every
-# page from index 0 up to the last one we need (70) is kept in the writer, with only
-# the pages our parsers don't touch (front matter, graphs, tables outside 1/13/15/17/
-# the TOC-map generalization check) replaced by a same-size blank page rather than
-# removed. This preserves the pypdf page index of every kept page exactly as it is
-# in the original document — which matters because parse_toc() derives its
-# TOC-number -> pypdf-index offset from an anchor page's ACTUAL position (see its
-# docstring). Naively dropping/reordering pages would shift that position and
-# silently produce a wrong offset that still "works" (resolves to SOME page) but
-# points at the wrong content. See datasets/edb_indicators/parser.py's TOC section
-# comment for the offset derivation itself. If you add a 3rd/4th edition fixture,
-# rebuild it the same way (pypdf.PdfWriter, add_blank_page for anything before your
-# last needed page index, add_page for the rest) rather than slicing pages out.
+# down to 172/~70 pages, ~900KB/~265KB. Trimming is BLANK-IN-PLACE, not truncation: every
+# page from index 0 up to the last one we need (171 for edb_2024.pdf, to reach the
+# 24.*/25.* fixture pages below) is kept in the writer, with only the pages our parsers
+# don't touch (front matter, graphs, tables outside 1/13/15/17/24.*/25.*/the TOC-map
+# generalization check) replaced by a same-size blank page rather than removed. This
+# preserves the pypdf page index of every kept page exactly as it is in the original
+# document — which matters because parse_toc() derives its TOC-number -> pypdf-index
+# offset from an anchor page's ACTUAL position (see its docstring). Naively
+# dropping/reordering pages would shift that position and silently produce a wrong
+# offset that still "works" (resolves to SOME page) but points at the wrong content.
+# See datasets/edb_indicators/parser.py's TOC section comment for the offset
+# derivation itself. If you add a 3rd/4th edition fixture, rebuild it the same way
+# (pypdf.PdfWriter, add_blank_page for anything before your last needed page index,
+# add_page for the rest) rather than slicing pages out.
 EDB_2024 = "edb_2024.pdf"  # 6 year columns (2019-2024) — the previously-working case
 EDB_2023 = "edb_2023.pdf"  # 5 year columns (2019-2023) — the edition that used to be silently skipped
+
+# 24.*/25.* fixture pages un-blanked in edb_2024.pdf (indices verified directly against
+# the live source PDF, not just transcribed): a short country with no "Other Products"
+# bucket (Albania), a large capped country with one (China), a large capped product with
+# an "Other Markets" bucket (Tea), and a capped-but-sparse product exercising "-" in
+# every column type (Green Tea).
+ALBANIA_PAGE = 66  # Table 24.01, unit = Thousands, Total row numbered "26 Total :"
+CHINA_PAGE = 81  # Table 24.16, unit = Millions, Total row unnumbered "Total :"
+TEA_PAGE = 167  # Table 25.01, header "No Market" (25.* rows are markets, not products)
+GREEN_TEA_PAGE = 171  # Table 25.05
 
 
 def test_toc_resolves_required_tables():
@@ -212,3 +230,161 @@ def test_parse_pdf_merges_tables_additively():
     assert result["table13"]["total"]["values"]["2024"] == 12771.63
     assert result["table15"]["sectors"][0]["by_band"]["total"]["exporters"] == 4335
     assert result["table17"]["grand_total"] == 18289
+
+
+# --- Table 24.*/25.*: Exports by Market x Product -----------------------------------
+
+
+def _pages(edition=EDB_2024):
+    return PdfReader(io.BytesIO((FIXTURES / edition).read_bytes())).pages
+
+
+def test_entity_page_albania_numbered_total_and_thousands_unit():
+    # Ground truth: Albania (24.01) is a short, uncapped list — no "Other Products"
+    # bucket — and its "Total :" row continues the row numbering ("26 Total :").
+    # Unit is already USD Thousands, so values must come through unscaled.
+    page = _parse_entity_page(_pages(), ALBANIA_PAGE, "Product", table_id="24.01")
+    assert page["entity"] == "ALBANIA"
+    assert page["years"] == [2020, 2021, 2022, 2023, 2024]
+    assert page["unit"] == "USD Thousands"
+    assert page["other"] is None
+    assert page["total"] == {
+        "no": 26,
+        "name": "Total",
+        "values_usd": {"2020": 6723.42, "2021": 8004.99, "2022": 6356.35, "2023": 5466.47, "2024": 9235.89},
+        "share_pct": 100.0,
+        "avg_growth_pct": 2.54,
+    }
+    assert page["merchandise_share_pct"] == {"2020": 0.067, "2021": 0.064, "2022": 0.048, "2023": 0.046, "2024": 0.072}
+    by_no = {r["no"]: r for r in page["rows"]}
+    assert by_no[1]["name"] == "Tea Packets"
+    assert by_no[1]["values_usd"]["2024"] == 6433.87
+    # row 6's name ("Coco Peat, Fiber Pith & Moulded products") wraps its row number
+    # onto its own line in the source text — must still resolve to row 6, not get lost.
+    assert by_no[6]["name"] == "Coco Peat, Fiber Pith & Moulded products"
+    assert by_no[6]["values_usd"]["2022"] == 10.0
+    # row 12 ("Petroleum Oils") is missing one of its 7 expected value tokens in the
+    # source itself (a genuine artifact, verified directly against the live PDF) —
+    # unrecoverable, must be skipped rather than corrupting every row after it.
+    assert 12 not in by_no
+    assert by_no[13]["name"] == "Miscellaneous Edible Preparations"  # the row right after the dropped one
+
+
+def test_entity_page_china_unnumbered_total_and_other_bucket_and_millions_unit():
+    # Ground truth: China (24.16) is a capped 40-row list with an "Other Products"
+    # catch-all, and its "Total :" row is NOT numbered (unlike Albania's). Unit is
+    # Millions and must be normalized to Thousands (x1000) in the output.
+    page = _parse_entity_page(_pages(), CHINA_PAGE, "Product", table_id="24.16")
+    assert page["entity"] == "CHINA"
+    assert page["unit"] == "USD Thousands"
+    assert len(page["rows"]) == 40
+    assert page["total"]["no"] is None
+    assert page["total"]["values_usd"]["2024"] == 251910.0  # 251.91 Mn -> 251910.0 Th
+    assert page["other"] is not None
+    assert page["other"]["name"] == "Other Products"
+    assert page["other"]["values_usd"] == {
+        "2020": 20760.0,
+        "2021": 35170.0,
+        "2022": 19110.0,
+        "2023": 29150.0,
+        "2024": 14240.0,
+    }
+    assert page["other"]["share_pct"] == 5.65
+    assert page["other"]["avg_growth_pct"] == -9.42
+    # row 35's name wraps across 3 lines in the source (number attached to line 1 this
+    # time, unlike Albania's row 6/17) — must still join into one clean name.
+    by_no = {r["no"]: r for r in page["rows"]}
+    assert by_no[35]["name"] == "Made-up Textile Articles (Blankets, Rugs, Linen, Curtains etc)"
+    assert by_no[35]["values_usd"]["2024"] == 1080.0  # 1.08 Mn -> 1080.0 Th
+
+
+def test_entity_page_tea_other_markets_bucket_and_market_header():
+    # Ground truth: Tea (25.01) is a product page, so its rows are destination markets
+    # ("No Market" header, not "No Product") and its own entity caption is "Product :".
+    page = _parse_entity_page(_pages(), TEA_PAGE, "Market", table_id="25.01")
+    assert page["entity"] == "TEA (Tea Packets, Tea Bags, Tea in Bulk, Instant Tea & Green Tea etc.)"
+    assert page["other"]["name"] == "Other Markets"
+    assert page["other"]["values_usd"]["2024"] == 94680.0  # 94.68 Mn -> 94680.0 Th
+    assert page["total"]["values_usd"]["2024"] == 1435860.0  # 1435.86 Mn -> 1435860.0 Th
+    by_no = {r["no"]: r for r in page["rows"]}
+    assert by_no[1]["name"] == "Iraq"
+    assert by_no[1]["values_usd"]["2024"] == 151560.0  # 151.56 Mn -> 151560.0 Th
+
+
+def test_entity_page_green_tea_dash_sentinel_semantics():
+    # Ground truth: Green Tea (25.05) is capped-but-sparse — good coverage of the "-"
+    # sentinel in every column type. Per the source's own footnote, "-" means zero in a
+    # value/share column but "insignificant/not computable" (-> None) in % Avg. Growth.
+    page = _parse_entity_page(_pages(), GREEN_TEA_PAGE, "Market", table_id="25.05")
+    by_name = {r["name"]: r for r in page["rows"]}
+
+    # Albania (row 8): "- - - - 0.10 1.76 -" — leading years are real zeros, growth "-" is null.
+    albania = by_name["Albania"]
+    assert albania["no"] == 8
+    assert albania["values_usd"] == {"2020": 0.0, "2021": 0.0, "2022": 0.0, "2023": 0.0, "2024": 100.0}
+    assert albania["share_pct"] == 1.76
+    assert albania["avg_growth_pct"] is None
+
+    # India (row 34): "- 0.01 - - - - -" — share "-" is a real zero, growth "-" is null.
+    india = by_name["India"]
+    assert india["no"] == 34
+    assert india["values_usd"] == {"2020": 0.0, "2021": 10.0, "2022": 0.0, "2023": 0.0, "2024": 0.0}
+    assert india["share_pct"] == 0.0
+    assert india["avg_growth_pct"] is None
+
+    # Kuwait (row 40): "- - - - - - -9.31" — every value/share is a real zero, but growth
+    # is an ACTUAL negative number, not a dash — must not be nulled out like the others.
+    kuwait = by_name["Kuwait"]
+    assert kuwait["no"] == 40
+    assert kuwait["values_usd"] == {"2020": 0.0, "2021": 0.0, "2022": 0.0, "2023": 0.0, "2024": 0.0}
+    assert kuwait["share_pct"] == 0.0
+    assert kuwait["avg_growth_pct"] == -9.31
+
+
+def test_entity_page_rejects_row_label_mismatch():
+    # A 24.* page's rows are labeled "Product" (goods sold to that country) — passing
+    # "Market" (the 25.* shape) against it must fail loudly, not silently misparse.
+    with pytest.raises(ValueError):
+        _parse_entity_page(_pages(), ALBANIA_PAGE, "Market")
+
+
+def test_parse_countries_finds_albania_and_china():
+    toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
+    result = parse_countries((FIXTURES / EDB_2024).read_bytes(), toc=toc)
+    assert result["ALBANIA"]["total"]["values_usd"]["2024"] == 9235.89
+    assert result["CHINA"]["total"]["values_usd"]["2024"] == 251910.0
+
+
+def test_parse_countries_blank_pages_do_not_crash_the_batch():
+    # The fixture keeps ~98 of the ~100 TOC-listed 24.* pages blank (only Albania and
+    # China are un-blanked) — one bad/blank page must never lose the other good ones.
+    toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
+    result = parse_countries((FIXTURES / EDB_2024).read_bytes(), toc=toc)
+    assert "ALBANIA" in result and "CHINA" in result
+    assert "_errors" in result
+    assert len(result["_errors"]) > 50  # the still-blank pages, contained rather than fatal
+    assert "24.02" in result["_errors"]  # a specific known-blank page
+
+
+def test_parse_products_finds_tea_and_green_tea():
+    toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
+    result = parse_products((FIXTURES / EDB_2024).read_bytes(), toc=toc)
+    tea = result["TEA (Tea Packets, Tea Bags, Tea in Bulk, Instant Tea & Green Tea etc.)"]
+    assert tea["total"]["values_usd"]["2024"] == 1435860.0
+    assert result["GREEN TEA"]["total"]["values_usd"]["2024"] == 5690.0
+
+
+def test_parse_products_blank_pages_do_not_crash_the_batch():
+    toc = parse_toc((FIXTURES / EDB_2024).read_bytes())
+    result = parse_products((FIXTURES / EDB_2024).read_bytes(), toc=toc)
+    assert "GREEN TEA" in result
+    assert "_errors" in result  # the fixture's other 25.* pages in this TOC range are still blank
+
+
+def test_parse_pdf_merges_countries_and_products_additively():
+    result = parse_pdf((FIXTURES / EDB_2024).read_bytes())
+    assert "_countries_error" not in result, result.get("_countries_error")
+    assert "_products_error" not in result, result.get("_products_error")
+    assert result["total_usd_mn"] == [15828, 12335, 14429, 14995, 15106, 16344]  # core contract still intact
+    assert result["countries"]["ALBANIA"]["total"]["values_usd"]["2024"] == 9235.89
+    assert result["products"]["GREEN TEA"]["total"]["values_usd"]["2024"] == 5690.0
