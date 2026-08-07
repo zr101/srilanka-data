@@ -70,6 +70,15 @@ def _sltda(clean: dict) -> list[str]:
         share_sum = sum(r.get("share_pct", 0) for r in top10)
         if share_sum and not 40 <= share_sum <= 101:
             errors.append(f"top-10 share sum {share_sum} implausible")
+        other = sum(r["arrivals"] for r in top10)
+        if other > headline:
+            errors.append("top-10 arrivals exceed monthly headline")
+    daily = clean.get("daily", [])
+    if daily:
+        if any(d["arrivals"] <= 0 or d["arrivals"] > 25000 for d in daily):
+            errors.append("daily arrival outside plausible band")
+        if clean.get("daily_complete") and abs(clean.get("daily_sum", 0) - (headline or 0)) > 2:
+            errors.append("daily_complete but sum != headline")
     return errors
 
 
