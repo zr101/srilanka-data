@@ -23,6 +23,8 @@ jobs:
           - wer
           - sltda_arrivals
           - edb_indicators
+          - cbsl_weekly
+          - forbes_tea
     concurrency:
       group: pipeline-${{ matrix.dataset }}
       cancel-in-progress: false
