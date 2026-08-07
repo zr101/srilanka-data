@@ -124,4 +124,87 @@ def parse_pdf(payload: bytes) -> dict:
             expected = total_row[disease]["week"]
             if expected is not None and col_sum != expected:
                 raise ValueError(f"WER checksum failed for {disease}: Σdistricts={col_sum} != total={expected}")
-    return {"districts": districts, "total": total_row}
+    # p4 Table 2 (vaccine-preventable diseases) + malaria line
+    vpd, malaria = [], None
+    try:
+        from pypdf import PdfReader as _PR
+        pages = _PR(io.BytesIO(payload)).pages
+        for page in pages:
+            t = page.extract_text() or ""
+            if "Vaccine Preventable" in t:
+                vpd, malaria = parse_table2(t)
+                break
+    except Exception:
+        pass  # Table 2 is additive; the district table remains the core contract
+    return {"districts": districts, "total": total_row, "vaccine_preventable": vpd, "malaria_cases_month": malaria}
+
+
+# --- p4 Table 2: Selected Vaccine Preventable Diseases & AFP ---
+
+VPD_NAMES = [
+    "AFP", "Diphtheria", "Mumps", "Measles", "Rubella", "CRS", "Tetanus",
+    "Neonatal Tetanus", "Japanese Encephalitis", "Whooping Cough", "Tuberculosis",
+]
+_VPD_ROW = re.compile(r"^([A-Za-z ]+?)\d?\s+((?:\d{1,3}\s+){12}\d{1,3})\s*(-?[\d.]+)\s*%$")
+_NUMS_ONLY = re.compile(r"^((?:\d{1,3}\s+){12}\d{1,3})\s*(-?[\d.]+)\s*%$")
+_PCT_ONLY = re.compile(r"^(-?[\d.]+)\s*%$")
+
+PROVINCES = ["W", "C", "S", "N", "E", "NW", "NC", "U", "Sab"]
+
+
+def _vpd_record(name: str, nums: list[int], pct: float | None) -> dict:
+    return {
+        "disease": name,
+        "provinces": dict(zip(PROVINCES, nums[:9])),
+        "total_week": nums[9],
+        "same_week_last_year": nums[10],
+        "to_date": nums[11],
+        "to_date_last_year": nums[12],
+        "pct_difference": pct,
+    }
+
+
+def parse_table2(page_text: str) -> tuple[list[dict], int | None]:
+    lines = [l.strip() for l in page_text.split("\n") if l.strip()]
+    rows: list[dict] = []
+    pending_pct: float | None = None
+    for idx, line in enumerate(lines):
+        pm = _PCT_ONLY.match(line)
+        if pm:
+            pending_pct = float(pm.group(1))
+            continue
+        m = _VPD_ROW.match(line)
+        if m:
+            name = m.group(1).strip()
+            nums = [int(x) for x in m.group(2).split()]
+            rows.append(_vpd_record(name, nums, float(m.group(3))))
+            continue
+        # split rows: "Neonatal Tetanus2 <13 nums>" (pct came on the line above);
+        # values-only line adjacent to a "cephalitis" fragment = Japanese Encephalitis
+        nm = re.match(r"^([A-Za-z ]+?)\d?\s+((?:\d{1,3}\s+){12}\d{1,3})\s*$", line)
+        if nm:
+            rows.append(_vpd_record(nm.group(1).strip(), [int(x) for x in nm.group(2).split()], pending_pct))
+            pending_pct = None
+            continue
+        vm = _NUMS_ONLY.match(line)
+        if vm and idx + 1 < len(lines) and "cephalitis" in lines[idx + 1]:
+            rows.append(_vpd_record("Japanese Encephalitis", [int(x) for x in vm.group(1).split()], float(vm.group(2))))
+    # canonicalize split names (pypdf emits 'cephalitis3' fused with the value row)
+    for r in rows:
+        low = r["disease"].lower()
+        if "cephalitis" in low and "japanese" not in low:
+            r["disease"] = "Japanese Encephalitis"
+    malaria = None
+    mm = re.search(r"Malaria Cases[^,]*,\s*(?:\n\s*)?(\d+)", page_text)
+    if mm:
+        malaria = int(mm.group(1))
+    for r in rows:
+        if sum(r["provinces"].values()) != r["total_week"]:
+            raise ValueError(f"Table2 {r['disease']}: province sum != total_week")
+    return rows, malaria
+
+
+def rebuild(payload: bytes, _existing: dict) -> dict:
+    clean = dict(_existing)
+    clean.update(parse_pdf(payload))
+    return clean

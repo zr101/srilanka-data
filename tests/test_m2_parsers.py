@@ -111,3 +111,15 @@ def test_treasury_phase1():
     assert by_tenor[91]["way_pct"] == 9.77 and by_tenor[91]["accepted_rs_mn"] == 72807
     assert by_tenor[364]["isin"] == "LKA36427H063"
     assert result["totals"]["accepted_rs_mn"] == 140000
+
+
+def test_wer_table2():
+    from datasets.wer.parser import parse_pdf
+
+    clean = parse_pdf((FIXTURES / "wer_53_26.pdf").read_bytes())
+    vpd = {r["disease"]: r for r in clean["vaccine_preventable"]}
+    assert vpd["Measles"]["total_week"] == 5 and vpd["Measles"]["provinces"]["Sab"] == 5
+    assert vpd["Mumps"]["total_week"] == 2 and vpd["Mumps"]["pct_difference"] == -10
+    assert "Neonatal Tetanus" in vpd and "Japanese Encephalitis" in vpd
+    assert clean["malaria_cases_month"] == 9
+    assert clean["total"]["dengue"]["week"] == 5828
