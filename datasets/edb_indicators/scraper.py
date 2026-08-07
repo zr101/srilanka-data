@@ -7,7 +7,7 @@ from pipeline.doc import Doc
 from pipeline.http import get_pdf
 from pipeline.store import Store
 
-from .parser import find_table_text, parse_text
+from .parser import parse_pdf
 
 DATASET = "edb_indicators"
 URL_TEMPLATE = (
@@ -31,7 +31,7 @@ def run(_budget_seconds: float = 300) -> int:
             print(f"{year}: no edition (404)")
             continue
         try:
-            clean = {"report_year": year, **parse_text(find_table_text(payload))}
+            clean = {"report_year": year, **parse_pdf(payload)}
         except ValueError as err:
             # older editions vary in layout; the latest one is what matters
             print(f"{year}: parse failed, skipping ({err})")
