@@ -4,6 +4,7 @@ from datasets.edb_indicators.parser import (
     find_table_text,
     parse_pdf,
     parse_table13,
+    parse_table15,
     parse_table17,
     parse_text,
     parse_toc,
@@ -12,9 +13,9 @@ from datasets.edb_indicators.parser import (
 FIXTURES = Path(__file__).parent / "fixtures"
 
 # edb_2024.pdf / edb_2023.pdf are trimmed from the real ~340-page, ~3-22MB EDB ebooks
-# down to ~70 pages, ~200-600KB. Trimming is BLANK-IN-PLACE, not truncation: every
+# down to ~70 pages, ~200-680KB. Trimming is BLANK-IN-PLACE, not truncation: every
 # page from index 0 up to the last one we need (70) is kept in the writer, with only
-# the pages our parsers don't touch (front matter, graphs, tables outside 1/13/17/
+# the pages our parsers don't touch (front matter, graphs, tables outside 1/13/15/17/
 # the TOC-map generalization check) replaced by a same-size blank page rather than
 # removed. This preserves the pypdf page index of every kept page exactly as it is
 # in the original document — which matters because parse_toc() derives its
@@ -109,6 +110,56 @@ def test_table13_five_year_edition_dash_prefixed_subitems():
     assert result["total"]["values"]["2023"] == 11631.09
 
 
+def test_table15_total_exports_row_2024():
+    result = parse_table15((FIXTURES / EDB_2024).read_bytes())
+    assert result["bands"] == ["total", "over_100", "100_to_50", "50_to_35", "35_to_1", "1_to_0"]
+    assert len(result["sectors"]) == 11  # 10 sectors + Total Exports
+    total = next(s for s in result["sectors"] if s["sector"] == "Total Exports")
+    assert total["by_band"]["total"] == {"exporters": 4335, "turnover_usd_mn": 12023.93}
+    assert total["by_band"]["over_100"] == {"exporters": 17, "turnover_usd_mn": 3704.43}
+    assert total["by_band"]["100_to_50"] == {"exporters": 26, "turnover_usd_mn": 1608.38}
+    # "50 to >35" turnover is missing its thousands-comma in the source ("1472.37" not
+    # "1,472.37") — must still parse as 1472.37, not truncate/misparse.
+    assert total["by_band"]["50_to_35"] == {"exporters": 35, "turnover_usd_mn": 1472.37}
+    assert total["by_band"]["35_to_1"] == {"exporters": 749, "turnover_usd_mn": 4757.85}
+    assert total["by_band"]["1_to_0"] == {"exporters": 3508, "turnover_usd_mn": 480.89}
+
+
+def test_table15_dash_sentinel_means_zero_not_dropped_2024():
+    result = parse_table15((FIXTURES / EDB_2024).read_bytes())
+    by_sector = {s["sector"]: s for s in result["sectors"]}
+    # Coconut & Coconut Based Products has "- -" for the "Over 100" band in the source
+    # — zero exporters/turnover in that band, not missing data.
+    assert by_sector["Coconut & Coconut Based Products"]["by_band"]["over_100"] == {
+        "exporters": 0,
+        "turnover_usd_mn": 0.0,
+    }
+
+
+def test_table15_multiline_sector_labels_joined_2024():
+    result = parse_table15((FIXTURES / EDB_2024).read_bytes())
+    by_sector = {s["sector"]: s for s in result["sectors"]}
+    # These sector names wrap across 2-3 lines in the source PDF text extraction;
+    # must join into a single clean label, not arrive fragmented.
+    assert "Rubber & Rubber Based Products" in by_sector
+    assert by_sector["Rubber & Rubber Based Products"]["by_band"]["total"] == {
+        "exporters": 280,
+        "turnover_usd_mn": 1001.54,
+    }
+    assert "Diamonds, Gems & Jewellery" in by_sector
+    assert by_sector["Diamonds, Gems & Jewellery"]["by_band"]["over_100"] == {
+        "exporters": 1,
+        "turnover_usd_mn": 131.05,
+    }
+    assert "Coconut & Coconut Based Products" in by_sector
+    assert "Electrical & Electronic Components" in by_sector
+    assert "Food & Beverages" in by_sector
+    assert "Spices & Concentrates" in by_sector
+    # "Plasitc" is a typo in the source document itself — preserved verbatim, not
+    # silently corrected to "Plastic".
+    assert "Chemical & Plasitc Products" in by_sector
+
+
 def test_table17_exact_line_items_and_totals_2024():
     result = parse_table17((FIXTURES / EDB_2024).read_bytes())
     assert result["goods"]["Apparel & Textiles"] == 5282
@@ -133,6 +184,8 @@ def test_parse_pdf_merges_tables_additively():
     result = parse_pdf((FIXTURES / EDB_2024).read_bytes())
     assert result["total_usd_mn"] == [15828, 12335, 14429, 14995, 15106, 16344]  # core contract intact
     assert "_table13_error" not in result, result.get("_table13_error")
+    assert "_table15_error" not in result, result.get("_table15_error")
     assert "_table17_error" not in result, result.get("_table17_error")
     assert result["table13"]["total"]["values"]["2024"] == 12771.63
+    assert result["table15"]["sectors"][0]["by_band"]["total"]["exporters"] == 4335
     assert result["table17"]["grand_total"] == 18289

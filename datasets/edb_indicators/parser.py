@@ -10,7 +10,7 @@ numbering; that numbering is offset from the actual pypdf page index by a consta
 that drifts per edition (front-matter length varies), so the offset is derived from
 an anchor page (Table 1's own page, found by substring search) rather than assumed.
 
-Table 13/17 extraction is additive (try/except in parse_pdf) — a failure there must
+Table 13/15/17 extraction is additive (try/except in parse_pdf) — a failure there must
 never cost Table 1's core contract.
 """
 
@@ -76,8 +76,8 @@ ANCHOR_SCAN_PAGES = 50  # Table 1 has always been seen well within the first ~15
 def parse_toc(payload: bytes) -> dict[str, int]:
     """table-number string (verbatim as printed in the TOC, e.g. "21.01" not "21.1")
     -> 0-indexed pypdf page position. Expensive (~0.5s: an up-to-20-page TOC scan plus
-    an up-to-50-page anchor scan) — callers that also need Table 13/17 etc. should
-    compute this once and pass it in (see parse_table13/parse_table17's `toc` param)
+    an up-to-50-page anchor scan) — callers that also need Table 13/15/17 etc. should
+    compute this once and pass it in (see parse_table13/parse_table15/parse_table17's `toc` param)
     rather than each re-deriving it from raw bytes."""
     pages = PdfReader(io.BytesIO(payload)).pages
 
@@ -262,6 +262,83 @@ def parse_table13(payload: bytes, toc: dict[str, int] | None = None) -> dict:
     return {"years": years, "rows": rows, "total": total}
 
 
+# --- Table 15: Number of Exporters by Export Turnover -------------------------------
+#
+# Sector x turnover-band matrix, single page (found directly via TOC, like Table 17 —
+# no multi-page scan needed). The band/column labels are z-order-scrambled to near the
+# BOTTOM of the page's text stream (after the "Note :"/"Sources:" footer lines, nowhere
+# near the data rows) — and that label line's own layout ISN'T stable across editions:
+# the 2024 ed. has it as one line ("Total Over 100 100 to >50 50 to >35 35 to >1 1 to
+# >0"), while the 2023 ed. splits it across two lines in reversed order, interleaved
+# with the "Table - 15.1" caption. What IS stable is the underlying column order itself
+# — verified by checking the "Total Exports" row's figures land in the same band order
+# in both editions. So the band order is hardcoded here rather than parsed from that
+# unstable label line.
+TABLE15_BANDS = ["total", "over_100", "100_to_50", "50_to_35", "35_to_1", "1_to_0"]
+TABLE15_EXPECTED_ROWS = 11  # 10 sector rows + 1 "Total Exports" grand-total row
+
+_TABLE15_TOKEN_RE = re.compile(r"^-$|^\d[\d,]*(?:\.\d+)?$")  # a number (with or without thousands-commas) or the "-" sentinel
+
+
+def _table15_pair(exporters_tok: str, turnover_tok: str) -> dict:
+    # A lone "-" is a valid sentinel meaning zero exporters/turnover in that band (not
+    # missing data) — treated as 0, not null. Per the table's own footnote, a single
+    # exporter can be counted in multiple sector rows AND in the Total row, so sector
+    # "exporters" figures deliberately do NOT sum to the Total row's figure; no
+    # checksum is enforced here for that reason.
+    exporters = 0 if exporters_tok == "-" else int(exporters_tok.replace(",", ""))
+    turnover = 0.0 if turnover_tok == "-" else float(turnover_tok.replace(",", ""))
+    return {"exporters": exporters, "turnover_usd_mn": turnover}
+
+
+def _parse_table15_rows(lines: list[str]) -> list[dict]:
+    expected_tokens = 2 * len(TABLE15_BANDS)
+    rows: list[dict] = []
+    buffer: list[str] = []
+    for line in lines:
+        tokens = line.split()
+        split_at = next((i for i, t in enumerate(tokens) if _TABLE15_TOKEN_RE.match(t)), None)
+        if split_at is None:
+            buffer.append(line)  # sector label wraps onto its own line(s) before the values line
+            continue
+        # Preserved verbatim, including "Plasitc" (a genuine typo in the source document
+        # itself, e.g. "Chemical & Plasitc Products") — not silently corrected.
+        sector = " ".join(buffer + tokens[:split_at]).strip()
+        buffer = []
+        value_tokens = tokens[split_at:]
+        if len(value_tokens) != expected_tokens:
+            raise ValueError(f"EDB Table 15: row {sector!r} has {len(value_tokens)} value tokens, expected {expected_tokens}")
+        by_band = {band: _table15_pair(value_tokens[2 * i], value_tokens[2 * i + 1]) for i, band in enumerate(TABLE15_BANDS)}
+        rows.append({"sector": sector, "by_band": by_band})
+    return rows
+
+
+def parse_table15(payload: bytes, toc: dict[str, int] | None = None) -> dict:
+    if toc is None:  # callers that already have a toc (e.g. parse_pdf) should pass it in — see parse_toc's docstring
+        toc = parse_toc(payload)
+    page_idx = toc.get("15")
+    if page_idx is None:
+        raise ValueError("EDB TOC: table 15 page not found")
+
+    text = PdfReader(io.BytesIO(payload)).pages[page_idx].extract_text() or ""
+    if "NUMBER OF EXPORTERS BY EXPORT TURNOVER" not in text.upper():
+        raise ValueError("EDB Table 15 page did not contain expected caption")
+
+    lines = [line.strip() for line in text.split("\n") if line.strip()]
+    start = next((i for i, l in enumerate(lines) if l.startswith("Total Exports")), None)
+    if start is None:
+        raise ValueError("EDB Table 15: 'Total Exports' row not found")
+    end = next((i for i, l in enumerate(lines) if i > start and l.startswith("Note")), None)
+    if end is None:
+        raise ValueError("EDB Table 15: 'Note' terminator not found")
+
+    sectors = _parse_table15_rows(lines[start:end])
+    if len(sectors) != TABLE15_EXPECTED_ROWS:
+        raise ValueError(f"EDB Table 15: expected {TABLE15_EXPECTED_ROWS} rows (10 sectors + total), got {len(sectors)}")
+
+    return {"bands": TABLE15_BANDS, "sectors": sectors}
+
+
 # --- Table 17: Export Forecast -----------------------------------------------------
 #
 # Single page, two labelled groups (goods / services line items) each with their own
@@ -367,6 +444,10 @@ def parse_pdf(payload: bytes) -> dict:
         clean["table13"] = parse_table13(payload, toc=toc)
     except ValueError as err:
         clean["_table13_error"] = str(err)
+    try:
+        clean["table15"] = parse_table15(payload, toc=toc)
+    except ValueError as err:
+        clean["_table15_error"] = str(err)
     try:
         clean["table17"] = parse_table17(payload, toc=toc)
     except ValueError as err:
