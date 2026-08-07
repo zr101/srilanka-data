@@ -251,6 +251,47 @@ def test_price_indices_does_not_bleed_into_1_2_prices():
     assert set(price_indices["ncpi"]) == {"months", "headline", "core"}
 
 
+def test_price_indices_ncpi_scan_does_not_bleed_into_ccpi_block():
+    # Direct unit test on the pure function: if a future edition ever dropped an
+    # entire Core sub-block (not just its already-observed missing "Monthly
+    # Change %" row), NCPI's forward scan must be hard-clipped at CCPI's own
+    # caption line — not rely on "keep scanning until headline+core both seen"
+    # — otherwise it would run on into CCPI's own "...(CCPI) - Headline..." line
+    # (which also contains "- Headline") and silently overwrite NCPI's entry with
+    # CCPI's data instead of correctly coming back incomplete.
+    lines = [
+        "1.1 Price Indices",
+        "2025 2026",
+        "NCPI (2021=100)",
+        "June May June",
+        "National Consumer Price Index (NCPI) - Headline 208.7 218.8 222.3",
+        "Monthly Change % 0.6 1.2 1.6",
+        "Annual Average Change % (0.9) 2.4 2.9",
+        "Year-on-Year Change % 0.3 5.4 6.5",
+        # NCPI Core sub-block deliberately omitted entirely here.
+        "2025 2026",
+        "CCPI - Year-on-Year %",
+        "CCPI (2021=100)",
+        "July June July",
+        "Colombo Consumer Price Index (CCPI) - Headline 194.1 207.7 208.2",
+        "Monthly Change % (0.2) 2.1 0.2",
+        "Annual Average Change % (1.6) 2.7 3.3",
+        "Year-on-Year Change % (0.3) 6.8 7.3",
+        "Colombo Consumer Price Index (CCPI) - Core 180.8 187.3 188.8",
+        "Annual Average Change % 1.9 2.6 2.9",
+        "Year-on-Year Change % 1.6 4.0 4.4",
+        "Source: Department of Census and Statistics",
+        "1.2 Prices",
+    ]
+    result = wp._parse_price_indices(lines)
+    # NCPI is genuinely incomplete (no Core) — must come back missing, not silently
+    # backfilled with CCPI's Headline/Core mislabeled as its own.
+    assert "ncpi" not in result
+    # CCPI must still parse correctly and untouched by NCPI's failed scan.
+    assert result["ccpi"]["headline"]["index"] == {"year_ago": 194.1, "month_ago": 207.7, "latest": 208.2}
+    assert result["ccpi"]["core"]["index"] == {"year_ago": 180.8, "month_ago": 187.3, "latest": 188.8}
+
+
 def test_parse_pdf_falls_back_to_tables_on_mid_month_edition():
     # Ground truth: wei_20260724.pdf is a mid-month edition that lacks the
     # reserves/exports prose paragraphs entirely (root cause the plan called out —

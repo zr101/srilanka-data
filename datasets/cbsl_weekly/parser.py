@@ -1,8 +1,9 @@
 """CBSL Weekly Economic Indicators: the tables are z-scrambled but the
 first-page prose highlights carry the headline numbers in stable phrasing.
 parse_tables() additionally extracts the reserves/external-trade/trade-indices/
-commodity-prices tables directly, caption-anchored, for editions where the prose
-paragraphs are thin or absent (see parse_pdf's mid-month fallback)."""
+price-indices/commodity-prices tables directly, caption-anchored, for editions
+where the prose paragraphs are thin or absent (see parse_pdf's mid-month
+fallback)."""
 
 import io
 import re
@@ -357,9 +358,31 @@ def _price_triplet(nums: list[str]) -> dict[str, float] | None:
     return {"year_ago": year_ago, "month_ago": month_ago, "latest": latest}
 
 
-def _parse_price_currency(window: list[str], caption_re: re.Pattern) -> dict | None:
-    cap_idx = next((i for i, l in enumerate(window) if caption_re.match(l.strip())), None)
-    if cap_idx is None or cap_idx + 1 >= len(window):
+def _entity_row(line: str) -> tuple[str, dict] | None:
+    """Match a Headline/Core index-level row, e.g. "National Consumer Price
+    Index (NCPI) - Headline 208.7 218.8 222.3". The label (text before the
+    first number) is compared with .endswith(), matching this file's
+    exact-comparison convention for row labels (e.g. _parse_trade_indices's
+    `l.strip() == label`) rather than a loose "in" substring check."""
+    matches = list(NUM_TOKEN.finditer(line))
+    triplet = _price_triplet([m.group() for m in matches])
+    if not triplet:
+        return None
+    label = line[: matches[0].start()].strip()
+    if label.endswith("- Headline"):
+        return "headline", triplet
+    if label.endswith("- Core"):
+        return "core", triplet
+    return None
+
+
+def _parse_price_currency(window: list[str], cap_idx: int, end_idx: int) -> dict | None:
+    """Parse one currency's (NCPI's or CCPI's) block. `end_idx` is a hard clip —
+    the sibling currency's own caption line index, or len(window) for whichever
+    block comes last — mirroring _parse_reserves's next_caption_idx clip so a
+    hypothetical edition missing an entire Core sub-block can't have its scan
+    run on into the sibling block's Headline row instead."""
+    if cap_idx + 1 >= end_idx:
         return None
 
     # The "YYYY YYYY" year line isn't always immediately above the caption (CCPI's
@@ -386,13 +409,11 @@ def _parse_price_currency(window: list[str], caption_re: re.Pattern) -> dict | N
 
     entities: dict[str, dict] = {}
     current_key = None
-    for line in window[cap_idx + 2 :]:
+    for line in window[cap_idx + 2 : end_idx]:  # hard-clipped at the sibling caption (or window end)
         stripped = line.strip()
-        if "- Headline" in stripped or "- Core" in stripped:
-            triplet = _price_triplet(NUM_TOKEN.findall(stripped))
-            if not triplet:
-                break
-            current_key = "headline" if "- Headline" in stripped else "core"
+        entity_row = _entity_row(stripped)
+        if entity_row:
+            current_key, triplet = entity_row
             entities[current_key] = {"index": triplet}
             continue
         if current_key is None:
@@ -400,7 +421,7 @@ def _parse_price_currency(window: list[str], caption_re: re.Pattern) -> dict | N
         label_key = next((key for key, label in _PRICE_METRIC_LABELS if stripped.startswith(label)), None)
         if label_key is None:
             if "headline" in entities and "core" in entities:
-                break  # ran into the next block/caption — done with this currency
+                break  # fallback early-exit only — the end_idx clip above is the real guard
             continue
         triplet = _price_triplet(NUM_TOKEN.findall(stripped))
         if triplet:
@@ -421,13 +442,23 @@ def _parse_price_indices(lines: list[str]) -> dict | None:
     )
     window = lines[start_idx : min(stop_idx, start_idx + PRICE_INDICES_WINDOW)]
 
+    ncpi_cap = next((i for i, l in enumerate(window) if NCPI_CAPTION_RE.match(l.strip())), None)
+    ccpi_cap = next((i for i, l in enumerate(window) if CCPI_CAPTION_RE.match(l.strip())), None)
+
     out: dict = {}
-    ncpi = _parse_price_currency(window, NCPI_CAPTION_RE)
-    if ncpi:
-        out["ncpi"] = ncpi
-    ccpi = _parse_price_currency(window, CCPI_CAPTION_RE)
-    if ccpi:
-        out["ccpi"] = ccpi
+    if ncpi_cap is not None:
+        # NCPI's window is clipped at CCPI's own caption line (see _parse_price_currency's
+        # docstring) — falls back to the window end if CCPI's caption wasn't found at all.
+        ncpi_end = ccpi_cap if ccpi_cap is not None and ccpi_cap > ncpi_cap else len(window)
+        ncpi = _parse_price_currency(window, ncpi_cap, ncpi_end)
+        if ncpi:
+            out["ncpi"] = ncpi
+    if ccpi_cap is not None:
+        # CCPI is always the last block in this table, already bounded by the
+        # outer window's own clip at "1.2 Prices".
+        ccpi = _parse_price_currency(window, ccpi_cap, len(window))
+        if ccpi:
+            out["ccpi"] = ccpi
     return out or None
 
 
