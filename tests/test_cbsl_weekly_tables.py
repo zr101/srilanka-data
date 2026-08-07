@@ -1,8 +1,11 @@
+import io
 from pathlib import Path
 
 import pytest
+from pypdf import PdfWriter
 
-from datasets.cbsl_weekly.parser import _validate_trade_identity, parse_pdf, parse_tables
+from datasets.cbsl_weekly import parser as wp
+from datasets.cbsl_weekly.parser import _parse_reserves, _validate_trade_identity, parse_pdf, parse_tables
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -76,6 +79,79 @@ def test_trade_balance_identity_raises_on_broken_data():
     }
     with pytest.raises(ValueError, match="trade balance identity failed"):
         _validate_trade_identity(broken)
+
+
+def test_reserves_window_clipped_at_next_caption():
+    # Direct unit test on the pure function: a field missing from the nearer
+    # (June) block must come back missing, never silently backfilled from the
+    # farther (May) block just because the fixed-size window used to overreach
+    # into it. Real editions could plausibly omit a zero row like this.
+    lines = [
+        "4.3 Official Reserve Assets as at end June 2026 (USD Mn)",
+        "Official Reserve Assets(b) 6,450",
+        "Foreign Currency Reserves 6,254",
+        "Reserve position in the IMF 4",
+        "SDRs 1",
+        "Gold 191",
+        # June block deliberately omits "Other Reserve Assets" here.
+        "4.4 International Reserves & Foreign Currency Liquidity as at end May 2026(a)",
+        "(USD Mn)",
+        "Official Reserve Assets(b) 6,881",
+        "Foreign Currency Reserves 6,661",
+        "Reserve position in the IMF 4",
+        "SDRs 1",
+        "Gold 216",
+        "Other Reserve Assets 0",
+    ]
+    blocks = {b["as_of"]: b for b in _parse_reserves(lines)}
+    assert "other_reserve_assets_usd_mn" not in blocks["June 2026"]
+    assert blocks["May 2026"]["other_reserve_assets_usd_mn"] == 0
+    # sanity: fields both blocks do have still resolve to their own, distinct values
+    assert blocks["June 2026"]["gold_usd_mn"] == 191
+    assert blocks["May 2026"]["gold_usd_mn"] == 216
+
+
+def test_trade_group_failure_does_not_wipe_out_other_groups(monkeypatch):
+    # A trade-identity failure must only cost the trade group — reserves/trade_indices/
+    # commodity_prices that already parsed fine earlier in the same parse_tables()
+    # call must survive, and parse_pdf must not regress to its old unconditional
+    # raise on a mid-month (no-prose) edition just because trade specifically broke.
+    real_parse_trade = wp._parse_trade
+
+    def broken_parse_trade(lines):
+        trade = real_parse_trade(lines)
+        if trade:
+            trade = dict(trade)
+            trade["trade_balance"] = {
+                "usd_mn": {**trade["trade_balance"]["usd_mn"], "2026": -1234.0},  # deliberately wrong
+                "rs_mn": trade["trade_balance"]["rs_mn"],
+            }
+        return trade
+
+    monkeypatch.setattr(wp, "_parse_trade", broken_parse_trade)
+
+    tables = wp.parse_tables((FIXTURES / TWO_TABLE_EDITION).read_bytes())
+    assert "trade" not in tables
+    assert "trade balance identity failed" in tables["_group_errors"]["trade"]
+    assert tables["reserves"]
+    assert tables["trade_indices"]
+    assert tables["commodity_prices"]
+
+    result = wp.parse_pdf((FIXTURES / TWO_TABLE_EDITION).read_bytes())
+    assert "_tables_error" not in result, result.get("_tables_error")
+    assert result["tables"]["reserves"]  # did not fall back to the old unconditional raise
+
+
+def test_parse_tables_raises_cleanly_on_blank_pdf():
+    # Regression guard: a structurally valid but content-free PDF must still raise
+    # (not silently return {}) so a future refactor can't reintroduce an
+    # "empty results pass through" bug with nothing to catch it.
+    writer = PdfWriter()
+    writer.add_blank_page(width=200, height=200)
+    buf = io.BytesIO()
+    writer.write(buf)
+    with pytest.raises(ValueError, match="no tables recognized"):
+        parse_tables(buf.getvalue())
 
 
 def test_trade_indices():

@@ -1,5 +1,8 @@
 """CBSL Weekly Economic Indicators: the tables are z-scrambled but the
-first-page prose highlights carry the headline numbers in stable phrasing."""
+first-page prose highlights carry the headline numbers in stable phrasing.
+parse_tables() additionally extracts the reserves/external-trade/trade-indices/
+commodity-prices tables directly, caption-anchored, for editions where the prose
+paragraphs are thin or absent (see parse_pdf's mid-month fallback)."""
 
 import io
 import re
@@ -113,11 +116,17 @@ def _parse_reserves(lines: list[str]) -> list[dict]:
             captions.append((i, m.group(1)))
 
     blocks = []
-    for line_idx, as_of in captions:
+    for pos, (line_idx, as_of) in enumerate(captions):
         # Window starts AT this caption's own line, so an earlier block's rows
         # (e.g. the quick table's "Official Reserve Assets 6,450") are structurally
         # excluded from a later block's (the detailed table's "...6,881") window.
-        window = "\n".join(lines[line_idx : line_idx + RESERVE_BLOCK_WINDOW])
+        # It must also be CLIPPED at the next caption's line — otherwise a field
+        # missing from this block (e.g. a hypothetical edition that omits a zero
+        # "Other Reserve Assets" row) would silently fall through to the same
+        # field in the *next* block instead of coming back missing.
+        next_caption_idx = captions[pos + 1][0] if pos + 1 < len(captions) else len(lines)
+        window_end = min(line_idx + RESERVE_BLOCK_WINDOW, next_caption_idx, len(lines))
+        window = "\n".join(lines[line_idx:window_end])
         block = {"as_of": as_of}
         for key, pattern in RESERVE_FIELDS:
             m = pattern.search(window)
@@ -326,13 +335,25 @@ def parse_tables(payload: bytes) -> dict:
 
     trade = _parse_trade(lines)
     if trade:
-        _validate_trade_identity(trade)  # raises on mismatch — a genuine parse error, not a data anomaly
-        out["trade"] = trade
+        # Validation failure here is a genuine parse error, not a data anomaly — but
+        # it must only cost the trade group, not unwind reserves/trade_indices/
+        # commodity_prices that already parsed fine earlier in this same call (that
+        # would otherwise defeat the mid-month fallback: a broken trade parse on a
+        # no-prose edition would silently discard the reserves data that IS good).
+        try:
+            _validate_trade_identity(trade)
+            out["trade"] = trade
+        except ValueError as err:
+            out.setdefault("_group_errors", {})["trade"] = str(err)
 
     trade_indices = _parse_trade_indices(lines)
     if trade_indices:
         out["trade_indices"] = trade_indices
 
+    # Unlike its siblings, _parse_commodities takes the raw `text` rather than
+    # `lines` — its rows can appear before the caption in the extracted stream, so
+    # it searches the whole text directly instead of windowing forward (see its
+    # docstring comment above).
     commodity_prices = _parse_commodities(text)
     if commodity_prices:
         out["commodity_prices"] = commodity_prices
