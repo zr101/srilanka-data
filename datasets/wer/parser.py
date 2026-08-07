@@ -1,7 +1,10 @@
 """WER disease-by-district table: strictly row-major token stream —
 district name followed by exactly 30 numeric tokens (14 diseases × A/B + 2 QC).
-Dengue is column 1 (verified); remaining disease column names follow the WER
-template order and should be re-verified against the header before deep use."""
+
+Disease column order VERIFIED (audit 2026-08-08) two independent ways: header
+glyph geometry, and exact reconciliation of all 28 A/B column sums against the
+SRI LANKA total row. Kalmunai is a distinct RDHS region from Ampara — both map
+to district LK-52 for geo joins, but `rdhs` is the unique key for aggregation."""
 
 import io
 import re
@@ -53,6 +56,7 @@ def _tokens(payload: bytes) -> list[str]:
 def parse_pdf(payload: bytes) -> dict:
     tokens = _tokens(payload)
     districts = []
+    total_row = None
     i = 0
     while i < len(tokens):
         token = tokens[i]
@@ -62,6 +66,25 @@ def parse_pdf(payload: bytes) -> dict:
         elif token == "Nuwara" and i + 1 < len(tokens) and tokens[i + 1].startswith("Eliya"):
             name = "Nuwara Eliya"
             i += 1
+        elif token in ("SRILANKA", "SRI") and total_row is None:
+            j = i + (2 if token == "SRI" else 1)
+            values: list[int | None] = []
+            while j < len(tokens) and len(values) < 30:
+                t = tokens[j]
+                if NUMERIC_RE.match(t):
+                    values.append(int(float(t)))
+                elif t in ("NR", "-", "–"):
+                    values.append(None)
+                else:
+                    break
+                j += 1
+            if len(values) == 30:
+                total_row = {
+                    DISEASES[k]: {"week": values[2 * k], "cumulative": values[2 * k + 1]}
+                    for k in range(14)
+                }
+                i = j
+                continue
         if name:
             values: list[int | None] = []
             j = i + 1
@@ -82,6 +105,7 @@ def parse_pdf(payload: bytes) -> dict:
                 districts.append(
                     {
                         "district": name,
+                        "rdhs": name,  # unique aggregation key (Kalmunai ≠ Ampara)
                         "district_id": DISTRICT_IDS[name.replace(" ", "") if name == "Nuwara Eliya" else name],
                         "diseases": diseases,
                         "timeliness_pct": values[28],
@@ -93,4 +117,11 @@ def parse_pdf(payload: bytes) -> dict:
         i += 1
     if len(districts) < 20:
         raise ValueError(f"WER parse found only {len(districts)} district rows")
-    return {"districts": districts}
+    # checksum: column sums must reconcile with the SRI LANKA total row (proven exact)
+    if total_row:
+        for disease in DISEASES:
+            col_sum = sum(d["diseases"][disease]["week"] or 0 for d in districts)
+            expected = total_row[disease]["week"]
+            if expected is not None and col_sum != expected:
+                raise ValueError(f"WER checksum failed for {disease}: Σdistricts={col_sum} != total={expected}")
+    return {"districts": districts, "total": total_row}

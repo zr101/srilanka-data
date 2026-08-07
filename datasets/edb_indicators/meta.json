@@ -1,0 +1,26 @@
+{
+  "title": "EDB Export Performance Indicators",
+  "source_url": "https://www.srilankabusiness.com/ebooks/export-performance-indicators-of-sri-lanka-YYYY.pdf",
+  "provider": "Export Development Board",
+  "cadence": "annual",
+  "method": {
+    "library": "pypdf",
+    "technique": "totals-table page location + line regex; dynamic year-header detection",
+    "preprocessing": "none"
+  },
+  "fields": [
+    {
+      "name": "total/merchandise/services_usd_mn",
+      "unit": "USD mn x 6 years"
+    }
+  ],
+  "limitations": [
+    "2023 edition layout differs (iLovePDF re-save) - skipped",
+    "deep tables (sector/country/product) extraction pending"
+  ],
+  "fallback": {
+    "plan_b": "customs wp-json monthly; CBSL WEI trade tables",
+    "trigger": "totals page not found"
+  },
+  "parser_version": "1"
+}

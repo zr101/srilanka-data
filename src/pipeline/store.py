@@ -4,11 +4,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .doc import Doc
+from .validate import validate
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 # Data lives in a sibling checkout of the dataset's data branch (nuuuwan's
 # pattern): locally ../srilanka-data_data, in CI an actions/checkout of
 # data_<dataset> into that path.
-DEFAULT_DATA_ROOT = Path(__file__).resolve().parents[2].parent / "srilanka-data_data"
+DEFAULT_DATA_ROOT = REPO_ROOT.parent / "srilanka-data_data"
 
 
 class Store:
@@ -26,7 +29,17 @@ class Store:
         return (self.doc_dir(doc) / "doc.json").exists()
 
     def write_doc(self, doc: Doc, original: bytes, original_name: str, clean: dict) -> Path:
-        """Layered write: raw payload + doc.json metadata + clean parsed data."""
+        """Layered write: raw payload + doc.json metadata + clean parsed data.
+        Validation failures quarantine the doc (never published to latest.json)
+        and raise, which fails the CI job → the failure-alert issue fires."""
+        errors = validate(doc.dataset, clean)
+        if errors:
+            q = self.root / "quarantine" / doc.dataset / doc.doc_id
+            q.mkdir(parents=True, exist_ok=True)
+            (q / original_name).write_bytes(original)
+            (q / "clean.json").write_text(json.dumps(clean, indent=2, ensure_ascii=False))
+            (q / "errors.json").write_text(json.dumps(errors, indent=2))
+            raise ValueError(f"{doc.dataset}/{doc.doc_id} quarantined: {errors}")
         d = self.doc_dir(doc)
         d.mkdir(parents=True, exist_ok=True)
         (d / original_name).write_bytes(original)
@@ -64,6 +77,24 @@ class Store:
                 ensure_ascii=False,
             )
         )
+        # publish per-dataset metadata (backend documentation) alongside the data
+        meta_src = REPO_ROOT / "datasets" / dataset / "meta.json"
+        if meta_src.exists():
+            meta = json.loads(meta_src.read_text())
+            (base / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))
+            lines = [f"# {meta.get('title', dataset)}\n"]
+            for key in ("source_url", "provider", "cadence", "parser_version"):
+                if meta.get(key):
+                    lines.append(f"- **{key}**: {meta[key]}")
+            method = meta.get("method", {})
+            if method:
+                lines.append(f"- **method**: {method.get('technique', '')} ({method.get('library', '')})")
+            for section in ("limitations", "fallback"):
+                val = meta.get(section)
+                if val:
+                    lines.append(f"- **{section}**: {json.dumps(val, ensure_ascii=False)}")
+            (base / "DATASET.md").write_text("\n".join(lines) + "\n")
+
         (base / "summary.json").write_text(
             json.dumps(
                 {

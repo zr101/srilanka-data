@@ -1,0 +1,27 @@
+{
+  "title": "Weekly Epidemiological Report",
+  "source_url": "https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report",
+  "provider": "Epidemiology Unit, Ministry of Health",
+  "cadence": "weekly",
+  "method": {
+    "library": "pypdf token stream",
+    "technique": "row-major token consumption; 26 RDHS x 14 diseases; SRI LANKA total row used as checksum",
+    "preprocessing": "none"
+  },
+  "fields": [
+    {
+      "name": "districts[].diseases.{d}.week/cumulative",
+      "unit": "cases"
+    }
+  ],
+  "limitations": [
+    "disease list pinned to template order (verified by checksum)",
+    "Kalmunai and Ampara share district LK-52 for geo joins - use rdhs key for sums",
+    "p4 vaccine table not yet extracted"
+  ],
+  "fallback": {
+    "plan_b": "previous week's issue; lk_dengue mirror for dengue",
+    "trigger": "checksum failure or <20 rows"
+  },
+  "parser_version": "3"
+}

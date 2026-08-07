@@ -38,15 +38,27 @@ def test_pucsl_build_clean():
     generation = json.loads((FIXTURES / "pucsl_generation.json").read_text())
     reservoir = json.loads((FIXTURES / "pucsl_reservoir.json").read_text())
     plants = json.loads((FIXTURES / "pucsl_plants.json").read_text()).get("data", [])
-    clean = build_clean("2026-08-04", generation, reservoir, plants)
+    complexes = json.loads((FIXTURES / "pucsl_complexes.json").read_text()).get("data", [])
+    clean = build_clean("2026-08-04", generation, reservoir, plants, complexes)
     assert clean is not None
     assert clean["total_generation_mwh"] > 1000
     assert clean["reservoirs"] and clean["total_storage_gwh"] > 0
-    assert clean["generation_by_fuel_mwh"]
+    # regression test for the complex->energyType join (audit: was 55.8% Unknown)
+    assert clean["generation_by_fuel_mwh"].get("Unknown", 0) == 0
+    assert abs(sum(clean["generation_by_fuel_mwh"].values()) - clean["total_generation_mwh"]) < 1
+    assert clean["renewable_share_pct"] and 0 < clean["renewable_share_pct"] < 100
+    # only one reportDate bucket may be aggregated
+    assert clean["report_date"]
+    # XSS-probe complex name must never survive sanitization
+    assert all("<" not in f for f in clean["generation_by_fuel_mwh"])
 
 
 def test_nmra_summarize_and_cleanup():
-    assert clean_cell("BANGLADESH!") == "BANGLADESH"
+    # placeholders blank out; ordinary values are preserved verbatim (no rstrip truncation)
+    assert clean_cell("***") == ""
+    assert clean_cell("N/A") == ""
+    assert clean_cell("  double  spaced  ") == "double spaced"
+    assert clean_cell("BANGLADESH!") == "BANGLADESH!"
     header = ["GENERIC NAME", "BRAND", "COUNTRY"]
     rows = [["A", "B", "INDIA"], ["C", "D", "INDIA"], ["E", "F", "SRI LANKA"]]
     summary = summarize(header, rows)

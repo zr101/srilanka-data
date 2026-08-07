@@ -30,6 +30,7 @@ def run(days_back: int = 7, budget_seconds: float = 300) -> int:
     store = Store()
     budget = TimeBudget(budget_seconds)
     plants = get(f"{API}/metadata/power-plants").json().get("data", [])
+    complexes = get(f"{API}/metadata/power-plant-complexes").json().get("data", [])
     new_docs = 0
     for offset in range(1, days_back + 1):  # data lags ~1 day
         if budget.expired:
@@ -40,7 +41,7 @@ def run(days_back: int = 7, budget_seconds: float = 300) -> int:
         if store.exists(probe):
             continue
         raw = fetch_day(day)
-        clean = build_clean(day.isoformat(), raw["generation"], raw["reservoir"], plants)
+        clean = build_clean(day.isoformat(), raw["generation"], raw["reservoir"], plants, complexes)
         if clean is None:
             print(f"{day}: no data yet")
             continue
