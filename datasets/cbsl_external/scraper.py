@@ -4,7 +4,14 @@ import sys
 
 from pipeline.cbsl_tables import Source, harvest
 
-from .parser import parse_bop, parse_reserves, parse_trade, total_series
+from .parser import (
+    parse_bop,
+    parse_hierarchy,
+    parse_month_year_matrix,
+    parse_reserves,
+    parse_trade,
+    total_series,
+)
 
 DATASET = "cbsl_external"
 LISTING = "https://www.cbsl.gov.lk/en/statistics/statistical-tables/external-sector"
@@ -14,6 +21,10 @@ SOURCES = [
     Source("bop", LISTING, ("balance of payments", "bpm6", "quarterly")),
     Source("exports", LISTING, ("exports - monthly",)),
     Source("imports", LISTING, ("imports - monthly",)),
+    Source("tourism", LISTING, ("earnings from tourism",)),
+    Source("remittances", LISTING, ("workers remittances",)),
+    Source("services", LISTING, ("monthly services sector",)),
+    Source("current_account", LISTING, ("monthly current account",)),
 ]
 
 
@@ -26,6 +37,10 @@ def build(wb: dict) -> dict:
     bop = parse_bop(wb["bop"])
     exports = parse_trade(wb["exports"], "exports")
     imports = parse_trade(wb["imports"], "imports")
+    tourism = parse_month_year_matrix(wb["tourism"])
+    remittances = parse_month_year_matrix(wb["remittances"])
+    services = parse_hierarchy(wb["services"], "inflows")
+    current_account = parse_hierarchy(wb["current_account"], "ca")
     export_total, import_total = total_series(exports), total_series(imports)
     latest_month = _last(export_total).get("t")
     deficit = None
@@ -37,6 +52,10 @@ def build(wb: dict) -> dict:
         "bop": bop,
         "exports": exports,
         "imports": imports,
+        "tourism_usd_mn": tourism,
+        "remittances_usd_mn": remittances,
+        "services_inflows": services,
+        "current_account": current_account,
         "latest": {
             "month": latest_month,
             "exports_usd_mn": _last(export_total).get("v"),
@@ -46,6 +65,11 @@ def build(wb: dict) -> dict:
             "official_reserve_assets_usd_mn": reserves["official_reserve_assets_usd_mn"],
             "gold_usd_mn": reserves["gold_usd_mn"],
             "bop_quarter": bop["quarters"][-1] if bop["quarters"] else None,
+            "tourism_month": _last(tourism).get("t"),
+            "tourism_usd_mn": _last(tourism).get("v"),
+            "remittances_month": _last(remittances).get("t"),
+            "remittances_usd_mn": _last(remittances).get("v"),
+            "services_inflows_usd_mn": (services[0]["points"][-1]["v"] if services else None),
         },
     }
 

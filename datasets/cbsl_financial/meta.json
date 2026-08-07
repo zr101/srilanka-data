@@ -1,0 +1,35 @@
+{
+  "title": "CBSL Financial \u2014 Banking Soundness Indicators",
+  "source_url": "https://www.cbsl.gov.lk/en/statistics/statistical-tables/financial-sector",
+  "provider": "Central Bank of Sri Lanka",
+  "cadence": "quarterly (published with ~3 quarters' lag)",
+  "method": {
+    "library": "openpyxl",
+    "technique": "listing-page discovery + year-over-quarter header parse across all five sheets",
+    "preprocessing": "PK zip-magic validation; NFKC + whitespace normalisation"
+  },
+  "fields": [
+    {
+      "name": "total_capital_ratio_pct",
+      "unit": "%"
+    },
+    {
+      "name": "npl_ratio_pct",
+      "unit": "% (IFRS 9 Stage 3 loans, excluding undrawn)"
+    },
+    {
+      "name": "rupee_lcr_pct",
+      "unit": "%"
+    }
+  ],
+  "limitations": [
+    "publishes ~3 quarters behind \u2014 2025-Q3 was the latest as of the 2026-06 vintage",
+    "CBSL renamed non-performing loans to 'Stage 3 Loans' under IFRS 9; both wordings are matched",
+    "licensed commercial banks only; the finance-companies sector is a separate workbook, not yet ingested"
+  ],
+  "fallback": {
+    "plan_b": "CBSL Financial Stability Review PDF",
+    "trigger": "workbook link renamed"
+  },
+  "parser_version": "1"
+}

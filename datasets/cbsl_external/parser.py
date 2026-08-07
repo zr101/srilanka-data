@@ -13,6 +13,8 @@ History is capped per table — these books hold 20 years of monthly detail and
 the whole family is republished into one latest.json the dashboard fetches.
 """
 
+import re
+
 from pipeline import xlsx
 
 TRADE_MONTHS = 72  # six years of monthly detail
@@ -175,3 +177,77 @@ def total_series(trade: dict) -> list[dict]:
         if xlsx.key(category["label"]).startswith("total"):
             return category["points"]
     return []
+
+
+def parse_month_year_matrix(wb) -> list[dict]:
+    """Tourism earnings / workers' remittances: months down, years across.
+
+    The transpose of every other table here — row 5 carries the years and the
+    twelve month rows below it fill in, so a period is (row month, column year).
+    """
+    ws = wb[wb.sheetnames[0]]
+    # Year headers carry footnote markers on the current year ("2026 (b)(c)"),
+    # the same habit that mislabels the IIP blocks — matching the bare year only
+    # silently dropped the whole in-progress year.
+    def year_at(row: int, col: int) -> str | None:
+        found = re.match(r"((?:19|20)\d{2})\b", xlsx.norm(ws.cell(row, col).value))
+        return found.group(1) if found else None
+
+    year_row = next(
+        (
+            r
+            for r in range(1, 12)
+            if sum(bool(year_at(r, c)) for c in range(2, ws.max_column + 1)) >= 3
+        ),
+        None,
+    )
+    if year_row is None:
+        raise ValueError(f"matrix: no year header in {ws.title}")
+    years = {
+        c: year_at(year_row, c)
+        for c in range(2, ws.max_column + 1)
+        if year_at(year_row, c)
+    }
+
+    points: dict[str, float | None] = {}
+    for row in range(year_row + 1, ws.max_row + 1):
+        month = None
+        for col in (1, 2, 3):
+            month = xlsx.month_of(ws.cell(row, col).value)
+            if month:
+                break
+        if not month:
+            continue
+        for col, year in years.items():
+            points[f"{year}-{month:02d}"] = xlsx.num(ws.cell(row, col).value)
+    return xlsx.series(points)
+
+
+def parse_hierarchy(wb, sheet_needle: str, keep: int = 36) -> list[dict]:
+    """Tables whose line-item hierarchy is expressed as column depth, with a
+    period header of date cells to the right (monthly services, monthly current
+    account). Returns [{label, depth, points}]."""
+    ws = xlsx.sheet(wb, sheet_needle) or wb[wb.sheetnames[0]]
+    header = next((r for r in range(1, 12) if len(xlsx.month_columns(ws, r)) >= 6), None)
+    if header is None:
+        raise ValueError(f"hierarchy: no period header in {ws.title}")
+    columns = xlsx.month_columns(ws, header)
+    keep_periods = set(sorted(columns)[-keep:])
+    first_data_col = min(columns.values())
+
+    lines = []
+    for row in range(header + 1, ws.max_row + 1):
+        depth, label = None, ""
+        for col in range(1, first_data_col):
+            text = xlsx.norm(ws.cell(row, col).value)
+            if text:
+                depth, label = col, text
+                break
+        if not label:
+            continue
+        points = xlsx.series(
+            {t: xlsx.num(ws.cell(row, c).value) for t, c in columns.items() if t in keep_periods}
+        )
+        if points:
+            lines.append({"label": label, "depth": depth, "points": points})
+    return lines

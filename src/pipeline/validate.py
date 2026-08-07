@@ -210,3 +210,21 @@ def _cbsl_external(clean: dict) -> list[str]:
     if None not in (exports, imports, balance) and abs((exports - imports) - balance) > 1:
         errors.append("trade balance does not equal exports - imports")
     return errors
+
+
+@register("cbsl_financial")
+def _cbsl_financial(clean: dict) -> list[str]:
+    errors = []
+    latest = clean.get("latest") or {}
+    capital = latest.get("total_capital_ratio_pct")
+    tier1 = latest.get("tier1_capital_ratio_pct")
+    if capital is not None and not 0 < capital < 100:
+        errors.append(f"total capital ratio {capital} implausible")
+    if capital is not None and tier1 is not None and tier1 > capital:
+        errors.append(f"tier 1 ratio {tier1} exceeds total capital ratio {capital}")
+    npl = latest.get("npl_ratio_pct")
+    if npl is not None and not 0 <= npl < 100:
+        errors.append(f"stage 3 ratio {npl} implausible")
+    if not clean.get("soundness"):
+        errors.append("no soundness sheets parsed")
+    return errors
