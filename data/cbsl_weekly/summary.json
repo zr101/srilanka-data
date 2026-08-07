@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_weekly",
-  "n_docs": 1,
-  "date_min": "2026-07-31",
+  "n_docs": 3,
+  "date_min": "2026-07-17",
   "date_max": "2026-07-31",
-  "generated_at": "2026-08-07T04:32:21.338180+00:00"
+  "generated_at": "2026-08-07T06:50:36.685651+00:00"
 }
