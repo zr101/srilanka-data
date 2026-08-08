@@ -244,7 +244,7 @@ def leaf_columns(ws, group_row: int, sub_row: int, start_col: int) -> dict[str, 
     return out
 
 
-def periods_down(ws, start_row: int, mode: str, year_col: int, month_col: int | None = None):
+def periods_down(ws, start_row: int, mode: str, year_col: int, month_col: int | None = None, end_row: int | None = None):
     """Yield (row, period) reading the period column(s) downward.
 
     CBSL encodes periods three ways in these tables and the year is written
@@ -255,7 +255,7 @@ def periods_down(ws, start_row: int, mode: str, year_col: int, month_col: int | 
       datetime — a real date cell in year_col (the monetary survey)
     """
     year = None
-    for row in range(start_row, ws.max_row + 1):
+    for row in range(start_row, (end_row or ws.max_row) + 1):
         if mode == "datetime":
             stamp = ws.cell(row, year_col).value
             if hasattr(stamp, "year"):

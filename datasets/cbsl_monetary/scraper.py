@@ -5,6 +5,8 @@ import sys
 from pipeline.cbsl_tables import Source, harvest
 
 from .parser import (
+    parse_bank_balance_sheet,
+    parse_cbsl_balance_sheet,
     parse_interest_rates,
     parse_monetary_survey,
     parse_reserve_money,
@@ -18,6 +20,8 @@ SOURCES = [
     Source("rates", LISTING, ("interest rates - monthly",)),
     Source("reserve_money", LISTING, ("reserve money", "monthly")),
     Source("survey", LISTING, ("monetary survey - monthly",)),
+    Source("cbsl_bs", LISTING, ("assets and liabilities of cbsl - monthly",)),
+    Source("bank_bs", LISTING, ("assets and liabilities of commercial banks - monthly",)),
 ]
 
 
@@ -30,11 +34,15 @@ def build(wb: dict) -> dict:
     reserve = parse_reserve_money(wb["reserve_money"])
     survey = parse_monetary_survey(wb["survey"])
     credit = parse_sectoral_credit(wb["survey"])
+    cbsl_bs = parse_cbsl_balance_sheet(wb["cbsl_bs"])
+    bank_bs = parse_bank_balance_sheet(wb["bank_bs"])
     return {
         "interest_rates": rates,
         "reserve_money": reserve,
         "survey": survey,
         "sectoral_credit": credit,
+        "cbsl_balance_sheet": cbsl_bs,
+        "bank_balance_sheet": bank_bs,
         "latest": {
             "month": _last(reserve.get("reservemoneyrsmillion_total", [])).get("t"),
             "opr_pct": _last(rates.get("overnightpolicyrateoprb", [])).get("v"),

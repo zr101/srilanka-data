@@ -30,6 +30,24 @@ def parse_operations(wb) -> dict:
     return _grid(ws, header, header + 2)
 
 
+def parse_revenue(wb) -> dict:
+    """3.02 Economic Classification of Government Revenue (Rs. million, annual)."""
+    ws = xlsx.sheet(wb, "3.02") or wb[wb.sheetnames[0]]
+    header = xlsx.find_row(ws, "year", column=2)
+    if header is None:
+        raise ValueError("revenue: no 'Year' header")
+    return _grid(ws, header, header + 2)
+
+
+def parse_expenditure(wb) -> dict:
+    """3.04 Economic Classification of Government Expenditure (Rs. million, annual)."""
+    ws = xlsx.sheet(wb, "3.04") or wb[wb.sheetnames[0]]
+    header = xlsx.find_row(ws, "year", column=2)
+    if header is None:
+        raise ValueError("expenditure: no 'Year' header")
+    return _grid(ws, header, header + 2)
+
+
 def parse_debt(wb) -> dict:
     """3.5 Central Government Outstanding Debt (Rs. million, annual)."""
     ws = xlsx.sheet(wb, "3.05") or wb[wb.sheetnames[0]]

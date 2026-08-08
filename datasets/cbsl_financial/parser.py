@@ -68,3 +68,45 @@ def find_indicator(soundness: dict, sheet: str, *needles: str) -> list[dict]:
         if all(w in xlsx.key(indicator["label"]) for w in wanted):
             return indicator["points"]
     return []
+
+
+def parse_finance_companies(wb) -> dict:
+    """Licensed finance companies (LFC) sector — quarter-end dates across the
+    top, line items down. A different shape from the banking workbooks, which
+    put years over quarters."""
+    out: dict[str, list[dict]] = {}
+    for name in wb.sheetnames:
+        ws = wb[name]
+        header = next(
+            (
+                r
+                for r in range(1, 8)
+                if sum(hasattr(ws.cell(r, c).value, "year") for c in range(2, ws.max_column + 1)) >= 2
+            ),
+            None,
+        )
+        if header is None:
+            continue
+        columns = {}
+        for col in range(2, ws.max_column + 1):
+            stamp = ws.cell(header, col).value
+            if hasattr(stamp, "year"):
+                columns[f"{stamp.year}-Q{(stamp.month - 1) // 3 + 1}"] = col
+        if not columns:
+            continue
+        # Labels sit immediately left of the first dated column; these sheets
+        # carry a blank column A, so column 1 is not a safe assumption.
+        label_col = min(columns.values()) - 1
+        rows = []
+        for row in range(header + 1, ws.max_row + 1):
+            label = xlsx.norm(ws.cell(row, label_col).value)
+            if not label:
+                continue
+            points = xlsx.series({t: xlsx.num(ws.cell(row, c).value) for t, c in columns.items()})
+            if points:
+                rows.append({"label": label, "points": points})
+        if rows:
+            out[xlsx.key(name)] = rows
+    if not out:
+        raise ValueError("finance companies: no sheets parsed")
+    return out

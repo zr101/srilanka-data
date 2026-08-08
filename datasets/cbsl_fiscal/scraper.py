@@ -4,7 +4,7 @@ import sys
 
 from pipeline.cbsl_tables import Source, harvest
 
-from .parser import parse_debt, parse_operations
+from .parser import parse_debt, parse_expenditure, parse_operations, parse_revenue
 
 DATASET = "cbsl_fiscal"
 LISTING = "https://www.cbsl.gov.lk/en/statistics/statistical-tables/fiscal-sector"
@@ -12,6 +12,8 @@ LISTING = "https://www.cbsl.gov.lk/en/statistics/statistical-tables/fiscal-secto
 SOURCES = [
     Source("operations", LISTING, ("fiscal operations",)),
     Source("debt", LISTING, ("outstanding government debt",)),
+    Source("revenue", LISTING, ("classification of government revenue",)),
+    Source("expenditure", LISTING, ("classification of government expenditure",)),
 ]
 
 
@@ -22,9 +24,13 @@ def _last(points: list[dict]) -> dict:
 def build(wb: dict) -> dict:
     ops = parse_operations(wb["operations"])
     debt = parse_debt(wb["debt"])
+    revenue = parse_revenue(wb["revenue"])
+    expenditure = parse_expenditure(wb["expenditure"])
     return {
         "operations": ops,
         "debt": debt,
+        "revenue": revenue,
+        "expenditure": expenditure,
         "latest": {
             "year": _last(ops.get("revenueandgrants", [])).get("t"),
             "revenue_and_grants_rs_mn": _last(ops.get("revenueandgrants", [])).get("v"),
