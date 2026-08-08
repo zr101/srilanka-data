@@ -193,11 +193,14 @@ def parse_month_year_matrix(wb) -> list[dict]:
         found = re.match(r"((?:19|20)\d{2})\b", xlsx.norm(ws.cell(row, col).value))
         return found.group(1) if found else None
 
+    # Some of these matrices start their year header in column A and others in
+    # column B, so the scan starts at A and the month column is whatever sits
+    # left of the first year.
     year_row = next(
         (
             r
             for r in range(1, 12)
-            if sum(bool(year_at(r, c)) for c in range(2, ws.max_column + 1)) >= 3
+            if sum(bool(year_at(r, c)) for c in range(1, ws.max_column + 1)) >= 3
         ),
         None,
     )
@@ -205,14 +208,14 @@ def parse_month_year_matrix(wb) -> list[dict]:
         raise ValueError(f"matrix: no year header in {ws.title}")
     years = {
         c: year_at(year_row, c)
-        for c in range(2, ws.max_column + 1)
+        for c in range(1, ws.max_column + 1)
         if year_at(year_row, c)
     }
 
     points: dict[str, float | None] = {}
     for row in range(year_row + 1, ws.max_row + 1):
         month = None
-        for col in (1, 2, 3):
+        for col in range(1, min(years) if years else 3):
             month = xlsx.month_of(ws.cell(row, col).value)
             if month:
                 break
@@ -251,3 +254,38 @@ def parse_hierarchy(wb, sheet_needle: str, keep: int = 36) -> list[dict]:
         if points:
             lines.append({"label": label, "depth": depth, "points": points})
     return lines
+
+
+def parse_dated_grid(wb, sheet_needle: str = "") -> dict:
+    """Periods running *down* as date cells with a two-tier header across.
+
+    The CSE inflow table (2.14.3) uses this rather than the months-down /
+    years-across matrix its sibling tables use.
+    """
+    ws = xlsx.sheet(wb, sheet_needle) if sheet_needle else wb[wb.sheetnames[0]]
+    ws = ws or wb[wb.sheetnames[0]]
+    # The date column is not always column A — these workbooks pad with blank
+    # columns inconsistently — so find the first cell that is actually a date.
+    located = next(
+        (
+            (r, c)
+            for r in range(1, ws.max_row + 1)
+            for c in range(1, min(ws.max_column, 6) + 1)
+            if hasattr(ws.cell(r, c).value, "year")
+        ),
+        None,
+    )
+    if located is None:
+        raise ValueError(f"dated grid: no date column in {ws.title}")
+    first, date_col = located
+    leaf = first - 1
+    columns = xlsx.leaf_columns(ws, leaf - 1, leaf, start_col=date_col + 1)
+    out: dict[str, dict[str, float | None]] = {}
+    for row in range(first, ws.max_row + 1):
+        stamp = ws.cell(row, date_col).value
+        if not hasattr(stamp, "year"):
+            continue
+        period = f"{stamp.year}-{stamp.month:02d}"
+        for slug, col in columns.items():
+            out.setdefault(slug, {})[period] = xlsx.num(ws.cell(row, col).value)
+    return {slug: xlsx.series(pts, keep=180) for slug, pts in out.items() if xlsx.series(pts)}

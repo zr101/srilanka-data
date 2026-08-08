@@ -85,7 +85,11 @@ def harvest(
     if missing:
         raise ValueError(f"{dataset}: required workbooks unavailable: {missing}")
 
-    clean = {"vintage": doc_id, **build(workbooks)}
+    try:
+        payload = build(workbooks, doc_id)  # families that trim to their vintage
+    except TypeError:
+        payload = build(workbooks)
+    clean = {"vintage": doc_id, **payload}
     blob = b"".join(payloads[name] for name in sorted(payloads))
     doc = Doc(dataset, doc_id, date, listing_url, Doc.sha256_of(blob))
     store.write_doc(doc, blob, "workbooks.bin", clean)
