@@ -289,3 +289,128 @@ def parse_dated_grid(wb, sheet_needle: str = "") -> dict:
         for slug, col in columns.items():
             out.setdefault(slug, {})[period] = xlsx.num(ws.cell(row, col).value)
     return {slug: xlsx.series(pts, keep=180) for slug, pts in out.items() if xlsx.series(pts)}
+
+
+def parse_annual_pairs(wb) -> list[dict]:
+    """A plain YEAR / TOTAL table (passport issuance)."""
+    ws = wb[wb.sheetnames[0]]
+    header = xlsx.find_row(ws, "year", column=1) or xlsx.find_row(ws, "year", column=2)
+    if header is None:
+        raise ValueError("annual pairs: no 'YEAR' header")
+    year_col = next(
+        c for c in range(1, ws.max_column + 1) if xlsx.key(ws.cell(header, c).value) == "year"
+    )
+    points = {}
+    for row in range(header + 1, ws.max_row + 1):
+        year = re.match(r"((?:19|20)\d{2})", xlsx.norm(ws.cell(row, year_col).value))
+        value = xlsx.num(ws.cell(row, year_col + 1).value)
+        if year and value is not None:
+            points[year.group(1)] = value
+    return xlsx.series(points)
+
+
+def _quarter_of(text: str) -> str | None:
+    """'31st Dec - 2012' or '2023 Q1' -> 'YYYY-Qn'."""
+    text = xlsx.norm(text)
+    year = re.search(r"(19|20)\d{2}", text)
+    if not year:
+        return None
+    explicit = re.search(r"Q([1-4])", text, re.I)
+    if explicit:
+        return f"{year.group(0)}-Q{explicit.group(1)}"
+    month = next((xlsx.month_of(t) for t in re.findall(r"[A-Za-z]+", text) if xlsx.month_of(t)), None)
+    return f"{year.group(0)}-Q{(month - 1) // 3 + 1}" if month else None
+
+
+def parse_country_quarters(wb) -> list[dict]:
+    """Remittances by country: countries down, years over quarters across."""
+    ws = wb[wb.sheetnames[0]]
+    quarter_row = next(
+        (
+            r
+            for r in range(1, 12)
+            if sum(
+                bool(re.fullmatch(r"Q[1-4]", xlsx.norm(ws.cell(r, c).value).upper()))
+                for c in range(2, ws.max_column + 1)
+            )
+            >= 2
+        ),
+        None,
+    )
+    if quarter_row is None:
+        raise ValueError("country quarters: no quarter header")
+    years = xlsx.forward_fill(ws, quarter_row - 1)
+    columns = {}
+    for col in range(2, ws.max_column + 1):
+        quarter = xlsx.norm(ws.cell(quarter_row, col).value).upper()
+        raw = xlsx.norm(years[col - 1]) if years[col - 1] else ""
+        year = re.search(r"(19|20)\d{2}", raw)
+        if re.fullmatch(r"Q[1-4]", quarter) and year:
+            columns[f"{year.group(0)}-{quarter}"] = col
+    countries = []
+    for row in range(quarter_row + 1, ws.max_row + 1):
+        name = xlsx.norm(ws.cell(row, 1).value)
+        if not name:
+            continue
+        points = xlsx.series(
+            {t: xlsx.num(ws.cell(row, c).value) for t, c in columns.items()}, keep=12
+        )
+        if points:
+            countries.append({"country": name, "points": points})
+    if not countries:
+        raise ValueError("country quarters: no country rows")
+    return countries
+
+
+def parse_iip(wb) -> list[dict]:
+    """2.11 International Investment Position — Assets/Liabilities per quarter."""
+    ws = xlsx.sheet(wb, "iip") or wb[wb.sheetnames[0]]
+    side_row = next(
+        (
+            r
+            for r in range(1, 12)
+            if sum(xlsx.key(ws.cell(r, c).value) in ("assets", "liabilities")
+                   for c in range(2, ws.max_column + 1)) >= 2
+        ),
+        None,
+    )
+    if side_row is None:
+        raise ValueError("IIP: no Assets/Liabilities header")
+    periods = xlsx.forward_fill(ws, side_row - 1)
+    columns = []
+    for col in range(2, ws.max_column + 1):
+        side = xlsx.key(ws.cell(side_row, col).value)
+        period = _quarter_of(periods[col - 1]) if periods[col - 1] else None
+        if side in ("assets", "liabilities") and period:
+            columns.append((period, side, col))
+    if not columns:
+        raise ValueError("IIP: no period columns")
+    # Labels sit well left of the first data column (col B against col G here),
+    # so the label column is the one carrying the most text below the header
+    # rather than simply the column before the data.
+    first_data = min(c for _, _, c in columns)
+    label_col = max(
+        range(1, first_data),
+        key=lambda c: sum(
+            1
+            for r in range(side_row + 1, min(ws.max_row, side_row + 60) + 1)
+            if xlsx.norm(ws.cell(r, c).value)
+        ),
+    )
+    lines = []
+    for row in range(side_row + 1, ws.max_row + 1):
+        label = xlsx.norm(ws.cell(row, label_col).value)
+        if not label:
+            continue
+        sides: dict[str, dict[str, float]] = {}
+        for period, side, col in columns:
+            value = xlsx.num(ws.cell(row, col).value)
+            if value is not None:
+                sides.setdefault(side, {})[period] = value
+        if sides:
+            lines.append(
+                {"label": label, **{k: xlsx.series(v, keep=12) for k, v in sides.items()}}
+            )
+    if not lines:
+        raise ValueError("IIP: no rows")
+    return lines

@@ -7,7 +7,10 @@ from pipeline.cbsl_tables import Source, harvest
 from .parser import (
     parse_bop,
     parse_hierarchy,
+    parse_annual_pairs,
+    parse_country_quarters,
     parse_dated_grid,
+    parse_iip,
     parse_month_year_matrix,
     parse_reserves,
     parse_trade,
@@ -26,6 +29,10 @@ SOURCES = [
     Source("remittances", LISTING, ("workers remittances",)),
     Source("services", LISTING, ("monthly services sector",)),
     Source("current_account", LISTING, ("monthly current account",)),
+    Source("iip", LISTING, ("international investment position",)),
+    Source("remit_country", LISTING, ("remittance inflows by country",), required=False),
+    Source("slbfe", LISTING, ("bureau of foreign employment",), required=False),
+    Source("passport", LISTING, ("passport issuance",), required=False),
     Source("cse_inflows", LISTING, ("inflows to the colombo stock exchange",)),
     Source("gsec_inflows", LISTING, ("treasury bills and treasury bonds inflows",)),
 ]
@@ -63,6 +70,14 @@ def build(wb: dict, vintage: str = "99991231") -> dict:
     # Foreign portfolio flows: the fastest-moving part of the external account.
     cse_inflows = {k: _to_vintage(v, vintage) for k, v in parse_dated_grid(wb["cse_inflows"]).items()}
     gsec_inflows = _to_vintage(parse_month_year_matrix(wb["gsec_inflows"]), vintage)
+    iip = parse_iip(wb["iip"])
+    # 223 source countries with full history would dominate latest.json; the
+    # long tail is negligible, so keep the meaningful senders.
+    remit_country = parse_country_quarters(wb["remit_country"]) if "remit_country" in wb else []
+    remit_country = sorted(remit_country, key=lambda c: -(c["points"][-1]["v"] or 0))[:40]
+    # Migration drives remittances, so departures and passports sit here.
+    departures = _to_vintage(parse_month_year_matrix(wb["slbfe"]), vintage) if "slbfe" in wb else []
+    passports = parse_annual_pairs(wb["passport"]) if "passport" in wb else []
     current_account = parse_hierarchy(wb["current_account"], "ca")
     export_total, import_total = total_series(exports), total_series(imports)
     latest_month = _last(export_total).get("t")
@@ -80,6 +95,10 @@ def build(wb: dict, vintage: str = "99991231") -> dict:
         "services_inflows": services,
         "cse_inflows": cse_inflows,
         "gsec_inflows_usd_mn": gsec_inflows,
+        "iip": iip,
+        "remittances_by_country": remit_country,
+        "foreign_employment_departures": departures,
+        "passport_issuance": passports,
         "current_account": current_account,
         "latest": {
             "month": latest_month,
@@ -99,6 +118,10 @@ def build(wb: dict, vintage: str = "99991231") -> dict:
             "cse_secondary_outflows_usd_mn": _last(cse_inflows.get("secondarymarket_outflows", [])).get("v"),
             "gsec_inflows_usd_mn": _last(gsec_inflows).get("v"),
             "portfolio_month": _last(gsec_inflows).get("t"),
+            "departures_month": _last(departures).get("t"),
+            "departures": _last(departures).get("v"),
+            "passports_year": _last(passports).get("t"),
+            "passports": _last(passports).get("v"),
         },
     }
 

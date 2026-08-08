@@ -4,7 +4,7 @@ import sys
 
 from pipeline.cbsl_tables import Source, harvest
 
-from .parser import parse_bsi, parse_iip, parse_pmi
+from .parser import parse_bsi, parse_housing, parse_iip, parse_pmi
 
 DATASET = "cbsl_activity"
 PRODUCTION = "https://www.cbsl.gov.lk/en/statistics/statistical-tables/real-sector/production-indicators"
@@ -15,6 +15,7 @@ SOURCES = [
     Source("iip", PRODUCTION, ("industrial production",)),
     Source("pmi", PMI_PAGE, ("pmi",)),
     Source("bsi", BSI_PAGE, ("bsi",), required=False),
+    Source("housing", PRODUCTION, ("housing approval index – quarterly",), required=False),
 ]
 
 
@@ -26,6 +27,7 @@ def build(wb: dict) -> dict:
     iip = parse_iip(wb["iip"])
     pmi = parse_pmi(wb["pmi"])
     bsi = parse_bsi(wb["bsi"]) if "bsi" in wb else {}
+    housing = parse_housing(wb["housing"]) if "housing" in wb else {}
 
     def headline(sector: str) -> list[dict]:
         """The sector's own PMI row is the first series on its sheet."""
@@ -35,6 +37,7 @@ def build(wb: dict) -> dict:
         "iip": iip,
         "pmi": pmi,
         "bsi": bsi,
+        "housing_approvals": housing,
         "latest": {
             "iip_month": _last(iip["total"]).get("t"),
             "iip": _last(iip["total"]).get("v"),

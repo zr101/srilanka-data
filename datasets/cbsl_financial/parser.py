@@ -110,3 +110,54 @@ def parse_finance_companies(wb) -> dict:
     if not out:
         raise ValueError("finance companies: no sheets parsed")
     return out
+
+
+def parse_outlets(wb) -> dict:
+    """Table 4.0 Distribution of Banking Outlets — districts down, years across.
+
+    Annual and district-keyed, unlike the year-over-quarter layout the rest of
+    the financial-sector family shares.
+    """
+    out: dict[str, list[dict]] = {}
+    for name in wb.sheetnames:
+        ws = wb[name]
+        year_row = next(
+            (
+                r
+                for r in range(1, 12)
+                if sum(
+                    bool(re.fullmatch(r"(19|20)\d{2}", xlsx.norm(ws.cell(r, c).value)))
+                    for c in range(1, ws.max_column + 1)
+                )
+                >= 3
+            ),
+            None,
+        )
+        if year_row is None:
+            continue
+        columns = {
+            xlsx.norm(ws.cell(year_row, c).value): c
+            for c in range(1, ws.max_column + 1)
+            if re.fullmatch(r"(19|20)\d{2}", xlsx.norm(ws.cell(year_row, c).value))
+        }
+        label_col = max(
+            range(1, min(columns.values())),
+            key=lambda c: sum(
+                1
+                for r in range(year_row + 1, min(ws.max_row, year_row + 40) + 1)
+                if xlsx.norm(ws.cell(r, c).value) and not xlsx.num(ws.cell(r, c).value)
+            ),
+        )
+        districts = []
+        for row in range(year_row + 1, ws.max_row + 1):
+            label = xlsx.norm(ws.cell(row, label_col).value)
+            if not label or xlsx.num(label) is not None:
+                continue
+            points = xlsx.series({t: xlsx.num(ws.cell(row, c).value) for t, c in columns.items()})
+            if points:
+                districts.append({"district": label.title(), "points": points})
+        if districts:
+            out[xlsx.key(name)] = districts
+    if not out:
+        raise ValueError("outlets: no sheets parsed")
+    return out

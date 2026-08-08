@@ -4,7 +4,7 @@ import sys
 
 from pipeline.cbsl_tables import Source, harvest
 
-from .parser import find_indicator, parse_finance_companies, parse_soundness
+from .parser import find_indicator, parse_finance_companies, parse_outlets, parse_soundness
 
 DATASET = "cbsl_financial"
 LISTING = "https://www.cbsl.gov.lk/en/statistics/statistical-tables/financial-sector"
@@ -30,7 +30,7 @@ def build(wb: dict) -> dict:
     # whole dataset, since the soundness indicators are the load-bearing part.
     extra: dict[str, dict] = {}
     skipped: list[str] = []
-    parsers = {"finance_companies": parse_finance_companies}
+    parsers = {"finance_companies": parse_finance_companies, "outlets": parse_outlets}
     for name in ("balance_sheet", "earnings", "outlets", "finance_companies"):
         if name not in wb:
             continue

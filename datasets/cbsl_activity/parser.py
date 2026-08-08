@@ -4,6 +4,8 @@ Three different layouts, all transposed relative to the price tables — periods
 run across the columns rather than down a period column.
 """
 
+import re
+
 from pipeline import xlsx
 
 
@@ -147,3 +149,35 @@ def parse_bsi(wb) -> dict:
     if not out:
         raise ValueError("BSI: no indicator rows")
     return out
+
+
+def parse_housing(wb) -> dict:
+    """1.06 Greater Colombo Housing Approval Index — quarterly.
+
+    The year is written only on each year's first quarter ("2003 Q1" then a
+    bare "Q2"), so it is carried forward.
+    """
+    ws = xlsx.sheet(wb, "1.06") or wb[wb.sheetnames[0]]
+    header = xlsx.find_row(ws, "period", column=1) or xlsx.find_row(ws, "period", column=2)
+    if header is None:
+        raise ValueError("housing: no 'Period' header")
+    period_col = next(
+        c for c in range(1, ws.max_column + 1) if xlsx.key(ws.cell(header, c).value) == "period"
+    )
+    columns = xlsx.leaf_columns(ws, header, header + 1, start_col=period_col + 1)
+    out: dict[str, dict[str, float | None]] = {}
+    year = None
+    for row in range(header + 2, ws.max_row + 1):
+        text = xlsx.norm(ws.cell(row, period_col).value)
+        if not text:
+            continue
+        found = re.match(r"((?:19|20)\d{2})?\s*(Q[1-4])", text, re.I)
+        if not found:
+            continue
+        year = found.group(1) or year
+        if not year:
+            continue
+        period = f"{year}-{found.group(2).upper()}"
+        for slug, col in columns.items():
+            out.setdefault(slug, {})[period] = xlsx.num(ws.cell(row, col).value)
+    return {slug: xlsx.series(pts) for slug, pts in out.items() if xlsx.series(pts)}
