@@ -20,12 +20,29 @@
     {
       "name": "bop.lines[].net",
       "unit": "USD mn"
+    },
+    {
+      "name": "tourism_usd_mn",
+      "unit": "USD mn (monthly)"
+    },
+    {
+      "name": "remittances_usd_mn",
+      "unit": "USD mn (monthly)"
+    },
+    {
+      "name": "current_account",
+      "unit": "USD mn (monthly, BPM6)"
+    },
+    {
+      "name": "services_inflows",
+      "unit": "USD mn (monthly)"
     }
   ],
   "limitations": [
     "trade history capped at 72 months and BOP at 24 quarters to bound latest.json",
     "trade period headers mix real date cells with text ('Jan-26 (b)') — both are parsed",
-    "the reserve template sheet is renamed monthly ('RDT (June 2026)'), so as_of comes from the sheet name"
+    "the reserve template sheet is renamed monthly ('RDT (June 2026)'), so as_of comes from the sheet name",
+    "tourism/remittances year headers carry footnote markers on the in-progress year ('2026 (b)(c)') — matched on the leading year only"
   ],
   "fallback": {
     "plan_b": "cbsl_daily/cbsl_weekly PDF pipelines carry headline equivalents",
