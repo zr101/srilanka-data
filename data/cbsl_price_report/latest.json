@@ -1,16 +1,16 @@
 {
   "dataset": "cbsl_price_report",
-  "generated_at": "2026-08-11T06:29:38.645859+00:00",
-  "doc_id": "20260810",
-  "date": "2026-08-10",
+  "generated_at": "2026-08-11T12:12:04.574479+00:00",
+  "doc_id": "20260811",
+  "date": "2026-08-11",
   "data": {
-    "date": "2026-08-10",
-    "report_date_text": "10 August 2026",
+    "date": "2026-08-11",
+    "report_date_text": "11 August 2026",
     "markets": [
       "Pettah",
       "Dambulla"
     ],
-    "compares_to": "last Friday",
+    "compares_to": "yesterday",
     "items": [
       {
         "item": "Beans",
@@ -18,23 +18,23 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 300.0,
-            "today": 500.0
+            "previous": 500.0,
+            "today": 450.0
           },
           "wholesale_dambulla": {
-            "previous": 350.0,
-            "today": 555.0
+            "previous": 555.0,
+            "today": 515.0
           },
           "retail_pettah": {
-            "previous": 350.0,
-            "today": 550.0
+            "previous": 550.0,
+            "today": 500.0
           },
           "retail_dambulla": {
-            "previous": 380.0,
-            "today": 585.0
+            "previous": 585.0,
+            "today": 545.0
           },
           "retail_narahenpita": {
-            "previous": 560.0,
+            "previous": 700.0,
             "today": 700.0
           }
         }
@@ -49,20 +49,20 @@
             "today": 200.0
           },
           "wholesale_dambulla": {
-            "previous": 155.0,
-            "today": 255.0
+            "previous": 255.0,
+            "today": 240.0
           },
           "retail_pettah": {
             "previous": 250.0,
             "today": 250.0
           },
           "retail_dambulla": {
-            "previous": 185.0,
-            "today": 285.0
+            "previous": 285.0,
+            "today": 270.0
           },
           "retail_narahenpita": {
             "previous": 400.0,
-            "today": 400.0
+            "today": 440.0
           }
         }
       },
@@ -72,20 +72,20 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 150.0,
+            "previous": 130.0,
             "today": 130.0
           },
           "wholesale_dambulla": {
-            "previous": 90.0,
-            "today": 110.0
+            "previous": 110.0,
+            "today": 120.0
           },
           "retail_pettah": {
-            "previous": 200.0,
+            "previous": 180.0,
             "today": 180.0
           },
           "retail_dambulla": {
-            "previous": 120.0,
-            "today": 140.0
+            "previous": 140.0,
+            "today": 150.0
           },
           "retail_narahenpita": {
             "previous": 320.0,
@@ -99,20 +99,20 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 250.0,
-            "today": 300.0
-          },
-          "wholesale_dambulla": {
-            "previous": 165.0,
-            "today": 285.0
-          },
-          "retail_pettah": {
             "previous": 300.0,
             "today": 350.0
           },
+          "wholesale_dambulla": {
+            "previous": 285.0,
+            "today": 325.0
+          },
+          "retail_pettah": {
+            "previous": 350.0,
+            "today": 400.0
+          },
           "retail_dambulla": {
-            "previous": 195.0,
-            "today": 315.0
+            "previous": 315.0,
+            "today": 355.0
           },
           "retail_narahenpita": {
             "previous": 400.0,
@@ -126,20 +126,20 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 250.0,
+            "previous": 300.0,
             "today": 300.0
           },
           "wholesale_dambulla": {
-            "previous": 260.0,
-            "today": 245.0
+            "previous": 245.0,
+            "today": 210.0
           },
           "retail_pettah": {
-            "previous": 300.0,
+            "previous": 350.0,
             "today": 350.0
           },
           "retail_dambulla": {
-            "previous": 290.0,
-            "today": 275.0
+            "previous": 275.0,
+            "today": 240.0
           },
           "retail_narahenpita": {
             "previous": 560.0,
@@ -157,16 +157,16 @@
             "today": 150.0
           },
           "wholesale_dambulla": {
-            "previous": 125.0,
-            "today": 145.0
+            "previous": 145.0,
+            "today": 115.0
           },
           "retail_pettah": {
             "previous": 200.0,
             "today": 200.0
           },
           "retail_dambulla": {
-            "previous": 155.0,
-            "today": 175.0
+            "previous": 175.0,
+            "today": 145.0
           },
           "retail_narahenpita": {
             "previous": 240.0,
@@ -180,20 +180,20 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 200.0,
+            "previous": 250.0,
             "today": 250.0
           },
           "wholesale_dambulla": {
-            "previous": 140.0,
-            "today": 155.0
+            "previous": 155.0,
+            "today": 140.0
           },
           "retail_pettah": {
-            "previous": 250.0,
+            "previous": 300.0,
             "today": 300.0
           },
           "retail_dambulla": {
-            "previous": 170.0,
-            "today": 185.0
+            "previous": 185.0,
+            "today": 170.0
           },
           "retail_narahenpita": {
             "previous": 360.0,
@@ -207,20 +207,20 @@
         "section": "Vegetables",
         "prices": {
           "wholesale_pettah": {
-            "previous": 900.0,
+            "previous": 800.0,
             "today": 800.0
           },
           "wholesale_dambulla": {
-            "previous": 650.0,
-            "today": 775.0
+            "previous": 775.0,
+            "today": 675.0
           },
           "retail_pettah": {
-            "previous": 1000.0,
+            "previous": 900.0,
             "today": 900.0
           },
           "retail_dambulla": {
-            "previous": 680.0,
-            "today": 805.0
+            "previous": 805.0,
+            "today": 705.0
           },
           "retail_narahenpita": {
             "previous": 1200.0,
@@ -238,16 +238,16 @@
             "today": 250.0
           },
           "wholesale_dambulla": {
-            "previous": 245.0,
-            "today": 275.0
+            "previous": 275.0,
+            "today": 245.0
           },
           "retail_pettah": {
             "previous": 350.0,
             "today": 350.0
           },
           "retail_dambulla": {
-            "previous": 275.0,
-            "today": 305.0
+            "previous": 305.0,
+            "today": 275.0
           },
           "retail_narahenpita": {
             "previous": 600.0,
@@ -265,16 +265,16 @@
             "today": 262.0
           },
           "wholesale_dambulla": {
-            "previous": 175.0,
-            "today": 205.0
+            "previous": 205.0,
+            "today": 225.0
           },
           "retail_pettah": {
-            "previous": 353.0,
+            "previous": 363.0,
             "today": 363.0
           },
           "retail_dambulla": {
-            "previous": 195.0,
-            "today": 225.0
+            "previous": 225.0,
+            "today": 245.0
           },
           "retail_narahenpita": {
             "previous": null,
@@ -289,19 +289,19 @@
         "prices": {
           "wholesale_pettah": {
             "previous": 268.0,
-            "today": 268.0
+            "today": 263.0
           },
           "wholesale_dambulla": {
-            "previous": null,
-            "today": 210.0
+            "previous": 210.0,
+            "today": 155.0
           },
           "retail_pettah": {
             "previous": 350.0,
             "today": 350.0
           },
           "retail_dambulla": {
-            "previous": null,
-            "today": 230.0
+            "previous": 230.0,
+            "today": 175.0
           },
           "retail_narahenpita": {
             "previous": 650.0,
@@ -316,7 +316,7 @@
         "prices": {
           "wholesale_pettah": {
             "previous": null,
-            "today": null
+            "today": 210.0
           },
           "wholesale_dambulla": {
             "previous": null,
@@ -342,20 +342,20 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 191.0,
-            "today": 193.0
+            "previous": 193.0,
+            "today": 199.0
           },
           "wholesale_dambulla": {
-            "previous": 180.0,
-            "today": 195.0
+            "previous": 195.0,
+            "today": 175.0
           },
           "retail_pettah": {
-            "previous": 208.0,
-            "today": 220.0
+            "previous": 220.0,
+            "today": 218.0
           },
           "retail_dambulla": {
-            "previous": 200.0,
-            "today": 215.0
+            "previous": 215.0,
+            "today": 195.0
           },
           "retail_narahenpita": {
             "previous": 300.0,
@@ -369,20 +369,20 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 340.0,
+            "previous": 328.0,
             "today": 328.0
           },
           "wholesale_dambulla": {
-            "previous": 260.0,
-            "today": 300.0
+            "previous": 300.0,
+            "today": 295.0
           },
           "retail_pettah": {
-            "previous": 405.0,
+            "previous": 380.0,
             "today": 380.0
           },
           "retail_dambulla": {
-            "previous": 280.0,
-            "today": 320.0
+            "previous": 320.0,
+            "today": 315.0
           },
           "retail_narahenpita": {
             "previous": 520.0,
@@ -396,20 +396,20 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 170.0,
-            "today": 164.0
+            "previous": 164.0,
+            "today": 161.0
           },
           "wholesale_dambulla": {
-            "previous": 125.0,
-            "today": 145.0
+            "previous": 145.0,
+            "today": 160.0
           },
           "retail_pettah": {
-            "previous": 218.0,
-            "today": 203.0
+            "previous": 203.0,
+            "today": 198.0
           },
           "retail_dambulla": {
-            "previous": 145.0,
-            "today": 165.0
+            "previous": 165.0,
+            "today": 180.0
           },
           "retail_narahenpita": {
             "previous": 240.0,
@@ -424,7 +424,7 @@
         "prices": {
           "wholesale_pettah": {
             "previous": 1064.0,
-            "today": 1064.0
+            "today": 1062.0
           },
           "wholesale_dambulla": {
             "previous": 1075.0,
@@ -432,7 +432,7 @@
           },
           "retail_pettah": {
             "previous": 1167.0,
-            "today": 1167.0
+            "today": 1173.0
           },
           "retail_dambulla": {
             "previous": 1105.0,
@@ -450,20 +450,20 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 129.0,
+            "previous": 130.0,
             "today": 130.0
           },
           "wholesale_dambulla": {
             "previous": 115.0,
-            "today": 115.0
+            "today": 110.0
           },
           "retail_pettah": {
-            "previous": 167.0,
+            "previous": 165.0,
             "today": 165.0
           },
           "retail_dambulla": {
             "previous": 120.0,
-            "today": 120.0
+            "today": 115.0
           },
           "retail_narahenpita": {
             "previous": 180.0,
@@ -481,8 +481,8 @@
             "today": 812.0
           },
           "retail_pettah": {
-            "previous": 884.0,
-            "today": 881.0
+            "previous": 881.0,
+            "today": 884.0
           },
           "retail_narahenpita": {
             "previous": 852.0,
@@ -501,7 +501,7 @@
           },
           "retail_pettah": {
             "previous": 247.0,
-            "today": 247.0
+            "today": 250.0
           },
           "retail_narahenpita": {
             "previous": 260.0,
@@ -515,12 +515,12 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 208.0,
+            "previous": 213.0,
             "today": 213.0
           },
           "retail_pettah": {
-            "previous": 225.0,
-            "today": 227.0
+            "previous": 227.0,
+            "today": 230.0
           },
           "retail_narahenpita": {
             "previous": 230.0,
@@ -534,12 +534,12 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 41.0,
+            "previous": 40.0,
             "today": 40.0
           },
           "retail_pettah": {
-            "previous": 43.0,
-            "today": 42.0
+            "previous": 42.0,
+            "today": 43.0
           },
           "retail_narahenpita": {
             "previous": 46.0,
@@ -553,11 +553,11 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 2125.0,
-            "today": 2150.0
+            "previous": 2150.0,
+            "today": 2267.0
           },
           "retail_pettah": {
-            "previous": 2750.0,
+            "previous": 2633.0,
             "today": 2633.0
           },
           "retail_narahenpita": {
@@ -572,12 +572,12 @@
         "section": "Other",
         "prices": {
           "wholesale_pettah": {
-            "previous": 1388.0,
-            "today": 1375.0
+            "previous": 1375.0,
+            "today": 1350.0
           },
           "retail_pettah": {
-            "previous": 1700.0,
-            "today": 1617.0
+            "previous": 1617.0,
+            "today": 1633.0
           },
           "retail_narahenpita": {
             "previous": 1600.0,
@@ -591,20 +591,20 @@
         "section": "Fruits",
         "prices": {
           "wholesale_pettah": {
-            "previous": 150.0,
-            "today": 200.0
+            "previous": 200.0,
+            "today": 150.0
           },
           "wholesale_dambulla": {
-            "previous": 105.0,
-            "today": 115.0
+            "previous": 115.0,
+            "today": 120.0
           },
           "retail_pettah": {
-            "previous": 200.0,
-            "today": 250.0
+            "previous": 250.0,
+            "today": 200.0
           },
           "retail_dambulla": {
-            "previous": 135.0,
-            "today": 145.0
+            "previous": 145.0,
+            "today": 150.0
           },
           "retail_narahenpita": {
             "previous": 290.0,
@@ -618,7 +618,7 @@
         "section": "Fruits",
         "prices": {
           "wholesale_pettah": {
-            "previous": 120.0,
+            "previous": 150.0,
             "today": 150.0
           },
           "wholesale_dambulla": {
@@ -626,7 +626,7 @@
             "today": 145.0
           },
           "retail_pettah": {
-            "previous": 170.0,
+            "previous": 200.0,
             "today": 200.0
           },
           "retail_dambulla": {
@@ -649,20 +649,20 @@
             "today": null
           },
           "wholesale_dambulla": {
-            "previous": 345.0,
-            "today": 315.0
+            "previous": 315.0,
+            "today": 330.0
           },
           "retail_pettah": {
             "previous": 375.0,
             "today": 375.0
           },
           "retail_dambulla": {
-            "previous": 375.0,
-            "today": 345.0
+            "previous": 345.0,
+            "today": 360.0
           },
           "retail_narahenpita": {
             "previous": 460.0,
-            "today": 460.0
+            "today": 500.0
           }
         }
       },
@@ -672,7 +672,7 @@
         "section": "Fruits",
         "prices": {
           "retail_pettah": {
-            "previous": 195.0,
+            "previous": 200.0,
             "today": 200.0
           },
           "retail_narahenpita": {
@@ -687,12 +687,12 @@
         "section": "Fruits",
         "prices": {
           "retail_pettah": {
-            "previous": 180.0,
+            "previous": 200.0,
             "today": 200.0
           },
           "retail_narahenpita": {
             "previous": 260.0,
-            "today": 260.0
+            "today": 250.0
           }
         }
       },
@@ -702,15 +702,15 @@
         "section": "Rice",
         "prices": {
           "wholesale_pettah": {
-            "previous": 243.0,
+            "previous": 242.0,
             "today": 242.0
           },
           "wholesale_dambulla": {
-            "previous": 238.0,
+            "previous": 233.0,
             "today": 233.0
           },
           "retail_pettah": {
-            "previous": 248.0,
+            "previous": 247.0,
             "today": 247.0
           },
           "retail_dambulla": {
@@ -733,8 +733,8 @@
             "today": 203.0
           },
           "wholesale_dambulla": {
-            "previous": 192.0,
-            "today": 190.0
+            "previous": 190.0,
+            "today": 185.0
           },
           "retail_pettah": {
             "previous": 223.0,
@@ -760,12 +760,12 @@
             "today": 193.0
           },
           "wholesale_dambulla": {
-            "previous": 185.0,
+            "previous": 188.0,
             "today": 188.0
           },
           "retail_pettah": {
             "previous": 205.0,
-            "today": 205.0
+            "today": 207.0
           },
           "retail_dambulla": {
             "previous": 200.0,
@@ -879,20 +879,20 @@
         "section": "Fish",
         "prices": {
           "wholesale_pettah": {
-            "previous": 2000.0,
-            "today": 2200.0
+            "previous": 2200.0,
+            "today": 1900.0
           },
           "wholesale_dambulla": {
-            "previous": null,
+            "previous": 1700.0,
             "today": 1700.0
           },
           "retail_dambulla": {
-            "previous": null,
+            "previous": 2550.0,
             "today": 2550.0
           },
           "retail_narahenpita": {
-            "previous": 3220.0,
-            "today": null
+            "previous": null,
+            "today": 3080.0
           }
         }
       },
@@ -907,15 +907,15 @@
           },
           "wholesale_dambulla": {
             "previous": 2200.0,
-            "today": 2200.0
+            "today": null
           },
           "retail_dambulla": {
-            "previous": 2980.0,
-            "today": 3150.0
+            "previous": 3150.0,
+            "today": null
           },
           "retail_narahenpita": {
-            "previous": 3080.0,
-            "today": 3040.0
+            "previous": 3040.0,
+            "today": 3240.0
           }
         }
       },
@@ -949,19 +949,19 @@
         "prices": {
           "wholesale_pettah": {
             "previous": 1600.0,
-            "today": 1600.0
+            "today": 1800.0
           },
           "wholesale_dambulla": {
-            "previous": null,
-            "today": 1550.0
+            "previous": 1550.0,
+            "today": 1620.0
           },
           "retail_dambulla": {
-            "previous": null,
+            "previous": 2850.0,
             "today": 2850.0
           },
           "retail_narahenpita": {
-            "previous": 1680.0,
-            "today": 1980.0
+            "previous": 1980.0,
+            "today": 1860.0
           }
         }
       },
@@ -972,19 +972,19 @@
         "prices": {
           "wholesale_pettah": {
             "previous": 700.0,
-            "today": 700.0
+            "today": 350.0
           },
           "wholesale_dambulla": {
-            "previous": 770.0,
-            "today": 650.0
+            "previous": 650.0,
+            "today": 450.0
           },
           "retail_dambulla": {
-            "previous": 980.0,
-            "today": 790.0
+            "previous": 790.0,
+            "today": 540.0
           },
           "retail_narahenpita": {
-            "previous": 760.0,
-            "today": 900.0
+            "previous": 900.0,
+            "today": 820.0
           }
         }
       },
@@ -994,19 +994,19 @@
         "section": "Fish",
         "prices": {
           "wholesale_pettah": {
-            "previous": 900.0,
-            "today": 1200.0
-          },
-          "wholesale_dambulla": {
             "previous": 1200.0,
             "today": 1000.0
           },
+          "wholesale_dambulla": {
+            "previous": 1000.0,
+            "today": 1100.0
+          },
           "retail_dambulla": {
-            "previous": 1480.0,
-            "today": 1260.0
+            "previous": 1260.0,
+            "today": 1380.0
           },
           "retail_narahenpita": {
-            "previous": null,
+            "previous": 1360.0,
             "today": 1360.0
           }
         }
@@ -1018,19 +1018,19 @@
         "prices": {
           "wholesale_pettah": {
             "previous": 1100.0,
-            "today": 1100.0
+            "today": 950.0
           },
           "wholesale_dambulla": {
-            "previous": 1100.0,
-            "today": 1070.0
+            "previous": 1070.0,
+            "today": 1020.0
           },
           "retail_dambulla": {
-            "previous": 1380.0,
-            "today": 1340.0
+            "previous": 1340.0,
+            "today": 1280.0
           },
           "retail_narahenpita": {
-            "previous": 1220.0,
-            "today": 1260.0
+            "previous": 1260.0,
+            "today": 1200.0
           }
         }
       }
@@ -1038,36 +1038,22 @@
     "highlights": [
       {
         "item": "Beans",
-        "direction": "increased",
+        "direction": "declined",
         "category": "Vegetables",
         "moves": [
           {
             "market": "Pettah",
-            "previous": 350.0,
-            "today": 550.0
+            "previous": 550.0,
+            "today": 500.0
           },
           {
             "market": "Dambulla",
-            "previous": 380.0,
-            "today": 585.0
+            "previous": 585.0,
+            "today": 545.0
           }
         ],
-        "commentary": "Price of Beans increased in both Pettah and Dambulla markets compared to last Friday due to limited supply from Balangoda/ W e l im a d a N u w a r a E li y a / a n d Ba n d ar a w e l a a r ea s r e s ec t iv e ly. P e tta h D am bu ll a Rs./kg",
-        "reason": "limited supply from Balangoda/"
-      },
-      {
-        "item": "Carrot",
-        "direction": "increased",
-        "category": "Vegetables",
-        "moves": [
-          {
-            "market": "Dambulla",
-            "previous": 185.0,
-            "today": 285.0
-          }
-        ],
-        "commentary": "Price of Carrot increased in Dambulla market compared to last Friday due to limited supply from Nuwara Eliya and Bandarawela areas.",
-        "reason": "limited supply from Nuwara Eliya and Bandarawela areas"
+        "commentary": "Price of Beans declined in both R R s s. . //kkgg Pettah and Dambulla markets compared to yesterday reportedly due to low demand and favourable s u ly N u w a r a E l i y a f r o m a n d D a m b u l la ar e a s, re s e c t i v e l y . -3bmu -5l eP tea ht h bl ual P t la RRss..//kkgg",
+        "reason": "low demand and favourable"
       },
       {
         "item": "Tomato",
@@ -1076,31 +1062,45 @@
         "moves": [
           {
             "market": "Pettah",
-            "previous": 300.0,
-            "today": 350.0
+            "previous": 350.0,
+            "today": 400.0
           },
           {
             "market": "Dambulla",
-            "previous": 195.0,
-            "today": 315.0
+            "previous": 315.0,
+            "today": 355.0
           }
         ],
-        "commentary": "Price of Tomato increased in both Rs./kg Pettah and Dambulla markets compared to last Friday due to limited supply from Sooriyawewa/ Embilipitiya and Sigiriya/ Galewela areas, respectively. -4ul -5la -3b P e tta h D a m Rs./kg",
-        "reason": "limited supply from Sooriyawewa/ Embilipitiya and Sigiriya/ Galewela areas, respectively"
+        "commentary": "Price of Tomato increased in both Pettah and Dambulla markets compared to yesterday due to limited supply from Kalpitiya and Sigiriya areas, respectively. -5l -3bmu eP tea ht h bl ual P la Rs./kg",
+        "reason": "limited supply from Kalpitiya and Sigiriya areas, respectively"
       },
       {
-        "item": "Lime",
-        "direction": "increased",
+        "item": "Brinjal",
+        "direction": "declined",
         "category": "Vegetables",
         "moves": [
           {
             "market": "Dambulla",
             "previous": 275.0,
-            "today": 305.0
+            "today": 240.0
           }
         ],
-        "commentary": "Price of Lime increased further in Dambulla market compared to last Friday due to limited supply from Anuradhapura area. Fish Rs./kg",
-        "reason": "limited supply from Anuradhapura area"
+        "commentary": "Price of Brinjal declined further in Dambulla market compared to yesterday due to favourable supply from Puttalam and Sigiriya areas. Rs./kg",
+        "reason": "favourable supply from Puttalam and Sigiriya areas"
+      },
+      {
+        "item": "Green Chilli",
+        "direction": "declined",
+        "category": "Vegetables",
+        "moves": [
+          {
+            "market": "Dambulla",
+            "previous": 805.0,
+            "today": 705.0
+          }
+        ],
+        "commentary": "Price of Green Chilli declined in Dambulla market compared to yesterday due to favourable supply from Galewela and Puttalam areas. Fish Rs./kg",
+        "reason": "favourable supply from Galewela and Puttalam areas"
       },
       {
         "item": "Salaya",
@@ -1108,17 +1108,22 @@
         "category": "Fish",
         "moves": [
           {
+            "market": "Peliyagoda",
+            "previous": 700.0,
+            "today": 350.0
+          },
+          {
             "market": "Negombo",
-            "previous": 980.0,
-            "today": 790.0
+            "previous": 650.0,
+            "today": 450.0
           }
         ],
-        "commentary": "Price of Salaya declined in Negombo fish market compared to last Friday due to favourable supply from Northern coastal area. Other Rs./kg Price of Imported Big Onion increased in both Pettah and Dambulla markets compared to last Friday due to limited availability of Indian varieties. Pettah Dambulla The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+        "commentary": "Wholesale price of Salaya declined in both Peliyagoda and Negombo fish markets compared to yesterday due to favourable supply from Northern coastal area. Pe li ya g od a N e g om b o Other Rs./kg Price of Imported Red Onion declined in Dambulla market compared to yesterday due to high availability of Indian varieties. The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
         "reason": "favourable supply from Northern coastal area"
       }
     ],
     "notes": [
-      "2 highlight price row(s) dropped: no commodity heading within 40pt, usually a column-interleaved line in this edition"
+      "1 highlight price row(s) dropped: no commodity heading within 40pt, usually a column-interleaved line in this edition"
     ]
   }
 }
