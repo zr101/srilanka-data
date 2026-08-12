@@ -15,9 +15,38 @@ def register(dataset: str):
     return wrap
 
 
+# Datasets whose originals must be text-layer PDFs; a scanned/image-only
+# edition means the publisher changed format and the parser here is blind.
+EXPECTED_TEXT_PDF = {
+    "cbsl_daily",
+    "cbsl_price_report",
+    "cbsl_weekly",
+    "wer",
+    "edb_indicators",
+    "tbill_auctions",
+    "sltda_arrivals",
+    "forbes_tea",
+}
+TRIAGE_CONFIDENCE = 0.7
+
+
+def _triage(clean: dict) -> list[str]:
+    """Gate on the _meta.inspection record stamped by store.write_doc. Only a
+    confident scanned/image_based verdict fires; "mixed" and encoding flags are
+    recorded but never gate (kerning/z-order quirks must not quarantine)."""
+    insp = (clean.get("_meta") or {}).get("inspection") or {}
+    pdf_type = insp.get("pdf_type")
+    if pdf_type in ("scanned", "image_based") and insp.get("confidence", 0) >= TRIAGE_CONFIDENCE:
+        return [f"pdf classified {pdf_type} (confidence {insp['confidence']}); expected text-based"]
+    return []
+
+
 def validate(dataset: str, clean: dict) -> list[str]:
     checker = _CHECKERS.get(dataset)
-    return checker(clean) if checker else []
+    errors = checker(clean) if checker else []
+    if dataset in EXPECTED_TEXT_PDF:
+        errors += _triage(clean)
+    return errors
 
 
 # --- built-in checkers (extend per dataset as parsers deepen) ---

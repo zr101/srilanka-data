@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .doc import Doc
+from .inspect import inspect_pdf
 from .validate import validate
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -32,6 +33,10 @@ class Store:
         """Layered write: raw payload + doc.json metadata + clean parsed data.
         Validation failures quarantine the doc (never published to latest.json)
         and raise, which fails the CI job → the failure-alert issue fires."""
+        if original[:4] == b"%PDF":
+            record = inspect_pdf(original)
+            if record is not None:
+                clean.setdefault("_meta", {})["inspection"] = record
         errors = validate(doc.dataset, clean)
         if errors:
             q = self.root / "quarantine" / doc.dataset / doc.doc_id

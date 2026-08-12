@@ -1,5 +1,6 @@
 requests
 pdfplumber
+pdf-inspector
 pypdf
 xlrd
 openpyxl
