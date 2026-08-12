@@ -7,10 +7,24 @@ download and validate, then hand the workbooks to a family-specific builder.
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import date, datetime, timezone
 
 from . import xlsx
 from .doc import Doc
 from .store import Store
+
+# CBSL republishes a vintage table-by-table: the listing can link workbooks
+# hours-to-days before the files exist (soft-404), with availability flapping
+# per member across a day. While a vintage is younger than this, an incomplete
+# family is "not fully published yet" (retry next cron), not a failure.
+PUBLISH_GRACE_DAYS = 7
+
+
+def vintage_age_days(doc_id: str, today: date | None = None) -> int:
+    """Days since the vintage stamp in a doc id like '20260811'."""
+    if today is None:
+        today = datetime.now(timezone.utc).date()
+    return (today - date(int(doc_id[:4]), int(doc_id[4:6]), int(doc_id[6:8]))).days
 
 
 @dataclass(frozen=True)
@@ -83,6 +97,14 @@ def harvest(
 
     missing = [s.name for s in sources if s.required and s.name not in workbooks]
     if missing:
+        age = vintage_age_days(doc_id)
+        if age <= PUBLISH_GRACE_DAYS:
+            print(
+                f"{dataset}: vintage {doc_id} not fully published yet "
+                f"({missing} soft-404, {age}d old); retrying next run"
+            )
+            store.regenerate_indexes(dataset)
+            return 0
         raise ValueError(f"{dataset}: required workbooks unavailable: {missing}")
 
     try:

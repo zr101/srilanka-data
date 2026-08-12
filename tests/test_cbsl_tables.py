@@ -111,3 +111,24 @@ class TestIip:
     def test_industries_carry_isic_codes(self, iip):
         assert len(iip["by_industry"]) == 20
         assert iip["by_industry"][0]["isic"] == "10"
+
+
+class TestVintageGrace:
+    """An incomplete fresh vintage retries quietly; a stale one still fails."""
+
+    def test_age_from_doc_id(self):
+        from datetime import date
+
+        from pipeline.cbsl_tables import vintage_age_days
+
+        assert vintage_age_days("20260811", today=date(2026, 8, 12)) == 1
+        assert vintage_age_days("20260811", today=date(2026, 8, 11)) == 0
+        assert vintage_age_days("20260701", today=date(2026, 8, 12)) == 42
+
+    def test_grace_window_bounds(self):
+        from datetime import date
+
+        from pipeline.cbsl_tables import PUBLISH_GRACE_DAYS, vintage_age_days
+
+        assert vintage_age_days("20260805", today=date(2026, 8, 12)) <= PUBLISH_GRACE_DAYS
+        assert vintage_age_days("20260804", today=date(2026, 8, 12)) > PUBLISH_GRACE_DAYS
