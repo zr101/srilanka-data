@@ -1,8 +1,8 @@
 {
   "dataset": "forbes_tea",
-  "generated_at": "2026-08-12T12:45:14.663073+00:00",
-  "doc_id": "20260708",
-  "date": "2026-07-08",
+  "generated_at": "2026-08-13T06:59:07.636759+00:00",
+  "doc_id": "20260805",
+  "date": "2026-08-05",
   "data": {
     "year": 2026,
     "sales": [
@@ -395,23 +395,94 @@
           "low": 1302.44,
           "total": 1187.21
         }
+      },
+      {
+        "sale_date": "2026-07-15",
+        "qty_000kg": {
+          "high": 975,
+          "medium": 960,
+          "low": 2959,
+          "total": 4894
+        },
+        "avg_rs": {
+          "high": 1047.33,
+          "medium": 955.42,
+          "low": 1325.02,
+          "total": 1197.2
+        }
+      },
+      {
+        "sale_date": "2026-07-22",
+        "qty_000kg": {
+          "high": 806,
+          "medium": 814,
+          "low": 2404,
+          "total": 4024
+        },
+        "avg_rs": {
+          "high": 1083.26,
+          "medium": 962.31,
+          "low": 1317.64,
+          "total": 1198.79
+        }
+      },
+      {
+        "sale_date": "2026-07-28",
+        "qty_000kg": {
+          "high": 867,
+          "medium": 894,
+          "low": 2900,
+          "total": 4661
+        },
+        "avg_rs": {
+          "high": 1088.33,
+          "medium": 956.27,
+          "low": 1338.31,
+          "total": 1218.56
+        }
+      },
+      {
+        "sale_date": "2026-08-05",
+        "qty_000kg": {
+          "high": 924,
+          "medium": 884,
+          "low": 2962,
+          "total": 4770
+        },
+        "avg_rs": {
+          "high": 1073.04,
+          "medium": 940.59,
+          "low": 1286.99,
+          "total": 1181.35
+        }
       }
     ],
     "latest": {
-      "sale_date": "2026-07-08",
+      "sale_date": "2026-08-05",
       "qty_000kg": {
-        "high": 1019,
-        "medium": 1024,
-        "low": 3088,
-        "total": 5131
+        "high": 924,
+        "medium": 884,
+        "low": 2962,
+        "total": 4770
       },
       "avg_rs": {
-        "high": 1061.59,
-        "medium": 967.34,
-        "low": 1302.44,
-        "total": 1187.21
+        "high": 1073.04,
+        "medium": 940.59,
+        "low": 1286.99,
+        "total": 1181.35
       }
     },
-    "repaired_year_rows": 1
+    "repaired_year_rows": 1,
+    "_meta": {
+      "inspection": {
+        "pdf_type": "text_based",
+        "confidence": 1.0,
+        "page_count": 2,
+        "pages_needing_ocr": [],
+        "has_encoding_issues": false,
+        "is_complex_layout": false,
+        "pages_with_tables": []
+      }
+    }
   }
 }

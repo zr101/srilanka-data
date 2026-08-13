@@ -1,0 +1,482 @@
+{
+  "year": 2026,
+  "sales": [
+    {
+      "sale_date": "2026-01-07",
+      "qty_000kg": {
+        "high": 843,
+        "medium": 810,
+        "low": 3099,
+        "total": 4752
+      },
+      "avg_rs": {
+        "high": 1145.14,
+        "medium": 994.84,
+        "low": 1243.94,
+        "total": 1183.95
+      }
+    },
+    {
+      "sale_date": "2026-01-13",
+      "qty_000kg": {
+        "high": 844,
+        "medium": 777,
+        "low": 2844,
+        "total": 4465
+      },
+      "avg_rs": {
+        "high": 1127.12,
+        "medium": 968.43,
+        "low": 1220.74,
+        "total": 1159.13
+      }
+    },
+    {
+      "sale_date": "2026-01-21",
+      "qty_000kg": {
+        "high": 930,
+        "medium": 842,
+        "low": 3419,
+        "total": 5191
+      },
+      "avg_rs": {
+        "high": 1135.52,
+        "medium": 982.22,
+        "low": 1239.12,
+        "total": 1178.86
+      }
+    },
+    {
+      "sale_date": "2026-01-28",
+      "qty_000kg": {
+        "high": 908,
+        "medium": 775,
+        "low": 3026,
+        "total": 4709
+      },
+      "avg_rs": {
+        "high": 1160.73,
+        "medium": 973.46,
+        "low": 1228.31,
+        "total": 1173.31
+      }
+    },
+    {
+      "sale_date": "2026-02-03",
+      "qty_000kg": {
+        "high": 867,
+        "medium": 745,
+        "low": 3286,
+        "total": 4898
+      },
+      "avg_rs": {
+        "high": 1150.97,
+        "medium": 968.11,
+        "low": 1195.93,
+        "total": 1153.33
+      }
+    },
+    {
+      "sale_date": "2026-02-11",
+      "qty_000kg": {
+        "high": 821,
+        "medium": 731,
+        "low": 3227,
+        "total": 4779
+      },
+      "avg_rs": {
+        "high": 1137.85,
+        "medium": 956.11,
+        "low": 1193.71,
+        "total": 1147.75
+      }
+    },
+    {
+      "sale_date": "2026-02-18",
+      "qty_000kg": {
+        "high": 935,
+        "medium": 768,
+        "low": 3094,
+        "total": 4797
+      },
+      "avg_rs": {
+        "high": 1175.83,
+        "medium": 996.88,
+        "low": 1217.03,
+        "total": 1173.76
+      }
+    },
+    {
+      "sale_date": "2026-02-25",
+      "qty_000kg": {
+        "high": 972,
+        "medium": 774,
+        "low": 2924,
+        "total": 4670
+      },
+      "avg_rs": {
+        "high": 1156.24,
+        "medium": 995.89,
+        "low": 1232.68,
+        "total": 1177.54
+      }
+    },
+    {
+      "sale_date": "2026-03-04",
+      "qty_000kg": {
+        "high": 795,
+        "medium": 569,
+        "low": 2699,
+        "total": 4063
+      },
+      "avg_rs": {
+        "high": 1160.71,
+        "medium": 953.18,
+        "low": 1154.3,
+        "total": 1127.37
+      }
+    },
+    {
+      "sale_date": "2026-03-11",
+      "qty_000kg": {
+        "high": 836,
+        "medium": 685,
+        "low": 2734,
+        "total": 4255
+      },
+      "avg_rs": {
+        "high": 1154.8,
+        "medium": 970.2,
+        "low": 1186.6,
+        "total": 1145.5
+      }
+    },
+    {
+      "sale_date": "2026-03-18",
+      "qty_000kg": {
+        "high": 797,
+        "medium": 662,
+        "low": 2786,
+        "total": 4245
+      },
+      "avg_rs": {
+        "high": 1160.41,
+        "medium": 964.83,
+        "low": 1195.78,
+        "total": 1153.13
+      }
+    },
+    {
+      "sale_date": "2026-03-25",
+      "qty_000kg": {
+        "high": 822,
+        "medium": 659,
+        "low": 3158,
+        "total": 4639
+      },
+      "avg_rs": {
+        "high": 1137.12,
+        "medium": 976.44,
+        "low": 1214.71,
+        "total": 1167.11
+      }
+    },
+    {
+      "sale_date": "2026-03-31",
+      "qty_000kg": {
+        "high": 745,
+        "medium": 607,
+        "low": 2832,
+        "total": 4184
+      },
+      "avg_rs": {
+        "high": 1169.19,
+        "medium": 1007.69,
+        "low": 1215.87,
+        "total": 1177.35
+      }
+    },
+    {
+      "sale_date": "2026-04-08",
+      "qty_000kg": {
+        "high": 803,
+        "medium": 742,
+        "low": 3002,
+        "total": 4547
+      },
+      "avg_rs": {
+        "high": 1169.77,
+        "medium": 1000.45,
+        "low": 1228.39,
+        "total": 1180.86
+      }
+    },
+    {
+      "sale_date": "2026-04-22",
+      "qty_000kg": {
+        "high": 900,
+        "medium": 853,
+        "low": 2961,
+        "total": 4714
+      },
+      "avg_rs": {
+        "high": 1190.12,
+        "medium": 1029.45,
+        "low": 1258.33,
+        "total": 1203.89
+      }
+    },
+    {
+      "sale_date": "2026-04-27",
+      "qty_000kg": {
+        "high": 928,
+        "medium": 894,
+        "low": 2860,
+        "total": 4682
+      },
+      "avg_rs": {
+        "high": 1183.83,
+        "medium": 1059.02,
+        "low": 1278.78,
+        "total": 1217.98
+      }
+    },
+    {
+      "sale_date": "2026-05-06",
+      "qty_000kg": {
+        "high": 867,
+        "medium": 962,
+        "low": 2858,
+        "total": 4687
+      },
+      "avg_rs": {
+        "high": 1170.73,
+        "medium": 1056.83,
+        "low": 1230.42,
+        "total": 1183.75
+      }
+    },
+    {
+      "sale_date": "2026-05-13",
+      "qty_000kg": {
+        "high": 1122,
+        "medium": 974,
+        "low": 2921,
+        "total": 5017
+      },
+      "avg_rs": {
+        "high": 1149.31,
+        "medium": 1046.3,
+        "low": 1306.22,
+        "total": 1220.67
+      }
+    },
+    {
+      "sale_date": "2026-05-20",
+      "qty_000kg": {
+        "high": 1079,
+        "medium": 1069,
+        "low": 3339,
+        "total": 5487
+      },
+      "avg_rs": {
+        "high": 1077.89,
+        "medium": 997.28,
+        "low": 1308.12,
+        "total": 1202.28
+      }
+    },
+    {
+      "sale_date": "2026-05-26",
+      "qty_000kg": {
+        "high": 1016,
+        "medium": 992,
+        "low": 3032,
+        "total": 5040
+      },
+      "avg_rs": {
+        "high": 1080.79,
+        "medium": 963.92,
+        "low": 1308.53,
+        "total": 1194.81
+      }
+    },
+    {
+      "sale_date": "2026-06-03",
+      "qty_000kg": {
+        "high": 874,
+        "medium": 974,
+        "low": 3155,
+        "total": 5003
+      },
+      "avg_rs": {
+        "high": 1074.46,
+        "medium": 950.89,
+        "low": 1275.98,
+        "total": 1177.46
+      }
+    },
+    {
+      "sale_date": "2026-06-10",
+      "qty_000kg": {
+        "high": 1013,
+        "medium": 1047,
+        "low": 3364,
+        "total": 5424
+      },
+      "avg_rs": {
+        "high": 1062.23,
+        "medium": 963.73,
+        "low": 1273.88,
+        "total": 1174.46
+      }
+    },
+    {
+      "sale_date": "2026-06-17",
+      "qty_000kg": {
+        "high": 937,
+        "medium": 1064,
+        "low": 3370,
+        "total": 5371
+      },
+      "avg_rs": {
+        "high": 1042.78,
+        "medium": 951.11,
+        "low": 1287.92,
+        "total": 1178.43
+      }
+    },
+    {
+      "sale_date": "2026-06-23",
+      "qty_000kg": {
+        "high": 1040,
+        "medium": 882,
+        "low": 2381,
+        "total": 4303
+      },
+      "avg_rs": {
+        "high": 1050.84,
+        "medium": 943.56,
+        "low": 1268.66,
+        "total": 1149.4
+      }
+    },
+    {
+      "sale_date": "2026-07-01",
+      "qty_000kg": {
+        "high": 1013,
+        "medium": 1025,
+        "low": 3190,
+        "total": 5228
+      },
+      "avg_rs": {
+        "high": 1071.14,
+        "medium": 957.22,
+        "low": 1292.66,
+        "total": 1183.94
+      }
+    },
+    {
+      "sale_date": "2026-07-08",
+      "qty_000kg": {
+        "high": 1019,
+        "medium": 1024,
+        "low": 3088,
+        "total": 5131
+      },
+      "avg_rs": {
+        "high": 1061.59,
+        "medium": 967.34,
+        "low": 1302.44,
+        "total": 1187.21
+      }
+    },
+    {
+      "sale_date": "2026-07-15",
+      "qty_000kg": {
+        "high": 975,
+        "medium": 960,
+        "low": 2959,
+        "total": 4894
+      },
+      "avg_rs": {
+        "high": 1047.33,
+        "medium": 955.42,
+        "low": 1325.02,
+        "total": 1197.2
+      }
+    },
+    {
+      "sale_date": "2026-07-22",
+      "qty_000kg": {
+        "high": 806,
+        "medium": 814,
+        "low": 2404,
+        "total": 4024
+      },
+      "avg_rs": {
+        "high": 1083.26,
+        "medium": 962.31,
+        "low": 1317.64,
+        "total": 1198.79
+      }
+    },
+    {
+      "sale_date": "2026-07-28",
+      "qty_000kg": {
+        "high": 867,
+        "medium": 894,
+        "low": 2900,
+        "total": 4661
+      },
+      "avg_rs": {
+        "high": 1088.33,
+        "medium": 956.27,
+        "low": 1338.31,
+        "total": 1218.56
+      }
+    },
+    {
+      "sale_date": "2026-08-05",
+      "qty_000kg": {
+        "high": 924,
+        "medium": 884,
+        "low": 2962,
+        "total": 4770
+      },
+      "avg_rs": {
+        "high": 1073.04,
+        "medium": 940.59,
+        "low": 1286.99,
+        "total": 1181.35
+      }
+    }
+  ],
+  "latest": {
+    "sale_date": "2026-08-05",
+    "qty_000kg": {
+      "high": 924,
+      "medium": 884,
+      "low": 2962,
+      "total": 4770
+    },
+    "avg_rs": {
+      "high": 1073.04,
+      "medium": 940.59,
+      "low": 1286.99,
+      "total": 1181.35
+    }
+  },
+  "repaired_year_rows": 1,
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 2,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
