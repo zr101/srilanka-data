@@ -1,14 +1,12 @@
 {
   "dataset": "cbsl_weekly",
-  "generated_at": "2026-08-14T12:11:29.633005+00:00",
-  "doc_id": "20260807",
-  "date": "2026-08-07",
+  "generated_at": "2026-08-15T05:53:07.146516+00:00",
+  "doc_id": "20260814",
+  "date": "2026-08-14",
   "data": {
-    "week_ending": "2026-08-07",
-    "reserves_usd_mn": 6591.0,
-    "reserves_as_of": "July 2026",
-    "rupee_ytd_pct": -7.6,
-    "rupee_as_of": "07 August 2026",
+    "week_ending": "2026-08-14",
+    "rupee_ytd_pct": -7.1,
+    "rupee_as_of": "14 August 2026",
     "tables": {
       "reserves": [
         {
@@ -384,6 +382,17 @@
           "usd_2026": 337.24,
           "pct_change_usd": 5.5
         }
+      }
+    },
+    "_meta": {
+      "inspection": {
+        "pdf_type": "text_based",
+        "confidence": 0.875,
+        "page_count": 16,
+        "pages_needing_ocr": [],
+        "has_encoding_issues": false,
+        "is_complex_layout": false,
+        "pages_with_tables": []
       }
     }
   }
