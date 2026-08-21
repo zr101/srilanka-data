@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_activity",
-  "n_docs": 1,
+  "n_docs": 2,
   "date_min": "2026-08-03",
-  "date_max": "2026-08-03",
-  "generated_at": "2026-08-21T06:00:42.891462+00:00"
+  "date_max": "2026-08-21",
+  "generated_at": "2026-08-21T11:54:47.033391+00:00"
 }
