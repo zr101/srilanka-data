@@ -1,7 +1,7 @@
 {
   "dataset": "pucsl_generation",
-  "n_docs": 24,
+  "n_docs": 25,
   "date_min": "2026-07-31",
-  "date_max": "2026-08-23",
-  "generated_at": "2026-08-24T11:56:08.814843+00:00"
+  "date_max": "2026-08-24",
+  "generated_at": "2026-08-25T11:56:32.345804+00:00"
 }
