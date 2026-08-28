@@ -1,12 +1,12 @@
 {
   "dataset": "cbsl_weekly",
-  "generated_at": "2026-08-27T16:40:19.958582+00:00",
-  "doc_id": "20260821",
-  "date": "2026-08-21",
+  "generated_at": "2026-08-28T17:40:00.895743+00:00",
+  "doc_id": "20260828",
+  "date": "2026-08-28",
   "data": {
-    "week_ending": "2026-08-21",
-    "rupee_ytd_pct": -6.1,
-    "rupee_as_of": "21 August 2026",
+    "week_ending": "2026-08-28",
+    "rupee_ytd_pct": -5.7,
+    "rupee_as_of": "28 August 2026",
     "tables": {
       "reserves": [
         {
