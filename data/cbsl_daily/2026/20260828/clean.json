@@ -1,0 +1,94 @@
+{
+  "date": "2026-08-28",
+  "tbill": {
+    "d91": 9.06,
+    "d182": 9.44,
+    "d364": 9.89
+  },
+  "tbill_secondary": {
+    "d91": 8.98,
+    "d182": 9.4,
+    "d364": 9.84
+  },
+  "opr": 8.75,
+  "srr": 2.0,
+  "awpr": 10.95,
+  "overnight_liquidity_rs_bn": 182.87,
+  "gdp_growth_pct": 5.1,
+  "ncpi_yoy_pct": 7.2,
+  "ncpi_month": "July",
+  "ccpi_yoy_pct": 7.3,
+  "ccpi_month": "July",
+  "fx_tt": {
+    "usd": {
+      "tt_buy": 323.5157,
+      "tt_sell": 332.6643
+    },
+    "gbp": {
+      "tt_buy": 438.6015,
+      "tt_sell": 453.2505
+    },
+    "eur": {
+      "tt_buy": 375.5845,
+      "tt_sell": 388.8819
+    },
+    "jpy": {
+      "tt_buy": 2.0228,
+      "tt_sell": 2.0959
+    }
+  },
+  "usd_spot": 328.61,
+  "cic_rs_mn": {
+    "previous": 1663144.69,
+    "latest": 1664835.18
+  },
+  "reserve_money_rs_mn": {
+    "previous": 1912628.41,
+    "latest": 1922457.32
+  },
+  "share_market": {
+    "turnover_rs_mn": 2204.05,
+    "market_cap_rs_bn": 7716.27,
+    "pe_ratio": 11.22,
+    "foreign_purchases_rs_mn": 850.12,
+    "foreign_sales_rs_mn": 824.13
+  },
+  "pump_prices_rs": {
+    "petrol92": 414.0,
+    "diesel": 382.0,
+    "kerosene": 285.0
+  },
+  "crude_usd": {
+    "brent": 90.5,
+    "wti": 85.45,
+    "opec": 87.31
+  },
+  "platts_usd": {
+    "petrol": 114.0,
+    "diesel": 153.43,
+    "kerosene": 147.37
+  },
+  "electricity": {
+    "total_gwh": 52.92,
+    "peak_mw": 2792.8,
+    "generation_mix_pct": {
+      "thermal_coal": 21.2,
+      "thermal_oil": 14.1,
+      "hydro": 42.1,
+      "wind": 7.4,
+      "solar": 14.6,
+      "biomass": 0.6
+    }
+  },
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 1,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
