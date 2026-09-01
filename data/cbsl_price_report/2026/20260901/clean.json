@@ -1,0 +1,1116 @@
+{
+  "date": "2026-09-01",
+  "report_date_text": "01 September 2026",
+  "markets": [
+    "Pettah",
+    "Dambulla"
+  ],
+  "compares_to": "yesterday",
+  "items": [
+    {
+      "item": "Beans",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 400.0,
+          "today": 450.0
+        },
+        "wholesale_dambulla": {
+          "previous": 400.0,
+          "today": 275.0
+        },
+        "retail_pettah": {
+          "previous": 450.0,
+          "today": 500.0
+        },
+        "retail_dambulla": {
+          "previous": 430.0,
+          "today": 305.0
+        },
+        "retail_narahenpita": {
+          "previous": 600.0,
+          "today": 600.0
+        }
+      }
+    },
+    {
+      "item": "Carrot",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 180.0,
+          "today": 200.0
+        },
+        "wholesale_dambulla": {
+          "previous": 175.0,
+          "today": 135.0
+        },
+        "retail_pettah": {
+          "previous": 230.0,
+          "today": 250.0
+        },
+        "retail_dambulla": {
+          "previous": 205.0,
+          "today": 165.0
+        },
+        "retail_narahenpita": {
+          "previous": 360.0,
+          "today": 340.0
+        }
+      }
+    },
+    {
+      "item": "Cabbage",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "wholesale_dambulla": {
+          "previous": 185.0,
+          "today": 115.0
+        },
+        "retail_pettah": {
+          "previous": 250.0,
+          "today": 250.0
+        },
+        "retail_dambulla": {
+          "previous": 215.0,
+          "today": 145.0
+        },
+        "retail_narahenpita": {
+          "previous": 360.0,
+          "today": 360.0
+        }
+      }
+    },
+    {
+      "item": "Tomato",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 300.0,
+          "today": 300.0
+        },
+        "wholesale_dambulla": {
+          "previous": 210.0,
+          "today": 225.0
+        },
+        "retail_pettah": {
+          "previous": 350.0,
+          "today": 350.0
+        },
+        "retail_dambulla": {
+          "previous": 240.0,
+          "today": 255.0
+        },
+        "retail_narahenpita": {
+          "previous": 480.0,
+          "today": 480.0
+        }
+      }
+    },
+    {
+      "item": "Brinjal",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 350.0,
+          "today": 350.0
+        },
+        "wholesale_dambulla": {
+          "previous": 225.0,
+          "today": 250.0
+        },
+        "retail_pettah": {
+          "previous": 400.0,
+          "today": 400.0
+        },
+        "retail_dambulla": {
+          "previous": 255.0,
+          "today": 280.0
+        },
+        "retail_narahenpita": {
+          "previous": 600.0,
+          "today": 600.0
+        }
+      }
+    },
+    {
+      "item": "Pumpkin",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 150.0,
+          "today": 150.0
+        },
+        "wholesale_dambulla": {
+          "previous": 130.0,
+          "today": 105.0
+        },
+        "retail_pettah": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "retail_dambulla": {
+          "previous": 160.0,
+          "today": 135.0
+        },
+        "retail_narahenpita": {
+          "previous": 240.0,
+          "today": 220.0
+        }
+      }
+    },
+    {
+      "item": "Snake gourd",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "wholesale_dambulla": {
+          "previous": 125.0,
+          "today": 175.0
+        },
+        "retail_pettah": {
+          "previous": 250.0,
+          "today": 250.0
+        },
+        "retail_dambulla": {
+          "previous": 155.0,
+          "today": 205.0
+        },
+        "retail_narahenpita": {
+          "previous": 400.0,
+          "today": 400.0
+        }
+      }
+    },
+    {
+      "item": "Green Chilli",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 400.0,
+          "today": 450.0
+        },
+        "wholesale_dambulla": {
+          "previous": 450.0,
+          "today": 375.0
+        },
+        "retail_pettah": {
+          "previous": 500.0,
+          "today": 500.0
+        },
+        "retail_dambulla": {
+          "previous": 480.0,
+          "today": 405.0
+        },
+        "retail_narahenpita": {
+          "previous": 800.0,
+          "today": 800.0
+        }
+      }
+    },
+    {
+      "item": "Lime",
+      "unit": "Rs./kg",
+      "section": "Vegetables",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 450.0,
+          "today": 450.0
+        },
+        "wholesale_dambulla": {
+          "previous": 525.0,
+          "today": 525.0
+        },
+        "retail_pettah": {
+          "previous": 550.0,
+          "today": 550.0
+        },
+        "retail_dambulla": {
+          "previous": 555.0,
+          "today": 555.0
+        },
+        "retail_narahenpita": {
+          "previous": 800.0,
+          "today": 800.0
+        }
+      }
+    },
+    {
+      "item": "Red Onion (Local)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 313.0,
+          "today": 310.0
+        },
+        "wholesale_dambulla": {
+          "previous": 260.0,
+          "today": 260.0
+        },
+        "retail_pettah": {
+          "previous": 360.0,
+          "today": 360.0
+        },
+        "retail_dambulla": {
+          "previous": 280.0,
+          "today": 280.0
+        },
+        "retail_narahenpita": {
+          "previous": 650.0,
+          "today": 650.0
+        }
+      }
+    },
+    {
+      "item": "Red Onion (lmp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 275.0,
+          "today": 275.0
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": null
+        },
+        "retail_pettah": {
+          "previous": 350.0,
+          "today": 350.0
+        },
+        "retail_dambulla": {
+          "previous": null,
+          "today": null
+        },
+        "retail_narahenpita": {
+          "previous": null,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Big Onion (Local)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "wholesale_dambulla": {
+          "previous": 265.0,
+          "today": 255.0
+        },
+        "retail_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "retail_dambulla": {
+          "previous": 285.0,
+          "today": 275.0
+        },
+        "retail_narahenpita": {
+          "previous": null,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Big Onion (Imp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 260.0,
+          "today": 260.0
+        },
+        "wholesale_dambulla": {
+          "previous": 260.0,
+          "today": 260.0
+        },
+        "retail_pettah": {
+          "previous": 300.0,
+          "today": 293.0
+        },
+        "retail_dambulla": {
+          "previous": 275.0,
+          "today": 280.0
+        },
+        "retail_narahenpita": {
+          "previous": 360.0,
+          "today": 360.0
+        }
+      }
+    },
+    {
+      "item": "Potato (Local)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 333.0,
+          "today": 338.0
+        },
+        "wholesale_dambulla": {
+          "previous": 295.0,
+          "today": 290.0
+        },
+        "retail_pettah": {
+          "previous": 380.0,
+          "today": 380.0
+        },
+        "retail_dambulla": {
+          "previous": 315.0,
+          "today": 310.0
+        },
+        "retail_narahenpita": {
+          "previous": 480.0,
+          "today": 480.0
+        }
+      }
+    },
+    {
+      "item": "Potato (Imp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 185.0,
+          "today": 192.0
+        },
+        "wholesale_dambulla": {
+          "previous": 180.0,
+          "today": 180.0
+        },
+        "retail_pettah": {
+          "previous": 213.0,
+          "today": 218.0
+        },
+        "retail_dambulla": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "retail_narahenpita": {
+          "previous": 240.0,
+          "today": 240.0
+        }
+      }
+    },
+    {
+      "item": "Dried Chilli (Imp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 1057.0,
+          "today": 1074.0
+        },
+        "wholesale_dambulla": {
+          "previous": 1080.0,
+          "today": 1090.0
+        },
+        "retail_pettah": {
+          "previous": 1173.0,
+          "today": 1173.0
+        },
+        "retail_dambulla": {
+          "previous": 1110.0,
+          "today": 1120.0
+        },
+        "retail_narahenpita": {
+          "previous": 1240.0,
+          "today": 1240.0
+        }
+      }
+    },
+    {
+      "item": "Coconut (Avg.)",
+      "unit": "Rs./Nut",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 143.0,
+          "today": 143.0
+        },
+        "wholesale_dambulla": {
+          "previous": 125.0,
+          "today": 115.0
+        },
+        "retail_pettah": {
+          "previous": 158.0,
+          "today": 158.0
+        },
+        "retail_dambulla": {
+          "previous": 130.0,
+          "today": 120.0
+        },
+        "retail_narahenpita": {
+          "previous": 180.0,
+          "today": 180.0
+        }
+      }
+    },
+    {
+      "item": "Coconut oil",
+      "unit": "Rs./Ltr",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 809.0,
+          "today": 809.0
+        },
+        "retail_pettah": {
+          "previous": 884.0,
+          "today": 881.0
+        },
+        "retail_narahenpita": {
+          "previous": 852.0,
+          "today": 852.0
+        }
+      }
+    },
+    {
+      "item": "Red Dhal",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 233.0,
+          "today": 232.0
+        },
+        "retail_pettah": {
+          "previous": 253.0,
+          "today": 250.0
+        },
+        "retail_narahenpita": {
+          "previous": 260.0,
+          "today": 260.0
+        }
+      }
+    },
+    {
+      "item": "Sugar (White)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 223.0,
+          "today": 223.0
+        },
+        "retail_pettah": {
+          "previous": 240.0,
+          "today": 240.0
+        },
+        "retail_narahenpita": {
+          "previous": 240.0,
+          "today": 240.0
+        }
+      }
+    },
+    {
+      "item": "Egg (White)",
+      "unit": "Rs./Each",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 35.0,
+          "today": 35.0
+        },
+        "retail_pettah": {
+          "previous": 40.0,
+          "today": 40.0
+        },
+        "retail_narahenpita": {
+          "previous": 44.0,
+          "today": 44.0
+        }
+      }
+    },
+    {
+      "item": "Katta (Imp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 2163.0,
+          "today": 2163.0
+        },
+        "retail_pettah": {
+          "previous": 2633.0,
+          "today": 2633.0
+        },
+        "retail_narahenpita": {
+          "previous": null,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Sprat (Imp)",
+      "unit": "Rs./kg",
+      "section": "Other",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 1270.0,
+          "today": 1288.0
+        },
+        "retail_pettah": {
+          "previous": 1567.0,
+          "today": 1567.0
+        },
+        "retail_narahenpita": {
+          "previous": 1600.0,
+          "today": 1600.0
+        }
+      }
+    },
+    {
+      "item": "Banana (Sour)",
+      "unit": "Rs./kg",
+      "section": "Fruits",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 150.0,
+          "today": 150.0
+        },
+        "wholesale_dambulla": {
+          "previous": 145.0,
+          "today": 110.0
+        },
+        "retail_pettah": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "retail_dambulla": {
+          "previous": 175.0,
+          "today": 140.0
+        },
+        "retail_narahenpita": {
+          "previous": 320.0,
+          "today": 320.0
+        }
+      }
+    },
+    {
+      "item": "Papaw",
+      "unit": "Rs./kg",
+      "section": "Fruits",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 180.0,
+          "today": 180.0
+        },
+        "wholesale_dambulla": {
+          "previous": 165.0,
+          "today": 150.0
+        },
+        "retail_pettah": {
+          "previous": 230.0,
+          "today": 230.0
+        },
+        "retail_dambulla": {
+          "previous": 190.0,
+          "today": 180.0
+        },
+        "retail_narahenpita": {
+          "previous": 280.0,
+          "today": 280.0
+        }
+      }
+    },
+    {
+      "item": "Pineapple",
+      "unit": "Rs./kg",
+      "section": "Fruits",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "wholesale_dambulla": {
+          "previous": 405.0,
+          "today": 410.0
+        },
+        "retail_pettah": {
+          "previous": 375.0,
+          "today": 425.0
+        },
+        "retail_dambulla": {
+          "previous": 435.0,
+          "today": 440.0
+        },
+        "retail_narahenpita": {
+          "previous": 450.0,
+          "today": 450.0
+        }
+      }
+    },
+    {
+      "item": "Apple (Imp)",
+      "unit": "Rs./Each",
+      "section": "Fruits",
+      "prices": {
+        "retail_pettah": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "retail_narahenpita": {
+          "previous": 280.0,
+          "today": 280.0
+        }
+      }
+    },
+    {
+      "item": "Orange (Imp)",
+      "unit": "Rs./Each",
+      "section": "Fruits",
+      "prices": {
+        "retail_pettah": {
+          "previous": 225.0,
+          "today": 225.0
+        },
+        "retail_narahenpita": {
+          "previous": 250.0,
+          "today": 250.0
+        }
+      }
+    },
+    {
+      "item": "Samba",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 242.0,
+          "today": 242.0
+        },
+        "wholesale_dambulla": {
+          "previous": 225.0,
+          "today": 223.0
+        },
+        "retail_pettah": {
+          "previous": 247.0,
+          "today": 247.0
+        },
+        "retail_dambulla": {
+          "previous": 240.0,
+          "today": 240.0
+        },
+        "retail_narahenpita": {
+          "previous": 240.0,
+          "today": 240.0
+        }
+      }
+    },
+    {
+      "item": "Nadu",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 203.0,
+          "today": 203.0
+        },
+        "wholesale_dambulla": {
+          "previous": 193.0,
+          "today": 190.0
+        },
+        "retail_pettah": {
+          "previous": 222.0,
+          "today": 222.0
+        },
+        "retail_dambulla": {
+          "previous": 235.0,
+          "today": 235.0
+        },
+        "retail_narahenpita": {
+          "previous": 230.0,
+          "today": 230.0
+        }
+      }
+    },
+    {
+      "item": "Kekulu (White)",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 193.0,
+          "today": 190.0
+        },
+        "wholesale_dambulla": {
+          "previous": 178.0,
+          "today": 180.0
+        },
+        "retail_pettah": {
+          "previous": 205.0,
+          "today": 210.0
+        },
+        "retail_dambulla": {
+          "previous": 200.0,
+          "today": 200.0
+        },
+        "retail_narahenpita": {
+          "previous": 220.0,
+          "today": 220.0
+        }
+      }
+    },
+    {
+      "item": "Kekulu (Red)",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 175.0,
+          "today": 175.0
+        },
+        "wholesale_dambulla": {
+          "previous": 169.0,
+          "today": 169.0
+        },
+        "retail_pettah": {
+          "previous": 197.0,
+          "today": 197.0
+        },
+        "retail_dambulla": {
+          "previous": 184.0,
+          "today": 184.0
+        },
+        "retail_narahenpita": {
+          "previous": 190.0,
+          "today": 190.0
+        }
+      }
+    },
+    {
+      "item": "Ponni Samba (Imp)",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 237.0,
+          "today": 237.0
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": null
+        },
+        "retail_pettah": {
+          "previous": 258.0,
+          "today": 260.0
+        },
+        "retail_narahenpita": {
+          "previous": 240.0,
+          "today": 240.0
+        }
+      }
+    },
+    {
+      "item": "Nadu (Imp)",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": null
+        },
+        "retail_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "retail_narahenpita": {
+          "previous": null,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Kekulu (White) (Imp)",
+      "unit": "Rs./kg",
+      "section": "Rice",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": null
+        },
+        "retail_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "retail_narahenpita": {
+          "previous": null,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Kelawalla",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 1900.0,
+          "today": 2000.0
+        },
+        "wholesale_dambulla": {
+          "previous": 1750.0,
+          "today": 1750.0
+        },
+        "retail_dambulla": {
+          "previous": 2760.0,
+          "today": 2760.0
+        },
+        "retail_narahenpita": {
+          "previous": 3080.0,
+          "today": 3000.0
+        }
+      }
+    },
+    {
+      "item": "Thalapath",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": 2300.0
+        },
+        "wholesale_dambulla": {
+          "previous": 2100.0,
+          "today": 2100.0
+        },
+        "retail_dambulla": {
+          "previous": 2980.0,
+          "today": 2980.0
+        },
+        "retail_narahenpita": {
+          "previous": 3190.0,
+          "today": 3100.0
+        }
+      }
+    },
+    {
+      "item": "Balaya",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": null
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": 900.0
+        },
+        "retail_dambulla": {
+          "previous": null,
+          "today": 1160.0
+        },
+        "retail_narahenpita": {
+          "previous": 1300.0,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Paraw",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": null,
+          "today": 1400.0
+        },
+        "wholesale_dambulla": {
+          "previous": null,
+          "today": 1500.0
+        },
+        "retail_dambulla": {
+          "previous": null,
+          "today": 2850.0
+        },
+        "retail_narahenpita": {
+          "previous": 1840.0,
+          "today": 1980.0
+        }
+      }
+    },
+    {
+      "item": "Salaya",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 650.0
+        },
+        "wholesale_dambulla": {
+          "previous": 600.0,
+          "today": 600.0
+        },
+        "retail_dambulla": {
+          "previous": 740.0
+        },
+        "retail_narahenpita": {
+          "previous": 900.0
+        }
+      }
+    },
+    {
+      "item": "Hurulla",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 1200.0,
+          "today": 1100.0
+        },
+        "wholesale_dambulla": {
+          "previous": 1150.0,
+          "today": 1100.0
+        },
+        "retail_dambulla": {
+          "previous": 1440.0,
+          "today": 1380.0
+        },
+        "retail_narahenpita": {
+          "previous": 1360.0,
+          "today": null
+        }
+      }
+    },
+    {
+      "item": "Linna",
+      "unit": "Rs./kg",
+      "section": "Fish",
+      "prices": {
+        "wholesale_pettah": {
+          "previous": 600.0,
+          "today": 650.0
+        },
+        "wholesale_dambulla": {
+          "previous": 700.0,
+          "today": 650.0
+        },
+        "retail_dambulla": {
+          "previous": 840.0,
+          "today": 790.0
+        },
+        "retail_narahenpita": {
+          "previous": 900.0,
+          "today": 900.0
+        }
+      }
+    }
+  ],
+  "highlights": [
+    {
+      "item": "Cabbage",
+      "direction": "declined",
+      "category": "Vegetables",
+      "moves": [
+        {
+          "market": "Dambulla",
+          "previous": 215.0,
+          "today": 145.0
+        }
+      ],
+      "commentary": "Price of Cabbage declined further in Dambulla market compared to yesterday due to favourable supply from Nuwara Eliya and Bandarawela areas. Pettah Dambulla Rs./kg",
+      "reason": "favourable supply from Nuwara Eliya and Bandarawela areas"
+    },
+    {
+      "item": "Tomato",
+      "direction": "increased",
+      "category": "Vegetables",
+      "moves": [
+        {
+          "market": "Dambulla",
+          "previous": 240.0,
+          "today": 255.0
+        }
+      ],
+      "commentary": "Price of Tomato increased in Dambulla market compared to yesterday due to limited supply from Sigiriya and Galewela areas. Rs./kg",
+      "reason": "limited supply from Sigiriya and Galewela areas"
+    },
+    {
+      "item": "Brinjal",
+      "direction": "increased",
+      "category": "Vegetables",
+      "moves": [
+        {
+          "market": "Dambulla",
+          "previous": 255.0,
+          "today": 280.0
+        }
+      ],
+      "commentary": "Price of Brinjal increased in Dambulla market compared to yesterday due to limited supply from Kalpitiya and Sigiriya areas. Fish Rs./kg Wholesale price of Kelawalla increased in Peliyagoda fish market compared to yesterday due to limited supply from North Western coastal area. Rs./kg Wholesale price of Hurulla declined in Peliyagoda fish market compared to yesterday due to favourable supply from Northern coastal area. Fruits Rs./kg",
+      "reason": "limited supply from Kalpitiya and Sigiriya areas"
+    },
+    {
+      "item": "Banana (sour)",
+      "direction": "declined",
+      "category": "Fruits",
+      "moves": [
+        {
+          "market": "Dambulla",
+          "previous": 175.0,
+          "today": 140.0
+        }
+      ],
+      "commentary": "Price of Banana (sour) declined in Dambulla market compared to yesterday due to favourable supply from Kekirawa and Galewela areas. Other Rs./Nut",
+      "reason": "favourable supply from Kekirawa and Galewela areas"
+    },
+    {
+      "item": "Coconut",
+      "direction": "declined",
+      "category": "Other",
+      "moves": [
+        {
+          "market": "Dambulla",
+          "previous": 130.0,
+          "today": 120.0
+        }
+      ],
+      "commentary": "Price of Coconut declined in Dambulla market compared to yesterday due to favourable supply from Ibbagamuwa and Kurunegala areas. The above mentioned prices, unless otherwise noted, denote the retail prices in relevant markets.",
+      "reason": "favourable supply from Ibbagamuwa and Kurunegala areas"
+    }
+  ],
+  "notes": [
+    "2 highlight price row(s) dropped: no commodity heading within 40pt, usually a column-interleaved line in this edition"
+  ],
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 2,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
