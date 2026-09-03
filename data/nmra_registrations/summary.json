@@ -1,7 +1,7 @@
 {
   "dataset": "nmra_registrations",
-  "n_docs": 2,
+  "n_docs": 3,
   "date_min": "2026-07-30",
-  "date_max": "2026-08-13",
-  "generated_at": "2026-09-02T15:14:33.999596+00:00"
+  "date_max": "2026-08-20",
+  "generated_at": "2026-09-03T10:02:25.983807+00:00"
 }

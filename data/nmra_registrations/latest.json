@@ -1,27 +1,27 @@
 {
   "dataset": "nmra_registrations",
-  "generated_at": "2026-09-02T15:14:33.997564+00:00",
-  "doc_id": "20260813",
-  "date": "2026-08-13",
+  "generated_at": "2026-09-03T10:02:25.981902+00:00",
+  "doc_id": "20260820",
+  "date": "2026-08-20",
   "data": {
-    "date": "2026-08-13",
-    "total_registrations": 6581,
+    "date": "2026-08-20",
+    "total_registrations": 6604,
     "top_countries": [
       {
         "country": "INDIA",
-        "count": 3293
+        "count": 3298
       },
       {
         "country": "SRI LANKA",
-        "count": 1076
+        "count": 1089
       },
       {
         "country": "BANGLADESH",
-        "count": 632
+        "count": 634
       },
       {
         "country": "PAKISTAN",
-        "count": 617
+        "count": 618
       },
       {
         "country": "MALAYSIA",
@@ -29,7 +29,7 @@
       },
       {
         "country": "SWITZERLAND",
-        "count": 87
+        "count": 88
       },
       {
         "country": "GERMANY",
@@ -49,8 +49,7 @@
       }
     ],
     "by_type": {
-      "ALU ALU BLISTER": 1169,
-      "BLISTER ALU PVC": 3,
+      "ALU ALU BLISTER": 1177,
       "ALU-ALU BLISTER20X10": 1,
       "ALU PVC BLISTER10X10": 1,
       "ALU ALU BLISTER20X10": 1,
@@ -59,7 +58,7 @@
       "HDPE BOTTLE": 117,
       "ALU PVC BLISTR 20X10": 1,
       "ALU ALU BLISTETR": 1,
-      "ALU PVC BLISTER": 719,
+      "ALU PVC BLISTER": 723,
       "ALU ALU BLISTER 120": 1,
       "ALU ALU BLISTER4X10": 1,
       "CLEAR TUBULAR USP GV": 1,
@@ -79,9 +78,9 @@
       "HDPE /BLISTER": 1,
       "ALU/PVC BLIS/HDPE BO": 1,
       "STRIP": 21,
-      "HDPE CONTAINER": 67,
+      "HDPE CONTAINER": 68,
       "TY 1GLS VIAL ,DB PFS": 1,
-      "GLASS VIAL": 157,
+      "GLASS VIAL": 158,
       "ALU ALU BLISTE0'S": 1,
       "ALUMINIUM COLL TUBE": 4,
       "AMB GLASS BOTTLE": 31,
@@ -99,7 +98,7 @@
       "LAMINATED TUBE": 33,
       "AMB TUBU 1 VIAL USP": 1,
       "AMBER GLASS VIAL": 3,
-      "AMBER GLASS BOTTLE": 22,
+      "AMBER GLASS BOTTLE": 21,
       "BLISTER JAR": 3,
       "SACHET": 4,
       "AMBER GLASS": 3,
@@ -112,11 +111,11 @@
       "HDPE BOTTLE LDPE SCR": 1,
       "BLISTER PACK": 72,
       "ALUMINIUM COLLA TUBE": 3,
-      "ALU-PVC BLISTER": 30,
+      "ALU-PVC BLISTER": 31,
       "PLASTIC BOTTLE": 43,
       "GLASS AMPOULE": 30,
       "AMBER COLOUR PET": 2,
-      "STRIP PACK": 30,
+      "STRIP PACK": 29,
       "1 VIAL/PACK": 1,
       "BLISTER DRY POWDER": 1,
       "ALU COLLAPSIBLE TUBE": 39,
@@ -134,7 +133,7 @@
       "TY 1 GLS VIAL": 14,
       "Plastic Pouch": 1,
       "GLASS AMPOULES": 3,
-      "HDPE JAR": 60,
+      "HDPE JAR": 61,
       "ALUMINIUM SACHETS": 3,
       "PFS": 5,
       "BLISTER FILM COATED": 1,
@@ -150,7 +149,7 @@
       "AMBER COLOUR GLASS": 11,
       "ALU ALU BLITSTE": 1,
       "PVC,PE,PVDC BLISTER": 1,
-      "ALU-ALU BLISTER": 49,
+      "ALU-ALU BLISTER": 48,
       "HDPE Bottle": 6,
       "ALU PVC,PVDC BLISTER": 3,
       "ALU-PVC BLIS, PLASTI": 1,
@@ -186,6 +185,7 @@
       "ALU COLLA. TUBE": 1,
       "PLASTIC SQUEED BOTTL": 1,
       "PREFILLED SYRINGE": 8,
+      "BLISTER ALU PVC": 2,
       "1ML GLASS VIAL": 1,
       "ALU PVC BLS/HDPE JAR": 1,
       "AMB COL GLASS AMPOUS": 1,
@@ -319,7 +319,7 @@
       "PLSTIC DRO.BOTTLE": 1,
       "ALUU.COLL.TUBE": 1,
       "ALU.COLLPSIBLE TUBE": 1,
-      "USP TY 1 GLS AMPOULE": 17,
+      "USP TY 1 GLS AMPOULE": 16,
       "GLASS BOTTLE,ALU ALU": 1,
       "LDPE DROP": 1,
       "TY 1 CLEAR GLS VIAL": 2,
@@ -426,7 +426,7 @@
       "ALU PVC PVDC": 3,
       "HDPE JAR,ALU PVC BLI": 12,
       "ALU ALU BLIS & STRIP": 1,
-      "USP TY 111 GLS VIAL": 4,
+      "USP TY 111 GLS VIAL": 3,
       "AMB PLATIC BOTTLE": 1,
       "PALSTIC BOTTLE": 1,
       "USP TY 1 GLAS VIAL": 3,
@@ -497,7 +497,7 @@
       "ALU PVDC,HDPE JAR": 1,
       "ALU TUBE PE CAP": 1,
       "AMB GLASS PET BOTTLE": 1,
-      "PP BOTTLE": 7,
+      "PP BOTTLE": 8,
       "POLYLINED PLASCTIC C": 1,
       "AMBER COLOUR GLASS B": 3,
       "ALU ALU BLISTR,STRIP": 1,
@@ -848,7 +848,7 @@
       "ALU LAU STRIP": 1,
       "5ML SYRINGE+RUBBER": 1,
       "USP TY 1 PFS": 1,
-      "USP TY III GLS VIAL": 4,
+      "USP TY III GLS VIAL": 5,
       "AMB USP TY 1 GLS VIA": 1,
       "LDPE DROP BOTTLE": 3,
       "BLSTER": 2,
@@ -1305,7 +1305,7 @@
       "GLASS BOTTLE,PET BOT": 1,
       "HDPE BOT,ALU PVC BLI": 2,
       "HDPE JAR,BLISTER PAC": 1,
-      "HDPE JAR,ALU PVC PVD": 1,
+      "HDPE JAR,ALU PVC PVD": 2,
       "POLYOLEFINE BAG": 1,
       "FILM BAG,PE NONWOVEN": 1,
       "ALU ALU BLS,HDPE JAR": 1,
@@ -1534,9 +1534,7 @@
       "USP TYP 1": 1,
       "pvc-pvdc blister pac": 1,
       "USP TY1+500ML NACL+I": 1,
-      "TYP I GLASS AMPOULE": 1,
       "PLASTIC COLLA": 1,
-      "AMBER COLO.GLAS AMPO": 1,
       "TYP I GLASS VIAL": 3,
       "HDPE JAR/PVC PVDC BL": 1,
       "USP TY 1 CLEAR GL VI": 1,
@@ -1561,7 +1559,7 @@
       "TUBER GLASS VIAL RUB": 1,
       "ALU ALU BLISTER,ALU": 1,
       "AMB USP TY 1 GLS AMP": 1,
-      "USP TYP I GLS VIAL": 3,
+      "USP TYP I GLS VIAL": 4,
       "TYPE II GLS BOTTLE": 1,
       "ALU ALU BLISTER &": 2,
       "1ML USP TY 1 GLS AMP": 1,
@@ -1583,8 +1581,8 @@
       "PVC-PVDC,HDPE JAR": 2,
       "ALU/AMBER PVC-PVDC": 2,
       "AMBER GLS USP TYP I": 1,
-      "LDPE DROPPR BOTTLE": 1,
       "LDPE DROPPPER BOTTL": 1,
+      "LDPE DROPPR BOTTLE": 1,
       "Amber Colo.Glass bot": 1,
       "ALU-CLEAR PVC BLISTE": 1,
       "USP TY I Clear Gl Am": 1,
@@ -1627,7 +1625,7 @@
       "HDPE JAR& ALU CLEAR": 1,
       "ALU PRI. LAMI. TUBE": 1,
       "ALU ALU BLISTER,PVDC": 2,
-      "ALUMINIUM COLL.TUBE": 2,
+      "ALUMINIUM COLL.TUBE": 3,
       "AMBER COLOURED GL.BO": 1,
       "CLEAR GL. AMP.TYP I": 1,
       "TY 1 GLASS AMPOULE": 2,
@@ -1672,7 +1670,6 @@
       "AMB.COL.GLASS VIAL": 1,
       "20ML USP TY 1 GLS VI": 1,
       "USP TYP-1 VIAL": 1,
-      "PRES.CONT SUS+ACTUAT": 1,
       "PRES.CONTA SUS,ACTUA": 1,
       "USP TYP 1 CLEAR GLS": 1,
       "PLASTIC LAMINAT.TUBE": 1,
@@ -1871,7 +1868,18 @@
       "GLASS AMP.USP 1 &4ML": 1,
       "AMB PET BOTT/HDPE": 1,
       "AMBER COLOUR GLS VIA": 1,
-      "ALU. COLL. TUBE": 1
+      "ALU. COLL. TUBE": 1,
+      "ALU/CLEAR PVC-PVDC B": 1,
+      "AMBER COL. PET BOTTL": 1,
+      "ALU PVC AMBER COL.BL": 1,
+      "ALU ALU BLI.,HDPE BO": 1,
+      "ALU PVC ,HDPE CONTAI": 1,
+      "CLEAR TYP I GLS VIAL": 1,
+      "AMBER TYP1 GLASS AMP": 1,
+      "ALU-ALU BLIS.,STRIP": 1,
+      "ALU PVC/ PVDC BLISTE": 1,
+      "ALU AMB PVC/PVDC BLI": 1,
+      "TYP I GLS AMPOULE": 1
     },
     "newest_reg_date": "2026-08-12"
   }
