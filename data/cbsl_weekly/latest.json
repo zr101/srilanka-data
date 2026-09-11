@@ -1,21 +1,25 @@
 {
   "dataset": "cbsl_weekly",
-  "generated_at": "2026-09-11T09:57:26.097947+00:00",
-  "doc_id": "20260904",
-  "date": "2026-09-04",
+  "generated_at": "2026-09-11T15:09:40.817228+00:00",
+  "doc_id": "20260911",
+  "date": "2026-09-11",
   "data": {
-    "week_ending": "2026-09-04",
-    "reserves_usd_mn": 6600.0,
-    "reserves_as_of": "July 2026",
-    "rupee_ytd_pct": -5.6,
-    "rupee_as_of": "04 September 2026",
-    "trade_deficit_usd_mn": 6507.0,
-    "exports_usd_mn": 8137.0,
-    "exports_yoy_pct": 4.4,
-    "imports_usd_mn": 14643.0,
-    "imports_yoy_pct": 25.8,
+    "week_ending": "2026-09-11",
+    "reserves_usd_mn": 6905.0,
+    "reserves_as_of": "August 2026",
+    "rupee_ytd_pct": -5.7,
+    "rupee_as_of": "11 September 2026",
     "tables": {
       "reserves": [
+        {
+          "as_of": "August 2026",
+          "official_reserve_assets_usd_mn": 6905,
+          "foreign_currency_reserves_usd_mn": 6690,
+          "reserve_position_imf_usd_mn": 4,
+          "sdrs_usd_mn": 1,
+          "gold_usd_mn": 210,
+          "other_reserve_assets_usd_mn": 0
+        },
         {
           "as_of": "July 2026",
           "official_reserve_assets_usd_mn": 6600,
@@ -27,12 +31,12 @@
         }
       ],
       "reserves_latest": {
-        "as_of": "July 2026",
-        "official_reserve_assets_usd_mn": 6600,
-        "foreign_currency_reserves_usd_mn": 6368,
+        "as_of": "August 2026",
+        "official_reserve_assets_usd_mn": 6905,
+        "foreign_currency_reserves_usd_mn": 6690,
         "reserve_position_imf_usd_mn": 4,
-        "sdrs_usd_mn": 37,
-        "gold_usd_mn": 192,
+        "sdrs_usd_mn": 1,
+        "gold_usd_mn": 210,
         "other_reserve_assets_usd_mn": 0
       },
       "trade": {
