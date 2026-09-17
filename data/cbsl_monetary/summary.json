@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_monetary",
-  "n_docs": 2,
+  "n_docs": 3,
   "date_min": "2026-07-17",
-  "date_max": "2026-08-11",
-  "generated_at": "2026-09-16T15:30:44.742715+00:00"
+  "date_max": "2026-09-17",
+  "generated_at": "2026-09-17T10:20:08.083331+00:00"
 }
