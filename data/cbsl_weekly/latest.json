@@ -1,12 +1,12 @@
 {
   "dataset": "cbsl_weekly",
-  "generated_at": "2026-09-25T10:27:56.516123+00:00",
-  "doc_id": "20260918",
-  "date": "2026-09-18",
+  "generated_at": "2026-09-25T15:54:28.252961+00:00",
+  "doc_id": "20260925",
+  "date": "2026-09-25",
   "data": {
-    "week_ending": "2026-09-18",
-    "rupee_ytd_pct": -6.7,
-    "rupee_as_of": "18 September 2026",
+    "week_ending": "2026-09-25",
+    "rupee_ytd_pct": -6.2,
+    "rupee_as_of": "25 September 2026",
     "tables": {
       "reserves": [
         {
@@ -261,47 +261,47 @@
       "price_indices": {
         "ncpi": {
           "months": {
-            "year_ago": "July 2025",
-            "month_ago": "June 2026",
-            "latest": "July 2026"
+            "year_ago": "August 2025",
+            "month_ago": "July 2026",
+            "latest": "August 2026"
           },
           "headline": {
             "index": {
-              "year_ago": 208.3,
-              "month_ago": 222.3,
-              "latest": 223.4
+              "year_ago": 207.2,
+              "month_ago": 223.4,
+              "latest": 223.9
             },
             "monthly_change_pct": {
-              "year_ago": -0.2,
-              "month_ago": 1.6,
-              "latest": 0.5
+              "year_ago": -0.5,
+              "month_ago": 0.5,
+              "latest": 0.2
             },
             "annual_avg_change_pct": {
-              "year_ago": -1.1,
-              "month_ago": 2.9,
-              "latest": 3.5
+              "year_ago": -1.0,
+              "month_ago": 3.5,
+              "latest": 4.1
             },
             "yoy_change_pct": {
-              "year_ago": 0.7,
-              "month_ago": 6.5,
-              "latest": 7.2
+              "year_ago": 1.5,
+              "month_ago": 7.2,
+              "latest": 8.1
             }
           },
           "core": {
             "index": {
-              "year_ago": 195.5,
-              "month_ago": 204.6,
-              "latest": 207.3
+              "year_ago": 195.8,
+              "month_ago": 207.3,
+              "latest": 208.1
             },
             "annual_avg_change_pct": {
               "year_ago": 0.7,
-              "month_ago": 2.7,
-              "latest": 3.1
+              "month_ago": 3.1,
+              "latest": 3.5
             },
             "yoy_change_pct": {
-              "year_ago": 0.9,
-              "month_ago": 5.0,
-              "latest": 6.0
+              "year_ago": 1.5,
+              "month_ago": 6.0,
+              "latest": 6.3
             }
           }
         },
