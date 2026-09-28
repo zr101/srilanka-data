@@ -1,0 +1,436 @@
+{
+  "date": "2026-09-21",
+  "report_date": "2026-09-20T18:30:00.000Z",
+  "total_generation_mwh": 54397.0,
+  "renewable_share_pct": 68.5,
+  "generation_by_fuel_mwh": {
+    "Major Hydro": 22293.0,
+    "Coal": 11106.0,
+    "Rooftop Solar (Est.)": 6325.0,
+    "Oil (CEB)": 3921.0,
+    "Mini Hydro (Telemetered)": 3738.0,
+    "Wind": 2245.0,
+    "Mini Hydro (Estimated)": 2244.0,
+    "Solar": 1190.0,
+    "Oil (IPP)": 940.0,
+    "Biomass and Waste Heat": 395.0,
+    "BESS": 0.0
+  },
+  "plants": [
+    {
+      "plant_id": 1,
+      "plant_name": "Sapu. Station - A",
+      "mwh": 0,
+      "available_capacity_mwh": 48,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 3,
+      "plant_name": "Old Laxapana",
+      "mwh": 1223,
+      "available_capacity_mwh": 52.8,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 4,
+      "plant_name": "Canyon",
+      "mwh": 391,
+      "available_capacity_mwh": 60,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 5,
+      "plant_name": "New Laxapana",
+      "mwh": 2202,
+      "available_capacity_mwh": 100,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 6,
+      "plant_name": "Wimalasurendra",
+      "mwh": 272,
+      "available_capacity_mwh": 50,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 7,
+      "plant_name": "Polpitiya",
+      "mwh": 1750,
+      "available_capacity_mwh": 75,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 8,
+      "plant_name": "Broadlands",
+      "mwh": 774,
+      "available_capacity_mwh": 35,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 9,
+      "plant_name": "Kotmale",
+      "mwh": 1470,
+      "available_capacity_mwh": 201,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 10,
+      "plant_name": "Victoria",
+      "mwh": 2901,
+      "available_capacity_mwh": 225,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 11,
+      "plant_name": "Randenigala",
+      "mwh": 371,
+      "available_capacity_mwh": 90,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 12,
+      "plant_name": "Rantambe",
+      "mwh": 199,
+      "available_capacity_mwh": 50,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 13,
+      "plant_name": "Ukuwela",
+      "mwh": 807,
+      "available_capacity_mwh": 36,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 14,
+      "plant_name": "Bowathenna",
+      "mwh": 598,
+      "available_capacity_mwh": 40,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 15,
+      "plant_name": "Upper Kotmale",
+      "mwh": 3637,
+      "available_capacity_mwh": 150,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 16,
+      "plant_name": "Nillambe",
+      "mwh": 0,
+      "available_capacity_mwh": 0,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 17,
+      "plant_name": "Samanalawewa",
+      "mwh": 1492,
+      "available_capacity_mwh": 120,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 18,
+      "plant_name": "Kukule",
+      "mwh": 1860,
+      "available_capacity_mwh": 75,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 19,
+      "plant_name": "Inginiyagala",
+      "mwh": 0,
+      "available_capacity_mwh": 7,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 20,
+      "plant_name": "Udawalawe",
+      "mwh": 0,
+      "available_capacity_mwh": 3.1,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 26,
+      "plant_name": "Sapu. Station - B",
+      "mwh": 583,
+      "available_capacity_mwh": 72,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 28,
+      "plant_name": "Uthuru Janani",
+      "mwh": 84,
+      "available_capacity_mwh": 16,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 29,
+      "plant_name": "Power Barge",
+      "mwh": 298,
+      "available_capacity_mwh": 42,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 31,
+      "plant_name": "DPP_KPS_Mathu",
+      "mwh": 0,
+      "available_capacity_mwh": 12,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 32,
+      "plant_name": "LVPS 1",
+      "mwh": 0,
+      "available_capacity_mwh": 0,
+      "fuel": "Coal",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 33,
+      "plant_name": "LVPS 2",
+      "mwh": 5556,
+      "available_capacity_mwh": 270,
+      "fuel": "Coal",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 34,
+      "plant_name": "LVPS 3",
+      "mwh": 5550,
+      "available_capacity_mwh": 270,
+      "fuel": "Coal",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 40,
+      "plant_name": "West Coast",
+      "mwh": 940,
+      "available_capacity_mwh": 270,
+      "fuel": "Oil (IPP)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 50,
+      "plant_name": "Solar Ground Mounted",
+      "mwh": 1190,
+      "available_capacity_mwh": 0,
+      "fuel": "Solar",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 51,
+      "plant_name": "Biomass + W2E6",
+      "mwh": 395,
+      "available_capacity_mwh": 0,
+      "fuel": "Biomass and Waste Heat",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 53,
+      "plant_name": "Minihydro Telemetered",
+      "mwh": 3738,
+      "available_capacity_mwh": 0,
+      "fuel": "Mini Hydro (Telemetered)",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 54,
+      "plant_name": "Minihydro Estimated",
+      "mwh": 2244,
+      "available_capacity_mwh": 0,
+      "fuel": "Mini Hydro (Estimated)",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 56,
+      "plant_name": "KPS_DPP_HAMBA",
+      "mwh": 0,
+      "available_capacity_mwh": 14.5,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 57,
+      "plant_name": "KCCP",
+      "mwh": 2956,
+      "available_capacity_mwh": 150,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 58,
+      "plant_name": "KCCPS2",
+      "mwh": 0,
+      "available_capacity_mwh": 150,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 59,
+      "plant_name": "KPS(GT7)",
+      "mwh": 0,
+      "available_capacity_mwh": 0,
+      "fuel": "Oil (CEB)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 68,
+      "plant_name": "Solar - Rooftop",
+      "mwh": 6325,
+      "available_capacity_mwh": 0,
+      "fuel": "Rooftop Solar (Est.)",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 71,
+      "plant_name": "Wind (CEB)",
+      "mwh": 1013,
+      "available_capacity_mwh": 0,
+      "fuel": "Wind",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 85,
+      "plant_name": "Uma Oya",
+      "mwh": 2346,
+      "available_capacity_mwh": 120,
+      "fuel": "Major Hydro",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 86,
+      "plant_name": "Sobadhanavi",
+      "mwh": 0,
+      "available_capacity_mwh": 312,
+      "fuel": "Oil (IPP)",
+      "is_renewable": false
+    },
+    {
+      "plant_id": 106,
+      "plant_name": "Wind (IPP)",
+      "mwh": 1232,
+      "available_capacity_mwh": 0,
+      "fuel": "Wind",
+      "is_renewable": true
+    },
+    {
+      "plant_id": 107,
+      "plant_name": "BESS",
+      "mwh": 0,
+      "available_capacity_mwh": 10,
+      "fuel": "BESS",
+      "is_renewable": false
+    }
+  ],
+  "reservoirs": [
+    {
+      "name": "Major Reservoirs",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Castlereigh",
+      "storage_gwh": 81.9,
+      "rainfall_mm": 30.5,
+      "mol_below_spill_m": 19
+    },
+    {
+      "name": "Maussakele",
+      "storage_gwh": 263.6,
+      "rainfall_mm": 33,
+      "mol_below_spill_m": 22.4
+    },
+    {
+      "name": "Kotmale",
+      "storage_gwh": 70.8,
+      "rainfall_mm": 40.3,
+      "mol_below_spill_m": 38
+    },
+    {
+      "name": "Victoria",
+      "storage_gwh": 293.7,
+      "rainfall_mm": 0,
+      "mol_below_spill_m": 68
+    },
+    {
+      "name": "Randenigala",
+      "storage_gwh": 44.6,
+      "rainfall_mm": 0,
+      "mol_below_spill_m": 23
+    },
+    {
+      "name": "Samanala Wewa",
+      "storage_gwh": 31.4,
+      "rainfall_mm": 1,
+      "mol_below_spill_m": 31
+    },
+    {
+      "name": "Major Reservoirs",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Castlereigh",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Maussakele",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Kotmale",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Victoria",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Randenigala",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    },
+    {
+      "name": "Samanala Wewa",
+      "storage_gwh": null,
+      "rainfall_mm": null,
+      "mol_below_spill_m": null
+    }
+  ],
+  "total_storage_gwh": 786.0
+}
