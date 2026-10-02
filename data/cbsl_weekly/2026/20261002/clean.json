@@ -1,0 +1,391 @@
+{
+  "week_ending": "2026-10-02",
+  "reserves_usd_mn": 6929.0,
+  "reserves_as_of": "August 2026",
+  "rupee_ytd_pct": -6.2,
+  "rupee_as_of": "02 October 2026",
+  "trade_deficit_usd_mn": 7180.0,
+  "exports_usd_mn": 9377.0,
+  "exports_yoy_pct": 3.3,
+  "imports_usd_mn": 16557.0,
+  "imports_yoy_pct": 24.1,
+  "tables": {
+    "reserves": [
+      {
+        "as_of": "August 2026",
+        "official_reserve_assets_usd_mn": 6929,
+        "foreign_currency_reserves_usd_mn": 6714,
+        "reserve_position_imf_usd_mn": 4,
+        "sdrs_usd_mn": 1,
+        "gold_usd_mn": 210,
+        "other_reserve_assets_usd_mn": 0
+      }
+    ],
+    "reserves_latest": {
+      "as_of": "August 2026",
+      "official_reserve_assets_usd_mn": 6929,
+      "foreign_currency_reserves_usd_mn": 6714,
+      "reserve_position_imf_usd_mn": 4,
+      "sdrs_usd_mn": 1,
+      "gold_usd_mn": 210,
+      "other_reserve_assets_usd_mn": 0
+    },
+    "trade": {
+      "period": "Jan - Aug",
+      "exports": {
+        "usd_mn": {
+          "2025": 9076.6,
+          "2026": 9376.7
+        },
+        "rs_mn": {
+          "2025": 2711756.2,
+          "2026": 3021811.8
+        }
+      },
+      "exports_breakdown": [
+        {
+          "label": "Agricultural",
+          "usd_mn": {
+            "2025": 2030.2,
+            "2026": 2015.4
+          },
+          "rs_mn": {
+            "2025": 606721.8,
+            "2026": 649820.7
+          }
+        },
+        {
+          "label": "Industrial",
+          "usd_mn": {
+            "2025": 7015.4,
+            "2026": 7326.9
+          },
+          "rs_mn": {
+            "2025": 2095750.1,
+            "2026": 2360996.9
+          }
+        },
+        {
+          "label": "Food, Beverages & Tobacco",
+          "usd_mn": {
+            "2025": 577.3,
+            "2026": 616.0
+          },
+          "rs_mn": {
+            "2025": 172536.5,
+            "2026": 198209.1
+          }
+        },
+        {
+          "label": "Textiles and Garments",
+          "usd_mn": {
+            "2025": 3595.3,
+            "2026": 3355.6
+          },
+          "rs_mn": {
+            "2025": 1073922.0,
+            "2026": 1081253.0
+          }
+        },
+        {
+          "label": "Petroleum Products",
+          "usd_mn": {
+            "2025": 654.7,
+            "2026": 944.9
+          },
+          "rs_mn": {
+            "2025": 195526.7,
+            "2026": 304729.4
+          }
+        },
+        {
+          "label": "Leather, Rubber Products, etc.",
+          "usd_mn": {
+            "2025": 666.9,
+            "2026": 696.3
+          },
+          "rs_mn": {
+            "2025": 199195.7,
+            "2026": 224673.4
+          }
+        },
+        {
+          "label": "Other",
+          "usd_mn": {
+            "2025": 1521.2,
+            "2026": 1714.0
+          },
+          "rs_mn": {
+            "2025": 454569.2,
+            "2026": 552132.0
+          }
+        },
+        {
+          "label": "Mineral",
+          "usd_mn": {
+            "2025": 14.3,
+            "2026": 22.2
+          },
+          "rs_mn": {
+            "2025": 4271.9,
+            "2026": 7069.9
+          }
+        },
+        {
+          "label": "Unclassified",
+          "usd_mn": {
+            "2025": 16.8,
+            "2026": 12.3
+          },
+          "rs_mn": {
+            "2025": 5012.5,
+            "2026": 3924.4
+          }
+        }
+      ],
+      "imports": {
+        "usd_mn": {
+          "2025": 13340.9,
+          "2026": 16557.1
+        },
+        "rs_mn": {
+          "2025": 3985180.6,
+          "2026": 5334130.5
+        }
+      },
+      "imports_breakdown": [
+        {
+          "label": "Consumer Goods",
+          "usd_mn": {
+            "2025": 3294.7,
+            "2026": 4004.5
+          },
+          "rs_mn": {
+            "2025": 984737.6,
+            "2026": 1289238.7
+          }
+        },
+        {
+          "label": "Intermediate Goods",
+          "usd_mn": {
+            "2025": 7437.4,
+            "2026": 9334.2
+          },
+          "rs_mn": {
+            "2025": 2221030.0,
+            "2026": 3006188.6
+          }
+        },
+        {
+          "label": "Investment Goods",
+          "usd_mn": {
+            "2025": 2597.2,
+            "2026": 3203.6
+          },
+          "rs_mn": {
+            "2025": 775942.5,
+            "2026": 1033874.6
+          }
+        },
+        {
+          "label": "Unclassified",
+          "usd_mn": {
+            "2025": 11.6,
+            "2026": 14.8
+          },
+          "rs_mn": {
+            "2025": 3470.6,
+            "2026": 4828.6
+          }
+        }
+      ],
+      "trade_balance": {
+        "usd_mn": {
+          "2025": -4264.3,
+          "2026": -7180.4
+        },
+        "rs_mn": {
+          "2025": -1273424.4,
+          "2026": -2312318.7
+        }
+      }
+    },
+    "trade_indices": {
+      "total_exports": {
+        "value": {
+          "year_ago": 178.5,
+          "month_ago": 171.7,
+          "latest": 172.6
+        },
+        "quantity": {
+          "year_ago": 224.5,
+          "month_ago": 196.8,
+          "latest": 206.3
+        },
+        "unit_value": {
+          "year_ago": 79.5,
+          "month_ago": 87.2,
+          "latest": 83.7
+        }
+      },
+      "total_imports": {
+        "value": {
+          "year_ago": 151.8,
+          "month_ago": 201.5,
+          "latest": 171.3
+        },
+        "quantity": {
+          "year_ago": 154.0,
+          "month_ago": 200.4,
+          "latest": 158.3
+        },
+        "unit_value": {
+          "year_ago": 98.6,
+          "month_ago": 100.5,
+          "latest": 108.2
+        }
+      },
+      "terms_of_trade": {
+        "year_ago": 80.6,
+        "month_ago": 86.8,
+        "latest": 77.3
+      }
+    },
+    "price_indices": {
+      "ncpi": {
+        "months": {
+          "year_ago": "August 2025",
+          "month_ago": "July 2026",
+          "latest": "August 2026"
+        },
+        "headline": {
+          "index": {
+            "year_ago": 207.2,
+            "month_ago": 223.4,
+            "latest": 223.9
+          },
+          "monthly_change_pct": {
+            "year_ago": -0.5,
+            "month_ago": 0.5,
+            "latest": 0.2
+          },
+          "annual_avg_change_pct": {
+            "year_ago": -1.0,
+            "month_ago": 3.5,
+            "latest": 4.1
+          },
+          "yoy_change_pct": {
+            "year_ago": 1.5,
+            "month_ago": 7.2,
+            "latest": 8.1
+          }
+        },
+        "core": {
+          "index": {
+            "year_ago": 195.8,
+            "month_ago": 207.3,
+            "latest": 208.1
+          },
+          "annual_avg_change_pct": {
+            "year_ago": 0.7,
+            "month_ago": 3.1,
+            "latest": 3.5
+          },
+          "yoy_change_pct": {
+            "year_ago": 1.5,
+            "month_ago": 6.0,
+            "latest": 6.3
+          }
+        }
+      },
+      "ccpi": {
+        "months": {
+          "year_ago": "September 2025",
+          "month_ago": "August 2026",
+          "latest": "September 2026"
+        },
+        "headline": {
+          "index": {
+            "year_ago": 193.7,
+            "month_ago": 208.8,
+            "latest": 209.1
+          },
+          "monthly_change_pct": {
+            "year_ago": 0.2,
+            "month_ago": 0.3,
+            "latest": 0.1
+          },
+          "annual_avg_change_pct": {
+            "year_ago": -1.4,
+            "month_ago": 3.9,
+            "latest": 4.5
+          },
+          "yoy_change_pct": {
+            "year_ago": 1.5,
+            "month_ago": 8.0,
+            "latest": 8.0
+          }
+        },
+        "core": {
+          "index": {
+            "year_ago": 181.2,
+            "month_ago": 190.1,
+            "latest": 190.9
+          },
+          "annual_avg_change_pct": {
+            "year_ago": 1.7,
+            "month_ago": 3.1,
+            "latest": 3.4
+          },
+          "yoy_change_pct": {
+            "year_ago": 2.0,
+            "month_ago": 5.1,
+            "latest": 5.4
+          }
+        }
+      }
+    },
+    "commodity_prices": {
+      "tea_per_kg": {
+        "usd_2025": 3.97,
+        "usd_2026": 3.6,
+        "usd_pct_change": -9.3,
+        "lkr_2025": 1198.18,
+        "lkr_2026": 1198.34,
+        "lkr_pct_change": 0.0
+      },
+      "colombo_tea_auctions": {
+        "usd_2025": 3.97,
+        "usd_2026": 3.6,
+        "lkr_2025": 1198.18,
+        "lkr_2026": 1198.34
+      },
+      "rice_per_mt": {
+        "usd_2025": 1008.92,
+        "usd_2026": 998.37,
+        "pct_change_usd": -1.0
+      },
+      "sugar_per_mt": {
+        "usd_2025": 560.62,
+        "usd_2026": 502.52,
+        "pct_change_usd": -10.4
+      },
+      "wheat_per_mt": {
+        "usd_2025": 357.92,
+        "usd_2026": 291.29,
+        "pct_change_usd": -18.6
+      }
+    }
+  },
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 0.875,
+      "page_count": 16,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
