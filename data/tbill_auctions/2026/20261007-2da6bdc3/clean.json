@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-07",
+  "title": "Press Release E T Bill phase 2 07.10.2026",
+  "phase": 1,
+  "results": [
+    {
+      "tenor_days": 91,
+      "isin": "LKA09127A083",
+      "offered_rs_mn": 35000,
+      "bids_rs_mn": 78385,
+      "accepted_rs_mn": 44112,
+      "way_pct": 9.26,
+      "way_last_auction_pct": 9.25
+    },
+    {
+      "tenor_days": 182,
+      "isin": "LKA18227D092",
+      "offered_rs_mn": 25000,
+      "bids_rs_mn": 58433,
+      "accepted_rs_mn": 29508,
+      "way_pct": 9.44,
+      "way_last_auction_pct": 9.41
+    },
+    {
+      "tenor_days": 364,
+      "isin": "LKA36427J085",
+      "offered_rs_mn": 20000,
+      "bids_rs_mn": 27902,
+      "accepted_rs_mn": 6380,
+      "way_pct": 9.95,
+      "way_last_auction_pct": 9.95
+    }
+  ],
+  "totals": {
+    "offered_rs_mn": 80000,
+    "bids_rs_mn": 164720,
+    "accepted_rs_mn": 80000
+  },
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 1,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}

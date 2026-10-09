@@ -1,26 +1,56 @@
 {
   "dataset": "tbill_auctions",
-  "generated_at": "2026-10-08T12:13:00.139133+00:00",
-  "doc_id": "20260805-e68a6894",
-  "date": "2026-08-05",
+  "generated_at": "2026-10-09T12:03:30.591935+00:00",
+  "doc_id": "20261007-2da6bdc3",
+  "date": "2026-10-07",
   "data": {
-    "date": "2026-08-05",
-    "title": "Press Release E T Bill phase  2  05.08.2026",
+    "date": "2026-10-07",
+    "title": "Press Release E T Bill phase 2 07.10.2026",
+    "phase": 1,
     "results": [
       {
+        "tenor_days": 91,
+        "isin": "LKA09127A083",
+        "offered_rs_mn": 35000,
+        "bids_rs_mn": 78385,
+        "accepted_rs_mn": 44112,
+        "way_pct": 9.26,
+        "way_last_auction_pct": 9.25
+      },
+      {
         "tenor_days": 182,
-        "way_pct": 9.99
+        "isin": "LKA18227D092",
+        "offered_rs_mn": 25000,
+        "bids_rs_mn": 58433,
+        "accepted_rs_mn": 29508,
+        "way_pct": 9.44,
+        "way_last_auction_pct": 9.41
       },
       {
         "tenor_days": 364,
-        "way_pct": 10.19
+        "isin": "LKA36427J085",
+        "offered_rs_mn": 20000,
+        "bids_rs_mn": 27902,
+        "accepted_rs_mn": 6380,
+        "way_pct": 9.95,
+        "way_last_auction_pct": 9.95
       }
     ],
-    "amounts_rs_mn": [
-      14000,
-      58572,
-      154000
-    ],
-    "text_excerpt": " +94 11 2484604 Info.pdmo@gmail.com https://www.treasury.gov.lk/web/public-debt-management-office [Limited Sharing] PRESS RELEASE TREASURY BILL AUCTION HELD ON 05 AUGUST 2026 Further to the T-bill auction held on 05 August 2026, Rs. 14,000 million was raised at phase II, from the Treasury bills bearing the International Securities Identification Number s LKA18227B054 and LKA36427H063 at the Weight"
+    "totals": {
+      "offered_rs_mn": 80000,
+      "bids_rs_mn": 164720,
+      "accepted_rs_mn": 80000
+    },
+    "_meta": {
+      "inspection": {
+        "pdf_type": "text_based",
+        "confidence": 1.0,
+        "page_count": 1,
+        "pages_needing_ocr": [],
+        "has_encoding_issues": false,
+        "is_complex_layout": false,
+        "pages_with_tables": []
+      }
+    }
   }
 }
