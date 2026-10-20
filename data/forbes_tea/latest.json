@@ -1,8 +1,8 @@
 {
   "dataset": "forbes_tea",
-  "generated_at": "2026-10-19T17:41:35.529827+00:00",
-  "doc_id": "20261007",
-  "date": "2026-10-07",
+  "generated_at": "2026-10-20T10:20:50.954009+00:00",
+  "doc_id": "20261014",
+  "date": "2026-10-14",
   "data": {
     "year": 2026,
     "sales": [
@@ -590,21 +590,36 @@
           "low": 1329.5,
           "total": 1246.67
         }
+      },
+      {
+        "sale_date": "2026-10-14",
+        "qty_000kg": {
+          "high": 742,
+          "medium": 680,
+          "low": 2996,
+          "total": 4418
+        },
+        "avg_rs": {
+          "high": 1156.69,
+          "medium": 1021.83,
+          "low": 1342.12,
+          "total": 1261.66
+        }
       }
     ],
     "latest": {
-      "sale_date": "2026-10-07",
+      "sale_date": "2026-10-14",
       "qty_000kg": {
-        "high": 699,
-        "medium": 648,
-        "low": 3076,
-        "total": 4423
+        "high": 742,
+        "medium": 680,
+        "low": 2996,
+        "total": 4418
       },
       "avg_rs": {
-        "high": 1130.87,
-        "medium": 978.46,
-        "low": 1329.5,
-        "total": 1246.67
+        "high": 1156.69,
+        "medium": 1021.83,
+        "low": 1342.12,
+        "total": 1261.66
       }
     },
     "repaired_year_rows": 1,
