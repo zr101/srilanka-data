@@ -1,31 +1,31 @@
 {
   "dataset": "pucsl_generation",
-  "generated_at": "2026-10-25T15:01:07.150397+00:00",
-  "doc_id": "20261022",
-  "date": "2026-10-22",
+  "generated_at": "2026-10-26T11:27:04.516190+00:00",
+  "doc_id": "20261025",
+  "date": "2026-10-25",
   "data": {
-    "date": "2026-10-22",
-    "report_date": "2026-10-21T18:30:00.000Z",
-    "total_generation_mwh": 55240.0,
-    "renewable_share_pct": 64.0,
+    "date": "2026-10-25",
+    "report_date": "2026-10-24T18:30:00.000Z",
+    "total_generation_mwh": 45573.0,
+    "renewable_share_pct": 68.1,
     "generation_by_fuel_mwh": {
-      "Major Hydro": 23840.0,
-      "Oil (IPP)": 8492.0,
-      "Oil (CEB)": 6468.0,
-      "Rooftop Solar (Est.)": 4431.0,
-      "Mini Hydro (Telemetered)": 4059.0,
-      "Coal": 3960.0,
-      "Mini Hydro (Estimated)": 2279.0,
-      "Solar": 963.0,
-      "Biomass and Waste Heat": 383.0,
-      "Wind": 365.0,
+      "Major Hydro": 18529.0,
+      "Coal": 13923.0,
+      "Rooftop Solar (Est.)": 4663.0,
+      "Mini Hydro (Telemetered)": 3446.0,
+      "Mini Hydro (Estimated)": 2175.0,
+      "Wind": 1788.0,
+      "Biomass and Waste Heat": 423.0,
+      "Solar": 243.0,
+      "Oil (IPP)": 222.0,
+      "Oil (CEB)": 161.0,
       "BESS": 0.0
     },
     "plants": [
       {
         "plant_id": 1,
         "plant_name": "Sapu. Station - A",
-        "mwh": 634,
+        "mwh": 0,
         "available_capacity_mwh": 64,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -33,7 +33,7 @@
       {
         "plant_id": 3,
         "plant_name": "Old Laxapana",
-        "mwh": 1308,
+        "mwh": 1078,
         "available_capacity_mwh": 53.8,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -41,7 +41,7 @@
       {
         "plant_id": 4,
         "plant_name": "Canyon",
-        "mwh": 899,
+        "mwh": 1161,
         "available_capacity_mwh": 60,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -49,15 +49,15 @@
       {
         "plant_id": 5,
         "plant_name": "New Laxapana",
-        "mwh": 2204,
-        "available_capacity_mwh": 100,
+        "mwh": 782,
+        "available_capacity_mwh": 50,
         "fuel": "Major Hydro",
         "is_renewable": true
       },
       {
         "plant_id": 6,
         "plant_name": "Wimalasurendra",
-        "mwh": 1185,
+        "mwh": 1231,
         "available_capacity_mwh": 50,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -65,7 +65,7 @@
       {
         "plant_id": 7,
         "plant_name": "Polpitiya",
-        "mwh": 1770,
+        "mwh": 1710,
         "available_capacity_mwh": 75,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -73,7 +73,7 @@
       {
         "plant_id": 8,
         "plant_name": "Broadlands",
-        "mwh": 710,
+        "mwh": 769,
         "available_capacity_mwh": 35,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -81,7 +81,7 @@
       {
         "plant_id": 9,
         "plant_name": "Kotmale",
-        "mwh": 2770,
+        "mwh": 2430,
         "available_capacity_mwh": 201,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -89,7 +89,7 @@
       {
         "plant_id": 10,
         "plant_name": "Victoria",
-        "mwh": 3119,
+        "mwh": 2951,
         "available_capacity_mwh": 150,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -97,15 +97,15 @@
       {
         "plant_id": 11,
         "plant_name": "Randenigala",
-        "mwh": 1332,
-        "available_capacity_mwh": 98,
+        "mwh": 1055,
+        "available_capacity_mwh": 102,
         "fuel": "Major Hydro",
         "is_renewable": true
       },
       {
         "plant_id": 12,
         "plant_name": "Rantambe",
-        "mwh": 643,
+        "mwh": 477,
         "available_capacity_mwh": 50,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -113,7 +113,7 @@
       {
         "plant_id": 13,
         "plant_name": "Ukuwela",
-        "mwh": 618,
+        "mwh": 872,
         "available_capacity_mwh": 40,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -121,7 +121,7 @@
       {
         "plant_id": 14,
         "plant_name": "Bowathenna",
-        "mwh": 200,
+        "mwh": 319,
         "available_capacity_mwh": 40,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -129,7 +129,7 @@
       {
         "plant_id": 15,
         "plant_name": "Upper Kotmale",
-        "mwh": 1636,
+        "mwh": 0,
         "available_capacity_mwh": 0,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -137,7 +137,7 @@
       {
         "plant_id": 16,
         "plant_name": "Nillambe",
-        "mwh": 0,
+        "mwh": 52,
         "available_capacity_mwh": 1,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -145,7 +145,7 @@
       {
         "plant_id": 17,
         "plant_name": "Samanalawewa",
-        "mwh": 550,
+        "mwh": 384,
         "available_capacity_mwh": 60,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -153,7 +153,7 @@
       {
         "plant_id": 18,
         "plant_name": "Kukule",
-        "mwh": 1874,
+        "mwh": 1877,
         "available_capacity_mwh": 75,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -161,7 +161,7 @@
       {
         "plant_id": 19,
         "plant_name": "Inginiyagala",
-        "mwh": 45,
+        "mwh": 53,
         "available_capacity_mwh": 7,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -169,7 +169,7 @@
       {
         "plant_id": 20,
         "plant_name": "Udawalawe",
-        "mwh": 42,
+        "mwh": 41,
         "available_capacity_mwh": 3.1,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -177,7 +177,7 @@
       {
         "plant_id": 26,
         "plant_name": "Sapu. Station - B",
-        "mwh": 1041,
+        "mwh": 161,
         "available_capacity_mwh": 63,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -185,7 +185,7 @@
       {
         "plant_id": 28,
         "plant_name": "Uthuru Janani",
-        "mwh": 318,
+        "mwh": 0,
         "available_capacity_mwh": 24,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -193,7 +193,7 @@
       {
         "plant_id": 29,
         "plant_name": "Power Barge",
-        "mwh": 483,
+        "mwh": 0,
         "available_capacity_mwh": 50,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -201,39 +201,39 @@
       {
         "plant_id": 31,
         "plant_name": "DPP_KPS_Mathu",
-        "mwh": 18,
-        "available_capacity_mwh": 12,
+        "mwh": 0,
+        "available_capacity_mwh": 13.6,
         "fuel": "Oil (CEB)",
         "is_renewable": false
       },
       {
         "plant_id": 32,
         "plant_name": "LVPS 1",
-        "mwh": 0,
-        "available_capacity_mwh": 0,
+        "mwh": 4981,
+        "available_capacity_mwh": 270,
         "fuel": "Coal",
         "is_renewable": false
       },
       {
         "plant_id": 33,
         "plant_name": "LVPS 2",
-        "mwh": 3960,
-        "available_capacity_mwh": 270,
+        "mwh": 4519,
+        "available_capacity_mwh": 150,
         "fuel": "Coal",
         "is_renewable": false
       },
       {
         "plant_id": 34,
         "plant_name": "LVPS 3",
-        "mwh": 0,
-        "available_capacity_mwh": 67,
+        "mwh": 4423,
+        "available_capacity_mwh": 270,
         "fuel": "Coal",
         "is_renewable": false
       },
       {
         "plant_id": 40,
         "plant_name": "West Coast",
-        "mwh": 4771,
+        "mwh": 222,
         "available_capacity_mwh": 270,
         "fuel": "Oil (IPP)",
         "is_renewable": false
@@ -241,7 +241,7 @@
       {
         "plant_id": 50,
         "plant_name": "Solar Ground Mounted",
-        "mwh": 963,
+        "mwh": 243,
         "available_capacity_mwh": 0,
         "fuel": "Solar",
         "is_renewable": false
@@ -249,7 +249,7 @@
       {
         "plant_id": 51,
         "plant_name": "Biomass + W2E6",
-        "mwh": 383,
+        "mwh": 423,
         "available_capacity_mwh": 0,
         "fuel": "Biomass and Waste Heat",
         "is_renewable": true
@@ -257,7 +257,7 @@
       {
         "plant_id": 53,
         "plant_name": "Minihydro Telemetered",
-        "mwh": 4059,
+        "mwh": 3446,
         "available_capacity_mwh": 0,
         "fuel": "Mini Hydro (Telemetered)",
         "is_renewable": true
@@ -265,7 +265,7 @@
       {
         "plant_id": 54,
         "plant_name": "Minihydro Estimated",
-        "mwh": 2279,
+        "mwh": 2175,
         "available_capacity_mwh": 0,
         "fuel": "Mini Hydro (Estimated)",
         "is_renewable": true
@@ -273,7 +273,7 @@
       {
         "plant_id": 56,
         "plant_name": "KPS_DPP_HAMBA",
-        "mwh": 15,
+        "mwh": 0,
         "available_capacity_mwh": 15.5,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -281,7 +281,7 @@
       {
         "plant_id": 57,
         "plant_name": "KCCP",
-        "mwh": 3540,
+        "mwh": 0,
         "available_capacity_mwh": 150,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -289,7 +289,7 @@
       {
         "plant_id": 58,
         "plant_name": "KCCPS2",
-        "mwh": 419,
+        "mwh": 0,
         "available_capacity_mwh": 150,
         "fuel": "Oil (CEB)",
         "is_renewable": false
@@ -305,7 +305,7 @@
       {
         "plant_id": 68,
         "plant_name": "Solar - Rooftop",
-        "mwh": 4431,
+        "mwh": 4663,
         "available_capacity_mwh": 0,
         "fuel": "Rooftop Solar (Est.)",
         "is_renewable": true
@@ -313,7 +313,7 @@
       {
         "plant_id": 71,
         "plant_name": "Wind (CEB)",
-        "mwh": 249,
+        "mwh": 1131,
         "available_capacity_mwh": 0,
         "fuel": "Wind",
         "is_renewable": true
@@ -321,7 +321,7 @@
       {
         "plant_id": 85,
         "plant_name": "Uma Oya",
-        "mwh": 2935,
+        "mwh": 1287,
         "available_capacity_mwh": 120,
         "fuel": "Major Hydro",
         "is_renewable": true
@@ -329,7 +329,7 @@
       {
         "plant_id": 86,
         "plant_name": "Sobadhanavi",
-        "mwh": 3721,
+        "mwh": 0,
         "available_capacity_mwh": 312,
         "fuel": "Oil (IPP)",
         "is_renewable": false
@@ -337,7 +337,7 @@
       {
         "plant_id": 106,
         "plant_name": "Wind (IPP)",
-        "mwh": 116,
+        "mwh": 657,
         "available_capacity_mwh": 0,
         "fuel": "Wind",
         "is_renewable": true
