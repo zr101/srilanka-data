@@ -1,10 +1,10 @@
 {
   "dataset": "cbsl_activity",
-  "generated_at": "2026-10-10T16:20:36.497365+00:00",
-  "doc_id": "20260911",
-  "date": "2026-09-11",
+  "generated_at": "2026-10-31T16:16:36.203643+00:00",
+  "doc_id": "20261019",
+  "date": "2026-10-19",
   "data": {
-    "vintage": "20260911",
+    "vintage": "20261019",
     "iip": {
       "total": [
         {
@@ -506,6 +506,18 @@
         {
           "t": "2026-05",
           "v": 99.9
+        },
+        {
+          "t": "2026-06",
+          "v": 99.2
+        },
+        {
+          "t": "2026-07",
+          "v": 101.5
+        },
+        {
+          "t": "2026-08",
+          "v": 99.7
         }
       ],
       "by_industry": [
@@ -513,135 +525,135 @@
           "isic": "10",
           "name": "Manufacture of food products (35.2%)",
           "latest": {
-            "t": "2026-05",
-            "v": 111.3
+            "t": "2026-08",
+            "v": 100.9
           }
         },
         {
           "isic": "11",
           "name": "Manufacture of beverages (3.8%)",
           "latest": {
-            "t": "2026-05",
-            "v": 110.6
+            "t": "2026-08",
+            "v": 125.7
           }
         },
         {
           "isic": "12",
           "name": "Manufacture of tobacco products (1.7%)",
           "latest": {
-            "t": "2026-05",
-            "v": 75.2
+            "t": "2026-08",
+            "v": 78.8
           }
         },
         {
           "isic": "13",
           "name": "Manufacture of textiles (3.3%)",
           "latest": {
-            "t": "2026-05",
-            "v": 106.2
+            "t": "2026-08",
+            "v": 121.2
           }
         },
         {
           "isic": "14",
           "name": "Manufacture of wearing apparel (19.8%)",
           "latest": {
-            "t": "2026-05",
-            "v": 90.7
+            "t": "2026-08",
+            "v": 98.1
           }
         },
         {
           "isic": "15",
           "name": "Manufacture of leather and related products (0.3%)",
           "latest": {
-            "t": "2026-05",
-            "v": 117.6
+            "t": "2026-08",
+            "v": 117.9
           }
         },
         {
           "isic": "16",
           "name": "Manufacture of wood and products of wood and cork except furniture; manufacture of articles of Straw and plaiting materials (0.2%)",
           "latest": {
-            "t": "2026-05",
-            "v": 73.1
+            "t": "2026-08",
+            "v": 74.1
           }
         },
         {
           "isic": "17",
           "name": "Manufacture of paper and paper products (1.7%)",
           "latest": {
-            "t": "2026-05",
-            "v": 41.0
+            "t": "2026-08",
+            "v": 44.0
           }
         },
         {
           "isic": "18",
           "name": "Printing and reproduction of recorded media (1.4%)",
           "latest": {
-            "t": "2026-05",
-            "v": 111.3
+            "t": "2026-08",
+            "v": 112.4
           }
         },
         {
           "isic": "19",
           "name": "Manufacture of coke and refined petroleum products (7.4%)",
           "latest": {
-            "t": "2026-05",
-            "v": 101.7
+            "t": "2026-08",
+            "v": 110.1
           }
         },
         {
           "isic": "20",
           "name": "Manufacture of chemicals and chemical products (4.1%)",
           "latest": {
-            "t": "2026-05",
-            "v": 79.9
+            "t": "2026-08",
+            "v": 71.8
           }
         },
         {
           "isic": "21",
           "name": "Manufacture of basic pharmaceutical products and pharmaceutical preparations (0.1%)",
           "latest": {
-            "t": "2026-05",
-            "v": 94.6
+            "t": "2026-08",
+            "v": 102.3
           }
         },
         {
           "isic": "22",
           "name": "Manufacture of rubber and plastic products (5.7%)",
           "latest": {
-            "t": "2026-05",
-            "v": 72.5
+            "t": "2026-08",
+            "v": 82.1
           }
         },
         {
           "isic": "23",
           "name": "Manufacture of other non-metallic mineral products (7.8%)",
           "latest": {
-            "t": "2026-05",
-            "v": 123.4
+            "t": "2026-08",
+            "v": 123.0
           }
         },
         {
           "isic": "24",
           "name": "Manufacture of basic metals (2.4%)",
           "latest": {
-            "t": "2026-05",
-            "v": 112.3
+            "t": "2026-08",
+            "v": 106.6
           }
         },
         {
           "isic": "25",
           "name": "Manufacture of fabricated metal products (1.3%)",
           "latest": {
-            "t": "2026-05",
-            "v": 90.3
+            "t": "2026-08",
+            "v": 88.7
           }
         },
         {
           "isic": "26-27",
           "name": "Manufacture of electrical equipment (2%)",
           "latest": {
-            "t": "2026-05",
+            "t": "2026-08",
             "v": 61.4
           }
         },
@@ -649,24 +661,24 @@
           "isic": "28",
           "name": "Manufacture of machinery and equipment (n .e.c.) (0.7%)",
           "latest": {
-            "t": "2026-05",
-            "v": 99.8
+            "t": "2026-08",
+            "v": 108.6
           }
         },
         {
           "isic": "31",
           "name": "Manufacture of furniture (0.8%)",
           "latest": {
-            "t": "2026-05",
-            "v": 54.0
+            "t": "2026-08",
+            "v": 55.6
           }
         },
         {
           "isic": "29-30-32-33",
           "name": "Other Manufacturing (0.3%)",
           "latest": {
-            "t": "2026-05",
-            "v": 54.7
+            "t": "2026-08",
+            "v": 61.2
           }
         }
       ],
@@ -14349,8 +14361,8 @@
       ]
     },
     "latest": {
-      "iip_month": "2026-05",
-      "iip": 99.9,
+      "iip_month": "2026-08",
+      "iip": 99.7,
       "pmi_manufacturing": 55.0,
       "pmi_services": 61.3636,
       "pmi_construction": 60.0,
