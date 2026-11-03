@@ -1,4 +1,5 @@
 doc_id	date	source_url	sha256
+20261102	2026-11-02	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	5b71e7a494e2274fae13164408949beb30210074e0097b87e15a160840722134
 20261101	2026-11-01	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	8d2c685112e5990bf3c331de8cb98921a4b94dee00007cba2efd79a293f0acd1
 20261031	2026-10-31	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	8edd253dbc38301c30d196521cdacdf5f1ef99d8e63cc7f81eb7a44a73d3c889
 20261030	2026-10-30	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	98de524c087984d71cea51398399fa2eaca9f59d64f4d95eb51d540bee6604a5
