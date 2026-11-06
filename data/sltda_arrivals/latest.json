@@ -1,10 +1,10 @@
 {
   "dataset": "sltda_arrivals",
-  "generated_at": "2026-11-05T13:26:29.103340+00:00",
-  "doc_id": "202609",
-  "date": "2026-09-30",
+  "generated_at": "2026-11-06T13:10:12.138626+00:00",
+  "doc_id": "202611",
+  "date": "2026-11-30",
   "data": {
-    "period": "2026-09",
+    "period": "2026-11",
     "months": [
       {
         "month": "January",
@@ -61,10 +61,24 @@
         "arrivals_last_year": 198235,
         "arrivals_this_year": 191704,
         "pct_change_yoy": -3.3
+      },
+      {
+        "month": "September",
+        "arrivals_prior_ref": 149087,
+        "arrivals_last_year": 158971,
+        "arrivals_this_year": 158557,
+        "pct_change_yoy": -0.3
+      },
+      {
+        "month": "October",
+        "arrivals_prior_ref": 153123,
+        "arrivals_last_year": 165193,
+        "arrivals_this_year": 168625,
+        "pct_change_yoy": 2.08
       }
     ],
-    "ytd_total": 1535122,
-    "month_headline": 31885,
+    "ytd_total": 1862304,
+    "month_headline": 28633,
     "daily": [],
     "daily_complete": false,
     "daily_sum": 0,
@@ -72,170 +86,170 @@
       {
         "rank": 1,
         "country": "India",
-        "arrivals": 9894,
-        "share_pct": 31.0
+        "arrivals": 6259,
+        "share_pct": 22.0
       },
       {
         "rank": 2,
-        "country": "United Kingdom",
-        "arrivals": 2636,
-        "share_pct": 8.0
+        "country": "Russian Federation",
+        "arrivals": 3178,
+        "share_pct": 11.0
       },
       {
         "rank": 3,
-        "country": "Australia",
-        "arrivals": 2036,
-        "share_pct": 6.0
+        "country": "United Kingdom",
+        "arrivals": 2145,
+        "share_pct": 8.0
       },
       {
         "rank": 4,
         "country": "Germany",
-        "arrivals": 1762,
-        "share_pct": 6.0
+        "arrivals": 1978,
+        "share_pct": 7.0
       },
       {
         "rank": 5,
         "country": "China",
-        "arrivals": 1645,
-        "share_pct": 6.0
+        "arrivals": 1552,
+        "share_pct": 5.0
       },
       {
         "rank": 6,
-        "country": "France",
-        "arrivals": 1095,
-        "share_pct": 3.0
+        "country": "Australia",
+        "arrivals": 1447,
+        "share_pct": 5.0
       },
       {
         "rank": 7,
-        "country": "Japan",
-        "arrivals": 890,
-        "share_pct": 3.0
+        "country": "France",
+        "arrivals": 1391,
+        "share_pct": 5.0
       },
       {
         "rank": 8,
-        "country": "Spain",
-        "arrivals": 871,
+        "country": "Maldives",
+        "arrivals": 741,
         "share_pct": 3.0
       },
       {
         "rank": 9,
-        "country": "Bangladesh",
-        "arrivals": 848,
-        "share_pct": 3.0
+        "country": "United States",
+        "arrivals": 641,
+        "share_pct": 2.0
       },
       {
         "rank": 10,
-        "country": "Netherlands",
-        "arrivals": 834,
-        "share_pct": 3.0
+        "country": "Spain",
+        "arrivals": 599,
+        "share_pct": 2.0
       }
     ],
     "top_markets_ytd": [
       {
         "rank": 1,
         "country": "India",
-        "arrivals": 395377
+        "arrivals": 505884
       },
       {
         "rank": 2,
         "country": "United Kingdom",
-        "arrivals": 152625
+        "arrivals": 175274
       },
       {
         "rank": 3,
         "country": "China",
-        "arrivals": 102473
+        "arrivals": 125292
       },
       {
         "rank": 4,
         "country": "Germany",
-        "arrivals": 91763
+        "arrivals": 107283
       },
       {
         "rank": 5,
-        "country": "Russian Federation",
-        "arrivals": 81211
+        "country": "Australia",
+        "arrivals": 96945
       },
       {
         "rank": 6,
-        "country": "Australia",
-        "arrivals": 78074
+        "country": "Russian Federation",
+        "arrivals": 92919
       },
       {
         "rank": 7,
         "country": "France",
-        "arrivals": 75079
+        "arrivals": 85293
       },
       {
         "rank": 8,
         "country": "United States",
-        "arrivals": 43192
+        "arrivals": 50076
       },
       {
         "rank": 9,
         "country": "Netherlands",
-        "arrivals": 39238
+        "arrivals": 43886
       },
       {
         "rank": 10,
-        "country": "Canada",
-        "arrivals": 32052
+        "country": "Bangladesh",
+        "arrivals": 38130
       },
       {
         "rank": 11,
-        "country": "Italy",
-        "arrivals": 29931
+        "country": "Canada",
+        "arrivals": 37013
       },
       {
         "rank": 12,
-        "country": "Bangladesh",
-        "arrivals": 29680
+        "country": "Japan",
+        "arrivals": 36594
       },
       {
         "rank": 13,
-        "country": "Japan",
-        "arrivals": 29164
+        "country": "Maldives",
+        "arrivals": 34903
       },
       {
         "rank": 14,
-        "country": "Maldives",
-        "arrivals": 27128
+        "country": "Italy",
+        "arrivals": 33611
       },
       {
         "rank": 15,
-        "country": "Poland",
-        "arrivals": 26150
+        "country": "Spain",
+        "arrivals": 30877
       },
       {
         "rank": 16,
-        "country": "Spain",
-        "arrivals": 24710
+        "country": "Poland",
+        "arrivals": 28515
       },
       {
         "rank": 17,
         "country": "Switzerland",
-        "arrivals": 22283
+        "arrivals": 26349
       },
       {
         "rank": 18,
-        "country": "Israel",
-        "arrivals": 18690
+        "country": "Pakistan",
+        "arrivals": 22017
       },
       {
         "rank": 19,
-        "country": "Malaysia",
-        "arrivals": 16609
+        "country": "Israel",
+        "arrivals": 21917
       },
       {
         "rank": 20,
-        "country": "Pakistan",
-        "arrivals": 16279
+        "country": "Malaysia",
+        "arrivals": 20119
       }
     ],
     "_meta": {
       "inspection": {
         "pdf_type": "text_based",
-        "confidence": 0.857,
+        "confidence": 1.0,
         "page_count": 7,
         "pages_needing_ocr": [],
         "has_encoding_issues": false,
