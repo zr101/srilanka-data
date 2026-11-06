@@ -1,7 +1,7 @@
 {
   "dataset": "forbes_tea",
-  "n_docs": 7,
+  "n_docs": 8,
   "date_min": "2026-07-08",
-  "date_max": "2026-10-14",
-  "generated_at": "2026-11-05T13:26:27.754553+00:00"
+  "date_max": "2026-11-04",
+  "generated_at": "2026-11-06T13:10:06.793379+00:00"
 }
