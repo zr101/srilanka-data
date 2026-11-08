@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-22",
+  "title": "22.10.2026  Press Release-TREASURY BILL AUCTION HELD ON  21 October 2026 | English ",
+  "results": [
+    {
+      "tenor_days": 182,
+      "way_pct": 9.44
+    },
+    {
+      "tenor_days": 364,
+      "way_pct": 9.95
+    }
+  ],
+  "amounts_rs_mn": [
+    2282,
+    2282,
+    82893
+  ],
+  "text_excerpt": " +94 11 2484604 Info@pdmo.gov.lk https://www.treasury.gov.lk/web/public-debt-management-office [Limited Sharing] PRESS RELEASE TREASURY BILL AUCTION HELD ON 21 OCTOBER 2026 Further to the T-bill auction held on 21 October 2026, Rs. 2,282 million was raised at phase II, from the Treasury bills bearing the International Securities Identification Number s LKA18227D233 and LKA36427J226 at the Weighted",
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 1,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
