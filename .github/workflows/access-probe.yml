@@ -1,8 +1,5 @@
 name: public source access probe
 on:
-  push:
-    branches: [fix/daily-updates]
-    paths: [scripts/probe_access.py, .github/workflows/access-probe.yml]
   workflow_dispatch: {}
 permissions:
   contents: read

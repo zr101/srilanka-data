@@ -25,6 +25,7 @@ def run(keep_latest: int = 4, budget_seconds: float = 300) -> int:
         issues[(int(vol), int(no))] = url
     if not issues:
         raise ValueError("WER listing contains no issues")
+    print(f"Newest issue linked by the publisher: {max(issues)}")
     new_docs = 0
     for (vol, no) in sorted(issues, reverse=True)[:keep_latest]:
         if budget.expired:

@@ -7,7 +7,7 @@ import re
 from pypdf import PdfReader
 
 ISIN_RE = re.compile(r"\bLKA(\d{3})\w{5,9}\b")
-YIELD_RE = re.compile(r"Weighted Average Yield Rates? of ([\d.]+%(?:[,\s]+(?:and\s+)?[\d.]+%)*)")
+YIELD_RE = re.compile(r"Weighted\s+Average\s+Yield\s+Rate\s*s?\s+of ([\d.]+%(?:[,\s]+(?:and\s+)?[\d.]+%)*)")
 PCT_RE = re.compile(r"([\d.]+)%")
 AMOUNT_RE = re.compile(r"Rs\.?\s*([\d,]+)\s*(?:mn|million)", re.I)
 

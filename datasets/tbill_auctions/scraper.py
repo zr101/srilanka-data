@@ -74,6 +74,7 @@ def run(budget_seconds: float = 300) -> int:
             "original.pdf",
             clean,
         )
+        store.regenerate_indexes(DATASET)
         print(f"{doc_date}: {clean['results']}")
         new_docs += 1
     store.regenerate_indexes(DATASET)

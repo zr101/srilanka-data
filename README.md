@@ -13,3 +13,25 @@ Each dataset lives on its own `data_<dataset>` branch: per-doc dirs (`original.p
 | nmra_registrations | NMRA valid medicine registrations XLS | ~weekly |
 
 Consumed by [srilanka-monitor](https://github.com/zr101/srilanka-monitor). MIT (code); data belongs to the respective government publishers, mirrored here with attribution.
+
+## Scheduled updates and failures
+
+GitHub Actions checks each dataset at 05:30 and 11:30 UTC daily (11:00 and 17:00
+in Sri Lanka). Runs are serialized per dataset. Parser tests use locked Python
+dependencies before collection; Ubuntu and the Node.js 24 action versions are
+explicit. `PYTHONPATH=src:. python -m pipeline.status <dataset>` records the
+publication/reference date, check time, last successful check, and updated,
+unchanged, overdue, or error outcome in `status.json`. Publication age is evaluated
+against the source's cadence, not the timestamp of regenerated indexes.
+
+Failed scrapes preserve existing validated snapshots, publish their status, and
+fail the job. Repeated identical failures reuse the existing issue without
+posting daily comments. Git publication uses normal fast-forward pushes and
+aborts on a rebase conflict. Each job summary includes its publication date and
+failure reason. The optional access-probe workflow diagnoses public HTTP access
+from a standard GitHub runner; a completed probe is not a healthy ingestion run.
+
+Known external limitation verified November 8, 2026: CBSL returns HTTP 403 to
+both tested GitHub-hosted Linux runner architectures, with Python and curl.
+These jobs remain visibly failed until source access is restored. No alternate
+host, paid proxy, or fabricated data is used to turn them green.

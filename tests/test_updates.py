@@ -134,3 +134,10 @@ def test_current_publication_fixtures():
     payload = (fixtures / 'sltda_20261105.pdf').read_bytes()
     assert reporting_date(payload) == '2026-11-05'
     assert tourism(payload)['ytd_total'] == 1890937
+
+
+def test_treasury_split_plural_in_pdf_text():
+    from pathlib import Path
+    from datasets.tbill_auctions.parser import parse_pdf
+    result = parse_pdf((Path(__file__).parent / 'fixtures/tbill_20261029.pdf').read_bytes())
+    assert result['results'] == [{'tenor_days': 182, 'way_pct': 9.44}, {'tenor_days': 364, 'way_pct': 9.95}]
