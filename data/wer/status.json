@@ -1,11 +1,11 @@
 {
   "dataset": "wer",
-  "checked_at": "2026-11-08T05:58:42.466992+00:00",
-  "last_successful_check_at": null,
-  "publication_date": "2026-11-07",
+  "checked_at": "2026-11-08T06:07:05.970734+00:00",
+  "last_successful_check_at": "2026-11-08T06:07:05.970734+00:00",
+  "publication_date": "2026-09-27",
   "max_age_days": 21,
-  "status": "error",
-  "outcome": "failed",
-  "error": "ValueError: time data '02 Aug 2026' does not match format '%d %B %Y'",
-  "message": "ValueError: time data '02 Aug 2026' does not match format '%d %B %Y'"
+  "status": "overdue",
+  "outcome": "unchanged",
+  "error": null,
+  "message": "Latest publication is overdue or unavailable"
 }
