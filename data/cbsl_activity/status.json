@@ -1,0 +1,11 @@
+{
+  "dataset": "cbsl_activity",
+  "checked_at": "2026-11-08T05:58:43.916026+00:00",
+  "last_successful_check_at": null,
+  "publication_date": "2026-10-19",
+  "max_age_days": 60,
+  "status": "error",
+  "outcome": "failed",
+  "error": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/business-surveys/sl-purchasing-managers-index-survey: HTTP 403; source access failed",
+  "message": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/business-surveys/sl-purchasing-managers-index-survey: HTTP 403; source access failed"
+}
