@@ -1,0 +1,11 @@
+{
+  "dataset": "cbsl_financial",
+  "checked_at": "2026-11-08T05:58:44.708194+00:00",
+  "last_successful_check_at": null,
+  "publication_date": "2026-09-30",
+  "max_age_days": 240,
+  "status": "error",
+  "outcome": "failed",
+  "error": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/statistical-tables/financial-sector: HTTP 403; source access failed",
+  "message": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/statistical-tables/financial-sector: HTTP 403; source access failed"
+}
