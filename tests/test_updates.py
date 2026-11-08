@@ -90,3 +90,47 @@ def test_wer_uses_issue_date_not_download_day():
     from pathlib import Path
     from datasets.wer.parser import publication_date
     assert publication_date((Path(__file__).parent / 'fixtures/wer_53_26.pdf').read_bytes()) == '2026-06-28'
+
+
+def test_wer_abbreviated_month():
+    from datasets.wer.parser import publication_date
+    class Page:
+        def extract_text(self): return 'Vol. 53 No. 31 27th July – 02nd Aug 2026'
+    with patch('datasets.wer.parser.PdfReader') as reader:
+        reader.return_value.pages = [Page()]
+        assert publication_date(b'fixture') == '2026-08-02'
+
+
+def test_tourism_partial_month_includes_current_arrivals():
+    from datasets.sltda_arrivals.parser import MONTH_ROW_RE
+    match = MONTH_ROW_RE.match('November 195,582 212,906 28,633')
+    assert match and match.group(4) == '28,633'
+    assert not MONTH_ROW_RE.match('December 253,169 258,928')
+
+
+def test_tourism_date_is_report_end_not_month_end():
+    from datasets.sltda_arrivals.parser import reporting_date
+    class Page:
+        def extract_text(self): return 'Tourist arrivals from 01st to 5th November 2026'
+    with patch('datasets.sltda_arrivals.parser.PdfReader') as reader:
+        reader.return_value.pages = [Page()]
+        assert reporting_date(b'fixture') == '2026-11-05'
+
+
+def test_treasury_section_links_are_not_lost():
+    from datasets.tbill_auctions.scraper import publication_links
+    listing = {'pageProps': {'sections': [{'html': '<p>&gt; 05.11.2026 <a href="https://www.treasury.gov.lk/api/file/7dad9782-5291-4c43-954d-3c74434804c7">Press Release | English</a></p>'}], 'pageData': {'links': []}}}
+    links = publication_links(listing)
+    assert len(links) == 1
+    assert links[0]['title'].startswith('05.11.2026')
+
+
+def test_current_publication_fixtures():
+    from pathlib import Path
+    from datasets.tbill_auctions.parser import parse_pdf as treasury
+    from datasets.sltda_arrivals.parser import parse_pdf as tourism, reporting_date
+    fixtures = Path(__file__).parent / 'fixtures'
+    assert treasury((fixtures / 'tbill_20261105.pdf').read_bytes())['results'] == [{'tenor_days': 364, 'way_pct': 9.95}]
+    payload = (fixtures / 'sltda_20261105.pdf').read_bytes()
+    assert reporting_date(payload) == '2026-11-05'
+    assert tourism(payload)['ytd_total'] == 1890937

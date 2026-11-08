@@ -2,6 +2,8 @@
 (tables are line-adjacent: '1 India 338,230', 'January 238,924 252,761 ...')."""
 
 import io
+from datetime import datetime
+from pypdf import PdfReader
 import re
 import sys
 from pathlib import Path
@@ -47,7 +49,7 @@ MONTHS = (
 )
 PCT = r"\(?-?[\d.]+\)?"  # negative changes print as "(19.7)"
 MONTH_ROW_RE = re.compile(
-    rf"^({'|'.join(MONTHS)})\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)\s+({PCT})\s+({PCT})"
+    rf"^({'|'.join(MONTHS)})\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)(?:\s+({PCT})\s+({PCT}))?\s*$"
 )
 # p7 YTD rows end in the arrivals number; p6 monthly rows carry a trailing share %
 MARKET_ROW_RE = re.compile(r"^(\d{1,2})\s+([A-Za-z][A-Za-z .&'()-]+?)\s+([\d,]+)(?:\s+([\d.]+)%)?\s*$")
@@ -150,3 +152,11 @@ def rebuild(payload: bytes, _existing: dict) -> dict:
     if _existing.get("period"):
         clean["period"] = _existing["period"]
     return clean
+
+
+def reporting_date(payload: bytes) -> str:
+    text = " ".join(" ".join(page.extract_text() or "" for page in PdfReader(io.BytesIO(payload)).pages[:3]).split())
+    match = re.search(r"[Tt]ourist arrivals\s+(?:from\s+)?\d{1,2}(?:st|nd|rd|th)?\s+to\s+(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(20\d{2})", text)
+    if not match:
+        raise ValueError("SLTDA reporting period not found")
+    return datetime.strptime(" ".join(match.groups()), "%d %B %Y").date().isoformat()

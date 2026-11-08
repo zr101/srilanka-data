@@ -299,4 +299,9 @@ def publication_date(payload: bytes) -> str:
     if not dates:
         raise ValueError("WER publication date missing")
     day, month, year = dates[0]
-    return datetime.strptime(f"{day} {month} {year}", "%d %B %Y").date().isoformat()
+    for fmt in ("%d %B %Y", "%d %b %Y"):
+        try:
+            return datetime.strptime(f"{day} {month} {year}", fmt).date().isoformat()
+        except ValueError:
+            pass
+    raise ValueError(f"Unrecognized WER month: {month}")

@@ -1,6 +1,7 @@
 """Maintain one issue per dataset; unchanged failures generate no comments."""
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -16,7 +17,7 @@ body = f"{message}\n\nLatest publication: {status.get('publication_date', 'unkno
 title = f'Pipeline failure: {name}'
 issues = json.loads(subprocess.check_output(['gh', 'issue', 'list', '--repo', repo, '--state', 'open', '--search', title + ' in:title', '--json', 'number,title,body'], text=True))
 existing = next((i for i in issues if i['title'] == title), None)
-if existing and existing['body'].strip() == body.strip():
+if existing and re.sub(r'\d{8}', '<edition>', existing['body']).strip() == re.sub(r'\d{8}', '<edition>', body).strip():
     print('Unchanged failure; existing issue retained without another notification')
     sys.exit(0)
 with tempfile.NamedTemporaryFile(mode='w', suffix='.md') as temp:

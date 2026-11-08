@@ -10,7 +10,7 @@ from pipeline.http import get, get_pdf
 from pipeline.runner import TimeBudget
 from pipeline.store import Store
 
-from .parser import parse_pdf
+from .parser import parse_pdf, reporting_date
 
 DATASET = "sltda_arrivals"
 MONTH_NUM = {m: i for i, m in enumerate(calendar.month_name) if m}
@@ -22,8 +22,10 @@ def run(budget_seconds: float = 300) -> int:
     year = date.today().year
     listing = get(f"https://www.sltda.gov.lk/en/weekly-tourist-arrivals-reports-{year}").text
     urls = re.findall(r'href="(https?://[^"]*Weekly[^"]*\.pdf)"', listing)
+    if not urls:
+        raise ValueError("SLTDA listing contains no weekly reports")
     new_docs = 0
-    for url in dict.fromkeys(urls):
+    for url in reversed(list(dict.fromkeys(urls))):
         if budget.expired:
             break
         month_m = re.search(rf"({'|'.join(MONTH_NUM)})_(\d{{4}})", url)
@@ -33,12 +35,16 @@ def run(budget_seconds: float = 300) -> int:
         doc_date = f"{yr}-{month:02d}-{calendar.monthrange(yr, month)[1]:02d}"
         doc_id = f"{yr}{month:02d}"
         probe = Doc(DATASET, doc_id, doc_date, url, sha256="")
-        if store.exists(probe):
+        if store.exists(probe) and (yr, month) < (date.today().year, date.today().month):
             continue
         payload = get_pdf(url)
         if payload is None:
             continue
-        clean = {"period": f"{yr}-{month:02d}", **parse_pdf(payload)}
+        doc_date = reporting_date(payload)
+        doc_id = f"{yr}{month:02d}-{Doc.sha256_of(payload)[:12]}"
+        if store.exists(Doc(DATASET, doc_id, doc_date, url, sha256="")):
+            continue
+        clean = {"reporting_date": doc_date, "period": f"{yr}-{month:02d}", **parse_pdf(payload)}
         store.write_doc(Doc(DATASET, doc_id, doc_date, url, Doc.sha256_of(payload)), payload, "original.pdf", clean)
         print(f"{yr}-{month:02d}: ytd_total={clean['ytd_total']}")
         new_docs += 1

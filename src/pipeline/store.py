@@ -61,6 +61,9 @@ class Store:
             if dataset == "wer":
                 from datasets.wer.parser import publication_date
                 doc.date = publication_date((doc_json.parent / "original.pdf").read_bytes())
+            if dataset == "sltda_arrivals":
+                from datasets.sltda_arrivals.parser import reporting_date
+                doc.date = reporting_date((doc_json.parent / "original.pdf").read_bytes())
             docs.append((doc, doc_json.parent))
         docs.sort(key=lambda pair: (pair[0].date, pair[0].doc_id), reverse=True)
 
