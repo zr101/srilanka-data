@@ -37,7 +37,7 @@ def run(_budget_seconds: float = 300) -> int:
             clean = {"date": day.isoformat(), **parse_pdf(payload)}
         except ValueError as err:
             print(f"{day}: parse failed, skipping ({err})")
-            continue
+            raise
         store.write_doc(
             Doc(DATASET, stamp, day.isoformat(), url, Doc.sha256_of(payload)),
             payload,

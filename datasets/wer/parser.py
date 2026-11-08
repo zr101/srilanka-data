@@ -8,6 +8,7 @@ to district LK-52 for geo joins, but `rdhs` is the unique key for aggregation.""
 
 import io
 import re
+from datetime import datetime
 
 from pypdf import PdfReader
 
@@ -286,3 +287,16 @@ def rebuild(payload: bytes, _existing: dict) -> dict:
     clean = dict(_existing)
     clean.update(parse_pdf(payload))
     return clean
+
+
+def publication_date(payload: bytes) -> str:
+    """Use the dated issue masthead, never the day we downloaded the PDF."""
+    text = " ".join((PdfReader(io.BytesIO(payload)).pages[0].extract_text() or "").split())
+    masthead = re.search(r"Vol\.?\s*\d+\s+No\.?\s*\d+(.{0,150})", text, re.I)
+    if not masthead:
+        raise ValueError("WER issue masthead missing")
+    dates = re.findall(r"(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(20\d{2})", masthead.group(1))
+    if not dates:
+        raise ValueError("WER publication date missing")
+    day, month, year = dates[0]
+    return datetime.strptime(f"{day} {month} {year}", "%d %B %Y").date().isoformat()

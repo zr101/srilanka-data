@@ -9,7 +9,7 @@ from pipeline.http import get, get_pdf
 from pipeline.runner import TimeBudget
 from pipeline.store import Store
 
-from .parser import parse_pdf
+from .parser import parse_pdf, publication_date
 
 DATASET = "wer"
 LISTING = "https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report"
@@ -23,6 +23,8 @@ def run(keep_latest: int = 4, budget_seconds: float = 300) -> int:
     issues: dict[tuple[int, int], str] = {}
     for url, vol, no in LINK_RE.findall(html):
         issues[(int(vol), int(no))] = url
+    if not issues:
+        raise ValueError("WER listing contains no issues")
     new_docs = 0
     for (vol, no) in sorted(issues, reverse=True)[:keep_latest]:
         if budget.expired:
@@ -36,7 +38,8 @@ def run(keep_latest: int = 4, budget_seconds: float = 300) -> int:
         payload = get_pdf(url)
         if payload is None:
             continue
-        clean = {"volume": vol, "issue": no, **parse_pdf(payload)}
+        doc_date = publication_date(payload)
+        clean = {"volume": vol, "issue": no, "publication_date": doc_date, **parse_pdf(payload)}
         store.write_doc(Doc(DATASET, doc_id, doc_date, url, Doc.sha256_of(payload)), payload, "original.pdf", clean)
         print(f"Vol {vol} No {no}: {len(clean['districts'])} districts")
         new_docs += 1

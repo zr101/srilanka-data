@@ -57,7 +57,11 @@ class Store:
         base = self.dataset_dir(dataset)
         docs: list[tuple[Doc, Path]] = []
         for doc_json in sorted(base.rglob("doc.json")):
-            docs.append((Doc.from_json(doc_json.read_text()), doc_json.parent))
+            doc = Doc.from_json(doc_json.read_text())
+            if dataset == "wer":
+                from datasets.wer.parser import publication_date
+                doc.date = publication_date((doc_json.parent / "original.pdf").read_bytes())
+            docs.append((doc, doc_json.parent))
         docs.sort(key=lambda pair: (pair[0].date, pair[0].doc_id), reverse=True)
 
         header = "doc_id\tdate\tsource_url\tsha256\n"

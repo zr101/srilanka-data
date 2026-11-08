@@ -7,6 +7,10 @@ could also truncate legitimate values).
 """
 
 import re
+import io
+from datetime import date, datetime
+from pathlib import Path
+import openpyxl
 
 import xlrd
 
@@ -21,7 +25,18 @@ def clean_cell(value) -> str:
 
 
 def parse_xls(path: str) -> tuple[list[str], list[list[str]]]:
-    book = xlrd.open_workbook(path)
+    payload = Path(path).read_bytes()
+    if payload.startswith(b"PK"):
+        book = openpyxl.load_workbook(io.BytesIO(payload), read_only=True, data_only=True)
+        try:
+            records = iter(book.worksheets[0].values)
+            header = [clean_cell(v if v is not None else "") for v in next(records)]
+            rows = [[v.date().isoformat() if isinstance(v, datetime) else v.isoformat() if isinstance(v, date)
+                     else clean_cell(v if v is not None else "") for v in record] for record in records]
+            return header, [row for row in rows if any(row)]
+        finally:
+            book.close()
+    book = xlrd.open_workbook(file_contents=payload)
     sheet = book.sheet_by_index(0)
     header = [clean_cell(c.value) for c in sheet.row(0)]
     date_cols = [i for i, h in enumerate(header) if "date" in h.lower()]
@@ -48,8 +63,8 @@ def summarize(header: list[str], rows: list[list[str]]) -> dict:
         return None
 
     country_idx = col("country")
-    type_idx = col("regi. type") or col("type")
-    date_idx = col("reg.date") or col("date")
+    type_idx = col("type")
+    date_idx = col("date")
 
     countries: dict[str, int] = {}
     types: dict[str, int] = {}

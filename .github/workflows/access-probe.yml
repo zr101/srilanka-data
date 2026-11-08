@@ -1,0 +1,18 @@
+name: public source access probe
+on:
+  push:
+    branches: [fix/daily-updates]
+    paths: [scripts/probe_access.py, .github/workflows/access-probe.yml]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install requests==2.34.2
+      - run: python scripts/probe_access.py

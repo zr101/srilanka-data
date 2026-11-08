@@ -3,6 +3,7 @@ import subprocess
 import requests
 
 URLS = [
+    'https://cbsl.gov.lk/en/statistics/economic-indicators',
     'https://www.cbsl.gov.lk/en/statistics/statistical-tables/financial-sector',
     'https://www.cbsl.gov.lk/sites/default/files/daily_economic_indicators_20261106_e.pdf',
 ]
