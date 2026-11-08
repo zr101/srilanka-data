@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-17",
+  "title": "17.09.2026  Press Release-TREASURY BILL AUCTION HELD ON  16 September 2026 | English ",
+  "results": [
+    {
+      "tenor_days": 91,
+      "way_pct": 9.18
+    }
+  ],
+  "amounts_rs_mn": [
+    10,
+    10,
+    70010
+  ],
+  "text_excerpt": " +94 11 2484604 Info.pdmo@gmail.com https://www.treasury.gov.lk/web/public-debt-management-office [Limited Sharing] PRESS RELEASE TREASURY BILL AUCTION HELD ON 16 SEPTEMBER 2026 Further to the T-bill auction held on 16 September 2026, Rs. 10 million was raised at phase II, from the Treasury bills bearing the International Securities Identification Number LKA09126L181 at the Weighted Average Yield ",
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 1,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
