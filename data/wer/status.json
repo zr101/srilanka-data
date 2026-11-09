@@ -1,11 +1,11 @@
 {
   "dataset": "wer",
-  "checked_at": "2026-11-08T12:10:20.279649+00:00",
+  "checked_at": "2026-11-09T14:17:50.714882+00:00",
   "last_successful_check_at": "2026-11-08T12:10:20.279649+00:00",
   "publication_date": "2026-09-27",
   "max_age_days": 21,
-  "status": "overdue",
-  "outcome": "unchanged",
-  "error": null,
-  "message": "Latest publication is overdue or unavailable"
+  "status": "error",
+  "outcome": "failed",
+  "error": "RuntimeError: GET https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report failed after 3 attempts: 500 Server Error: Internal Server Error for url: https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report",
+  "message": "RuntimeError: GET https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report failed after 3 attempts: 500 Server Error: Internal Server Error for url: https://www.epid.gov.lk/weekly-epidemiological-report/weekly-epidemiological-report"
 }
