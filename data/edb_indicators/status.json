@@ -1,7 +1,7 @@
 {
   "dataset": "edb_indicators",
-  "checked_at": "2026-11-08T12:10:17.316899+00:00",
-  "last_successful_check_at": "2026-11-08T12:10:17.316899+00:00",
+  "checked_at": "2026-11-09T14:17:39.676786+00:00",
+  "last_successful_check_at": "2026-11-09T14:17:39.676786+00:00",
   "publication_date": "2025-12-31",
   "max_age_days": 730,
   "status": "ok",
