@@ -1,0 +1,263 @@
+{
+  "reporting_date": "2026-11-08",
+  "period": "2026-11",
+  "months": [
+    {
+      "month": "January",
+      "arrivals_prior_ref": 238924,
+      "arrivals_last_year": 252761,
+      "arrivals_this_year": 277327,
+      "pct_change_yoy": 9.7
+    },
+    {
+      "month": "February",
+      "arrivals_prior_ref": 235618,
+      "arrivals_last_year": 240217,
+      "arrivals_this_year": 279328,
+      "pct_change_yoy": 16.2
+    },
+    {
+      "month": "March",
+      "arrivals_prior_ref": 233382,
+      "arrivals_last_year": 229298,
+      "arrivals_this_year": 183979,
+      "pct_change_yoy": -19.7
+    },
+    {
+      "month": "April",
+      "arrivals_prior_ref": 180429,
+      "arrivals_last_year": 174608,
+      "arrivals_this_year": 135643,
+      "pct_change_yoy": -22.3
+    },
+    {
+      "month": "May",
+      "arrivals_prior_ref": 129466,
+      "arrivals_last_year": 132919,
+      "arrivals_this_year": 145745,
+      "pct_change_yoy": 9.65
+    },
+    {
+      "month": "June",
+      "arrivals_prior_ref": 146828,
+      "arrivals_last_year": 138241,
+      "arrivals_this_year": 124551,
+      "pct_change_yoy": -9.9
+    },
+    {
+      "month": "July",
+      "arrivals_prior_ref": 217829,
+      "arrivals_last_year": 200244,
+      "arrivals_this_year": 196845,
+      "pct_change_yoy": -1.7
+    },
+    {
+      "month": "August",
+      "arrivals_prior_ref": 200359,
+      "arrivals_last_year": 198235,
+      "arrivals_this_year": 191704,
+      "pct_change_yoy": -3.3
+    },
+    {
+      "month": "September",
+      "arrivals_prior_ref": 149087,
+      "arrivals_last_year": 158971,
+      "arrivals_this_year": 158557,
+      "pct_change_yoy": -0.3
+    },
+    {
+      "month": "October",
+      "arrivals_prior_ref": 153123,
+      "arrivals_last_year": 165193,
+      "arrivals_this_year": 168625,
+      "pct_change_yoy": 2.1
+    },
+    {
+      "month": "November",
+      "arrivals_prior_ref": 195582,
+      "arrivals_last_year": 212906,
+      "arrivals_this_year": 49929,
+      "pct_change_yoy": null
+    }
+  ],
+  "ytd_total": 1912233,
+  "month_headline": 49929,
+  "daily": [],
+  "daily_complete": false,
+  "daily_sum": 0,
+  "top_markets_month": [
+    {
+      "rank": 1,
+      "country": "India",
+      "arrivals": 12401,
+      "share_pct": 24.8
+    },
+    {
+      "rank": 2,
+      "country": "Russian Federation",
+      "arrivals": 5483,
+      "share_pct": 11.0
+    },
+    {
+      "rank": 3,
+      "country": "United Kingdom",
+      "arrivals": 3541,
+      "share_pct": 7.0
+    },
+    {
+      "rank": 4,
+      "country": "Germany",
+      "arrivals": 3449,
+      "share_pct": 7.0
+    },
+    {
+      "rank": 5,
+      "country": "China",
+      "arrivals": 2586,
+      "share_pct": 5.0
+    },
+    {
+      "rank": 6,
+      "country": "Australia",
+      "arrivals": 2324,
+      "share_pct": 5.0
+    },
+    {
+      "rank": 7,
+      "country": "France",
+      "arrivals": 1963,
+      "share_pct": 4.0
+    },
+    {
+      "rank": 8,
+      "country": "Poland",
+      "arrivals": 1211,
+      "share_pct": 2.0
+    },
+    {
+      "rank": 9,
+      "country": "United States",
+      "arrivals": 1097,
+      "share_pct": 2.0
+    },
+    {
+      "rank": 10,
+      "country": "Maldives",
+      "arrivals": 984,
+      "share_pct": 2.0
+    }
+  ],
+  "top_markets_ytd": [
+    {
+      "rank": 1,
+      "country": "India",
+      "arrivals": 512026
+    },
+    {
+      "rank": 2,
+      "country": "United Kingdom",
+      "arrivals": 176670
+    },
+    {
+      "rank": 3,
+      "country": "China",
+      "arrivals": 126326
+    },
+    {
+      "rank": 4,
+      "country": "Germany",
+      "arrivals": 108754
+    },
+    {
+      "rank": 5,
+      "country": "Australia",
+      "arrivals": 97822
+    },
+    {
+      "rank": 6,
+      "country": "Russian Federation",
+      "arrivals": 95224
+    },
+    {
+      "rank": 7,
+      "country": "France",
+      "arrivals": 85865
+    },
+    {
+      "rank": 8,
+      "country": "United States",
+      "arrivals": 50532
+    },
+    {
+      "rank": 9,
+      "country": "Netherlands",
+      "arrivals": 44158
+    },
+    {
+      "rank": 10,
+      "country": "Bangladesh",
+      "arrivals": 38415
+    },
+    {
+      "rank": 11,
+      "country": "Canada",
+      "arrivals": 37295
+    },
+    {
+      "rank": 12,
+      "country": "Japan",
+      "arrivals": 36931
+    },
+    {
+      "rank": 13,
+      "country": "Maldives",
+      "arrivals": 35146
+    },
+    {
+      "rank": 14,
+      "country": "Italy",
+      "arrivals": 33890
+    },
+    {
+      "rank": 15,
+      "country": "Spain",
+      "arrivals": 31227
+    },
+    {
+      "rank": 16,
+      "country": "Poland",
+      "arrivals": 29332
+    },
+    {
+      "rank": 17,
+      "country": "Switzerland",
+      "arrivals": 26654
+    },
+    {
+      "rank": 18,
+      "country": "Pakistan",
+      "arrivals": 22238
+    },
+    {
+      "rank": 19,
+      "country": "Israel",
+      "arrivals": 21986
+    },
+    {
+      "rank": 20,
+      "country": "Malaysia",
+      "arrivals": 20397
+    }
+  ],
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 7,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}
