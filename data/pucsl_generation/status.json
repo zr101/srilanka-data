@@ -1,8 +1,8 @@
 {
   "dataset": "pucsl_generation",
-  "checked_at": "2026-11-09T14:17:46.310323+00:00",
-  "last_successful_check_at": "2026-11-09T14:17:46.310323+00:00",
-  "publication_date": "2026-11-08",
+  "checked_at": "2026-11-10T13:44:38.496142+00:00",
+  "last_successful_check_at": "2026-11-10T13:44:38.496142+00:00",
+  "publication_date": "2026-11-09",
   "max_age_days": 4,
   "status": "ok",
   "outcome": "updated",
