@@ -1,11 +1,11 @@
 {
   "dataset": "cbsl_daily",
-  "checked_at": "2026-11-09T14:17:39.463939+00:00",
+  "checked_at": "2026-11-10T13:44:34.270035+00:00",
   "last_successful_check_at": null,
   "publication_date": "2026-10-08",
   "max_age_days": 4,
   "status": "error",
   "outcome": "failed",
-  "error": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/daily_economic_indicators_20261109_e.pdf: HTTP 403; source access failed",
-  "message": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/daily_economic_indicators_20261109_e.pdf: HTTP 403; source access failed"
+  "error": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/daily_economic_indicators_20261110_e.pdf: HTTP 403; source access failed",
+  "message": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/daily_economic_indicators_20261110_e.pdf: HTTP 403; source access failed"
 }
