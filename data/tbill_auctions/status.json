@@ -1,8 +1,8 @@
 {
   "dataset": "tbill_auctions",
-  "checked_at": "2026-11-10T13:44:41.370346+00:00",
+  "checked_at": "2026-11-11T12:58:08.559022+00:00",
   "last_successful_check_at": "2026-11-08T06:14:08.861390+00:00",
-  "publication_date": "2026-11-05",
+  "publication_date": "2026-11-11",
   "max_age_days": 21,
   "status": "error",
   "outcome": "failed",

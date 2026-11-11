@@ -1,7 +1,7 @@
 {
   "dataset": "tbill_auctions",
-  "n_docs": 18,
+  "n_docs": 19,
   "date_min": "2026-08-05",
-  "date_max": "2026-11-05",
-  "generated_at": "2026-11-08T12:10:26.112145+00:00"
+  "date_max": "2026-11-11",
+  "generated_at": "2026-11-11T12:58:05.562176+00:00"
 }
