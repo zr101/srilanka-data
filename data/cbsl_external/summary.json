@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_external",
-  "n_docs": 3,
+  "n_docs": 4,
   "date_min": "2026-07-31",
-  "date_max": "2026-09-30",
-  "generated_at": "2026-10-10T16:20:35.289368+00:00"
+  "date_max": "2026-11-04",
+  "generated_at": "2026-11-12T13:58:42.600489+00:00"
 }
