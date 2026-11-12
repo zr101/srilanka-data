@@ -1,7 +1,7 @@
 {
   "dataset": "nmra_registrations",
-  "checked_at": "2026-11-11T12:58:01.124292+00:00",
-  "last_successful_check_at": "2026-11-11T12:58:01.124292+00:00",
+  "checked_at": "2026-11-12T13:58:29.539896+00:00",
+  "last_successful_check_at": "2026-11-12T13:58:29.539896+00:00",
   "publication_date": "2026-11-02",
   "max_age_days": 45,
   "status": "ok",
