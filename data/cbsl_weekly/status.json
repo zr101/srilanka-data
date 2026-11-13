@@ -1,11 +1,11 @@
 {
   "dataset": "cbsl_weekly",
-  "checked_at": "2026-11-12T13:58:28.727871+00:00",
+  "checked_at": "2026-11-13T13:25:29.041216+00:00",
   "last_successful_check_at": null,
   "publication_date": "2026-10-30",
   "max_age_days": 21,
   "status": "error",
   "outcome": "failed",
-  "error": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/wei/WEI_20261106_e.pdf: HTTP 403; source access failed",
-  "message": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/wei/WEI_20261106_e.pdf: HTTP 403; source access failed"
+  "error": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/wei/WEI_20261113_e.pdf: HTTP 403; source access failed",
+  "message": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/wei/WEI_20261113_e.pdf: HTTP 403; source access failed"
 }
