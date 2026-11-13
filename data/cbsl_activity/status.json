@@ -1,11 +1,11 @@
 {
   "dataset": "cbsl_activity",
-  "checked_at": "2026-11-12T13:58:24.171722+00:00",
-  "last_successful_check_at": null,
+  "checked_at": "2026-11-13T13:25:39.630346+00:00",
+  "last_successful_check_at": "2026-11-13T13:25:39.630346+00:00",
   "publication_date": "2026-10-19",
   "max_age_days": 60,
-  "status": "error",
-  "outcome": "failed",
-  "error": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/business-surveys/business-outlook-survey: HTTP 403; source access failed",
-  "message": "RuntimeError: GET https://www.cbsl.gov.lk/en/statistics/business-surveys/business-outlook-survey: HTTP 403; source access failed"
+  "status": "ok",
+  "outcome": "unchanged",
+  "error": null,
+  "message": "Source checked successfully"
 }
