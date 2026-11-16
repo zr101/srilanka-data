@@ -1,11 +1,11 @@
 {
   "dataset": "cbsl_weekly",
-  "checked_at": "2026-11-15T12:57:40.777495+00:00",
-  "last_successful_check_at": "2026-11-15T12:57:40.777495+00:00",
+  "checked_at": "2026-11-16T13:58:25.190023+00:00",
+  "last_successful_check_at": "2026-11-16T13:58:25.190023+00:00",
   "publication_date": "2026-11-06",
   "max_age_days": 21,
   "status": "ok",
-  "outcome": "updated",
+  "outcome": "unchanged",
   "error": null,
   "message": "Source checked successfully"
 }
