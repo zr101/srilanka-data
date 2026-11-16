@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_prices",
-  "checked_at": "2026-11-15T12:57:34.269664+00:00",
-  "last_successful_check_at": "2026-11-15T12:57:34.269664+00:00",
+  "checked_at": "2026-11-16T13:58:22.893022+00:00",
+  "last_successful_check_at": "2026-11-16T13:58:22.893022+00:00",
   "publication_date": "2026-10-30",
   "max_age_days": 60,
   "status": "ok",
