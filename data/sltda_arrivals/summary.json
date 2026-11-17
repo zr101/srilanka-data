@@ -1,7 +1,7 @@
 {
   "dataset": "sltda_arrivals",
-  "n_docs": 13,
+  "n_docs": 14,
   "date_min": "2026-01-31",
-  "date_max": "2026-11-11",
-  "generated_at": "2026-11-16T13:58:12.614721+00:00"
+  "date_max": "2026-11-15",
+  "generated_at": "2026-11-17T14:50:36.501255+00:00"
 }
