@@ -1,10 +1,10 @@
 {
   "dataset": "cbsl_daily",
-  "generated_at": "2026-11-17T14:50:47.222965+00:00",
-  "doc_id": "20261116",
-  "date": "2026-11-16",
+  "generated_at": "2026-11-18T14:31:09.411624+00:00",
+  "doc_id": "20261117",
+  "date": "2026-11-17",
   "data": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "tbill": {
       "d91": 9.35,
       "d182": 9.43,
@@ -18,7 +18,7 @@
     "opr": 8.75,
     "srr": 2.0,
     "awpr": 11.24,
-    "overnight_liquidity_rs_bn": 245.39,
+    "overnight_liquidity_rs_bn": 209.15,
     "gdp_growth_pct": 4.2,
     "ncpi_yoy_pct": 8.1,
     "ncpi_month": "September",
@@ -26,37 +26,37 @@
     "ccpi_month": "October",
     "fx_tt": {
       "usd": {
-        "tt_buy": 328.1247,
-        "tt_sell": 337.0563
+        "tt_buy": 328.3496,
+        "tt_sell": 337.2551
       },
       "gbp": {
-        "tt_buy": 432.192,
-        "tt_sell": 446.5685
+        "tt_buy": 431.6864,
+        "tt_sell": 446.139
       },
       "eur": {
-        "tt_buy": 360.1165,
-        "tt_sell": 372.9306
+        "tt_buy": 359.4572,
+        "tt_sell": 372.6346
       },
       "jpy": {
-        "tt_buy": 2.0476,
-        "tt_sell": 2.1207
+        "tt_buy": 2.0524,
+        "tt_sell": 2.1258
       }
     },
-    "usd_spot": 332.62,
+    "usd_spot": 332.74,
     "cic_rs_mn": {
-      "previous": 1613050.78,
-      "latest": 1612957.9
+      "previous": 1612957.9,
+      "latest": 1620240.06
     },
     "reserve_money_rs_mn": {
-      "previous": 1935866.54,
-      "latest": 1917563.63
+      "previous": 1917563.63,
+      "latest": 1931429.7
     },
     "share_market": {
-      "turnover_rs_mn": 10479.31,
-      "market_cap_rs_bn": 7802.96,
-      "pe_ratio": 11.14,
-      "foreign_purchases_rs_mn": 65.35,
-      "foreign_sales_rs_mn": 78.54
+      "turnover_rs_mn": 3734.21,
+      "market_cap_rs_bn": 7819.79,
+      "pe_ratio": 11.17,
+      "foreign_purchases_rs_mn": 1104.64,
+      "foreign_sales_rs_mn": 15.31
     },
     "pump_prices_rs": {
       "petrol92": 424.0,
@@ -64,24 +64,24 @@
       "kerosene": 285.0
     },
     "crude_usd": {
-      "brent": 91.69,
-      "wti": 85.05,
-      "opec": 90.0
+      "brent": 92.93,
+      "wti": 85.4,
+      "opec": 89.33
     },
     "platts_usd": {
-      "petrol": 102.45,
-      "diesel": 153.3,
-      "kerosene": 152.1
+      "petrol": 96.5,
+      "diesel": 142.6,
+      "kerosene": 142.14
     },
     "electricity": {
-      "total_gwh": 55.75,
-      "peak_mw": 2942.2,
+      "total_gwh": 60.62,
+      "peak_mw": 3019.1,
       "generation_mix_pct": {
-        "thermal_coal": 18.3,
-        "thermal_oil": 6.4,
-        "hydro": 59.4,
-        "wind": 0.2,
-        "solar": 14.9,
+        "thermal_coal": 17.1,
+        "thermal_oil": 9.8,
+        "hydro": 53.6,
+        "wind": 0.3,
+        "solar": 18.5,
         "biomass": 0.7
       }
     },
