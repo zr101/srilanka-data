@@ -1,7 +1,7 @@
 {
   "dataset": "cbsl_price_report",
-  "n_docs": 53,
+  "n_docs": 55,
   "date_min": "2026-07-30",
-  "date_max": "2026-11-16",
-  "generated_at": "2026-11-16T13:58:25.286364+00:00"
+  "date_max": "2026-11-18",
+  "generated_at": "2026-11-18T14:31:45.358561+00:00"
 }
