@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-18",
+  "title": "18.11.2026 Press Release-TREASURY BILL AUCTION HELD ON  18 November 2026 | English",
+  "phase": 1,
+  "results": [
+    {
+      "tenor_days": 91,
+      "isin": "LKA09127B198",
+      "offered_rs_mn": 45000,
+      "bids_rs_mn": 107683,
+      "accepted_rs_mn": 63563,
+      "way_pct": 9.35,
+      "way_last_auction_pct": 9.35
+    },
+    {
+      "tenor_days": 182,
+      "isin": "LKA18227E215",
+      "offered_rs_mn": 25000,
+      "bids_rs_mn": 30543,
+      "accepted_rs_mn": 4636,
+      "way_pct": 9.43,
+      "way_last_auction_pct": 9.43
+    },
+    {
+      "tenor_days": 364,
+      "isin": "LKA36427K190",
+      "offered_rs_mn": 20000,
+      "bids_rs_mn": 34851,
+      "accepted_rs_mn": 11997,
+      "way_pct": 9.95,
+      "way_last_auction_pct": 9.95
+    }
+  ],
+  "totals": {
+    "offered_rs_mn": 90000,
+    "bids_rs_mn": 173077,
+    "accepted_rs_mn": 80196
+  },
+  "_meta": {
+    "inspection": {
+      "pdf_type": "text_based",
+      "confidence": 1.0,
+      "page_count": 1,
+      "pages_needing_ocr": [],
+      "has_encoding_issues": false,
+      "is_complex_layout": false,
+      "pages_with_tables": []
+    }
+  }
+}

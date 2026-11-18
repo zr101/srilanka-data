@@ -1,23 +1,46 @@
 {
   "dataset": "tbill_auctions",
-  "generated_at": "2026-11-12T13:58:35.132078+00:00",
-  "doc_id": "20261112-b7d442b9",
-  "date": "2026-11-12",
+  "generated_at": "2026-11-18T14:31:16.626951+00:00",
+  "doc_id": "20261118-76c09c0a",
+  "date": "2026-11-18",
   "data": {
-    "date": "2026-11-12",
-    "title": "12.11.2026 Press Release-TREASURY BILL AUCTION HELD ON  11 November 2026 | English",
+    "date": "2026-11-18",
+    "title": "18.11.2026 Press Release-TREASURY BILL AUCTION HELD ON  18 November 2026 | English",
+    "phase": 1,
     "results": [
       {
+        "tenor_days": 91,
+        "isin": "LKA09127B198",
+        "offered_rs_mn": 45000,
+        "bids_rs_mn": 107683,
+        "accepted_rs_mn": 63563,
+        "way_pct": 9.35,
+        "way_last_auction_pct": 9.35
+      },
+      {
+        "tenor_days": 182,
+        "isin": "LKA18227E215",
+        "offered_rs_mn": 25000,
+        "bids_rs_mn": 30543,
+        "accepted_rs_mn": 4636,
+        "way_pct": 9.43,
+        "way_last_auction_pct": 9.43
+      },
+      {
         "tenor_days": 364,
-        "way_pct": 9.95
+        "isin": "LKA36427K190",
+        "offered_rs_mn": 20000,
+        "bids_rs_mn": 34851,
+        "accepted_rs_mn": 11997,
+        "way_pct": 9.95,
+        "way_last_auction_pct": 9.95
       }
     ],
-    "amounts_rs_mn": [
-      6500,
-      6500,
-      85562
-    ],
-    "text_excerpt": " +94 11 2484604 Info@pdmo.gov.lk https://www.treasury.gov.lk/web/public-debt-management-office [Limited Sharing] PRESS RELEASE TREASURY BILL AUCTION HELD ON 11 NOVEMBER 2026 Further to the T-bill auction held on 11 November 2026, Rs. 6,500 million was raised at phase II, from the Treasury bills bearing the International Securities Identification Number LKA36427K125 at the Weighted Average Yield Ra",
+    "totals": {
+      "offered_rs_mn": 90000,
+      "bids_rs_mn": 173077,
+      "accepted_rs_mn": 80196
+    },
     "_meta": {
       "inspection": {
         "pdf_type": "text_based",
