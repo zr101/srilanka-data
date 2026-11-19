@@ -1,11 +1,11 @@
 {
   "dataset": "cbsl_price_report",
-  "checked_at": "2026-11-18T14:31:45.400460+00:00",
+  "checked_at": "2026-11-19T14:41:19.152863+00:00",
   "last_successful_check_at": "2026-11-18T14:31:45.400460+00:00",
   "publication_date": "2026-11-18",
   "max_age_days": 4,
-  "status": "ok",
-  "outcome": "updated",
-  "error": null,
-  "message": "Source checked successfully"
+  "status": "error",
+  "outcome": "failed",
+  "error": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/pricerpt/price_report_20261119_e.pdf: HTTP 403; source access failed",
+  "message": "RuntimeError: GET https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/statistics/pricerpt/price_report_20261119_e.pdf: HTTP 403; source access failed"
 }
