@@ -1,11 +1,11 @@
 {
   "dataset": "sltda_arrivals",
-  "checked_at": "2026-11-18T14:31:11.741978+00:00",
-  "last_successful_check_at": "2026-11-18T14:31:11.741978+00:00",
-  "publication_date": "2026-11-15",
+  "checked_at": "2026-11-19T14:41:32.323551+00:00",
+  "last_successful_check_at": "2026-11-19T14:41:32.323551+00:00",
+  "publication_date": "2026-11-18",
   "max_age_days": 65,
   "status": "ok",
-  "outcome": "unchanged",
+  "outcome": "updated",
   "error": null,
   "message": "Source checked successfully"
 }
