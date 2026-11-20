@@ -1,4 +1,5 @@
 doc_id	date	source_url	sha256
+20261119	2026-11-19	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	33dfdf9ef2db8be83a99dce3615dc861b8c5463d0b1121ccbb94263849927fbf
 20261118	2026-11-18	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	87c4575ad63d3a222177afa3a17903058edea7a412b72896c58eac806fbf5f51
 20261117	2026-11-17	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	c4781efd8f3f568f71084931f9a01044792eff61915afcf756553a21c514074a
 20261116	2026-11-16	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	fc844b3176072e33c42f6f4d461107ac9f9122788c827b8e44e0f458fc381cab
@@ -98,4 +99,3 @@ doc_id	date	source_url	sha256
 20260803	2026-08-03	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	d6a47ca63d388c1413ddee90bd0dc76493ad230c46520dc111610f9fcaab26f2
 20260802	2026-08-02	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	7e0bb7bec24875b22ead640cce96ecdd0d354231231a52a5ded3fff365cc886c
 20260801	2026-08-01	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	dd300a75637fa003300cdbdd806de9a3c0e9f3ba1572320b339dee3f57da96e7
-20260731	2026-07-31	https://gendata.pucsl.gov.lk/api/daily-generation-statistics	983826a095760dcc2fc4c57913b5f996143fd0dd9c274f254bdee528350b9e17
