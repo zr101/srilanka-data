@@ -1,7 +1,7 @@
 {
   "dataset": "forbes_tea",
-  "checked_at": "2026-11-21T13:42:03.650978+00:00",
-  "last_successful_check_at": "2026-11-21T13:42:03.650978+00:00",
+  "checked_at": "2026-11-22T13:34:45.424537+00:00",
+  "last_successful_check_at": "2026-11-22T13:34:45.424537+00:00",
   "publication_date": "2026-11-04",
   "max_age_days": 21,
   "status": "ok",
