@@ -1,7 +1,7 @@
 {
   "dataset": "sltda_arrivals",
-  "checked_at": "2026-11-24T16:16:54.544486+00:00",
-  "last_successful_check_at": "2026-11-24T16:16:54.544486+00:00",
+  "checked_at": "2026-11-25T15:59:27.486908+00:00",
+  "last_successful_check_at": "2026-11-25T15:59:27.486908+00:00",
   "publication_date": "2026-11-22",
   "max_age_days": 65,
   "status": "ok",
